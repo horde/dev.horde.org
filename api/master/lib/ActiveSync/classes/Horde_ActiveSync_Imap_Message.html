@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">219</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">21</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">32</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1456456531"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1456456531" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_ActiveSync_Interface_ImapFactory.html">Horde_ActiveSync_Interface_ImapFactory</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_ActiveSync_Interface_LoggerFactory.html">Horde_ActiveSync_Interface_LoggerFactory</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_ActiveSync.html">Horde_ActiveSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Collections.html">Horde_ActiveSync_Collections</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Exporter_Base.html">Horde_ActiveSync_Connector_Exporter_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Exporter_FolderSync.html">Horde_ActiveSync_Connector_Exporter_FolderSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Exporter_Sync.html">Horde_ActiveSync_Connector_Exporter_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Importer.html">Horde_ActiveSync_Connector_Importer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Credentials.html">Horde_ActiveSync_Credentials</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Device.html">Horde_ActiveSync_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Device_Ios.html">Horde_ActiveSync_Device_Ios</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Driver_Base.html">Horde_ActiveSync_Driver_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Driver_Mock.html">Horde_ActiveSync_Driver_Mock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Driver_MockConnector.html">Horde_ActiveSync_Driver_MockConnector</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_DeletionNotSupported.html">Horde_ActiveSync_Exception_DeletionNotSupported</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_EmailFatalFailure.html">Horde_ActiveSync_Exception_EmailFatalFailure</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_FolderExists.html">Horde_ActiveSync_Exception_FolderExists</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_FolderGone.html">Horde_ActiveSync_Exception_FolderGone</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_InvalidRequest.html">Horde_ActiveSync_Exception_InvalidRequest</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_StaleState.html">Horde_ActiveSync_Exception_StaleState</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_StateGone.html">Horde_ActiveSync_Exception_StateGone</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_TemporaryFailure.html">Horde_ActiveSync_Exception_TemporaryFailure</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_Base.html">Horde_ActiveSync_Folder_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_Collection.html">Horde_ActiveSync_Folder_Collection</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_Imap.html">Horde_ActiveSync_Folder_Imap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_RI.html">Horde_ActiveSync_Folder_RI</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Adapter.html">Horde_ActiveSync_Imap_Adapter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder.html">Horde_ActiveSync_Imap_EasMessageBuilder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_Html.html">Horde_ActiveSync_Imap_EasMessageBuilder_Html</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_Mime.html">Horde_ActiveSync_Imap_EasMessageBuilder_Mime</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_Plain.html">Horde_ActiveSync_Imap_EasMessageBuilder_Plain</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_TwoFive.html">Horde_ActiveSync_Imap_EasMessageBuilder_TwoFive</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Message.html">Horde_ActiveSync_Imap_Message</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_MessageBodyData.html">Horde_ActiveSync_Imap_MessageBodyData</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Base.html">Horde_ActiveSync_Imap_Strategy_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Initial.html">Horde_ActiveSync_Imap_Strategy_Initial</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Modseq.html">Horde_ActiveSync_Imap_Strategy_Modseq</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Plain.html">Horde_ActiveSync_Imap_Strategy_Plain</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Factory.html">Horde_ActiveSync_Log_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Formatter.html">Horde_ActiveSync_Log_Formatter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Handler.html">Horde_ActiveSync_Log_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Logger.html">Horde_ActiveSync_Log_Logger</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Logger_Deprecated.html">Horde_ActiveSync_Log_Logger_Deprecated</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseAdd.html">Horde_ActiveSync_Message_AirSyncBaseAdd</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseAttachment.html">Horde_ActiveSync_Message_AirSyncBaseAttachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseBody.html">Horde_ActiveSync_Message_AirSyncBaseBody</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseBodypart.html">Horde_ActiveSync_Message_AirSyncBaseBodypart</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseDelete.html">Horde_ActiveSync_Message_AirSyncBaseDelete</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseFileAttachment.html">Horde_ActiveSync_Message_AirSyncBaseFileAttachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseLocation.html">Horde_ActiveSync_Message_AirSyncBaseLocation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Appointment.html">Horde_ActiveSync_Message_Appointment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Attachment.html">Horde_ActiveSync_Message_Attachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Attendee.html">Horde_ActiveSync_Message_Attendee</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Base.html">Horde_ActiveSync_Message_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Contact.html">Horde_ActiveSync_Message_Contact</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_DeviceInformation.html">Horde_ActiveSync_Message_DeviceInformation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Document.html">Horde_ActiveSync_Message_Document</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_DocumentLibrary.html">Horde_ActiveSync_Message_DocumentLibrary</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Exception.html">Horde_ActiveSync_Message_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Flag.html">Horde_ActiveSync_Message_Flag</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Folder.html">Horde_ActiveSync_Message_Folder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Forwardee.html">Horde_ActiveSync_Message_Forwardee</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_GalPicture.html">Horde_ActiveSync_Message_GalPicture</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Mail.html">Horde_ActiveSync_Message_Mail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_MeetingRequest.html">Horde_ActiveSync_Message_MeetingRequest</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Note.html">Horde_ActiveSync_Message_Note</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Oof.html">Horde_ActiveSync_Message_Oof</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_OofMessage.html">Horde_ActiveSync_Message_OofMessage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_RecipientInformation.html">Horde_ActiveSync_Message_RecipientInformation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Recurrence.html">Horde_ActiveSync_Message_Recurrence</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_ResolveRecipientsPicture.html">Horde_ActiveSync_Message_ResolveRecipientsPicture</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_SendMail.html">Horde_ActiveSync_Message_SendMail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_SendMailSource.html">Horde_ActiveSync_Message_SendMailSource</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Task.html">Horde_ActiveSync_Message_Task</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_TaskRecurrence.html">Horde_ActiveSync_Message_TaskRecurrence</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Mime.html">Horde_ActiveSync_Mime</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Mime_Headers_Addresses.html">Horde_ActiveSync_Mime_Headers_Addresses</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Mime_Iterator.html">Horde_ActiveSync_Mime_Iterator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Policies.html">Horde_ActiveSync_Policies</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Autodiscover.html">Horde_ActiveSync_Request_Autodiscover</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Base.html">Horde_ActiveSync_Request_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_FolderCreate.html">Horde_ActiveSync_Request_FolderCreate</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_FolderSync.html">Horde_ActiveSync_Request_FolderSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_GetAttachment.html">Horde_ActiveSync_Request_GetAttachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_GetHierarchy.html">Horde_ActiveSync_Request_GetHierarchy</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_GetItemEstimate.html">Horde_ActiveSync_Request_GetItemEstimate</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_ItemOperations.html">Horde_ActiveSync_Request_ItemOperations</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_MeetingResponse.html">Horde_ActiveSync_Request_MeetingResponse</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_MoveItems.html">Horde_ActiveSync_Request_MoveItems</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Ping.html">Horde_ActiveSync_Request_Ping</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Provision.html">Horde_ActiveSync_Request_Provision</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_ResolveRecipients.html">Horde_ActiveSync_Request_ResolveRecipients</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Search.html">Horde_ActiveSync_Request_Search</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SendMail.html">Horde_ActiveSync_Request_SendMail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Settings.html">Horde_ActiveSync_Request_Settings</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SmartForward.html">Horde_ActiveSync_Request_SmartForward</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SmartReply.html">Horde_ActiveSync_Request_SmartReply</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Sync.html">Horde_ActiveSync_Request_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SyncBase.html">Horde_ActiveSync_Request_SyncBase</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_ValidateCert.html">Horde_ActiveSync_Request_ValidateCert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Rfc822.html">Horde_ActiveSync_Rfc822</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_State_Base.html">Horde_ActiveSync_State_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_State_Mongo.html">Horde_ActiveSync_State_Mongo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_State_Sql.html">Horde_ActiveSync_State_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Status.html">Horde_ActiveSync_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_SyncCache.html">Horde_ActiveSync_SyncCache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Timezone.html">Horde_ActiveSync_Timezone</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Translation.html">Horde_ActiveSync_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Utils.html">Horde_ActiveSync_Utils</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Wbxml.html">Horde_ActiveSync_Wbxml</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Wbxml_Decoder.html">Horde_ActiveSync_Wbxml_Decoder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Wbxml_Encoder.html">Horde_ActiveSync_Wbxml_Encoder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_ActiveSync_Imap_Message</h1>
+                    <p><em>This class provides all functionality related to parsing and working with
+a single IMAP email message when using Horde_Imap_Client.</em></p>
+                    <p>Some Mime parsing code taken from Imp_Contents.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method___destruct" class="">__destruct()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getHeaders" class="">getHeaders()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getForwardHeaders" class="">getForwardHeaders()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getFullMsg" class="">getFullMsg()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getStructure" class="">getStructure()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getMessageBodyData" class="deprecated">getMessageBodyData()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getMessageBodyDataObject" class="">getMessageBodyDataObject()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getAttachments" class="">getAttachments()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getAttachmentsMimeParts" class="">getAttachmentsMimeParts()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getMimePart" class="">getMimePart()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getPartName" class="">getPartName()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getBodyPart" class="">getBodyPart()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getToAddresses" class="">getToAddresses()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getCc" class="">getCc()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getReplyTo" class="">getReplyTo()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getFromAddress" class="">getFromAddress()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getSubject" class="">getSubject()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getDate" class="">getDate()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getFlag" class="">getFlag()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_getFlags" class="">getFlags()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_contentTypeMap" class="">contentTypeMap()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_isAttachment" class="deprecated">isAttachment()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_hasiCalendar" class="">hasiCalendar()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_hasAttachments" class="">hasAttachments()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_isSigned" class="">isSigned()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method_isEncrypted" class="">isEncrypted()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property_envelope" class="">$envelope</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property_flags" class="">$flags</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property_uid" class="">$uid</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property_basePart" class="">$basePart</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method__buildEasAttachmentFromMime" class="">_buildEasAttachmentFromMime()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#method__decodeTnefData" class="">_decodeTnefData()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property__data" class="">$_data</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property__basePart" class="">$_basePart</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property__imap" class="">$_imap</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property__lastBodyPartDecode" class="">$_lastBodyPartDecode</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property__hasAttachments" class="">$_hasAttachments</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Imap_Message.html#property__mbd" class="">$_mbd</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/ActiveSync.Imap.Message.html"><div class="path-wrapper">ActiveSync/Imap/Message.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">ActiveSync</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_ActiveSync_Imap_Message</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a> GPLv2
+NOTE: According to sec. 8 of the GENERAL PUBLIC LICENSE (GPL),
+Version 2, the distribution of the Horde_ActiveSync module in or
+to the United States of America is excluded from the scope of this
+license.</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2012-2017 Horde LLC (<a href="http://www.horde.org">http://www.horde.org</a>)</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_envelope" name="property_envelope" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$envelope</h3>
+                <pre class="signature">$envelope : \Horde_Imap_Client_Data_Envelope</pre>
+                <p><em></em></p>
+                <p>The message envelope.</p>
+
+                                <h4>Type</h4>
+                \Horde_Imap_Client_Data_Envelope
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_flags" name="property_flags" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$flags</h3>
+                <pre class="signature">$flags : array</pre>
+                <p><em></em></p>
+                <p>The message flags.</p>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_uid" name="property_uid" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$uid</h3>
+                <pre class="signature">$uid : integer</pre>
+                <p><em></em></p>
+                <p>The message uid.</p>
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_basePart" name="property_basePart" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$basePart</h3>
+                <pre class="signature">$basePart : \Horde_ActiveSync_Mime</pre>
+                <p><em></em></p>
+                <p>The base message part.</p>
+
+                                <h4>Type</h4>
+                \Horde_ActiveSync_Mime
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__data" name="property__data" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_data</h3>
+                <pre class="signature">$_data : \Horde_Imap_Client_Data_Fetch</pre>
+                <p><em>Message data.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Imap_Client_Data_Fetch
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__basePart" name="property__basePart" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_basePart</h3>
+                <pre class="signature">$_basePart : \Horde_ActiveSync_Mime</pre>
+                <p><em>Message structure.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_ActiveSync_Mime.html">\Horde_ActiveSync_Mime</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__imap" name="property__imap" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_imap</h3>
+                <pre class="signature">$_imap : \Horde_Imap_Client_Base</pre>
+                <p><em>The imap client.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Imap_Client_Base
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__lastBodyPartDecode" name="property__lastBodyPartDecode" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_lastBodyPartDecode</h3>
+                <pre class="signature">$_lastBodyPartDecode : boolean</pre>
+                <p><em>Cache if the last body part was encoded or not.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__hasAttachments" name="property__hasAttachments" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_hasAttachments</h3>
+                <pre class="signature">$_hasAttachments : boolean</pre>
+                <p><em>Flag to indicate if this message contains attachments.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__mbd" name="property__mbd" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_mbd</h3>
+                <pre class="signature">$_mbd : \Horde_ActiveSync_Imap_MessageBodyData</pre>
+                <p><em>Local cache of MessageBodyData object.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_ActiveSync_Imap_MessageBodyData.html">\Horde_ActiveSync_Imap_MessageBodyData</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_Imap_Client_Base  <span class="argument">$imap</span>, \Horde_Imap_Client_Mailbox  <span class="argument">$mbox</span>, \Horde_Imap_Client_Data_Fetch  <span class="argument">$data</span>) </pre>
+                <p><em>Constructor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Imap_Client_Base</td>
+                                <td>$imap </td>
+                                <td><p>The imap client object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\Horde_Imap_Client_Mailbox</td>
+                                <td>$mbox </td>
+                                <td><p>The mailbox object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\Horde_Imap_Client_Data_Fetch</td>
+                                <td>$data </td>
+                                <td><p>The data returned from a FETCH
+must contain at least uid,
+structure and flags.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___destruct" name="method___destruct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__destruct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__destruct() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(string  <span class="argument">$property</span>) : mixed</pre>
+                <p><em>Accessor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$property </td>
+                                <td><p>The property.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHeaders" name="method_getHeaders" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getHeaders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHeaders() : \Horde_Mime_Headers</pre>
+                <p><em>Return this message&#039;s base part headers.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Mime_Headers
+                                            &mdash; <p>The message headers.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getForwardHeaders" name="method_getForwardHeaders" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getForwardHeaders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getForwardHeaders() : string</pre>
+                <p><em>Return nicely formatted text representing the headers to display with
+in-line forwarded messages.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFullMsg" name="method_getFullMsg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFullMsg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFullMsg(boolean  <span class="argument">$stream = false</span>) : mixed</pre>
+                <p><em>Return the full message text.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$stream </td>
+                                <td><p>Return data as a stream?</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_ActiveSync_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>A string or stream resource.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStructure" name="method_getStructure" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getStructure()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStructure() : \Horde_Mime_Part</pre>
+                <p><em>Return the message&#039;s base Mime part.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Mime_Part
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMessageBodyData" name="method_getMessageBodyData" class="anchor"></a>
+            <article class="method">
+                <h3 class="public deprecated">getMessageBodyData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMessageBodyData(array  <span class="argument">$options = array()</span>) : array</pre>
+                <p><em>Returns the main text body of the message suitable for sending over
+EAS response.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>An options array containgin:</p>
+<ul>
+<li>bodyprefs: (array)  Bodypref settings
+DEFAULT: none (No bodyprefs used).</li>
+<li>mimesupport: (integer)  Indicates if MIME is supported or not.
+Possible values: 0 - Not supported 1 - Only S/MIME or
+2 - All MIME.
+DEFAULT: 0 (No MIME support)</li>
+<li>protocolversion: (float)  The EAS protocol we are supporting.
+DEFAULT 2.5</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_ActiveSync_Exception,</dt>
+                            <dd><p>Horde_Exception_NotFound</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of one or both of 'plain' and 'html' content.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    - no longer used and will be removed in Horde 6.
+                </aside>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMessageBodyDataObject" name="method_getMessageBodyDataObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMessageBodyDataObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMessageBodyDataObject(array  <span class="argument">$options = array()</span>) : \Horde_ActiveSync_Imap_MessageBodyData</pre>
+                <p><em>Returns the main text body of the message suitable for sending over
+EAS response.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>An options array containgin:</p>
+<ul>
+<li>bodyprefs: (array)  Bodypref settings
+DEFAULT: none (No bodyprefs used).</li>
+<li>mimesupport: (integer)  Indicates if MIME is supported or not.
+Possible values: 0 - Not supported 1 - Only S/MIME or
+2 - All MIME.
+DEFAULT: 0 (No MIME support)</li>
+<li>protocolversion: (float)  The EAS protocol we are supporting.
+DEFAULT 2.5</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_ActiveSync_Exception,</dt>
+                            <dd><p>Horde_Exception_NotFound</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_ActiveSync_Imap_MessageBodyData.html">\Horde_ActiveSync_Imap_MessageBodyData</a>
+                                            &mdash; <p>The result.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAttachments" name="method_getAttachments" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAttachments()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAttachments(float  <span class="argument">$version</span>) : array</pre>
+                <p><em>Return an array of Horde_ActiveSync_Message_Attachment objects for
+the current message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$version </td>
+                                <td><p>The EAS protocol version this is for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of Horde_ActiveSync_Message_Attachment objects.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAttachmentsMimeParts" name="method_getAttachmentsMimeParts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAttachmentsMimeParts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAttachmentsMimeParts() : array</pre>
+                <p><em>Return an array of mime parts for each message attachment.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of Horde_Mime_Part objects.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMimePart" name="method_getMimePart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMimePart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMimePart(integer  <span class="argument">$id</span>, array  <span class="argument">$options = array()</span>) : \Horde_Mime_Part</pre>
+                <p><em>Fetch a part of a MIME message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$id </td>
+                                <td><p>The MIME index of the part requested.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Additional options:</p>
+<ul>
+<li>length: (integer) If set, only download this many bytes of the
+bodypart from the server.
+DEFAULT: All data is retrieved.</li>
+<li>nocontents: (boolean) If true, don't add the contents to the part
+DEFAULT: Contents are added to the part</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Mime_Part
+                                            &mdash; <p>The raw MIME part asked for.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPartName" name="method_getPartName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPartName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPartName(\Horde_Mime_Part  <span class="argument">$part</span>, boolean  <span class="argument">$use_descrip = false</span>) : string</pre>
+                <p><em>Return the descriptive part label, making sure it is not empty.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$part </td>
+                                <td><p>The MIME Part object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$use_descrip </td>
+                                <td><p>Use description? If false, uses name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The part label (non-empty).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBodyPart" name="method_getBodyPart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBodyPart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBodyPart(integer  <span class="argument">$id</span>, array  <span class="argument">$options</span>) : mixed</pre>
+                <p><em>Gets the raw text for one section of the message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$id </td>
+                                <td><p>The ID of the MIME part.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Additional options:</p>
+<ul>
+<li>decode: (boolean) Attempt to decode the bodypart on the remote
+server. If successful, sets self::$_lastBodyPartDecode to
+the content-type of the decoded data.
+DEFAULT: No</li>
+<li>length: (integer) If set, only download this many bytes of the
+bodypart from the server.
+DEFAULT: All data is retrieved.</li>
+<li>mimeheaders: (boolean) Include the MIME headers also?
+DEFAULT: No</li>
+<li>stream: (boolean) If true, return a stream.
+DEFAULT: No</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The text of the part or a stream resource if 'stream'
+is true.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>Simplify by removing 'mimeheaders' parameter (not used).</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getToAddresses" name="method_getToAddresses" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getToAddresses()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getToAddresses() : array</pre>
+                <p><em>Return the To addresses from this message.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array containing arrays of 'to' and 'displayto'
+addresses. @since 2.37.1, ensures the text is UTF8.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCc" name="method_getCc" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCc()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCc() : string</pre>
+                <p><em>Return the CC addresses for this message.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_ActiveSync_Exception</dt>
+                            <dd><p>@since 2.27.0</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The Cc address string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getReplyTo" name="method_getReplyTo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getReplyTo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getReplyTo() : string</pre>
+                <p><em>Return the ReplyTo Address</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_ActiveSync_Exception</dt>
+                            <dd><p>@since 2.27.0</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFromAddress" name="method_getFromAddress" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFromAddress()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFromAddress() : string</pre>
+                <p><em>Return the message&#039;s From: address.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_ActiveSync_Exception</dt>
+                            <dd><p>@since 2.27.0</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The From address of this message.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSubject" name="method_getSubject" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSubject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSubject() : string</pre>
+                <p><em>Return the message subject.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The subject.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDate" name="method_getDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDate() : \Horde_Date</pre>
+                <p><em>Return the message date.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Date
+                                            &mdash; <p>The messages's envelope date.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFlag" name="method_getFlag" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFlag()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFlag(string  <span class="argument">$flag</span>) : boolean</pre>
+                <p><em>Get a message flag</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$flag </td>
+                                <td><p>The flag to search for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFlags" name="method_getFlags" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFlags()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFlags() : array</pre>
+                <p><em>Return all message flags.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of message flags.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.17.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_contentTypeMap" name="method_contentTypeMap" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">contentTypeMap()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">contentTypeMap() : array</pre>
+                <p><em>Return this message&#039;s content map</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The content map, with mime ids as keys and content type
+as values.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isAttachment" name="method_isAttachment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public deprecated">isAttachment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isAttachment(string  <span class="argument">$id</span>, string  <span class="argument">$mime_type</span>) : boolean</pre>
+                <p><em>Determines if a MIME type is an attachment.</em></p>
+                <p>For our purposes, an attachment is any MIME part that can be
+downloaded by itself (i.e. all the data needed to view the part is
+contained within the download data).</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>The MIME Id for the part we are checking.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$mime_type </td>
+                                <td><p>The MIME type.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if an attachment.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    Will be removed in 3.0 (Only used in self::hasAttachments call).
+                </aside>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasiCalendar" name="method_hasiCalendar" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasiCalendar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasiCalendar() : mixed</pre>
+                <p><em>Return the MIME part of the iCalendar attachment, if available.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The mime part, if present, false otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasAttachments" name="method_hasAttachments" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasAttachments()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasAttachments() : boolean</pre>
+                <p><em>Return the hasAttachments flag</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isSigned" name="method_isSigned" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isSigned()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isSigned(\Horde_Mime_Part  <span class="argument">$message = null</span>) : boolean</pre>
+                <p><em>Return the S/MIME signature status of this message (RFC2633)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$message </td>
+                                <td><p>A mime part to check. If omitted, use
+self::$_message.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if message is S/MIME signed, false otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isEncrypted" name="method_isEncrypted" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isEncrypted()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isEncrypted(\Horde_Mime_Part  <span class="argument">$message = null</span>) : boolean</pre>
+                <p><em>Return the S/MIME encryption status of this message (RFC2633)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$message </td>
+                                <td><p>A mime part to check. If omitted, use
+self::$_message.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if message is S/MIME signed or encrypted,
+false otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__buildEasAttachmentFromMime" name="method__buildEasAttachmentFromMime" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_buildEasAttachmentFromMime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_buildEasAttachmentFromMime(integer  <span class="argument">$id</span>, \Horde_Mime_Part  <span class="argument">$mime_part</span>, float  <span class="argument">$version</span>) : \Horde_ActiveSync_Message_AirSyncBaseAttachment</pre>
+                <p><em>Build an appropriate attachment object from the given mime part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$id </td>
+                                <td><p>The mime id for the part</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$mime_part </td>
+                                <td><p>The mime part.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>float</td>
+                                <td>$version </td>
+                                <td><p>The EAS version.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_ActiveSync_Message_AirSyncBaseAttachment.html">\Horde_ActiveSync_Message_AirSyncBaseAttachment</a>
+                                            &mdash; <p>|
+Horde_ActiveSync_Message_Attachment</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__decodeTnefData" name="method__decodeTnefData" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_decodeTnefData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_decodeTnefData(integer|\Horde_Mime_part  <span class="argument">$data</span>) : \Horde_Mime_Part</pre>
+                <p><em>Convert a TNEF attachment into a multipart/mixed part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer|\Horde_Mime_part</td>
+                                <td>$data </td>
+                                <td><p>Either a mime part id or a
+Horde_Mime_Part object containing
+the TNEF attachment.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Mime_Part
+                                            &mdash; <p>The multipart/mixed MIME part containing any
+attachment data we can decode.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Message.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/ActiveSync/Imap/Message.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:35.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

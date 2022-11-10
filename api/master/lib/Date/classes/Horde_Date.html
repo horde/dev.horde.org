@@ -1,0 +1,2967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">197</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1672105409"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1672105409" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Date.html">Horde_Date</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Exception.html">Horde_Date_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Recurrence.html">Horde_Date_Recurrence</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater.html">Horde_Date_Repeater</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Day.html">Horde_Date_Repeater_Day</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_DayName.html">Horde_Date_Repeater_DayName</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_DayPortion.html">Horde_Date_Repeater_DayPortion</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Exception.html">Horde_Date_Repeater_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Fortnight.html">Horde_Date_Repeater_Fortnight</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Hour.html">Horde_Date_Repeater_Hour</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Minute.html">Horde_Date_Repeater_Minute</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Month.html">Horde_Date_Repeater_Month</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_MonthName.html">Horde_Date_Repeater_MonthName</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Season.html">Horde_Date_Repeater_Season</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_SeasonName.html">Horde_Date_Repeater_SeasonName</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Second.html">Horde_Date_Repeater_Second</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Time.html">Horde_Date_Repeater_Time</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Week.html">Horde_Date_Repeater_Week</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Weekend.html">Horde_Date_Repeater_Weekend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Year.html">Horde_Date_Repeater_Year</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Span.html">Horde_Date_Span</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Translation.html">Horde_Date_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Utils.html">Horde_Date_Utils</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Date</h1>
+                    <p><em>Horde Date wrapper/logic class, including some calculation functions.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method___toString" class="">__toString()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_toDateTime" class="">toDateTime()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_toDays" class="">toDays()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_fromDays" class="">fromDays()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method___set" class="">__set()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method___isset" class="">__isset()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_add" class="">add()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_sub" class="">sub()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_getTimezoneAlias" class="">getTimezoneAlias()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_setTimezone" class="">setTimezone()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_setDefaultFormat" class="">setDefaultFormat()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_dayOfWeek" class="">dayOfWeek()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_dayOfYear" class="">dayOfYear()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_weekOfMonth" class="">weekOfMonth()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_weekOfYear" class="">weekOfYear()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_weeksInYear" class="">weeksInYear()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_setNthWeekday" class="">setNthWeekday()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_isValid" class="">isValid()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_compareDate" class="">compareDate()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_after" class="">after()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_before" class="">before()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_equals" class="">equals()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_compareTime" class="">compareTime()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_compareDateTime" class="">compareDateTime()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_diff" class="">diff()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_tzOffset" class="">tzOffset()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_timestamp" class="">timestamp()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_datestamp" class="">datestamp()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_dateString" class="">dateString()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_toJson" class="">toJson()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_toiCalendar" class="">toiCalendar()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_format" class="">format()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method_strftime" class="">strftime()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_SUNDAY" class="">DATE_SUNDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_MONDAY" class="">DATE_MONDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_TUESDAY" class="">DATE_TUESDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_WEDNESDAY" class="">DATE_WEDNESDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_THURSDAY" class="">DATE_THURSDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_FRIDAY" class="">DATE_FRIDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_SATURDAY" class="">DATE_SATURDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_SUNDAY" class="">MASK_SUNDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_MONDAY" class="">MASK_MONDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_TUESDAY" class="">MASK_TUESDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_WEDNESDAY" class="">MASK_WEDNESDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_THURSDAY" class="">MASK_THURSDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_FRIDAY" class="">MASK_FRIDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_SATURDAY" class="">MASK_SATURDAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_WEEKDAYS" class="">MASK_WEEKDAYS</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_WEEKEND" class="">MASK_WEEKEND</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_ALLDAYS" class="">MASK_ALLDAYS</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_SECOND" class="">MASK_SECOND</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_MINUTE" class="">MASK_MINUTE</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_HOUR" class="">MASK_HOUR</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_DAY" class="">MASK_DAY</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_MONTH" class="">MASK_MONTH</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_YEAR" class="">MASK_YEAR</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_MASK_ALLPARTS" class="">MASK_ALLPARTS</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_DEFAULT" class="">DATE_DEFAULT</a><br />
+                                                                    <a href="../classes/Horde_Date.html#constant_DATE_JSON" class="">DATE_JSON</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date.html#method__regexCallback" class="">_regexCallback()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__strftime" class="">_strftime()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__correct" class="">_correct()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__correctMonth" class="">_correctMonth()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__initializeFromArgs" class="">_initializeFromArgs()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__initializeFromArray" class="">_initializeFromArray()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__initializeFromObject" class="">_initializeFromObject()</a><br />
+                                                                    <a href="../classes/Horde_Date.html#method__initializeTimezone" class="">_initializeTimezone()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date.html#property__year" class="">$_year</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__month" class="">$_month</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__mday" class="">$_mday</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__hour" class="">$_hour</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__min" class="">$_min</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__sec" class="">$_sec</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__timezone" class="">$_timezone</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__timezoneAliases" class="">$_timezoneAliases</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__timezoneAbbreviations" class="">$_timezoneAbbreviations</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__timezoneIdentifiers" class="">$_timezoneIdentifiers</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__defaultFormat" class="">$_defaultFormat</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__defaultSpecs" class="">$_defaultSpecs</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__supportedSpecs" class="">$_supportedSpecs</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__corrections" class="">$_corrections</a><br />
+                                                                    <a href="../classes/Horde_Date.html#property__formatCache" class="">$_formatCache</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Date.html"><div class="path-wrapper">Date.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Date</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Date</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Chuck Hagenbuch <a href="mailto:chuck@horde.org">chuck@horde.org</a></p>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2004-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_SUNDAY" name="constant_DATE_SUNDAY" class="anchor"></a>
+            <article id="constant_DATE_SUNDAY" class="constant">
+                <h3 class="">DATE_SUNDAY</h3>
+                <pre class="signature">DATE_SUNDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_MONDAY" name="constant_DATE_MONDAY" class="anchor"></a>
+            <article id="constant_DATE_MONDAY" class="constant">
+                <h3 class="">DATE_MONDAY</h3>
+                <pre class="signature">DATE_MONDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_TUESDAY" name="constant_DATE_TUESDAY" class="anchor"></a>
+            <article id="constant_DATE_TUESDAY" class="constant">
+                <h3 class="">DATE_TUESDAY</h3>
+                <pre class="signature">DATE_TUESDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_WEDNESDAY" name="constant_DATE_WEDNESDAY" class="anchor"></a>
+            <article id="constant_DATE_WEDNESDAY" class="constant">
+                <h3 class="">DATE_WEDNESDAY</h3>
+                <pre class="signature">DATE_WEDNESDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_THURSDAY" name="constant_DATE_THURSDAY" class="anchor"></a>
+            <article id="constant_DATE_THURSDAY" class="constant">
+                <h3 class="">DATE_THURSDAY</h3>
+                <pre class="signature">DATE_THURSDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_FRIDAY" name="constant_DATE_FRIDAY" class="anchor"></a>
+            <article id="constant_DATE_FRIDAY" class="constant">
+                <h3 class="">DATE_FRIDAY</h3>
+                <pre class="signature">DATE_FRIDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_SATURDAY" name="constant_DATE_SATURDAY" class="anchor"></a>
+            <article id="constant_DATE_SATURDAY" class="constant">
+                <h3 class="">DATE_SATURDAY</h3>
+                <pre class="signature">DATE_SATURDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_SUNDAY" name="constant_MASK_SUNDAY" class="anchor"></a>
+            <article id="constant_MASK_SUNDAY" class="constant">
+                <h3 class="">MASK_SUNDAY</h3>
+                <pre class="signature">MASK_SUNDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_MONDAY" name="constant_MASK_MONDAY" class="anchor"></a>
+            <article id="constant_MASK_MONDAY" class="constant">
+                <h3 class="">MASK_MONDAY</h3>
+                <pre class="signature">MASK_MONDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_TUESDAY" name="constant_MASK_TUESDAY" class="anchor"></a>
+            <article id="constant_MASK_TUESDAY" class="constant">
+                <h3 class="">MASK_TUESDAY</h3>
+                <pre class="signature">MASK_TUESDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_WEDNESDAY" name="constant_MASK_WEDNESDAY" class="anchor"></a>
+            <article id="constant_MASK_WEDNESDAY" class="constant">
+                <h3 class="">MASK_WEDNESDAY</h3>
+                <pre class="signature">MASK_WEDNESDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_THURSDAY" name="constant_MASK_THURSDAY" class="anchor"></a>
+            <article id="constant_MASK_THURSDAY" class="constant">
+                <h3 class="">MASK_THURSDAY</h3>
+                <pre class="signature">MASK_THURSDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_FRIDAY" name="constant_MASK_FRIDAY" class="anchor"></a>
+            <article id="constant_MASK_FRIDAY" class="constant">
+                <h3 class="">MASK_FRIDAY</h3>
+                <pre class="signature">MASK_FRIDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_SATURDAY" name="constant_MASK_SATURDAY" class="anchor"></a>
+            <article id="constant_MASK_SATURDAY" class="constant">
+                <h3 class="">MASK_SATURDAY</h3>
+                <pre class="signature">MASK_SATURDAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_WEEKDAYS" name="constant_MASK_WEEKDAYS" class="anchor"></a>
+            <article id="constant_MASK_WEEKDAYS" class="constant">
+                <h3 class="">MASK_WEEKDAYS</h3>
+                <pre class="signature">MASK_WEEKDAYS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_WEEKEND" name="constant_MASK_WEEKEND" class="anchor"></a>
+            <article id="constant_MASK_WEEKEND" class="constant">
+                <h3 class="">MASK_WEEKEND</h3>
+                <pre class="signature">MASK_WEEKEND</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_ALLDAYS" name="constant_MASK_ALLDAYS" class="anchor"></a>
+            <article id="constant_MASK_ALLDAYS" class="constant">
+                <h3 class="">MASK_ALLDAYS</h3>
+                <pre class="signature">MASK_ALLDAYS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_SECOND" name="constant_MASK_SECOND" class="anchor"></a>
+            <article id="constant_MASK_SECOND" class="constant">
+                <h3 class="">MASK_SECOND</h3>
+                <pre class="signature">MASK_SECOND</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_MINUTE" name="constant_MASK_MINUTE" class="anchor"></a>
+            <article id="constant_MASK_MINUTE" class="constant">
+                <h3 class="">MASK_MINUTE</h3>
+                <pre class="signature">MASK_MINUTE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_HOUR" name="constant_MASK_HOUR" class="anchor"></a>
+            <article id="constant_MASK_HOUR" class="constant">
+                <h3 class="">MASK_HOUR</h3>
+                <pre class="signature">MASK_HOUR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_DAY" name="constant_MASK_DAY" class="anchor"></a>
+            <article id="constant_MASK_DAY" class="constant">
+                <h3 class="">MASK_DAY</h3>
+                <pre class="signature">MASK_DAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_MONTH" name="constant_MASK_MONTH" class="anchor"></a>
+            <article id="constant_MASK_MONTH" class="constant">
+                <h3 class="">MASK_MONTH</h3>
+                <pre class="signature">MASK_MONTH</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_YEAR" name="constant_MASK_YEAR" class="anchor"></a>
+            <article id="constant_MASK_YEAR" class="constant">
+                <h3 class="">MASK_YEAR</h3>
+                <pre class="signature">MASK_YEAR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MASK_ALLPARTS" name="constant_MASK_ALLPARTS" class="anchor"></a>
+            <article id="constant_MASK_ALLPARTS" class="constant">
+                <h3 class="">MASK_ALLPARTS</h3>
+                <pre class="signature">MASK_ALLPARTS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_DEFAULT" name="constant_DATE_DEFAULT" class="anchor"></a>
+            <article id="constant_DATE_DEFAULT" class="constant">
+                <h3 class="">DATE_DEFAULT</h3>
+                <pre class="signature">DATE_DEFAULT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_DATE_JSON" name="constant_DATE_JSON" class="anchor"></a>
+            <article id="constant_DATE_JSON" class="constant">
+                <h3 class="">DATE_JSON</h3>
+                <pre class="signature">DATE_JSON</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__year" name="property__year" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_year</h3>
+                <pre class="signature">$_year : integer</pre>
+                <p><em>Year</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__month" name="property__month" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_month</h3>
+                <pre class="signature">$_month : integer</pre>
+                <p><em>Month</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__mday" name="property__mday" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_mday</h3>
+                <pre class="signature">$_mday : integer</pre>
+                <p><em>Day</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__hour" name="property__hour" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_hour</h3>
+                <pre class="signature">$_hour : integer</pre>
+                <p><em>Hour</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__min" name="property__min" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_min</h3>
+                <pre class="signature">$_min : integer</pre>
+                <p><em>Minute</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__sec" name="property__sec" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_sec</h3>
+                <pre class="signature">$_sec : integer</pre>
+                <p><em>Second</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__timezone" name="property__timezone" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_timezone</h3>
+                <pre class="signature">$_timezone : string</pre>
+                <p><em>String representation of the date&#039;s timezone.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__timezoneAliases" name="property__timezoneAliases" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_timezoneAliases</h3>
+                <pre class="signature">$_timezoneAliases : array</pre>
+                <p><em>These aliases map Windows, Lotus, and other Timezone IDs to those
+understood by PHP.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                            <p>This list better moves somewhere else</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__timezoneAbbreviations" name="property__timezoneAbbreviations" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_timezoneAbbreviations</h3>
+                <pre class="signature">$_timezoneAbbreviations : array</pre>
+                <p><em>These aliases map timezone abbreviations to those understood by PHP.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Horde_Date.html#method_getTimezoneAlias"><span class="namespace-wrapper">\Horde_Date::getTimezoneAlias()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                            <p>This list better moves somewhere else</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__timezoneIdentifiers" name="property__timezoneIdentifiers" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_timezoneIdentifiers</h3>
+                <pre class="signature">$_timezoneIdentifiers : array</pre>
+                <p><em>A list of (Olson) timezone identifiers understood by PHP.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Horde_Date.html#method_getTimezoneAlias"><span class="namespace-wrapper">\Horde_Date::getTimezoneAlias()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                            <p>This list better moves somewhere else</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__defaultFormat" name="property__defaultFormat" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_defaultFormat</h3>
+                <pre class="signature">$_defaultFormat : string</pre>
+                <p><em>Default format for __toString()</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__defaultSpecs" name="property__defaultSpecs" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_defaultSpecs</h3>
+                <pre class="signature">$_defaultSpecs : string</pre>
+                <p><em>Default specs that are always supported.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__supportedSpecs" name="property__supportedSpecs" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_supportedSpecs</h3>
+                <pre class="signature">$_supportedSpecs : string</pre>
+                <p><em>Internally supported strftime() specifiers.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__corrections" name="property__corrections" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_corrections</h3>
+                <pre class="signature">$_corrections : array</pre>
+                <p><em>Map of required correction masks.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Horde_Date.html#method___set"><span class="namespace-wrapper">\Horde_Date::__set()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__formatCache" name="property__formatCache" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_formatCache</h3>
+                <pre class="signature">$_formatCache : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(  <span class="argument">$date = null</span>,   <span class="argument">$timezone = null</span>) </pre>
+                <p><em>Builds a new date object. If $date contains date parts, use them to
+initialize the object.</em></p>
+                <p>Recognized formats:</p>
+<ul>
+<li>arrays with keys 'year', 'month', 'mday', 'day'
+'hour', 'min', 'minute', 'sec'</li>
+<li>objects with properties 'year', 'month', 'mday', 'hour', 'min', 'sec'</li>
+<li>yyyy-mm-dd hh:mm:ss</li>
+<li>yyyymmddhhmmss</li>
+<li>yyyymmddThhmmssZ</li>
+<li>yyyymmdd (might conflict with unix timestamps between 31 Oct 1966 and
+03 Mar 1973)</li>
+<li>unix timestamps</li>
+<li>anything parsed by strtotime()/DateTime.</li>
+</ul>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$date </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$timezone </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Date_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___toString" name="method___toString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__toString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__toString() : string</pre>
+                <p><em>Returns a simple string representation of the date object</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>This object converted to a string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toDateTime" name="method_toDateTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toDateTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toDateTime() : \DateTime</pre>
+                <p><em>Returns a DateTime object representing this object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \DateTime
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toDays" name="method_toDays" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toDays()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toDays() : integer</pre>
+                <p><em>Converts a date in the proleptic Gregorian calendar to the no of days
+since 24th November, 4714 B.C.</em></p>
+                <p>Returns the no of days since Monday, 24th November, 4714 B.C. in the
+proleptic Gregorian calendar (which is 24th November, -4713 using
+'Astronomical' year numbering, and 1st January, 4713 B.C. in the
+proleptic Julian calendar).  This is also the first day of the 'Julian
+Period' proposed by Joseph Scaliger in 1583, and the number of days
+since this date is known as the 'Julian Day'.  (It is not directly
+to do with the Julian calendar, although this is where the name
+is derived from.)</p>
+<p>The algorithm is valid for all years (positive and negative), and
+also for years preceding 4714 B.C.</p>
+<p>Algorithm is from PEAR::Date_Calc</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number of days since 24th November, 4714 B.C.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>Monte Ohrt <a href="mailto:monte@ispi.net">monte@ispi.net</a></p>
+                                                                                            <p>Pierre-Alain Joye <a href="mailto:pajoye@php.net">pajoye@php.net</a></p>
+                                                                                            <p>Daniel Convissor <a href="mailto:danielc@php.net">danielc@php.net</a></p>
+                                                                                            <p>C.A. Woodcock <a href="mailto:c01234@netcomuk.co.uk">c01234@netcomuk.co.uk</a></p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromDays" name="method_fromDays" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromDays()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromDays(integer  <span class="argument">$days</span>) : \Horde_Date</pre>
+                <p><em>Converts number of days since 24th November, 4714 B.C. (in the proleptic
+Gregorian calendar, which is year -4713 using &#039;Astronomical&#039; year
+numbering) to Gregorian calendar date.</em></p>
+                <p>Returned date belongs to the proleptic Gregorian calendar, using
+'Astronomical' year numbering.</p>
+<p>The algorithm is valid for all years (positive and negative), and
+also for years preceding 4714 B.C. (i.e. for negative 'Julian Days'),
+and so the only limitation is platform-dependent (for 32-bit systems
+the maximum year would be something like about 1,465,190 A.D.).</p>
+<p>N.B. Monday, 24th November, 4714 B.C. is Julian Day '0'.</p>
+<p>Algorithm is from PEAR::Date_Calc</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$days </td>
+                                <td><p>the number of days since 24th November, 4714 B.C.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>
+                                            &mdash; <p>A Horde_Date object representing the date.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>Monte Ohrt <a href="mailto:monte@ispi.net">monte@ispi.net</a></p>
+                                                                                            <p>Pierre-Alain Joye <a href="mailto:pajoye@php.net">pajoye@php.net</a></p>
+                                                                                            <p>Daniel Convissor <a href="mailto:danielc@php.net">danielc@php.net</a></p>
+                                                                                            <p>C.A. Woodcock <a href="mailto:c01234@netcomuk.co.uk">c01234@netcomuk.co.uk</a></p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(string  <span class="argument">$name</span>) : integer|string</pre>
+                <p><em>Getter for the date and time properties.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>One of 'year', 'month', 'mday', 'hour', 'min',
+'sec' or 'timezone' (since Horde_Date 2.0.0).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer|string
+                                            &mdash; <p>The property value, or null if not set.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___set" name="method___set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__set(string  <span class="argument">$name</span>, integer|string  <span class="argument">$value</span>) </pre>
+                <p><em>Setter for the date and time properties.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>One of 'year', 'month', 'mday', 'hour',
+'min', 'sec' or 'timezone' (since
+Horde_Date 2.0.0).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer|string</td>
+                                <td>$value </td>
+                                <td><p>The property value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___isset" name="method___isset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__isset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__isset(string  <span class="argument">$name</span>) : \boolen</pre>
+                <p><em>Returns whether a date or time property exists.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>One of 'year', 'month', 'mday', 'hour', 'min' or
+'sec'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \boolen
+                                            &mdash; <p>True if the property exists and is set.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add" name="method_add" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add(  <span class="argument">$factor</span>) </pre>
+                <p><em>Adds a number of seconds or units to this date, returning a new Date
+object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$factor </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sub" name="method_sub" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sub()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sub(  <span class="argument">$factor</span>) </pre>
+                <p><em>Subtracts a number of seconds or units from this date, returning a new
+Horde_Date object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$factor </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTimezoneAlias" name="method_getTimezoneAlias" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTimezoneAlias()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTimezoneAlias(string  <span class="argument">$timezone</span>) : string</pre>
+                <p><em>Returns the normalized (Olson) timezone name of a timezone alias.</em></p>
+                <p>We currently support Windows and Lotus timezone names, and timezone
+abbreviations.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$timezone </td>
+                                <td><p>Some timezone alias.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The Olson timezone name, or the original value, if no
+alias found.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                                                            <p>Horde_Date 2.3.0</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTimezone" name="method_setTimezone" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTimezone()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTimezone(string  <span class="argument">$timezone</span>) : \Horde_Date</pre>
+                <p><em>Converts this object to a different timezone.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$timezone </td>
+                                <td><p>The new timezone.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Date_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>
+                                            &mdash; <p>This object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDefaultFormat" name="method_setDefaultFormat" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDefaultFormat()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDefaultFormat(string  <span class="argument">$format</span>) </pre>
+                <p><em>Sets the default date format used in __toString()</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$format </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dayOfWeek" name="method_dayOfWeek" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dayOfWeek()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dayOfWeek() : integer</pre>
+                <p><em>Returns the day of the week (0 = Sunday, 6 = Saturday) of this date.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The day of the week.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dayOfYear" name="method_dayOfYear" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dayOfYear()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dayOfYear() : integer</pre>
+                <p><em>Returns the day number of the year (1 to 365/366).</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The day of the year.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_weekOfMonth" name="method_weekOfMonth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">weekOfMonth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">weekOfMonth() : integer</pre>
+                <p><em>Returns the week of the month.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The week number.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_weekOfYear" name="method_weekOfYear" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">weekOfYear()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">weekOfYear() : integer</pre>
+                <p><em>Returns the week of the year, first Monday is first day of first week.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The week number.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_weeksInYear" name="method_weeksInYear" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">weeksInYear()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">weeksInYear(integer  <span class="argument">$year</span>) : integer</pre>
+                <p><em>Returns the number of weeks in the given year (52 or 53).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year to count the number of weeks in.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>$numWeeks   The number of weeks in $year.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setNthWeekday" name="method_setNthWeekday" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setNthWeekday()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setNthWeekday(integer  <span class="argument">$weekday</span>, integer  <span class="argument">$nth = 1</span>) </pre>
+                <p><em>Sets the date of this object to the $nth weekday of $weekday.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$weekday </td>
+                                <td><p>The day of the week (0 = Sunday, etc).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$nth </td>
+                                <td><p>The $nth $weekday to set to (defaults to 1).
+Negative values count from end of the month
+(@since Horde_Date 2.1.0).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isValid" name="method_isValid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isValid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isValid() : boolean</pre>
+                <p><em>Is the date currently represented by this object a valid date?</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Validity, counting leap years, etc.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_compareDate" name="method_compareDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">compareDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">compareDate(mixed  <span class="argument">$other</span>) : integer</pre>
+                <p><em>Compares this date to another date object to see which one is
+greater (later). Assumes that the dates are in the same
+timezone.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$other </td>
+                                <td><p>The date to compare to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>==  0 if they are on the same date</p>
+<blockquote>
+<p>=  1 if $this is greater (later)
+&lt;= -1 if $other is greater (later)</p>
+</blockquote>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_after" name="method_after" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">after()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">after(mixed  <span class="argument">$other</span>) : boolean</pre>
+                <p><em>Returns whether this date is after the other.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$other </td>
+                                <td><p>The date to compare to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this date is after the other.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_before" name="method_before" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">before()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">before(mixed  <span class="argument">$other</span>) : boolean</pre>
+                <p><em>Returns whether this date is before the other.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$other </td>
+                                <td><p>The date to compare to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this date is before the other.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_equals" name="method_equals" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">equals()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">equals(mixed  <span class="argument">$other</span>) : boolean</pre>
+                <p><em>Returns whether this date is the same like the other.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$other </td>
+                                <td><p>The date to compare to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this date is the same like the other.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_compareTime" name="method_compareTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">compareTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">compareTime(mixed  <span class="argument">$other</span>) : integer</pre>
+                <p><em>Compares this to another date object by time, to see which one
+is greater (later). Assumes that the dates are in the same
+timezone.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$other </td>
+                                <td><p>The date to compare to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>==  0 if they are at the same time</p>
+<blockquote>
+<p>=  1 if $this is greater (later)
+&lt;= -1 if $other is greater (later)</p>
+</blockquote>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_compareDateTime" name="method_compareDateTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">compareDateTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">compareDateTime(mixed  <span class="argument">$other</span>) : integer</pre>
+                <p><em>Compares this to another date object, including times, to see
+which one is greater (later). Assumes that the dates are in the
+same timezone.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$other </td>
+                                <td><p>The date to compare to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>==  0 if they are equal</p>
+<blockquote>
+<p>=  1 if $this is greater (later)
+&lt;= -1 if $other is greater (later)</p>
+</blockquote>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_diff" name="method_diff" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">diff()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">diff(\Horde_Date  <span class="argument">$other</span>) : integer</pre>
+                <p><em>Returns number of days between this date and another.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a></td>
+                                <td>$other </td>
+                                <td><p>The other day to diff with.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The absolute number of days between the two dates.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_tzOffset" name="method_tzOffset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">tzOffset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">tzOffset(boolean  <span class="argument">$colon = true</span>) : string</pre>
+                <p><em>Returns the time offset for local time zone.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$colon </td>
+                                <td><p>Place a colon between hours and minutes?</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Timezone offset as a string in the format +HH:MM.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_timestamp" name="method_timestamp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">timestamp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">timestamp() : integer</pre>
+                <p><em>Returns the unix timestamp representation of this date.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>A unix timestamp.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_datestamp" name="method_datestamp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">datestamp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">datestamp() : integer</pre>
+                <p><em>Returns the unix timestamp representation of this date, 12:00am.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>A unix timestamp.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dateString" name="method_dateString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dateString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dateString() : string</pre>
+                <p><em>Formats date and time to be passed around as a short url parameter.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Date and time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toJson" name="method_toJson" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toJson()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toJson() : string</pre>
+                <p><em>Formats date and time to the ISO format used by JSON.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Date and time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toiCalendar" name="method_toiCalendar" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toiCalendar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toiCalendar(boolean  <span class="argument">$floating = false</span>) : string</pre>
+                <p><em>Formats date and time to the RFC 2445 iCalendar DATE-TIME format.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$floating </td>
+                                <td><p>Whether to return a floating date-time
+(without time zone information).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Date and time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_format" name="method_format" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">format()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">format(string  <span class="argument">$format</span>) : string</pre>
+                <p><em>Formats time using the specifiers available in date() or in the DateTime
+class&#039; format() method.</em></p>
+                <p>To format in languages other than English, use strftime() instead.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$format </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Formatted time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_strftime" name="method_strftime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">strftime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">strftime(  <span class="argument">$format</span>) : string</pre>
+                <p><em>Formats date and time using strftime() format.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$format </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>strftime() formatted date and time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__regexCallback" name="method__regexCallback" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_regexCallback()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_regexCallback(  <span class="argument">$reg</span>) : string</pre>
+                <p><em>Callback used to replace a strtime pattern</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$reg </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Replacement string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__strftime" name="method__strftime" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_strftime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_strftime(  <span class="argument">$format</span>) : string</pre>
+                <p><em>Formats date and time using a limited set of the strftime() format.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$format </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>strftime() formatted date and time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__correct" name="method__correct" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_correct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_correct(integer  <span class="argument">$mask = self::MASK_ALLPARTS</span>, integer  <span class="argument">$down = false</span>) </pre>
+                <p><em>Corrects any over- or underflows in any of the date&#039;s members.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mask </td>
+                                <td><p>We may not want to correct some overflows.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$down </td>
+                                <td><p>Whether to correct the date up or down.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__correctMonth" name="method__correctMonth" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_correctMonth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_correctMonth() </pre>
+                <p><em>Corrects the current month.</em></p>
+                <p>This cannot be done in _correct() because that would also trigger a
+correction of the day, which would result in an infinite loop.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__initializeFromArgs" name="method__initializeFromArgs" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_initializeFromArgs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_initializeFromArgs(  <span class="argument">$args</span>) </pre>
+                <p><em>Handles args in order: year month day hour min sec tz</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$args </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__initializeFromArray" name="method__initializeFromArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_initializeFromArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_initializeFromArray(  <span class="argument">$date</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$date </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__initializeFromObject" name="method__initializeFromObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_initializeFromObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_initializeFromObject(  <span class="argument">$date</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$date </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__initializeTimezone" name="method__initializeTimezone" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_initializeTimezone()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_initializeTimezone(  <span class="argument">$timezone</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$timezone </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Date.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Date.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:34.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

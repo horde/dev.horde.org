@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs for page Backend.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/SyncML/SyncML/Backend.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-classes">Classes</a>
+			|									<a href="#sec-constants">Constants</a>
+										</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">A SyncML Backend provides the interface between the SyncML protocol as  provided by the SyncML pear package and an actual calendar or address book  application. This &quot;actual application&quot; is called the &quot;data store&quot; in this  description.</p>
+<p class="description"><p>The backend provides the following groups of functions:</p><p>1) Access to the datastore     Reading, adding, replacing and deleting of entries.  Also retrieve     information about changes in data store.  This is done via the     retrieveEntry(), addEntry(), replaceEntry(), deleteEntry() and     getServerChanges() methods.</p><p>2) User management functions     This is the checkAuthentication() method to verify that a given user     password combination is allowed to access the backend data store, and     the setUser() method which does a &quot;login&quot; to the backend data store if     required by the type of backend data store. Please note that the     password is only transferred once in a sync session, so when handling     the subsequent packets messages, the user may need to be &quot;logged in&quot;     without a password. (Or the session management keeps the user &quot;logged     in&quot;).</p><p>3) Maintainig the client ID &lt;-&gt; server ID map     The SyncML protocol does not require clients and servers to use the same     primary keys for the data entries. So a map has to be in place to     convert between client primary keys (called cuid's here) and server     primary keys (called suid's). It's up to the server to maintain this     map.  Method for this is createUidMap().</p><p>4) Sync anchor handling     After a successful initial sync, the client and server sync timestamps     are stored. This allows to perform subsequent syncs as delta syncs,     where only new changes are replicated. Servers as well as clients need     to be able to store two sync anchors (the client's and the server's) for     a sync. Methods for this are readSyncAnchors() and writeSyncAnchors().</p><p>5) Test supporting functions     The SyncML module comes with its own testing framework. All you need to     do is implement the two methods testSetup() and testTearDown() and you     are able to test your backend with all the test cases that are part of     the module.</p><p>6) Miscellaneous functions     This involves session handling (sessionStart() and sessionClose()),     logging (logMessage() and logFile()), timestamp creation     (getCurrentTimeStamp()), charset handling (getCharset(), setCharset())     and database identification (isValidDatabaseURI()). For all of these     functions, a default implementation is provided in SyncML_Backend.</p><p>If you want to create a backend for your own appliction, you can either  derive from SyncML_Backend and implement everything in groups 1 to 5 or you  derive from SyncML_Backend_Sql which implements an example backend based on  direct database access using the PEAR MDB2 package. In this case you only  need to implement groups 1 to 3 and can use the implementation from  SyncML_Backend_Sql as a guideline for these functions.</p><p>Key Concepts  ------------  In order to successfully create a backend, some understanding of a few key  concepts in SyncML and the SyncML package are certainly helpful.  So here's  some stuff that should make some issues clear (or at lest less obfuscated):</p><p>1) DatabaseURIs and Databases     The SyncML protocol itself is completly independant from the data that     is replicated. Normally the data are calendar or address book entries     but it may really be anything from browser bookmarks to comeplete     database tables. An ID (string name) of the database you want to     actually replicate has to be configured in the client. Typically that's     something like 'calendar' or 'tasks'. Client and server must agree on     these names.  In addition this string may be used to provide additional     arguments.  These are provided in a HTTP GET query style: like     tasks?ignorecompletedtasks to replicate only pending tasks. Such a &quot;sync     identifier&quot; is called a DatabaseURI and is really a database name plus     some additional options.     The SyncML package completly ignores these options and simply passes     them on to the backend. It's up to the backend to decide what to do with     them. However when dealing with the internal maps (cuid&lt;-&gt;suid and sync     anchors), it's most likely to use the database name only rather than the     full databaseURI. The map information saying that server entry     20070101203040xxa@mypc.org has id 768 in the client device is valid for     the database &quot;tasks&quot;, not for &quot;tasks?somesillyoptions&quot;. So what you     normally do is calling some kind of</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Karsten Fourmont &lt;<a href="mailto:karsten@horde.org">karsten@horde.org</a>&gt;</li>
+				<li><span class="field">todo:</span> <p>describe sync anchors     Have a look at the SyncML spec     http://www.openmobilealliance.org/tech/affiliates/syncml/syncmlindex.html     to find out more.</p><p>4) Changes and Timestamps</p></li>
+				<li><span class="field">todo:</span> <p>description of Changes and Timestamps, &quot;mirroring effect&quot;     This is real tricky stuff.     First it's important to know, that the SyncML protocol requires the     ending timestamp of the sync timeframe to be exchanged _before_ the     actual syncing starts. So all changes made during a sync have timestamps     that are in the timeframe for the next upcoming sync.  Data exchange in     a sync session works in two steps: 1st) the clients sends its changes to     the server, 2nd) the server sends its changes to the client.     So when in step 2, the backend datastore API is called with a request     like &quot;give me all changes in the server since the last sync&quot;.  Thus you     also get the changes induced by the client in step 1 as well.  You have     to somehow &quot;tag&quot; them to avoid echoing (and thus duplicating) them back     to the client. Simply storing the guids in the session is not     sufficient: the changes are made _after_ the end timestamp (see 1) of     the current sync so you'll dupe them in the next sync.     The current implementation deals with this as follows: whenever a client     induced change is done in the backend, the timestamp for this change is     stored in the cuid&lt;-&gt;suid map in an additional field. That's the perfect     place as the tagging needs to be done &quot;per client device&quot;: when an add     is received from the PDA it must not be sent back as an add to this     device, but to mobile phone it must be sent.     This is sorted out during the getServerChanges() process: if a server     change has a timestamp that's the same as in the guid&lt;-&gt;suid map, it     came from the client and must not be added to the list of changes to be     sent to this client.     See the description of SyncML_Backend_Sql::_getChangeTS() for some more     information.</p><p>5) Messages and Packages     A message is a single HTTP Request. A package is single &quot;logical     message&quot;, a sync step. Normally the two coincide. However due to message     size restrictions one package may be transferred in multiple messages     (HTTP requests).</p><p>7) Server mode, client mode and test mode     Per default, a backend is used for an SyncML server. Regarding the     SyncML protocol, the working of client and server is similar, except     that     a) the client initiates the sync requests and the server respons to them,        and     b) the server must maintain the client id&lt;-&gt;server id map.</p><p>Currently the SyncML package is designed to create servers. But is's an     obvious (and straightforward) extension to do it for clients as well.     And as a client has actually less work to do than a server, the backend     should work for servers _and_ clients. During the sessionStart(), the     backend gets a parameter to let it know whether it's in client or server     mode (or test, see below). When in client mode, it should behave     slightly different:     a) the client doesn't do suid&lt;-&gt;cuid mapping, so all invokations to the        map creation method createUidMap().     b) the client has only client ids, no server ids. So all arguments are        considered cuids even when named suid. See the SyncML_Backend_Sql        implementation, it's actually not that difficult.</p><p>Finally there's the test mode. The test cases consist of replaying     pre-recorded sessions. For that to work, the test script must &quot;simulate&quot;     user entries in the server data store. To do so, it creates a backend in     test mode. This behaves similar to a client: when an server entry is     created (modified) using addEntry() (replaceEntry()), no map entry must     be done.     The test backend uses also the two methods testSetup() and     testTearDown() to create a clean (empty) enviroment for the test user     &quot;syncmltest&quot;.  See the SyncML_Backend_Sql implementation for details.</p><p>$Horde: framework/SyncML/SyncML/Backend.php,v 1.60 2009/09/15 13:41:32 jan Exp $</p><p>Copyright 2005-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If you  did not receive this file, see http://www.fsf.org/copyleft/lgpl.html.</p></li>
+			</ul>
+		
+			</div>
+</div>
+		
+	<a name="sec-classes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Classes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Classes</span>
+			|										<a href="#sec-constants">Constants</a>
+															</div>
+		<div class="info-box-body">	
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../SyncML/SyncML_Backend.html">SyncML_Backend</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+	
+	<a name="sec-constants"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-classes">Classes</a>
+				|									<span class="disabled">Constants</span>
+											</div>
+		<div class="info-box-body">	
+			<a name="defineSYNCML_BACKENDMODE_CLIENT"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_BACKENDMODE_CLIENT</span> = 2
+			(line <span class="line-number">187</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineSYNCML_BACKENDMODE_SERVER"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_BACKENDMODE_SERVER</span> = 1
+			(line <span class="line-number">186</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Backend modes.</p>
+	
+		
+</div>
+<a name="defineSYNCML_BACKENDMODE_TEST"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_BACKENDMODE_TEST</span> = 3
+			(line <span class="line-number">188</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineSYNCML_LOGFILE_CLIENTMESSAGE"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_LOGFILE_CLIENTMESSAGE</span> = 1
+			(line <span class="line-number">180</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Types of logfiles. See logFile() method.</p>
+	
+		
+</div>
+<a name="defineSYNCML_LOGFILE_DATA"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_LOGFILE_DATA</span> = 4
+			(line <span class="line-number">183</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineSYNCML_LOGFILE_DEVINF"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_LOGFILE_DEVINF</span> = 3
+			(line <span class="line-number">182</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineSYNCML_LOGFILE_SERVERMESSAGE"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">SYNCML_LOGFILE_SERVERMESSAGE</span> = 2
+			(line <span class="line-number">181</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+		</div>
+	</div>
+	
+	
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 08 Nov 2009 14:31:59 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

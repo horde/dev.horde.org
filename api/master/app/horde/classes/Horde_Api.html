@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">227</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-793509217"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-793509217" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Ajax_Application.html">Horde_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Ajax_Application_FacebookHandler.html">Horde_Ajax_Application_FacebookHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Ajax_Application_Handler.html">Horde_Ajax_Application_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Ajax_Application_TwitterHandler.html">Horde_Ajax_Application_TwitterHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Api.html">Horde_Api</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Application.html">Horde_Application</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Autoloader_ClassPathMapper_HordeDevel.html">Horde_Autoloader_ClassPathMapper_HordeDevel</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account.html">Horde_Block_Account</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Base.html">Horde_Block_Account_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Finger.html">Horde_Block_Account_Finger</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Ldap.html">Horde_Block_Account_Ldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Localhost.html">Horde_Block_Account_Localhost</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Cloud.html">Horde_Block_Cloud</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_FbStream.html">Horde_Block_FbStream</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Feed.html">Horde_Block_Feed</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Fortune.html">Horde_Block_Fortune</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Google.html">Horde_Block_Google</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Iframe.html">Horde_Block_Iframe</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Metar.html">Horde_Block_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Moon.html">Horde_Block_Moon</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Sunrise.html">Horde_Block_Sunrise</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Time.html">Horde_Block_Time</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_TwitterTimeline.html">Horde_Block_TwitterTimeline</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Vatid.html">Horde_Block_Vatid</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Weather.html">Horde_Block_Weather</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Cli_Backup.html">Horde_Cli_Backup</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_SystemTask_GarbageCollection.html">Horde_LoginTasks_SystemTask_GarbageCollection</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_SystemTask_Upgrade.html">Horde_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_AdminCheck.html">Horde_LoginTasks_Task_AdminCheck</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_LastLogin.html">Horde_LoginTasks_Task_LastLogin</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_TosAgreement.html">Horde_LoginTasks_Task_TosAgreement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_UpgradeCheck.html">Horde_LoginTasks_Task_UpgradeCheck</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Activesync.html">Horde_Prefs_Special_Activesync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Category.html">Horde_Prefs_Special_Category</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Facebook.html">Horde_Prefs_Special_Facebook</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Syncml.html">Horde_Prefs_Special_Syncml</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Twitter.html">Horde_Prefs_Special_Twitter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test.html">Horde_Test</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Tree_Renderer_Menu.html">Horde_Tree_Renderer_Menu</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Tree_Renderer_Sidebar.html">Horde_Tree_Renderer_Sidebar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Sidebar.html">Horde_View_Sidebar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Topbar.html">Horde_View_Topbar</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Api</h1>
+                    <p><em>Horde external API interface.</em></p>
+                    <p>This file defines Horde's external API interface. Other
+applications can interact with Horde through this API.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Api.html#method_admin_list" class="">admin_list()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listApps" class="">listApps()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listAPIs" class="">listAPIs()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_blockTitle" class="">blockTitle()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_blockContent" class="">blockContent()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_blocks" class="">blocks()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_getPreference" class="">getPreference()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_setPreference" class="">setPreference()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_removeUserData" class="">removeUserData()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_addGroup" class="">addGroup()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_removeGroup" class="">removeGroup()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_addUserToGroup" class="">addUserToGroup()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_removeUserFromGroup" class="">removeUserFromGroup()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listUsersOfGroup" class="">listUsersOfGroup()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_addShare" class="">addShare()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_removeShare" class="">removeShare()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listSharesOfOwner" class="">listSharesOfOwner()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_addUserPermissions" class="">addUserPermissions()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_addGroupPermissions" class="">addGroupPermissions()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_removeUserPermissions" class="">removeUserPermissions()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_removeGroupPermissions" class="">removeGroupPermissions()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listUserPermissions" class="">listUserPermissions()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listGroupPermissions" class="">listGroupPermissions()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listUsersOfShare" class="">listUsersOfShare()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listGroupsOfShare" class="">listGroupsOfShare()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_listActiveSyncDevices" class="">listActiveSyncDevices()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_performActiveSyncDeviceAction" class="">performActiveSyncDeviceAction()</a><br />
+                                                                    <a href="../classes/Horde_Api.html#method_performBulkActiveSyncDeviceAction" class="">performBulkActiveSyncDeviceAction()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Api.html"><div class="path-wrapper">Api.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Horde</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\Horde_Registry_Api</div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Api</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2010-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl">http://www.horde.org/licenses/lgpl</a> LGPL-2</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_admin_list" name="method_admin_list" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">admin_list()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">admin_list() : array</pre>
+                <p><em>Returns a list of adminstrative links.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Keys are link labels, values are array with these keys:</p>
+<ul>
+<li>icon: (string) Graphic for page.</li>
+<li>link: (string) Registry encoded link to page.</li>
+<li>name: (string) Gettext label for page.</li>
+</ul>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listApps" name="method_listApps" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listApps()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listApps(array  <span class="argument">$filter = null</span>) : array</pre>
+                <p><em>Returns a list of the installed and registered applications.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$filter </td>
+                                <td><p>An array of the statuses that should be returned.
+Defaults to non-hidden.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>List of apps registered with Horde. If no applications
+are defined returns an empty array.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listAPIs" name="method_listAPIs" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listAPIs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listAPIs() : array</pre>
+                <p><em>Returns all available registry APIs.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The API list.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_blockTitle" name="method_blockTitle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">blockTitle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">blockTitle(string  <span class="argument">$app</span>, string  <span class="argument">$name</span>, array  <span class="argument">$params = array()</span>) : string</pre>
+                <p><em>Returns a Horde_Block&#039;s title.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>The block application name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The block name (NOT the class name).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Block parameters.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The block title.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_blockContent" name="method_blockContent" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">blockContent()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">blockContent(string  <span class="argument">$app</span>, string  <span class="argument">$name</span>, array  <span class="argument">$params = array()</span>) : string</pre>
+                <p><em>Returns a Horde_Block&#039;s content.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>The block application name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The block name (NOT the classname).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Block parameters.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The block content.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_blocks" name="method_blocks" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">blocks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">blocks() : array</pre>
+                <p><em>Returns a pretty printed list of all available blocks.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A hash with block IDs as keys and application plus block
+block names as values.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPreference" name="method_getPreference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPreference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPreference(string  <span class="argument">$app</span>, string  <span class="argument">$pref</span>) : string</pre>
+                <p><em>Returns the value of the requested preference.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>The application of the preference to retrieve.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pref </td>
+                                <td><p>The name of the preference to retrieve.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The value of the preference, null if it doesn't exist.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setPreference" name="method_setPreference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setPreference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setPreference(string  <span class="argument">$app</span>, string  <span class="argument">$pref</span>,   <span class="argument">$value</span>) </pre>
+                <p><em>Sets a preference to the specified value, if the preference is allowed
+to be modified.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>The application of the preference to modify.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pref </td>
+                                <td><p>The name of the preference to modify.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeUserData" name="method_removeUserData" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeUserData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeUserData(string  <span class="argument">$user</span>, string  <span class="argument">$app = false</span>) </pre>
+                <p><em>Removes user data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>Name of user to remove data for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>Remove data from this application. If boolean
+true, removes all applications. If boolean false,
+removes only base Horde data.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addGroup" name="method_addGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addGroup(string  <span class="argument">$name</span>) : mixed</pre>
+                <p><em>Adds a group to the groups system.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The group's name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The group's ID.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeGroup" name="method_removeGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeGroup(mixed  <span class="argument">$group</span>) </pre>
+                <p><em>Removes a group from the groups system.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$group </td>
+                                <td><p>The group ID.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addUserToGroup" name="method_addUserToGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addUserToGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addUserToGroup(mixed  <span class="argument">$group</span>, string  <span class="argument">$user</span>) </pre>
+                <p><em>Adds a user to a group.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$group </td>
+                                <td><p>The group ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The user to add.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeUserFromGroup" name="method_removeUserFromGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeUserFromGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeUserFromGroup(mixed  <span class="argument">$group</span>, string  <span class="argument">$user</span>) </pre>
+                <p><em>Removes a user from a group.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$group </td>
+                                <td><p>The group ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The user to add.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listUsersOfGroup" name="method_listUsersOfGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listUsersOfGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listUsersOfGroup(mixed  <span class="argument">$group</span>) : array</pre>
+                <p><em>Returns a list of users that are part of this group (and only this
+group).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$group </td>
+                                <td><p>The group ID.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The user list.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addShare" name="method_addShare" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addShare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addShare(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, string  <span class="argument">$shareTitle</span>, string  <span class="argument">$userName</span>) </pre>
+                <p><em>Adds a share to the shares system.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareTitle </td>
+                                <td><p>The share's human readable title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userName </td>
+                                <td><p>The share's owner.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeShare" name="method_removeShare" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeShare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeShare(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>) </pre>
+                <p><em>Removes a share from the shares system permanently.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listSharesOfOwner" name="method_listSharesOfOwner" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listSharesOfOwner()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listSharesOfOwner(string  <span class="argument">$scope</span>, string  <span class="argument">$userName</span>) : array</pre>
+                <p><em>Returns an array of all shares that $userName is the owner of.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userName </td>
+                                <td><p>The share's owner.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The list of shares.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addUserPermissions" name="method_addUserPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addUserPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addUserPermissions(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, string  <span class="argument">$userName</span>, array  <span class="argument">$permissions</span>) </pre>
+                <p><em>Gives a user certain privileges for a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userName </td>
+                                <td><p>The user's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$permissions </td>
+                                <td><p>A list of permissions (show, read, edit,
+delete).</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addGroupPermissions" name="method_addGroupPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addGroupPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addGroupPermissions(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, mixed  <span class="argument">$groupId</span>, array  <span class="argument">$permissions</span>) </pre>
+                <p><em>Gives a group certain privileges for a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$groupId </td>
+                                <td><p>The group ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$permissions </td>
+                                <td><p>A list of permissions (show, read, edit,
+delete).</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeUserPermissions" name="method_removeUserPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeUserPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeUserPermissions(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, string  <span class="argument">$userName</span>) </pre>
+                <p><em>Removes a user from a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userName </td>
+                                <td><p>The user's name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeGroupPermissions" name="method_removeGroupPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeGroupPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeGroupPermissions(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, mixed  <span class="argument">$groupId</span>) </pre>
+                <p><em>Removes a group from a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$groupId </td>
+                                <td><p>The group ID.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listUserPermissions" name="method_listUserPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listUserPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listUserPermissions(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, string  <span class="argument">$userName</span>) : array</pre>
+                <p><em>Returns an array of all user permissions on a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userName </td>
+                                <td><p>The user's name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>All user permissions for this share.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listGroupPermissions" name="method_listGroupPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listGroupPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listGroupPermissions(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, string  <span class="argument">$groupName</span>) : array</pre>
+                <p><em>Returns an array of all group permissions on a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$groupName </td>
+                                <td><p>The group's name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>All group permissions for this share.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listUsersOfShare" name="method_listUsersOfShare" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listUsersOfShare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listUsersOfShare(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, array  <span class="argument">$permissions</span>) : array</pre>
+                <p><em>Returns a list of users which have have certain permissions on a share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$permissions </td>
+                                <td><p>A list of permissions (show, read, edit,
+delete).</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>List of users with the specified permissions.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listGroupsOfShare" name="method_listGroupsOfShare" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listGroupsOfShare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listGroupsOfShare(string  <span class="argument">$scope</span>, string  <span class="argument">$shareName</span>, array  <span class="argument">$permissions</span>) : array</pre>
+                <p><em>Returns a list of groups which have have certain permissions on a
+share.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$scope </td>
+                                <td><p>The name of the share root, e.g. the
+application that the share belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shareName </td>
+                                <td><p>The share's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$permissions </td>
+                                <td><p>A list of permissions (show, read, edit,
+delete).</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>List of groups with the specified permissions.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listActiveSyncDevices" name="method_listActiveSyncDevices" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listActiveSyncDevices()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listActiveSyncDevices(array  <span class="argument">$filter = array()</span>) : array</pre>
+                <p><em>Returns a list of ActiveSync devices that are partnered with Horde.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$filter </td>
+                                <td><p>An array of parameters to filter on:</p>
+<ul>
+<li>user: Only return devices owned by user. If not present will default
+to returning devices for current user only. If present, but
+empty and current user is admin, will return all devices.
+Otherwise, will return devices matching the parameter (must be
+admin to list users other than current).</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>List of device properties.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            5.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_performActiveSyncDeviceAction" name="method_performActiveSyncDeviceAction" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">performActiveSyncDeviceAction()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">performActiveSyncDeviceAction(string  <span class="argument">$action</span>, string  <span class="argument">$deviceid</span>, string  <span class="argument">$user = null</span>) : boolean</pre>
+                <p><em>Perform an administrative action on a single paired ActiveSync device.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$action </td>
+                                <td><p>The action to perform. One of:
+WIPE, CANCEL_WIPE, REMOVE.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$deviceid </td>
+                                <td><p>The device's deviceid.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>Restrict actions to only this user's
+account on the device in the case where the
+device may have multiple user accounts on this
+server. If empty, all users' state information
+will be removed. If a non-admin calls this
+method, this will always be set to the current
+horde username.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_performBulkActiveSyncDeviceAction" name="method_performBulkActiveSyncDeviceAction" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">performBulkActiveSyncDeviceAction()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">performBulkActiveSyncDeviceAction(string  <span class="argument">$action</span>) : boolean</pre>
+                <p><em>Perform an admistrative action on ALL paired ActiveSync devices.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$action </td>
+                                <td><p>The action. Currently, only 'RESET' is supported.</p>
+<ul>
+<li>'RESET': Causes all state for all devices to be removed. I.e., sets
+the synckey for all devices to 0.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Api.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Api.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:31.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

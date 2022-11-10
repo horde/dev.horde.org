@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Horde_Itip"],["c","Horde_Itip_Event"],["c","Horde_Itip_Event_Vevent"],["c","Horde_Itip_Exception"],["c","Horde_Itip_Resource"],["c","Horde_Itip_Resource_Base"],["c","Horde_Itip_Resource_Identity"],["c","Horde_Itip_Response"],["c","Horde_Itip_Response_Options"],["c","Horde_Itip_Response_Options_Base"],["c","Horde_Itip_Response_Options_Horde"],["c","Horde_Itip_Response_Options_Kolab"],["c","Horde_Itip_Response_Type"],["c","Horde_Itip_Response_Type_Accept"],["c","Horde_Itip_Response_Type_Base"],["c","Horde_Itip_Response_Type_Decline"],["c","Horde_Itip_Response_Type_Tentative"],["c","Horde_Itip_Translation"]];

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">167</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1496567851"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1496567851" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Image.html">Horde_Image</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Base.html">Horde_Image_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect.html">Horde_Image_Effect</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Border.html">Horde_Image_Effect_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_Blur.html">Horde_Image_Effect_Gd_Blur</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_Border.html">Horde_Image_Effect_Gd_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_DropShadow.html">Horde_Image_Effect_Gd_DropShadow</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_RoundCorners.html">Horde_Image_Effect_Gd_RoundCorners</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_TextWatermark.html">Horde_Image_Effect_Gd_TextWatermark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_Unsharpmask.html">Horde_Image_Effect_Gd_Unsharpmask</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Blur.html">Horde_Image_Effect_Im_Blur</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Border.html">Horde_Image_Effect_Im_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_CenterCrop.html">Horde_Image_Effect_Im_CenterCrop</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Composite.html">Horde_Image_Effect_Im_Composite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_DropShadow.html">Horde_Image_Effect_Im_DropShadow</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_LiquidResize.html">Horde_Image_Effect_Im_LiquidResize</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_PhotoStack.html">Horde_Image_Effect_Im_PhotoStack</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_PolaroidImage.html">Horde_Image_Effect_Im_PolaroidImage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_RoundCorners.html">Horde_Image_Effect_Im_RoundCorners</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_TextWatermark.html">Horde_Image_Effect_Im_TextWatermark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Unsharpmask.html">Horde_Image_Effect_Im_Unsharpmask</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Blur.html">Horde_Image_Effect_Imagick_Blur</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Border.html">Horde_Image_Effect_Imagick_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_CenterCrop.html">Horde_Image_Effect_Imagick_CenterCrop</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Composite.html">Horde_Image_Effect_Imagick_Composite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_DropShadow.html">Horde_Image_Effect_Imagick_DropShadow</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_LiquidResize.html">Horde_Image_Effect_Imagick_LiquidResize</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_PhotoStack.html">Horde_Image_Effect_Imagick_PhotoStack</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_PolaroidImage.html">Horde_Image_Effect_Imagick_PolaroidImage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_RoundCorners.html">Horde_Image_Effect_Imagick_RoundCorners</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_SmartCrop.html">Horde_Image_Effect_Imagick_SmartCrop</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_TextWatermark.html">Horde_Image_Effect_Imagick_TextWatermark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Unsharpmask.html">Horde_Image_Effect_Imagick_Unsharpmask</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exception.html">Horde_Image_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif.html">Horde_Image_Exif</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Base.html">Horde_Image_Exif_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Bundled.html">Horde_Image_Exif_Bundled</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Exiftool.html">Horde_Image_Exif_Exiftool</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Base.html">Horde_Image_Exif_Parser_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Canon.html">Horde_Image_Exif_Parser_Canon</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Fujifilm.html">Horde_Image_Exif_Parser_Fujifilm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Gps.html">Horde_Image_Exif_Parser_Gps</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Nikon.html">Horde_Image_Exif_Parser_Nikon</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Olympus.html">Horde_Image_Exif_Parser_Olympus</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Panasonic.html">Horde_Image_Exif_Parser_Panasonic</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Sanyo.html">Horde_Image_Exif_Parser_Sanyo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Php.html">Horde_Image_Exif_Php</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Gd.html">Horde_Image_Gd</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Im.html">Horde_Image_Im</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Imagick.html">Horde_Image_Imagick</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Null.html">Horde_Image_Null</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Png.html">Horde_Image_Png</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Rgb.html">Horde_Image_Rgb</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Svg.html">Horde_Image_Svg</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Swf.html">Horde_Image_Swf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Translation.html">Horde_Image_Translation</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Image_Exif_Exiftool</h1>
+                    <p><em>Exiftool driver for reading/writing image meta data</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Exif_Exiftool.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Exiftool.html#method_getData" class="">getData()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Exiftool.html#method_supportedCategories" class="">supportedCategories()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#method__processData" class="">_processData()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#method__parseGPSData" class="">_parseGPSData()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#method__degToDecimal" class="">_degToDecimal()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#method__logDebug" class="">_logDebug()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#method__logErr" class="">_logErr()</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Exiftool.html#method__execute" class="">_execute()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#property__params" class="">$_params</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Base.html#property__logger" class="">$_logger</a><br />
+                                                                    <a href="../classes/Horde_Image_Exif_Exiftool.html#property__exiftool" class="">$_exiftool</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Image.Exif.Exiftool.html"><div class="path-wrapper">Image/Exif/Exiftool.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Image</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_Image_Exif_Base.html">\Horde_Image_Exif_Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Image_Exif_Exiftool</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael J. Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2009-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__params" name="property__params" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_params</h3>
+                <pre class="signature">$_params : array</pre>
+                <p><em>Instance parameters.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__logger" name="property__logger" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_logger</h3>
+                <pre class="signature">$_logger : </pre>
+                <p><em>Optional Logger</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__exiftool" name="property__exiftool" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_exiftool</h3>
+                <pre class="signature">$_exiftool : string</pre>
+                <p><em>Path to exiftool binary</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Parameter array:</p>
+<ul>
+<li>logger: Horde_Log_Logger  Logger instance.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getData" name="method_getData" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getData(string  <span class="argument">$image</span>) : array</pre>
+                <p><em>Get the image&#039;s EXIF data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$image </td>
+                                <td><p>The path to an image.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The exif data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_supportedCategories" name="method_supportedCategories" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">supportedCategories()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">supportedCategories() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__processData" name="method__processData" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_processData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_processData(array  <span class="argument">$exif</span>) : array</pre>
+                <p><em>Process the EXIF data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$exif </td>
+                                <td><p>Array of EXIF data.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of processed EXIF data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseGPSData" name="method__parseGPSData" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseGPSData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseGPSData(mixed  <span class="argument">$data</span>) : double</pre>
+                <p><em>Parse the Longitude and Latitude values into a standardized format
+regardless of the source format.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$data </td>
+                                <td><p>An array containing degrees, minutes, seconds
+in index 0, 1, 2 respectifully.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                            &mdash; <p>The location data in a decimal format.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__degToDecimal" name="method__degToDecimal" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_degToDecimal()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_degToDecimal(double  <span class="argument">$degrees</span>, double  <span class="argument">$minutes</span>, double  <span class="argument">$seconds</span>) : double</pre>
+                <p><em>Convert degrees representation to decimal representation.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$degrees </td>
+                                <td><p>The degrees latitude or longitude.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>double</td>
+                                <td>$minutes </td>
+                                <td><p>The minutes latitude or longitude.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>double</td>
+                                <td>$seconds </td>
+                                <td><p>the seconds latitude or longitude.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                            &mdash; <p>The decimal representation of the latitude or longitute.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__logDebug" name="method__logDebug" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_logDebug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_logDebug(  <span class="argument">$message</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$message </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__logErr" name="method__logErr" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_logErr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_logErr(  <span class="argument">$message</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$message </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Exif_Base.html"><div class="path-wrapper">\Horde_Image_Exif_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__execute" name="method__execute" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_execute()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_execute(string  <span class="argument">$command</span>) : mixed</pre>
+                <p><em>Executes a exiftool command.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$command </td>
+                                <td><p>The command to run</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The result of the command.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Exiftool.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Image/Exif/Exiftool.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:34.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

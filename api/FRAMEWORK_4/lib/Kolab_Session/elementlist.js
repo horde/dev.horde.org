@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Horde_Kolab_Session"],["c","Horde_Kolab_Session_Abstract"],["c","Horde_Kolab_Session_Base"],["c","Horde_Kolab_Session_Decorator_Anonymous"],["c","Horde_Kolab_Session_Decorator_Base"],["c","Horde_Kolab_Session_Decorator_Logged"],["c","Horde_Kolab_Session_Decorator_Stored"],["c","Horde_Kolab_Session_Exception"],["c","Horde_Kolab_Session_Exception_Badlogin"],["c","Horde_Kolab_Session_Factory_Imap"],["c","Horde_Kolab_Session_Imap"],["c","Horde_Kolab_Session_Storage"],["c","Horde_Kolab_Session_Storage_Mock"],["c","Horde_Kolab_Session_Storage_Session"],["c","Horde_Kolab_Session_Valid"],["c","Horde_Kolab_Session_Valid_Base"],["c","Horde_Kolab_Session_Valid_Decorator_Logged"]];

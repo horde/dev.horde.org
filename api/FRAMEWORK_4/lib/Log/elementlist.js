@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Horde_Log"],["c","Horde_Log_Exception"],["c","Horde_Log_Filter"],["c","Horde_Log_Filter_Constraint"],["c","Horde_Log_Filter_ExactLevel"],["c","Horde_Log_Filter_Level"],["c","Horde_Log_Filter_Message"],["c","Horde_Log_Filter_Suppress"],["c","Horde_Log_Formatter"],["c","Horde_Log_Formatter_Simple"],["c","Horde_Log_Formatter_Xml"],["c","Horde_Log_Handler_Base"],["c","Horde_Log_Handler_Firebug"],["c","Horde_Log_Handler_Mock"],["c","Horde_Log_Handler_Null"],["c","Horde_Log_Handler_Scribe"],["c","Horde_Log_Handler_Stream"],["c","Horde_Log_Handler_Syslog"],["c","Horde_Log_Logger"]];

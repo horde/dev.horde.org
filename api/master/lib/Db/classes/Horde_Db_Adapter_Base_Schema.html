@@ -1,0 +1,2877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">309</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">6</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1840677243"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1840677243" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_Db_Adapter.html">Horde_Db_Adapter</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Db_Value.html">Horde_Db_Value</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_Db.html">Horde_Db</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base.html">Horde_Db_Adapter_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Column.html">Horde_Db_Adapter_Base_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_ColumnDefinition.html">Horde_Db_Adapter_Base_ColumnDefinition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Index.html">Horde_Db_Adapter_Base_Index</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Result.html">Horde_Db_Adapter_Base_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Schema.html">Horde_Db_Adapter_Base_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Table.html">Horde_Db_Adapter_Base_Table</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_TableDefinition.html">Horde_Db_Adapter_Base_TableDefinition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql.html">Horde_Db_Adapter_Mysql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql_Column.html">Horde_Db_Adapter_Mysql_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql_Result.html">Horde_Db_Adapter_Mysql_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql_Schema.html">Horde_Db_Adapter_Mysql_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysqli.html">Horde_Db_Adapter_Mysqli</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysqli_Result.html">Horde_Db_Adapter_Mysqli_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oci8.html">Horde_Db_Adapter_Oci8</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_Column.html">Horde_Db_Adapter_Oracle_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_Result.html">Horde_Db_Adapter_Oracle_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_Schema.html">Horde_Db_Adapter_Oracle_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_TableDefinition.html">Horde_Db_Adapter_Oracle_TableDefinition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Base.html">Horde_Db_Adapter_Pdo_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Mysql.html">Horde_Db_Adapter_Pdo_Mysql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Pgsql.html">Horde_Db_Adapter_Pdo_Pgsql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Result.html">Horde_Db_Adapter_Pdo_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Sqlite.html">Horde_Db_Adapter_Pdo_Sqlite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Postgresql_Column.html">Horde_Db_Adapter_Postgresql_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Postgresql_Schema.html">Horde_Db_Adapter_Postgresql_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_SplitRead.html">Horde_Db_Adapter_SplitRead</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Sqlite_Column.html">Horde_Db_Adapter_Sqlite_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Sqlite_Schema.html">Horde_Db_Adapter_Sqlite_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Exception.html">Horde_Db_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Migration_Base.html">Horde_Db_Migration_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Migration_Exception.html">Horde_Db_Migration_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Migration_Migrator.html">Horde_Db_Migration_Migrator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_SearchParser.html">Horde_Db_SearchParser</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_StatementParser.html">Horde_Db_StatementParser</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Value_Binary.html">Horde_Db_Value_Binary</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Value_Lob.html">Horde_Db_Value_Lob</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Value_Text.html">Horde_Db_Value_Text</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Db_Adapter_Base_Schema</h1>
+                    <p><em>Base class for managing database schemes and handling database-specific SQL
+dialects and quoting.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_setAdapter" class="">setAdapter()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_makeColumn" class="">makeColumn()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_makeColumnDefinition" class="">makeColumnDefinition()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_makeIndex" class="">makeIndex()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_makeTable" class="">makeTable()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_makeTableDefinition" class="">makeTableDefinition()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method___call" class="">__call()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quote" class="">quote()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteString" class="">quoteString()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteColumnName" class="">quoteColumnName()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteTableName" class="">quoteTableName()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteTrue" class="">quoteTrue()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteFalse" class="">quoteFalse()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteDate" class="">quoteDate()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_quoteBinary" class="">quoteBinary()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_nativeDatabaseTypes" class="">nativeDatabaseTypes()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_tableAliasLength" class="">tableAliasLength()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_tableAliasFor" class="">tableAliasFor()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_tables" class="">tables()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_table" class="">table()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_primaryKey" class="">primaryKey()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_indexes" class="">indexes()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_columns" class="">columns()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_column" class="">column()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_createTable" class="">createTable()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_endTable" class="">endTable()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_renameTable" class="">renameTable()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_dropTable" class="">dropTable()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_addColumn" class="">addColumn()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_removeColumn" class="">removeColumn()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_changeColumn" class="">changeColumn()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_changeColumnDefault" class="">changeColumnDefault()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_renameColumn" class="">renameColumn()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_addPrimaryKey" class="">addPrimaryKey()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_removePrimaryKey" class="">removePrimaryKey()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_addIndex" class="">addIndex()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_removeIndex" class="">removeIndex()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_indexName" class="">indexName()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_recreateDatabase" class="">recreateDatabase()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_createDatabase" class="">createDatabase()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_dropDatabase" class="">dropDatabase()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_currentDatabase" class="">currentDatabase()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_typeToSql" class="">typeToSql()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_addColumnOptions" class="">addColumnOptions()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_distinct" class="">distinct()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_addOrderByForAssocLimiting" class="">addOrderByForAssocLimiting()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_interval" class="deprecated">interval()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_modifyDate" class="">modifyDate()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method_buildClause" class="">buildClause()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method__escapePrepare" class="">_escapePrepare()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#method__clearTableCache" class="">_clearTableCache()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#property__adapter" class="">$_adapter</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Schema.html#property__adapterMethods" class="">$_adapterMethods</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                            <span class="label label-info">abstract</span>
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Db.Adapter.Base.Schema.html"><div class="path-wrapper">Db/Adapter/Base/Schema.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Db\Adapter</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Db_Adapter_Base_Schema</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Mike Naberezny <a href="mailto:mike@maintainable.com">mike@maintainable.com</a></p>
+                                                                    <p>Derek DeVries <a href="mailto:derek@maintainable.com">derek@maintainable.com</a></p>
+                                                                    <p>Chuck Hagenbuch <a href="mailto:chuck@horde.org">chuck@horde.org</a></p>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2007 Maintainable Software, LLC</p>
+                                                                    <p>2008-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/bsd">http://www.horde.org/licenses/bsd</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__adapter" name="property__adapter" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_adapter</h3>
+                <pre class="signature">$_adapter : \Horde_Db_Adapter_Base</pre>
+                <p><em>A Horde_Db_Adapter instance.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Db_Adapter_Base.html">\Horde_Db_Adapter_Base</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__adapterMethods" name="property__adapterMethods" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_adapterMethods</h3>
+                <pre class="signature">$_adapterMethods : array</pre>
+                <p><em>List of public methods supported by the attached adapter.</em></p>
+                <p>Method names are in the keys.</p>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_Db_Adapter_Base  <span class="argument">$adapter</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Db_Adapter_Base.html">\Horde_Db_Adapter_Base</a></td>
+                                <td>$adapter </td>
+                                <td><p>A Horde_Db_Adapter instance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setAdapter" name="method_setAdapter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setAdapter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setAdapter(\Horde_Db_Adapter  <span class="argument">$adapter</span>) </pre>
+                <p><em>Setter for a Horde_Db_Adapter instance.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Db_Adapter.html">\Horde_Db_Adapter</a></td>
+                                <td>$adapter </td>
+                                <td><p>A Horde_Db_Adapter instance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_makeColumn" name="method_makeColumn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">makeColumn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">makeColumn(string  <span class="argument">$name</span>, string  <span class="argument">$default</span>, string  <span class="argument">$sqlType = null</span>, boolean  <span class="argument">$null = true</span>) : \Horde_Db_Adapter_Base_Column</pre>
+                <p><em>Factory for Column objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The column's name, such as &quot;supplier_id&quot; in
+&quot;supplier_id int(11)&quot;.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$default </td>
+                                <td><p>The type-casted default value, such as &quot;new&quot; in
+&quot;sales_stage varchar(20) default 'new'&quot;.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sqlType </td>
+                                <td><p>Used to extract the column's type, length and
+signed status, if necessary. For example
+&quot;varchar&quot; and &quot;60&quot; in &quot;company_name varchar(60)&quot;
+or &quot;unsigned =&gt; true&quot; in &quot;int(10) UNSIGNED&quot;.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$null </td>
+                                <td><p>Whether this column allows NULL values.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_Column.html">\Horde_Db_Adapter_Base_Column</a>
+                                            &mdash; <p>A column object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_makeColumnDefinition" name="method_makeColumnDefinition" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">makeColumnDefinition()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">makeColumnDefinition(  <span class="argument">$base</span>,   <span class="argument">$name</span>,   <span class="argument">$type</span>,   <span class="argument">$limit = null</span>,   <span class="argument">$precision = null</span>,   <span class="argument">$scale = null</span>,   <span class="argument">$unsigned = null</span>,   <span class="argument">$default = null</span>,   <span class="argument">$null = null</span>,   <span class="argument">$autoincrement = null</span>) : \Horde_Db_Adapter_Base_ColumnDefinition</pre>
+                <p><em>Factory for ColumnDefinition objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$base </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$type </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$limit </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$precision </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$scale </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$unsigned </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$default </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$null </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$autoincrement </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_ColumnDefinition.html">\Horde_Db_Adapter_Base_ColumnDefinition</a>
+                                            &mdash; <p>A column definition
+object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_makeIndex" name="method_makeIndex" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">makeIndex()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">makeIndex(string  <span class="argument">$table</span>, string  <span class="argument">$name</span>, boolean  <span class="argument">$primary</span>, boolean  <span class="argument">$unique</span>, array  <span class="argument">$columns</span>) : \Horde_Db_Adapter_Base_Index</pre>
+                <p><em>Factory for Index objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$table </td>
+                                <td><p>The table the index is on.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The index's name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$primary </td>
+                                <td><p>Is this a primary key?</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$unique </td>
+                                <td><p>Is this a unique index?</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$columns </td>
+                                <td><p>The columns this index covers.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_Index.html">\Horde_Db_Adapter_Base_Index</a>
+                                            &mdash; <p>An index object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_makeTable" name="method_makeTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">makeTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">makeTable(  <span class="argument">$name</span>,   <span class="argument">$primaryKey</span>,   <span class="argument">$columns</span>,   <span class="argument">$indexes</span>) : \Horde_Db_Adapter_Base_Table</pre>
+                <p><em>Factory for Table objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$primaryKey </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$columns </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$indexes </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_Table.html">\Horde_Db_Adapter_Base_Table</a>
+                                            &mdash; <p>A table object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_makeTableDefinition" name="method_makeTableDefinition" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">makeTableDefinition()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">makeTableDefinition(  <span class="argument">$name</span>,   <span class="argument">$base</span>,   <span class="argument">$options = array()</span>) : \Horde_Db_Adapter_Base_TableDefinition</pre>
+                <p><em>Factory for TableDefinition objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$base </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$options </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_TableDefinition.html">\Horde_Db_Adapter_Base_TableDefinition</a>
+                                            &mdash; <p>A table definition object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___call" name="method___call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__call(string  <span class="argument">$method</span>, array  <span class="argument">$args</span>) : mixed</pre>
+                <p><em>Delegates calls to the adapter object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$method </td>
+                                <td><p>A method name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$args </td>
+                                <td><p>Method parameters.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\BadMethodCallException</dt>
+                            <dd><p>if method doesn't exist in the adapter.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The method call result.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(string  <span class="argument">$key</span>) : object</pre>
+                <p><em>Delegates access to $_cache and $_logger to the adapter object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td><p>Property name. Only '_cache' and '_logger' are
+supported.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>The request property object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quote" name="method_quote" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quote()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quote(mixed  <span class="argument">$value</span>, object  <span class="argument">$column = null</span>) : string</pre>
+                <p><em>Quotes the column value to help prevent SQL injection attacks.</em></p>
+                <p>This method makes educated guesses on the scalar type based on the
+passed value. Make sure to correctly cast the value and/or pass the
+$column parameter to get the best results.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>The scalar value to quote, a Horde_Db_Value,
+Horde_Date, or DateTime instance, or an object
+implementing quotedId().</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>object</td>
+                                <td>$column </td>
+                                <td><p>An object implementing getType().</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The correctly quoted value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteString" name="method_quoteString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteString(string  <span class="argument">$string</span>) : string</pre>
+                <p><em>Quotes a string, escaping any &#039; (single quote) and \ (backslash)
+characters.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$string </td>
+                                <td><p>A string to escape.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The escaped and quoted string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteColumnName" name="method_quoteColumnName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteColumnName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteColumnName(string  <span class="argument">$name</span>) : string</pre>
+                <p><em>Returns a quoted form of the column name.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The quoted column name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteTableName" name="method_quoteTableName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteTableName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteTableName(string  <span class="argument">$name</span>) : string</pre>
+                <p><em>Returns a quoted form of the table name.</em></p>
+                <p>Defaults to column name quoting.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The quoted table name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteTrue" name="method_quoteTrue" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteTrue()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteTrue() : string</pre>
+                <p><em>Returns a quoted boolean true.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The quoted boolean true.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteFalse" name="method_quoteFalse" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteFalse()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteFalse() : string</pre>
+                <p><em>Returns a quoted boolean false.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The quoted boolean false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteDate" name="method_quoteDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteDate(  <span class="argument">$value</span>) : string</pre>
+                <p><em>Returns a quoted date value.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The quoted date value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quoteBinary" name="method_quoteBinary" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quoteBinary()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quoteBinary(  <span class="argument">$value</span>) : string</pre>
+                <p><em>Returns a quoted binary value.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The quoted binary value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_nativeDatabaseTypes" name="method_nativeDatabaseTypes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">nativeDatabaseTypes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">nativeDatabaseTypes() : array</pre>
+                <p><em>Returns a hash of mappings from the abstract data types to the native
+database types.</em></p>
+                <p>See TableDefinition::column() for details on the recognized abstract
+data types.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A database type map.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\TableDefinition::column()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_tableAliasLength" name="method_tableAliasLength" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">tableAliasLength()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">tableAliasLength() : integer</pre>
+                <p><em>Returns the maximum length a table alias can have.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The maximum table alias length.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_tableAliasFor" name="method_tableAliasFor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">tableAliasFor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">tableAliasFor(string  <span class="argument">$tableName</span>) : string</pre>
+                <p><em>Converts a table name into a suitable table alias.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A possible alias name for the table.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_tables" name="method_tables" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">tables()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">tables() : array</pre>
+                <p><em>Returns a list of all tables of the current database.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A table list.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_table" name="method_table" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">table()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">table(string  <span class="argument">$tableName</span>, string  <span class="argument">$name = null</span>) : \Horde_Db_Adapter_Base_Table</pre>
+                <p><em>Returns a Horde_Db_Adapter_Base_Table object for a table.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>(can be removed?)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_Table.html">\Horde_Db_Adapter_Base_Table</a>
+                                            &mdash; <p>A table object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_primaryKey" name="method_primaryKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">primaryKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">primaryKey(string  <span class="argument">$tableName</span>, string  <span class="argument">$name = null</span>) : \Horde_Db_Adapter_Base_Index</pre>
+                <p><em>Returns a table&#039;s primary key.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>(can be removed?)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_Index.html">\Horde_Db_Adapter_Base_Index</a>
+                                            &mdash; <p>The primary key index object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_indexes" name="method_indexes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">indexes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">indexes(string  <span class="argument">$tableName</span>, string  <span class="argument">$name = null</span>) : array</pre>
+                <p><em>Returns a list of tables indexes.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>(can be removed?)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A list of Horde_Db_Adapter_Base_Index objects.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_columns" name="method_columns" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">columns()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">columns(string  <span class="argument">$tableName</span>, string  <span class="argument">$name = null</span>) : array</pre>
+                <p><em>Returns a list of table columns.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>(can be removed?)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A list of Horde_Db_Adapter_Base_Column objects.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_column" name="method_column" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">column()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">column(string  <span class="argument">$tableName</span>, string  <span class="argument">$columnName</span>) : \Horde_Db_Adapter_Base_Column</pre>
+                <p><em>Returns a table column.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columnName </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Db_Exception</dt>
+                            <dd><p>if column not found.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_Column.html">\Horde_Db_Adapter_Base_Column</a>
+                                            &mdash; <p>A column object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                                                            <p>Horde_Db 2.1.0</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createTable" name="method_createTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createTable(string  <span class="argument">$name</span>, array  <span class="argument">$options = array()</span>) : \Horde_Db_Adapter_Base_TableDefinition</pre>
+                <p><em>Creates a new table.</em></p>
+                <p>The $options hash can include the following keys:</p>
+<ul>
+<li>autoincrementKey (string|array):
+The name of the autoincrementing primary key, if one is to be added
+automatically. Defaults to &quot;id&quot;.</li>
+<li>options (array):
+Any extra options you want appended to the table definition.</li>
+<li>temporary (boolean):
+Make a temporary table.</li>
+<li>force (boolean):
+Set to true or false to drop the table before creating it.
+Defaults to false.</li>
+</ul>
+<p>Examples:
+<code>
+// Add a backend specific option to the generated SQL (MySQL)
+$schema-&gt;createTable('suppliers', array('options' =&gt; 'ENGINE=InnoDB DEFAULT CHARSET=utf8')));
+</code>
+generates:</p>
+<pre>
+ CREATE TABLE suppliers (
+   id int(10) UNSIGNED  NOT NULL AUTO_INCREMENT PRIMARY KEY
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+</pre>
+<p><code>
+// Rename the primary key column
+$table = $schema-&gt;createTable('objects', array('autoincrementKey' =&gt; 'guid'));
+$table-&gt;column('name', 'string', array('limit' =&gt; 80));
+$table-&gt;end();
+</code>
+generates:</p>
+<pre>
+ CREATE TABLE objects (
+   guid int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   name varchar(80)
+ )
+</pre>
+<p><code>
+// Do not add a primary key column, use fluent interface, use type
+// method.
+$schema-&gt;createTable('categories_suppliers', array('autoincrementKey' =&gt; false))
+-&gt;column('category_id', 'integer')
+-&gt;integer('supplier_id')
+-&gt;end();
+</code>
+generates:</p>
+<pre>
+ CREATE TABLE categories_suppliers (
+   category_id int(11),
+   supplier_id int(11)
+ )
+</pre>
+<p>See also Horde_Db_Adapter_Base_TableDefinition::column() for details on
+how to create columns.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>A list of table options, see the method
+description.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Db_Adapter_Base_TableDefinition.html">\Horde_Db_Adapter_Base_TableDefinition</a>
+                                            &mdash; <p>The definition of the
+created table.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_endTable" name="method_endTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">endTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">endTable(string|\Horde_Db_Adapter_Base_TableDefinition  <span class="argument">$name</span>, array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Finishes and executes table creation.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|<a href="../classes/Horde_Db_Adapter_Base_TableDefinition.html">\Horde_Db_Adapter_Base_TableDefinition</a></td>
+                                <td>$name </td>
+                                <td><p>A table name or object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>A list of options. See createTable().</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renameTable" name="method_renameTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">renameTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renameTable(string  <span class="argument">$name</span>, string  <span class="argument">$newName</span>) </pre>
+                <p><em>Renames a table.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newName </td>
+                                <td><p>The new table name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dropTable" name="method_dropTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dropTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dropTable(string  <span class="argument">$name</span>) </pre>
+                <p><em>Drops a table from the database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addColumn" name="method_addColumn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addColumn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addColumn(string  <span class="argument">$tableName</span>, string  <span class="argument">$columnName</span>, string  <span class="argument">$type</span>, array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Adds a new column to a table.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columnName </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>A data type.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Column options. See
+Horde_Db_Adapter_Base_TableDefinition#column()
+for details.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeColumn" name="method_removeColumn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeColumn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeColumn(string  <span class="argument">$tableName</span>, string  <span class="argument">$columnName</span>) </pre>
+                <p><em>Removes a column from a table.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columnName </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_changeColumn" name="method_changeColumn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">changeColumn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">changeColumn(string  <span class="argument">$tableName</span>, string  <span class="argument">$columnName</span>, string  <span class="argument">$type</span>, array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Changes an existing column&#039;s definition.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columnName </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>A data type.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Column options. See
+Horde_Db_Adapter_Base_TableDefinition#column()
+for details.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_changeColumnDefault" name="method_changeColumnDefault" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">changeColumnDefault()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">changeColumnDefault(string  <span class="argument">$tableName</span>, string  <span class="argument">$columnName</span>, mixed  <span class="argument">$default</span>) </pre>
+                <p><em>Sets a new default value for a column.</em></p>
+                <p>If you want to set the default value to NULL, you are out of luck. You
+need to execute the apppropriate SQL statement yourself.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columnName </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$default </td>
+                                <td><p>The new default value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renameColumn" name="method_renameColumn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">renameColumn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renameColumn(string  <span class="argument">$tableName</span>, string  <span class="argument">$columnName</span>, string  <span class="argument">$newColumnName</span>) </pre>
+                <p><em>Renames a column.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columnName </td>
+                                <td><p>A column name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newColumnName </td>
+                                <td><p>The new column name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addPrimaryKey" name="method_addPrimaryKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addPrimaryKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addPrimaryKey(string  <span class="argument">$tableName</span>,   <span class="argument">$columns</span>) </pre>
+                <p><em>Adds a primary key to a table.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$columns </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Db_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removePrimaryKey" name="method_removePrimaryKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removePrimaryKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removePrimaryKey(string  <span class="argument">$tableName</span>) </pre>
+                <p><em>Removes a primary key from a table.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Db_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addIndex" name="method_addIndex" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addIndex()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addIndex(string  <span class="argument">$tableName</span>, string|array  <span class="argument">$columnName</span>, array  <span class="argument">$options = array()</span>) : string</pre>
+                <p><em>Adds a new index to a table.</em></p>
+                <p>The index will be named after the table and the first column names,
+unless you pass 'name' as an option.</p>
+<p>When creating an index on multiple columns, the first column is used as
+a name for the index. For example, when you specify an index on two
+columns 'first' and 'last', the DBMS creates an index for both columns
+as well as an index for the first colum 'first'. Using just the first
+name for this index makes sense, because you will never have to create a
+singular index with this name.</p>
+<p>Examples:</p>
+<p>Creating a simple index
+<code>
+$schema-&gt;addIndex('suppliers', 'name');
+</code>
+generates
+<code>
+CREATE INDEX suppliers_name_index ON suppliers(name)
+</code></p>
+<p>Creating a unique index
+<code>
+$schema-&gt;addIndex('accounts',
+array('branch_id', 'party_id'),
+array('unique' =&gt; true));
+</code>
+generates
+<code>
+CREATE UNIQUE INDEX accounts_branch_id_index ON accounts(branch_id, party_id)
+</code></p>
+<p>Creating a named index
+<code>
+$schema-&gt;addIndex('accounts',
+array('branch_id', 'party_id'),
+array('unique' =&gt; true, 'name' =&gt; 'by_branch_party'));
+</code>
+generates
+<code>
+CREATE UNIQUE INDEX by_branch_party ON accounts(branch_id, party_id)
+</code></p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array</td>
+                                <td>$columnName </td>
+                                <td><p>One or more column names.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Index options:</p>
+<ul>
+<li>name: (string) the index name.</li>
+<li>unique: (boolean) create a unique
+index?</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The index name. @since Horde_Db 2.1.0</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeIndex" name="method_removeIndex" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeIndex()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeIndex(string  <span class="argument">$tableName</span>, string|array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Removes an index from a table.</em></p>
+                <p>Examples:</p>
+<p>Remove the suppliers_name_index in the suppliers table:
+<code>
+$schema-&gt;removeIndex('suppliers', 'name');
+</code></p>
+<p>Remove the index named accounts_branch_id in the accounts table:
+<code>
+$schema-&gt;removeIndex('accounts', array('column' =&gt; 'branch_id'));
+</code></p>
+<p>Remove the index named by_branch_party in the accounts table:
+<code>
+$schema-&gt;removeIndex('accounts', array('name' =&gt; 'by_branch_party'));
+</code></p>
+<p>You can remove an index on multiple columns by specifying the first
+column:
+<code>
+$schema-&gt;addIndex('accounts', array('username', 'password'))
+$schema-&gt;removeIndex('accounts', 'username');
+</code></p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array</td>
+                                <td>$options </td>
+                                <td><p>Either a column name or index options:</p>
+<ul>
+<li>name: (string) the index name.</li>
+<li>column: (string|array) column name(s).</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_indexName" name="method_indexName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">indexName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">indexName(string  <span class="argument">$tableName</span>, string|array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Builds the name for an index.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array</td>
+                                <td>$options </td>
+                                <td><p>Either a column name or index options:</p>
+<ul>
+<li>column: (string|array) column name(s).</li>
+<li>name: (string) the index name to fall
+back to if no column names specified.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_recreateDatabase" name="method_recreateDatabase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">recreateDatabase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">recreateDatabase(string  <span class="argument">$name</span>) </pre>
+                <p><em>Recreates, i.e. drops then creates a database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A database name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createDatabase" name="method_createDatabase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createDatabase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createDatabase(string  <span class="argument">$name</span>, array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Creates a database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A database name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Database options.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dropDatabase" name="method_dropDatabase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dropDatabase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dropDatabase(string  <span class="argument">$name</span>) </pre>
+                <p><em>Drops a database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A database name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_currentDatabase" name="method_currentDatabase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">currentDatabase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">currentDatabase() : string</pre>
+                <p><em>Returns the name of the currently selected database.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The database name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_typeToSql" name="method_typeToSql" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">typeToSql()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">typeToSql(string  <span class="argument">$type</span>, integer  <span class="argument">$limit = null</span>, integer  <span class="argument">$precision = null</span>, integer  <span class="argument">$scale = null</span>, boolean  <span class="argument">$unsigned = null</span>) : string</pre>
+                <p><em>Generates the SQL definition for a column type.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>A column type.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$limit </td>
+                                <td><p>Maximum column length (non decimal type only)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$precision </td>
+                                <td><p>The number precision (decimal type only).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$scale </td>
+                                <td><p>The number scaling (decimal columns only).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$unsigned </td>
+                                <td><p>Whether the column is an unsigned number
+(non decimal columns only).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The SQL definition. If $type is not one of the
+internally supported types, $type is returned unchanged.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addColumnOptions" name="method_addColumnOptions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addColumnOptions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addColumnOptions(string  <span class="argument">$sql</span>, array  <span class="argument">$options</span>) : string</pre>
+                <p><em>Adds default/null options to column SQL definitions.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sql </td>
+                                <td><p>Existing SQL definition for a column.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Column options:</p>
+<ul>
+<li>column: (Horde_Db_Adapter_Base_ColumnDefinition
+The column definition class.</li>
+<li>null: (boolean) Whether to allow NULL values.</li>
+<li>default: (mixed) Default column value.</li>
+<li>autoincrement: (boolean) Whether the column is
+an autoincrement column. Driver depedendent.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The manipulated SQL definition.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_distinct" name="method_distinct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">distinct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">distinct(string  <span class="argument">$columns</span>, string  <span class="argument">$orderBy = null</span>) : string</pre>
+                <p><em>Generates a DISTINCT clause for SELECT queries.</em></p>
+                <p><code>
+$connection-&gt;distinct('posts.id', 'posts.created_at DESC')
+</code></p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$columns </td>
+                                <td><p>A column list.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$orderBy </td>
+                                <td><p>An ORDER clause.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The generated DISTINCT clause.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addOrderByForAssocLimiting" name="method_addOrderByForAssocLimiting" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addOrderByForAssocLimiting()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addOrderByForAssocLimiting(string  <span class="argument">$sql</span>, array  <span class="argument">$options</span>) : string</pre>
+                <p><em>Adds an ORDER BY clause to an existing query.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sql </td>
+                                <td><p>An SQL query to manipulate.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Options:</p>
+<ul>
+<li>order: Order column an direction.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The manipulated SQL query.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_interval" name="method_interval" class="anchor"></a>
+            <article class="method">
+                <h3 class="public deprecated">interval()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">interval(string  <span class="argument">$interval</span>, string  <span class="argument">$precision</span>) : string</pre>
+                <p><em>Generates an INTERVAL clause for SELECT queries.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$interval </td>
+                                <td><p>The interval.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$precision </td>
+                                <td><p>The precision.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The generated INTERVAL clause.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    since version 1.2.0. This function does not work with SQLite
+as a backend so you should avoid using it. Use &quot;modifyDate()&quot; instead.
+                </aside>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_modifyDate" name="method_modifyDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">modifyDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">modifyDate(string  <span class="argument">$reference</span>, string  <span class="argument">$operator</span>, integer  <span class="argument">$amount</span>, string  <span class="argument">$interval</span>) : string</pre>
+                <p><em>Generates a modified date for SELECT queries.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$reference </td>
+                                <td><p>The reference date - this is a column
+referenced in the SELECT.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$operator </td>
+                                <td><p>Add or subtract time? (+/-)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$amount </td>
+                                <td><p>The shift amount (number of days if $interval
+is DAY, etc).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$interval </td>
+                                <td><p>The interval (SECOND, MINUTE, HOUR, DAY,
+MONTH, YEAR).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The generated INTERVAL clause.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildClause" name="method_buildClause" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">buildClause()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildClause(string  <span class="argument">$lhs</span>, string  <span class="argument">$op</span>, string  <span class="argument">$rhs</span>, boolean  <span class="argument">$bind = false</span>, array  <span class="argument">$params = array()</span>) : string|array</pre>
+                <p><em>Returns an expression using the specified operator.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$lhs </td>
+                                <td><p>The column or expression to test.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$op </td>
+                                <td><p>The operator.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$rhs </td>
+                                <td><p>The comparison value.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$bind </td>
+                                <td><p>If true, the method returns the query and a list
+of values suitable for binding as an array.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Any additional parameters for the operator.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string|array
+                                            &mdash; <p>The SQL test fragment, or an array containing the
+query and a list of values if $bind is true.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__escapePrepare" name="method__escapePrepare" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_escapePrepare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_escapePrepare(string  <span class="argument">$query</span>) : string</pre>
+                <p><em>Escapes all characters in a string that are placeholders for
+prepare/execute methods.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>A string to escape.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The correctly escaped string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__clearTableCache" name="method__clearTableCache" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_clearTableCache()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_clearTableCache(string  <span class="argument">$tableName</span>) </pre>
+                <p><em>Clears the cache for tables when altering them.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tableName </td>
+                                <td><p>A table name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Schema.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Db/Adapter/Base/Schema.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:36.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

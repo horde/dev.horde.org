@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Horde/Routes: Manual: Using Routes</title>
+
+  <link href="/routes/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="manual_using-routes">
+  <div id="wrapper">
+
+  <div id="header" class="clr">
+    <div id="logo" class="left">
+      <span>
+      <a href="/routes/"><img alt="Horde/Routes" src="/routes/images/common/logo.gif" /></a>
+      </span>
+    </div>
+      <ul id="nav" class="right">
+        <li><a href="/routes/">Home</a></li>
+        <li><a href="/routes/install.html">Install</a></li>
+        <li><a href="/routes/integrate.html">Integrate</a></li>
+        <li>Manual</li>
+      </ul>
+  </div>
+
+  <div id="content" class="clr">
+      
+  <h1>Manual</h1>
+
+  <div id="main">
+    <h2 class="top" id="download">Using Routes</h2>
+    <p>
+      Once you have setup the Routes to map URLs to your controllers and actions,
+      you will likely want to generate URLs from within your web application. 
+    </p>
+
+    <p>
+      <code>Horde_Routes_Utils</code> includes two functions for use in your web application that
+      are commonly desired.
+    </p>
+
+    <ul>
+      <li><code>redirectTo()</code></li>
+      <li><code>urlFor()</code></li>
+    </ul>
+
+    <p>
+      Both of these functions take a similar set of arguments. The most important
+      being an associative array of keyword arguments that describes the controller,
+      action, and additional variables you'd like present for the URL that's created.
+    </p>
+
+    <p>
+      To save you from repeating things, Routes has two mechanisms to reduce the
+      amount of information you need to supply the <code>urlFor()</code> or <code>redirectTo()</code> function.
+    </p>
+
+
+    <h3>Named Routes</h3>
+
+    <p>
+      We saw earlier how the route name ties a set of defaults to a name. We can use
+      this name with our Route functions and its as if we used that set of keyword
+      args:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">category_home</span><span class="punct">',</span> <span class="punct">'</span><span class="string">category/:section</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">section</span><span class="punct">'=&gt;'</span><span class="string">home</span><span class="punct">'));</span>
+
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">category_home</span><span class="punct">');</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">is</span> <span class="ident">equivalent</span> <span class="ident">to</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">section</span><span class="punct">'=&gt;'</span><span class="string">home</span><span class="punct">'));</span> </pre></div>
+
+    <p>
+      You can also specify keyword arguments and it will override defaults
+      associated with the route name:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">category_home</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">index</span><span class="punct">'));</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">is</span> <span class="ident">equivalent</span> <span class="ident">to</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">controller</span><span class="punct">='</span><span class="string">blog</span><span class="punct">',</span> <span class="ident">action</span><span class="punct">='</span><span class="string">index</span><span class="punct">',</span> <span class="ident">section</span><span class="punct">='</span><span class="string">home</span><span class="punct">'));</span> </pre></div>
+
+    <p>
+      As you can see, the amount of typing you save yourself by using the route name
+      feature is quite handy.
+    </p>
+
+    <p>
+      Using the recently introduced static named routes feature allows you to
+      quickly use common URLs and easily add query arguments:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">google_search</span><span class="punct">',</span> <span class="punct">'</span><span class="string">http://www.google.com/search</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">_static</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="constant">true</span><span class="punct">));</span>
+
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">google_search</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">q</span><span class="punct">'=&gt;'</span><span class="string">routes</span><span class="punct">'));</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">will</span> <span class="ident">result</span> <span class="ident">in</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">http</span><span class="punct">:/</span><span class="regex"></span><span class="punct">/</span><span class="ident">www</span><span class="punct">.</span><span class="ident">google</span><span class="punct">.</span><span class="ident">com</span><span class="punct">/</span><span class="ident">search?q</span><span class="punct">=</span><span class="ident">routes</span> </pre></div>
+
+
+    <h3>Non-Existent Route Names</h3>
+
+    <p>
+      If you supply a route name that does not exist, <code>urlFor()</code> will assume that you
+      intend to use the name as the actual URL. It will also prepend it with the
+      proper <code>SCRIPT_NAME</code> if applicable:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">/css/source.css</span><span class="punct">');</span>
+<span class="comment"># if running underneath a 'mount' point of /myapp will become</span>
+<span class="comment"># /myapp/css/source.css </span></pre></div>
+
+    <p>
+      For portable web applications, it's highly encouraged that you use <code>urlFor()</code> for
+      all your URLs, even those that are static resources and images. This will
+      ensure that the URLs are properly handled in various deployment cases.
+    </p>
+
+
+    <h3>Route Memory</h3>
+
+    <p>
+      When your controller and action is matched up from the URL, the variables it
+      set to get there are preserved. This lets you update small bits of the
+      keywords that got you there without specifying the entire thing:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:year/:month/:day</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;</span><span class="number">2004</span><span class="punct">,</span>
+        <span class="punct">'</span><span class="string">requirements</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">year</span><span class="punct">'=&gt;'</span><span class="string">d{2,4}</span><span class="punct">',</span> <span class="punct">'</span><span class="string">month</span><span class="punct">'=&gt;'</span><span class="string">d{1,2}</span><span class="punct">')));</span>
+
+<span class="comment"># URL used: /archives/2005/10/4</span>
+
+<span class="comment"># Route dict: {'controller': 'archives', 'action': 'view', 'year': '2005',</span>
+<span class="comment">#              'month': '10', 'day': '4'}</span>
+
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">day</span><span class="punct">'=&gt;</span><span class="number">6</span><span class="punct">))</span>                     <span class="comment"># =&gt;          /archives/2005/10/6</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">month</span><span class="punct">'=&gt;</span><span class="number">4</span><span class="punct">))</span>                   <span class="comment"># =&gt;          /archives/2005/4/4</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">()</span>                                    <span class="comment"># =&gt;          /archives/2005/10/4</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">/archives</span><span class="punct">'))</span>    <span class="comment"># =&gt;          /archives </span></pre></div>
+
+    <p>
+      The route memory is always used for values with the following conditions:
+    </p>
+
+    <ul>
+      <li>If the controller name begins with a /, no values from the Route dict are used</li>
+      <li>If the controller name changes and no action is specified, action will be set to <code>'index'</code></li>
+      <li>If you use named routes, no values from the Route dict are used</li>
+    </ul>
+
+
+    <h3>Overriding Route Memory</h3>
+
+    <p>
+      Sometimes one doesn't want to have Route Memory present, as well as removing
+      the Implicit Defaults. Routes can disable route memory and implicit defaults
+      either globally, or on a per-route basis. Setting explicit routes:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span> <span class="punct">=</span> <span class="keyword">new</span> <span class="constant">Horde_Routes_Mapper</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">explicit</span><span class="punct">'=&gt;</span><span class="constant">true</span><span class="punct">));</span> </pre></div>
+
+    <p>
+      When toggling explicit behavior for individual routes, only the implicit route
+      defaults will be de-activated. <code>urlFor()</code> behavior can only be set globally with
+      the mapper explicit keyword. Setting explicit behavior for a route:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span> <span class="punct">=</span> <span class="keyword">new</span> <span class="constant">Horde_Routes_Mapper</span><span class="punct">();</span>
+
+<span class="comment"># Note no 'id' value will be assumed for a default</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:year</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">_explicit</span><span class="punct">'=&gt;</span><span class="constant">true</span><span class="punct">));</span>
+
+<span class="comment"># This will now require an action and id present</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">_explicit</span><span class="punct">'=&gt;</span><span class="constant">true</span><span class="punct">));</span> </pre></div>
+
+  </div>
+
+    <div id="sidebar">
+    <div class="side_item">
+      <h4>Manual</h4>
+      <p><a href="/routes/manual/index.html">Setting Up Routes</a></p>
+      <p><a href="/routes/manual/nitty-gritty-route-setup.html">Nitty Gritty of Route Setup</a></p>
+      <p>Using Routes</p>
+      <p><a href="/routes/manual/subdomain-support.html">Sub-Domain Support</a></p>
+      <p><a href="/routes/manual/restful-services.html">RESTful Services</a></p>
+      <div class="side_bottom">&nbsp;</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer" class="clr">
+    <span class="right">
+      Horde/Routes is part of the <a href="http://www.horde.org">Horde Project</a>.<br/>
+      Development &amp; Website by <a href="http://maintainable.com">Maintainable Software</a>
+    </span>
+  </div>
+
+  
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_Ldap_Ldif</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Ldap.html">Ldap</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_Ldap.html">Horde_Ldap</a></li>
+				<li><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></li>
+				<li><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></li>
+				<li><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></li>
+				<li class="active"><a href="class-Horde_Ldap_Ldif.html">Horde_Ldap_Ldif</a></li>
+				<li><a href="class-Horde_Ldap_RootDse.html">Horde_Ldap_RootDse</a></li>
+				<li><a href="class-Horde_Ldap_Schema.html">Horde_Ldap_Schema</a></li>
+				<li><a href="class-Horde_Ldap_Search.html">Horde_Ldap_Search</a></li>
+				<li><a href="class-Horde_Ldap_Util.html">Horde_Ldap_Util</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Ldap.html" title="Summary of Ldap"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_Ldap_Ldif</h1>
+
+
+	<div class="description">
+	<p>LDIF capabilities for Horde_Ldap.</p>
+
+<p>This class provides a means to convert between Horde_Ldap_Entry objects and
+LDAP entries represented in LDIF format files. Reading and writing are
+supported and manipulating of single entries or lists of entries.</p>
+
+<p>Usage example:</p>
+
+<pre><span class="php-comment">// Read and parse an LDIF file into Horde_Ldap_Entry objects</span>
+<span class="php-comment">// and print out the DNs. Store the entries for later use.</span>
+<span class="php-var">$entries</span> = <span class="php-keyword1">array</span>();
+<span class="php-var">$ldif</span> = <span class="php-keyword1">new</span> Horde_Ldap_Ldif(<span class="php-quote">'test.ldif'</span>, <span class="php-quote">'r'</span>, <span class="php-var">$options</span>);
+<span class="php-keyword1">do</span> {
+    <span class="php-var">$entry</span> = <span class="php-var">$ldif</span>-&gt;readEntry();
+    <span class="php-var">$dn</span>    = <span class="php-var">$entry</span>-&gt;dn();
+    <span class="php-keyword1">echo</span> <span class="php-quote">&quot; done building entry: </span><span class="php-var">$dn</span><span class="php-quote">\n&quot;</span>;
+    <span class="php-keyword2">array_push</span>(<span class="php-var">$entries</span>, <span class="php-var">$entry</span>);
+} <span class="php-keyword1">while</span> (!<span class="php-var">$ldif</span>-&gt;eof());
+<span class="php-var">$ldif</span>-&gt;done();
+
+<span class="php-comment">// Write those entries to another file</span>
+<span class="php-var">$ldif</span> = <span class="php-keyword1">new</span> Horde_Ldap_Ldif(<span class="php-quote">'test.out.ldif'</span>, <span class="php-quote">'w'</span>, <span class="php-var">$options</span>);
+<span class="php-var">$ldif</span>-&gt;writeEntry(<span class="php-var">$entries</span>);
+<span class="php-var">$ldif</span>-&gt;done();</pre>
+
+<p>Copyright 2009 Benedikt Hallinger
+Copyright 2010-2012 Horde LLC (http://www.horde.org/)</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Ldap<br>
+
+				<b>Category:</b>
+				Horde
+<br>
+				<b>License:</b>
+				<a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL-3.0</a><br>
+				<b>Author:</b>
+				Benedikt Hallinger <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x62;&#x65;&#110;&#105;&#x40;&#x70;&#104;&#112;&#x2e;&#x6e;&#101;t">&#x62;&#x65;&#110;&#105;&#x40;&#x70;&#104;&#112;&#x2e;&#x6e;&#101;t</a>
+<br>
+				<b>Author:</b>
+				Jan Schneider <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;j&#97;&#110;&#64;&#x68;&#x6f;&#x72;&#x64;e&#46;&#111;&#114;&#x67;">j&#97;&#110;&#64;&#x68;&#x6f;&#x72;&#x64;e&#46;&#111;&#114;&#x67;</a>
+<br>
+				<b>See:</b>
+				http://www.ietf.org/rfc/rfc2849.txt
+<br>
+		<b>Located at</b> <a href="source-class-Horde_Ldap_Ldif.html#2-821" title="Go to source code">Horde/Ldap/Ldif.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#113-217" title="Go to source code">__construct</a>( <span>string|ressource <var>$file</var></span>, <span>string <var>$mode</var> = <span class="php-quote">'r'</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Constructor.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor.</p>
+
+<p>Opens an LDIF file for reading or writing.</p>
+
+<p>$options is an associative array and may contain:
+- 'encode' (string): Some DN values in LDIF cannot be written verbatim and have to be encoded in some way. Possible values: - 'none':      No encoding. - 'canonical': See <code><a href="class-Horde_Ldap_Util.html#_canonicalDN">Horde_Ldap_Util::canonicalDN()</a></code>. - 'base64':    Use base64 (default).
+- 'change' (boolean): Write entry changes to the LDIF file instead of the entries itself. I.e. write LDAP operations acting on the entries to the file instead of the entries contents.  This writes the changes usually carried out by an update() to the LDIF file. Defaults to false.
+- 'lowercase' (boolean): Convert attribute names to lowercase when writing. Defaults to false.
+- 'sort' (boolean): Sort attribute names when writing entries according to the rule: objectclass first then all other attributes alphabetically sorted by attribute name. Defaults to false.
+- 'version' (integer): Set the LDIF version to write to the resulting LDIF file. According to RFC 2849 currently the only legal value for this option is 1. When this option is set Horde_Ldap_Ldif tries to adhere more strictly to the LDIF specification in RFC2489 in a few places. The default is null meaning no version information is written to the LDIF file.
+- 'wrap' (integer): Number of columns where output line wrapping shall occur.  Default is 78. Setting it to 40 or lower inhibits wrapping.
+- 'raw' (string): Regular expression to denote the names of attributes that are to be considered binary in search results if writing entries.  Example: 'raw' => '/(?i:^jpegPhoto|;binary)/i'</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$file</var></dt>
+					<dd>Filename or file handle.
+</dd>
+					<dt><var>$mode</var></dt>
+					<dd>&lt;p&gt;Mode to open the file, either 'r', 'w'
+                                 or 'a'.&lt;/p&gt;
+</dd>
+					<dt><var>$options</var></dt>
+					<dd>Options like described above.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readEntry" id="_readEntry">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readEntry">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#219-234" title="Go to source code">readEntry</a>( )</code>
+
+		<div class="description short">
+			<p>Reads one entry from the file and return it as a Horde_Ldap_Entry
+object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Reads one entry from the file and return it as a Horde_Ldap_Entry
+object.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="eof" id="_eof">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_eof">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#236-244" title="Go to source code">eof</a>( )</code>
+
+		<div class="description short">
+			<p>Returns true when the end of the file is reached.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true when the end of the file is reached.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="writeEntry" id="_writeEntry">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_writeEntry">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#246-277" title="Go to source code">writeEntry</a>( <span><code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code>|array <var>$entries</var></span> )</code>
+
+		<div class="description short">
+			<p>Writes the entry or entries to the LDIF file.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Writes the entry or entries to the LDIF file.</p>
+
+<p>If you want to build an LDIF file containing several entries AND you
+want to call writeEntry() several times, you must open the file handle
+in append mode ('a'), otherwise you will always get the last entry only.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$entries</var></dt>
+					<dd>Entry or array of entries.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="writeVersion" id="_writeVersion">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_writeVersion">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#377-394" title="Go to source code">writeVersion</a>( )</code>
+
+		<div class="description short">
+			<p>Writes the version to LDIF.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Writes the version to LDIF.</p>
+
+<p>If the object's version is defined, this method allows to explicitely
+write the version before an entry is written.</p>
+
+<p>If not called explicitely, it gets called automatically when writing the
+first entry.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="version" id="_version">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_version">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#396-416" title="Go to source code">version</a>( <span>integer <var>$version</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Returns or sets the LDIF version.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns or sets the LDIF version.</p>
+
+<p>If called with an argument it sets the LDIF version. According to RFC
+2849 currently the only legal value for the version is 1.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$version</var></dt>
+					<dd>LDIF version to set.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The current or new version.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="handle" id="_handle">
+
+		<td class="attributes"><code>
+			 public 
+
+			resource
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_handle">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#418-434" title="Go to source code">handle</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the file handle the Horde_Ldap_Ldif object reads from or writes
+to.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the file handle the Horde_Ldap_Ldif object reads from or writes
+to.</p>
+
+<p>You can, for example, use this to fetch the content of the LDIF file
+manually.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>resource</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="done" id="_done">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_done">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#436-456" title="Go to source code">done</a>( )</code>
+
+		<div class="description short">
+			<p>Cleans up.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Cleans up.</p>
+
+<p>This method signals that the LDIF object is no longer needed. You can
+use this to free up some memory and close the file handle. The file
+handle is only closed, if it was opened from Horde_Ldap_Ldif.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="currentEntry" id="_currentEntry">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_currentEntry">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#458-467" title="Go to source code">currentEntry</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the current Horde_Ldap_Entry object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the current Horde_Ldap_Entry object.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parseLines" id="_parseLines">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parseLines">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#469-530" title="Go to source code">parseLines</a>( <span>array <var>$lines</var></span> )</code>
+
+		<div class="description short">
+			<p>Parse LDIF lines of one entry into an Horde_Ldap_Entry object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Parse LDIF lines of one entry into an Horde_Ldap_Entry object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$lines</var></dt>
+					<dd>LDIF lines for one entry.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></code></code><br>Horde_Ldap_Entry object for those lines.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="currentLines" id="_currentLines">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_currentLines">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#532-542" title="Go to source code">currentLines</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the lines that generated the current Horde_Ldap_Entry object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the lines that generated the current Horde_Ldap_Entry object.</p>
+
+<p>Returns an empty array if no lines have been read so far.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Array of lines.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="nextLines" id="_nextLines">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_nextLines">#</a>
+		<code><a href="source-class-Horde_Ldap_Ldif.html#544-654" title="Go to source code">nextLines</a>( <span>boolean <var>$force</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Returns the lines that will generate the next Horde_Ldap_Entry object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the lines that will generate the next Horde_Ldap_Entry object.</p>
+
+<p>If you set $force to true you can iterate over the lines that build up
+entries manually. Otherwise, iterating is done using <code><a href="class-Horde_Ldap_Ldif.html#_readEntry">Horde_Ldap_Ldif::readEntry()</a></code>. $force will move the file pointer forward, thus returning
+the next entry lines.</p>
+
+<p>Wrapped lines will be unwrapped. Comments are stripped.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$force</var></dt>
+					<dd>&lt;p&gt;Set this to true if you want to iterate over the
+                      lines manually&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?561741522"></script>
+</body>
+</html>

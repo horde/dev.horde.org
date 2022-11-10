@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File prefs.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="namespace-Agora.html">Agora</a>
+						</li>
+				<li class="active"><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Agora_Application.html">Agora_Application</a></li>
+				<li><a href="class-Agora_Block_Forums.html">Agora_Block_Forums</a></li>
+				<li><a href="class-Agora_Block_Thread.html">Agora_Block_Thread</a></li>
+				<li><a href="class-Agora_Block_Threads.html">Agora_Block_Threads</a></li>
+				<li><a href="class-Agora_Tree_Flat.html">Agora_Tree_Flat</a></li>
+				<li><a href="class-Agora_ViewComments.html">Agora_ViewComments</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li class="active"><a href="function-handle_avatarselect.html">handle_avatarselect</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
+			</li>
+			<li>
+				<a href="function-handle_avatarselect.html" title="Summary of handle_avatarselect"><span>Function</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Copyright 2005-2007 Andrew Hosie &lt;ahosie@gmail.com&gt;
+</span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> *
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> * See the enclosed file COPYING for license information (GPL). If you
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * did not receive this file, see http://www.horde.org/licenses/gpl.
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> */</span>
+</span><span id="8" class="l"><a class="l" href="#8"> 8: </a>
+</span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-keyword1">function</span> <a id="_handle_avatarselect" href="#_handle_avatarselect">handle_avatarselect</a>(<span class="php-var">$updated</span>)
+</span><span id="10" class="l"><a class="l" href="#10">10: </a>{
+</span><span id="11" class="l"><a class="l" href="#11">11: </a>    <span class="php-keyword1">if</span> (<span class="php-var">$GLOBALS</span>[<span class="php-quote">'conf'</span>][<span class="php-quote">'avatar'</span>][<span class="php-quote">'allow_avatars'</span>]) {
+</span><span id="12" class="l"><a class="l" href="#12">12: </a>        <span class="php-var">$avatar_path</span> = Horde_Util::getFormData(<span class="php-quote">'avatar_path'</span>);
+</span><span id="13" class="l"><a class="l" href="#13">13: </a>        <span class="php-var">$avatar_path</span> = Agora::validateAvatar(<span class="php-var">$avatar_path</span>) ? <span class="php-var">$avatar_path</span> : <span class="php-keyword1">null</span>;
+</span><span id="14" class="l"><a class="l" href="#14">14: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$avatar_path</span>) {
+</span><span id="15" class="l"><a class="l" href="#15">15: </a>            <span class="php-var">$GLOBALS</span>[<span class="php-quote">'prefs'</span>]-&gt;setValue(<span class="php-quote">'avatar_path'</span>, <span class="php-var">$avatar_path</span>);
+</span><span id="16" class="l"><a class="l" href="#16">16: </a>            <span class="php-var">$updated</span> = <span class="php-keyword1">true</span>;
+</span><span id="17" class="l"><a class="l" href="#17">17: </a>        }
+</span><span id="18" class="l"><a class="l" href="#18">18: </a>    }
+</span><span id="19" class="l"><a class="l" href="#19">19: </a>
+</span><span id="20" class="l"><a class="l" href="#20">20: </a>    <span class="php-keyword1">return</span> <span class="php-var">$updated</span>;
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>}
+</span><span id="22" class="l"><a class="l" href="#22">22: </a></span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2471751124"></script>
+</body>
+</html>

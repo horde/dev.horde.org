@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Horde/Text/Diff/Op/Change.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Text.html">Text<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Text.Diff.html">Diff</a>
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_Text_Diff.html">Horde_Text_Diff</a></li>
+				<li><a href="class-Horde_Text_Diff_Engine_Native.html">Horde_Text_Diff_Engine_Native</a></li>
+				<li><a href="class-Horde_Text_Diff_Engine_Shell.html">Horde_Text_Diff_Engine_Shell</a></li>
+				<li><a href="class-Horde_Text_Diff_Engine_String.html">Horde_Text_Diff_Engine_String</a></li>
+				<li><a href="class-Horde_Text_Diff_Engine_Xdiff.html">Horde_Text_Diff_Engine_Xdiff</a></li>
+				<li><a href="class-Horde_Text_Diff_Exception.html">Horde_Text_Diff_Exception</a></li>
+				<li><a href="class-Horde_Text_Diff_Mapped.html">Horde_Text_Diff_Mapped</a></li>
+				<li><a href="class-Horde_Text_Diff_Op_Add.html">Horde_Text_Diff_Op_Add</a></li>
+				<li><a href="class-Horde_Text_Diff_Op_Base.html">Horde_Text_Diff_Op_Base</a></li>
+				<li class="active"><a href="class-Horde_Text_Diff_Op_Change.html">Horde_Text_Diff_Op_Change</a></li>
+				<li><a href="class-Horde_Text_Diff_Op_Copy.html">Horde_Text_Diff_Op_Copy</a></li>
+				<li><a href="class-Horde_Text_Diff_Op_Delete.html">Horde_Text_Diff_Op_Delete</a></li>
+				<li><a href="class-Horde_Text_Diff_Renderer.html">Horde_Text_Diff_Renderer</a></li>
+				<li><a href="class-Horde_Text_Diff_Renderer_Context.html">Horde_Text_Diff_Renderer_Context</a></li>
+				<li><a href="class-Horde_Text_Diff_Renderer_Inline.html">Horde_Text_Diff_Renderer_Inline</a></li>
+				<li><a href="class-Horde_Text_Diff_Renderer_Unified.html">Horde_Text_Diff_Renderer_Unified</a></li>
+				<li><a href="class-Horde_Text_Diff_ThreeWay.html">Horde_Text_Diff_ThreeWay</a></li>
+				<li><a href="class-Horde_Text_Diff_ThreeWay_BlockBuilder.html">Horde_Text_Diff_ThreeWay_BlockBuilder</a></li>
+				<li><a href="class-Horde_Text_Diff_ThreeWay_Op_Base.html">Horde_Text_Diff_ThreeWay_Op_Base</a></li>
+				<li><a href="class-Horde_Text_Diff_ThreeWay_Op_Copy.html">Horde_Text_Diff_ThreeWay_Op_Copy</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Text.Diff.html" title="Summary of Text\Diff"><span>Package</span></a>
+			</li>
+			<li>
+				<a href="class-Horde_Text_Diff_Op_Change.html" title="Summary of Horde_Text_Diff_Op_Change"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * The original PHP version of this code was written by Geoffrey T. Dairiki
+</span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> * &lt;dairiki@dairiki.org&gt;, and is used/adapted with his permission.
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> *
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Copyright 2004 Geoffrey T. Dairiki &lt;dairiki@dairiki.org&gt;
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> * Copyright 2004-2012 Horde LLC (http://www.horde.org/)
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> *
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * See the enclosed file COPYING for license information (LGPL). If you did
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> * not receive this file, see http://www.horde.org/licenses/lgpl21.
+</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> *
+</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * @package Text_Diff
+</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> * @author  Geoffrey T. Dairiki &lt;dairiki@dairiki.org&gt;
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment"> */</span>
+</span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-keyword1">class</span> <a id="Horde_Text_Diff_Op_Change" href="#Horde_Text_Diff_Op_Change">Horde_Text_Diff_Op_Change</a> <span class="php-keyword1">extends</span> Horde_Text_Diff_Op_Base
+</span><span id="16" class="l"><a class="l" href="#16">16: </a>{
+</span><span id="17" class="l"><a class="l" href="#17">17: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(<span class="php-var">$orig</span>, <span class="php-var">$final</span>)
+</span><span id="18" class="l"><a class="l" href="#18">18: </a>    {
+</span><span id="19" class="l"><a class="l" href="#19">19: </a>        <span class="php-var">$this</span>-&gt;orig = <span class="php-var">$orig</span>;
+</span><span id="20" class="l"><a class="l" href="#20">20: </a>        <span class="php-var">$this</span>-&gt;<span class="php-keyword1">final</span> = <span class="php-var">$final</span>;
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>    }
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>
+</span><span id="23" class="l"><a class="l" href="#23">23: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_reverse" href="#_reverse">reverse</a>()
+</span><span id="24" class="l"><a class="l" href="#24">24: </a>    {
+</span><span id="25" class="l"><a class="l" href="#25">25: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">new</span> Horde_Text_Diff_Op_Change(<span class="php-var">$this</span>-&gt;<span class="php-keyword1">final</span>, <span class="php-var">$this</span>-&gt;orig);
+</span><span id="26" class="l"><a class="l" href="#26">26: </a>    }
+</span><span id="27" class="l"><a class="l" href="#27">27: </a>}
+</span><span id="28" class="l"><a class="l" href="#28">28: </a></span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?1387025466"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Horde_Support_Array"],["c","Horde_Support_Backtrace"],["c","Horde_Support_CombineStream"],["c","Horde_Support_ConsistentHash"],["c","Horde_Support_Guid"],["c","Horde_Support_Inflector"],["c","Horde_Support_Memory"],["c","Horde_Support_Numerizer"],["c","Horde_Support_Numerizer_Locale_Base"],["c","Horde_Support_Numerizer_Locale_De"],["c","Horde_Support_Numerizer_Locale_Pt"],["c","Horde_Support_Randomid"],["c","Horde_Support_Stack"],["c","Horde_Support_StringStream"],["c","Horde_Support_Stub"],["c","Horde_Support_Timer"],["c","Horde_Support_Uuid"]];

@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">69</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1515175841"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1515175841" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer.html">Horde_Mime_Viewer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Audio.html">Horde_Mime_Viewer_Audio</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Base.html">Horde_Mime_Viewer_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Deb.html">Horde_Mime_Viewer_Deb</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Default.html">Horde_Mime_Viewer_Default</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Enriched.html">Horde_Mime_Viewer_Enriched</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Exception.html">Horde_Mime_Viewer_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Html.html">Horde_Mime_Viewer_Html</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Images.html">Horde_Mime_Viewer_Images</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Msexcel.html">Horde_Mime_Viewer_Msexcel</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Mspowerpoint.html">Horde_Mime_Viewer_Mspowerpoint</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Msword.html">Horde_Mime_Viewer_Msword</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Ooo.html">Horde_Mime_Viewer_Ooo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Pdf.html">Horde_Mime_Viewer_Pdf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Plain.html">Horde_Mime_Viewer_Plain</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Rar.html">Horde_Mime_Viewer_Rar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Report.html">Horde_Mime_Viewer_Report</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Rfc822.html">Horde_Mime_Viewer_Rfc822</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Richtext.html">Horde_Mime_Viewer_Richtext</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Rpm.html">Horde_Mime_Viewer_Rpm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Rtf.html">Horde_Mime_Viewer_Rtf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Security.html">Horde_Mime_Viewer_Security</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Simple.html">Horde_Mime_Viewer_Simple</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Smil.html">Horde_Mime_Viewer_Smil</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Syntaxhighlighter.html">Horde_Mime_Viewer_Syntaxhighlighter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Tgz.html">Horde_Mime_Viewer_Tgz</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Tnef.html">Horde_Mime_Viewer_Tnef</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Translation.html">Horde_Mime_Viewer_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Wordperfect.html">Horde_Mime_Viewer_Wordperfect</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Viewer_Zip.html">Horde_Mime_Viewer_Zip</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Mime_Viewer_Deb</h1>
+                    <p><em>The Horde_Mime_Viewer_Deb class renders out lists of files in Debian
+packages by using the dpkg tool to query the package.</em></p>
+                    <p>Copyright 1999-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mime_Viewer_Deb.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_setMimePart" class="">setMimePart()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_render" class="">render()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_canRender" class="">canRender()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_embeddedMimeParts" class="">embeddedMimeParts()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_getEmbeddedMimeParts" class="">getEmbeddedMimeParts()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_getConfigParam" class="">getConfigParam()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_setConfigParam" class="">setConfigParam()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_getDriver" class="">getDriver()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method_getMetadata" class="">getMetadata()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__render" class="">_render()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__renderInline" class="">_renderInline()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Deb.html#method__renderInfo" class="">_renderInfo()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__renderRaw" class="">_renderRaw()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__getEmbeddedMimeParts" class="">_getEmbeddedMimeParts()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__getViewer" class="">_getViewer()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__renderReturn" class="">_renderReturn()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__renderFullReturn" class="">_renderFullReturn()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__getTempFile" class="">_getTempFile()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#method__textFilter" class="">_textFilter()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#property__conf" class="">$_conf</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#property__mimepart" class="">$_mimepart</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Base.html#property__required" class="">$_required</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Deb.html#property__capability" class="">$_capability</a><br />
+                                                                    <a href="../classes/Horde_Mime_Viewer_Deb.html#property__metadata" class="">$_metadata</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Viewer.Deb.html"><div class="path-wrapper">Viewer/Deb.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Mime_Viewer</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_Mime_Viewer_Base.html">\Horde_Mime_Viewer_Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Mime_Viewer_Deb</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Anil Madhavapeddy <a href="mailto:anil@recoil.org">anil@recoil.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL 2.1</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__conf" name="property__conf" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_conf</h3>
+                <pre class="signature">$_conf : array</pre>
+                <p><em>Viewer configuration.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__mimepart" name="property__mimepart" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_mimepart</h3>
+                <pre class="signature">$_mimepart : \Horde_Mime_Part</pre>
+                <p><em>The Horde_Mime_Part object to render.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Mime_Part
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__required" name="property__required" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_required</h3>
+                <pre class="signature">$_required : array</pre>
+                <p><em>Required configuration parameters.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__capability" name="property__capability" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_capability</h3>
+                <pre class="signature">$_capability : array</pre>
+                <p><em>This driver&#039;s display capabilities.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__metadata" name="property__metadata" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_metadata</h3>
+                <pre class="signature">$_metadata : array</pre>
+                <p><em>Metadata for the current viewer/data.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_Mime_Part  <span class="argument">$part</span>, array  <span class="argument">$conf = array()</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$part </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$conf </td>
+                                <td><p>Configuration:</p>
+<pre>
+'location' - (string) Location of the dpkg binary [REQUIRED].
+'monospace' - (string) A class to use to display monospace text inline.
+              DEFAULT: Uses style="font-family:monospace"
+</pre></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMimePart" name="method_setMimePart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMimePart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMimePart(\Horde_Mime_Part  <span class="argument">$mime_part</span>) </pre>
+                <p><em>Sets the Horde_Mime_Part object for the class.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$mime_part </td>
+                                <td><p>The object with the data to be
+rendered.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_render" name="method_render" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">render()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">render(string  <span class="argument">$mode</span>) : array</pre>
+                <p><em>Return the rendered version of the Horde_Mime_Part object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$mode </td>
+                                <td><p>The mode:</p>
+<pre>
+'full' - A full representation of the MIME part, for use in a view
+         where the output to the browser can be set to the value
+         returned in 'type'. This mode should only return a single
+         MIME ID entry for viewing and should not return any status
+         information.
+'inline' - A representation of the MIME part that can be viewed inline
+           on a text/html page that may contain other HTML elements.
+'info' - A representation of the MIME part that can be viewed inline
+         on an text/html page that may contain other HTML elements.
+         This view is not a full view, but rather a condensed view of
+         the contents of the MIME part. This view is intended to be
+         displayed to the user with the intention that this MIME part's
+         subparts may also independently be viewed inline.
+'raw' - The raw data of the MIME part, generally useful for downloading
+        a part. This view exists in case this raw data needs to be
+        altered in any way.
+</pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array. The keys are the MIME parts that were handled
+by the driver. The values are either null (which
+indicates the driver is recommending that this
+particular MIME ID should not be displayed) or an array
+with the following keys:</p>
+<pre>
+'data' - (string) The rendered data.
+'status' - (array) An array of status information to be displayed to
+           the user.  Consists of arrays with the following keys:
+           'class' - (string) The class to use for display.
+           'img' - (string) An image to display.
+           'text' - (array) The text to display.
+'type' - (string) The MIME type of the rendered data.
+</pre>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_canRender" name="method_canRender" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">canRender()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">canRender(string  <span class="argument">$mode</span>) : boolean</pre>
+                <p><em>Can this driver render the the data?</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$mode </td>
+                                <td><p>The mode.  Either 'full', 'inline', 'info', or
+'raw'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the driver can render the data for the given
+view.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_embeddedMimeParts" name="method_embeddedMimeParts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">embeddedMimeParts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">embeddedMimeParts() : boolean</pre>
+                <p><em>Does this MIME part possibly contain embedded MIME parts?</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this driver supports parsing embedded MIME
+parts.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getEmbeddedMimeParts" name="method_getEmbeddedMimeParts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getEmbeddedMimeParts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getEmbeddedMimeParts() : mixed</pre>
+                <p><em>If this MIME part can contain embedded MIME part(s), and those part(s)
+exist, return a representation of that data.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>A Horde_Mime_Part object representing the embedded data.
+Returns null if no embedded MIME part(s) exist.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getConfigParam" name="method_getConfigParam" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getConfigParam()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getConfigParam(string  <span class="argument">$param</span>) : mixed</pre>
+                <p><em>Return a configuration parameter for the current viewer.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$param </td>
+                                <td><p>The parameter name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The value of the parameter; returns null if the
+parameter doesn't exist.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setConfigParam" name="method_setConfigParam" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setConfigParam()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setConfigParam(string  <span class="argument">$param</span>, mixed  <span class="argument">$value</span>) </pre>
+                <p><em>Sets a configuration parameter for the current viewer.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$param </td>
+                                <td><p>The parameter name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>The parameter value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDriver" name="method_getDriver" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDriver()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDriver() : string</pre>
+                <p><em>Returns the driver name for the current object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The driver name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMetadata" name="method_getMetadata" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMetadata()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMetadata(string  <span class="argument">$data</span>) : mixed</pre>
+                <p><em>Returns metadata information on the viewer/data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$data </td>
+                                <td><p>The metadata key.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The requested information, or null if the key doesn't
+exist.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__render" name="method__render" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_render()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_render() : array</pre>
+                <p><em>Return the full HTML rendered version of the Horde_Mime_Part object.</em></p>
+                <p>This MUST be text/html data.</p>
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>See render().</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__renderInline" name="method__renderInline" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_renderInline()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_renderInline() : array</pre>
+                <p><em>Return the rendered inline version of the Horde_Mime_Part object.</em></p>
+                <p>This MUST be text/html data.
+This is not a full HTML document - only the HTML necessary to output
+the part.</p>
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>See render().</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__renderInfo" name="method__renderInfo" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_renderInfo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_renderInfo() : array</pre>
+                <p><em>Return the rendered information about the Horde_Mime_Part object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>See parent::render().</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__renderRaw" name="method__renderRaw" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_renderRaw()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_renderRaw() : array</pre>
+                <p><em>Return the raw representation of the Horde_Mime_Part object.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>See render().</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getEmbeddedMimeParts" name="method__getEmbeddedMimeParts" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getEmbeddedMimeParts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getEmbeddedMimeParts() : mixed</pre>
+                <p><em>If this MIME part can contain embedded MIME part(s), and those part(s)
+exist, return a representation of that data.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>A Horde_Mime_Part object representing the embedded data.
+Returns null if no embedded MIME part(s) exist.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getViewer" name="method__getViewer" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getViewer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getViewer() : mixed</pre>
+                <p><em>Return the underlying MIME Viewer for this part.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>A Horde_Mime_Viewer object, or false if not found.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__renderReturn" name="method__renderReturn" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_renderReturn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_renderReturn(string  <span class="argument">$data = null</span>, string  <span class="argument">$type = null</span>) : array</pre>
+                <p><em>Internal helper function to create render data array for a MIME Part
+object that only has a single part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$data </td>
+                                <td><p>The rendered data.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The rendered type.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>See render().</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__renderFullReturn" name="method__renderFullReturn" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_renderFullReturn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_renderFullReturn(array  <span class="argument">$data</span>) : array</pre>
+                <p><em>Internal helper function to add base HTML tags to a render() return
+array that contains a single MIME part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>See render().</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>See render().</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getTempFile" name="method__getTempFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getTempFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getTempFile() : string</pre>
+                <p><em>Returns a temporary file name.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A temp filename.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__textFilter" name="method__textFilter" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_textFilter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_textFilter(string  <span class="argument">$text</span>, mixed  <span class="argument">$driver</span>, array  <span class="argument">$params = array()</span>) : string</pre>
+                <p><em>Filter text.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$text </td>
+                                <td><p>TODO</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$driver </td>
+                                <td><p>TODO</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>TODO</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The filtered text.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mime_Viewer_Base.html"><div class="path-wrapper">\Horde_Mime_Viewer_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Deb.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Viewer/Deb.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:32.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

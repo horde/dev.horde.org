@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">174</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-708709517"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-708709517" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Hermes.html">Hermes</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Ajax.html">Hermes_Ajax</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Ajax_Application.html">Hermes_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Ajax_Application_Handler.html">Hermes_Ajax_Application_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Api.html">Hermes_Api</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Application.html">Hermes_Application</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Data_Csv.html">Hermes_Data_Csv</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Data_Iif.html">Hermes_Data_Iif</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Data_Tsv.html">Hermes_Data_Tsv</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Data_Xls.html">Hermes_Data_Xls</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Driver.html">Hermes_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Driver_Sql.html">Hermes_Driver_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Exception.html">Hermes_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Factory_Driver.html">Hermes_Factory_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Admin_AddJobType.html">Hermes_Form_Admin_AddJobType</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Admin_DeleteJobType.html">Hermes_Form_Admin_DeleteJobType</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Admin_EditClientStepOne.html">Hermes_Form_Admin_EditClientStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Admin_EditClientStepTwo.html">Hermes_Form_Admin_EditClientStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Admin_EditJobTypeStepOne.html">Hermes_Form_Admin_EditJobTypeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Admin_EditJobTypeStepTwo.html">Hermes_Form_Admin_EditJobTypeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Deliverable.html">Hermes_Form_Deliverable</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Deliverable_ClientSelector.html">Hermes_Form_Deliverable_ClientSelector</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Export.html">Hermes_Form_Export</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_JobType_Add.html">Hermes_Form_JobType_Add</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_JobType_Edit_Step1.html">Hermes_Form_JobType_Edit_Step1</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Search.html">Hermes_Form_Search</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Time.html">Hermes_Form_Time</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Form_Time_Entry.html">Hermes_Form_Time_Entry</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_LoginTasks_SystemTask_Upgrade.html">Hermes_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Slice.html">Hermes_Slice</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_Table.html">Hermes_Table</a></li>
+                                                    <li class="class"><a href="../classes/Hermes_View_Sidebar.html">Hermes_View_Sidebar</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Hermes_Ajax_Application_Handler</h1>
+                    <p><em>Defines the AJAX actions used in Hermes.</em></p>
+                    <p>Copyright 2012-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (GPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_addTimer" class="">addTimer()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_createJobType" class="">createJobType()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_updateDeliverable" class="">updateDeliverable()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_deleteDeliverable" class="">deleteDeliverable()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_deleteJobType" class="">deleteJobType()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_deleteSlice" class="">deleteSlice()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_enterTime" class="">enterTime()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_listDeliverablesSelect" class="">listDeliverablesSelect()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_listDeliverables" class="">listDeliverables()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_getDeliverableDetail" class="">getDeliverableDetail()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_listJobTypes" class="">listJobTypes()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_listTimers" class="">listTimers()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_loadSlices" class="">loadSlices()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_pauseTimer" class="">pauseTimer()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_poll" class="">poll()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_search" class="">search()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_startTimer" class="">startTimer()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_stopTimer" class="">stopTimer()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_submitSlices" class="">submitSlices()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_updateJobType" class="">updateJobType()</a><br />
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method_updateSlice" class="">updateSlice()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Hermes_Ajax_Application_Handler.html#method__readSearchForm" class="">_readSearchForm()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Ajax.Application.Handler.html"><div class="path-wrapper">Ajax/Application/Handler.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Hermes</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\Horde_Core_Ajax_Application_Handler</div>
+                                                                                                    <div class="namespace-wrapper">\Hermes_Ajax_Application_Handler</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a> GPL</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addTimer" name="method_addTimer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addTimer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addTimer() : array</pre>
+                <p><em>Add a new timer.  Expects the following in $this-&gt;vars:
+  - desc:  The timer description.</em></p>
+                <ul>
+<li>client_id:
+<ul>
+<li>deliverable_id:</li>
+<li>jobtype_id:</li>
+</ul></li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array with an 'id' key.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createJobType" name="method_createJobType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createJobType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createJobType() : integer</pre>
+                <p><em>Create a new jobtype. Takes the following from $this-&gt;vars:
+  - name:     (string)  They type name.</em></p>
+                <ul>
+<li>billable: (boolean) Is this type billable?
+<ul>
+<li>enabled:  (boolean) Is this type enabled?</li>
+<li>rate:     (double)  The default hourly rate to use for this type.</li>
+</ul></li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The type id of the newly created type.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateDeliverable" name="method_updateDeliverable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateDeliverable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateDeliverable() </pre>
+                <p><em>Create a new deliverable. Takes the following in $this-&gt;vars:
+  - deliverable_id:      The id of the deliverable if editing.</em></p>
+                <ul>
+<li>name:   (string)     The deliverable name.
+<ul>
+<li>active: (boolean)    Is the deliverable active?</li>
+<li>estimate: (integer)  The estimate for this deliverable.</li>
+<li>desc: (string)       The description.</li>
+<li>client_id: (string)     The client id this deliverable is for.</li>
+</ul></li>
+</ul>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteDeliverable" name="method_deleteDeliverable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteDeliverable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteDeliverable() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteJobType" name="method_deleteJobType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteJobType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteJobType() </pre>
+                <p><em>Delete a jobtype. Takes the following in $this-&gt;vars:
+  - id:  The jobtype id to delete.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteSlice" name="method_deleteSlice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteSlice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteSlice() : boolean</pre>
+                <p><em>Remove a slice. Expects the following in $this-&gt;vars:
+  - id:  The slice ids</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enterTime" name="method_enterTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">enterTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enterTime() : array</pre>
+                <p><em>Enter a new time slice.</em></p>
+                <p>@see Hermes_Slice::readForm for the data expected
+to be sent in the posted form.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The new timeslice</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listDeliverablesSelect" name="method_listDeliverablesSelect" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listDeliverablesSelect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listDeliverablesSelect() : array</pre>
+                <p><em>Get a list of client deliverables suitable for building a select list.</em></p>
+                <p>Expects the following in $this-&gt;vars:</p>
+<ul>
+<li>c: The client id, or an array of client ids if querying for specific
+clients. Returns all deliverables otherwise.</li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>@see Hermes::getCostObjectType</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listDeliverables" name="method_listDeliverables" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listDeliverables()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listDeliverables() </pre>
+                <p><em>Get the list of Hermes-only deliverables for the requested client.</em></p>
+                <ul>
+<li>c:   The client id
+<ul>
+<li>id:  The optional deliverable id, if requesting a specific deliverable.</li>
+</ul></li>
+</ul>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDeliverableDetail" name="method_getDeliverableDetail" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDeliverableDetail()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDeliverableDetail() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listJobTypes" name="method_listJobTypes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listJobTypes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listJobTypes() : array</pre>
+                <p><em>Return descriptions of job types. If $this-&gt;vars-&gt;id is present it is
+used to filter by the requested id.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array describing the type.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listTimers" name="method_listTimers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listTimers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listTimers(boolean  <span class="argument">$running_only = false</span>) : array</pre>
+                <p><em>Return the current list of timers.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$running_only </td>
+                                <td><p>Only return running timers if true.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of timer arrays. @see Hermes::listTimers()</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadSlices" name="method_loadSlices" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadSlices()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadSlices() : array</pre>
+                <p><em>Fetch a collection of time slices. For now, just allows a search for
+all of a single employees time. Either submitted or not submitted.</em></p>
+                <p>Expects the following values in $this-&gt;vars:</p>
+<ul>
+<li>e:     The employee id</li>
+<li>s:     Include submitted slices if true</li>
+<li>sort:  The sort-by value</li>
+<li>dir:   The sort direction</li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of time slice data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pauseTimer" name="method_pauseTimer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pauseTimer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pauseTimer() : boolean</pre>
+                <p><em>Pause a timer. Expects the following data in $this-&gt;vars:
+  - t: The timer id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_poll" name="method_poll" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">poll()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">poll() : array</pre>
+                <p><em>Poll the server. Currently also returns the list of current timer data
+so the UI can be updated periodically.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of timer arrays. @see self::listTimers()</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_search" name="method_search" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">search()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">search() : array</pre>
+                <p><em>Perform a slice search.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The search results.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_startTimer" name="method_startTimer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">startTimer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">startTimer() : boolean|array</pre>
+                <p><em>Restart a paused timer. Expects the following data in $this-&gt;vars:
+  - t:  The timer id.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean|array
+                                            &mdash; <p>If the timer is exclusive, returns a new list
+of timer data, otherwise true on success/false
+on failure.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stopTimer" name="method_stopTimer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stopTimer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stopTimer() : array</pre>
+                <p><em>Stop a timer. Expects the following in $this-&gt;vars:
+  - t:  The timer id.</em></p>
+                <ul>
+<li>restart:</li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array describing the current timer state. Contains:</p>
+<ul>
+<li>h: The total number of hours elapsed so far.</li>
+<li>n: A note to apply to the description field of a time slice.</li>
+<li>t: The new timer title, if restarting.</li>
+</ul>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_submitSlices" name="method_submitSlices" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">submitSlices()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">submitSlices() : boolean</pre>
+                <p><em>Mark slices as submitted.  Expects the following in $this-&gt;vars:
+  - items:  The slice ids to submit.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateJobType" name="method_updateJobType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateJobType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateJobType() : boolean</pre>
+                <p><em>Update an existing jobtype. Takes the following from $this-&gt;vars:
+  - id:       (integer) The type id of the exsting type.</em></p>
+                <ul>
+<li>name:     (string)  They type name.
+<ul>
+<li>billable: (boolean) Is this type billable?</li>
+<li>enabled:  (boolean) Is this type enabled?</li>
+<li>rate:     (double)  The default hourly rate to use for this type.</li>
+</ul></li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True on success/false on failure.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateSlice" name="method_updateSlice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateSlice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateSlice() : array</pre>
+                <p><em>Update a slice.</em></p>
+                <p>@see Hermes_Slice::readForm() for the data expeted in
+the posted form.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The new slice data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__readSearchForm" name="method__readSearchForm" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_readSearchForm()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_readSearchForm() </pre>
+                <p><em>Reads the search form submitted and return the search criteria</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Handler.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Ajax/Application/Handler.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:27.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">374</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-5039720"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-5039720" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Ansel.html">Ansel</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ActionHandler.html">Ansel_ActionHandler</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Application.html">Ansel_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Application_Handler.html">Ansel_Ajax_Application_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_EditCaption.html">Ansel_Ajax_Imple_EditCaption</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_EditFaces.html">Ansel_Ajax_Imple_EditFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_LocationAutoCompleter.html">Ansel_Ajax_Imple_LocationAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_ToggleGalleryActions.html">Ansel_Ajax_Imple_ToggleGalleryActions</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_ToggleOtherGalleries.html">Ansel_Ajax_Imple_ToggleOtherGalleries</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Api.html">Ansel_Api</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Application.html">Ansel_Application</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_Cloud.html">Ansel_Block_Cloud</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_Gallery.html">Ansel_Block_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_MyGalleries.html">Ansel_Block_MyGalleries</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RandomPhoto.html">Ansel_Block_RandomPhoto</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RecentComments.html">Ansel_Block_RecentComments</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RecentFaces.html">Ansel_Block_RecentFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_Recentlyadded.html">Ansel_Block_Recentlyadded</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RecentlyAddedGeodata.html">Ansel_Block_RecentlyAddedGeodata</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Config.html">Ansel_Config</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Exception.html">Ansel_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces.html">Ansel_Faces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces_Base.html">Ansel_Faces_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces_Facedetect.html">Ansel_Faces_Facedetect</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces_User.html">Ansel_Faces_User</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Factory_Faces.html">Ansel_Factory_Faces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Factory_Storage.html">Ansel_Factory_Storage</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Factory_Styles.html">Ansel_Factory_Styles</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Ecard.html">Ansel_Form_Ecard</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Image.html">Ansel_Form_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_ImageDate.html">Ansel_Form_ImageDate</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Upload.html">Ansel_Form_Upload</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Watermark.html">Ansel_Form_Watermark</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Gallery.html">Ansel_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Gallery_Decorator_Date.html">Ansel_Gallery_Decorator_Date</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_GalleryMode_Base.html">Ansel_GalleryMode_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_GalleryMode_Date.html">Ansel_GalleryMode_Date</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_GalleryMode_Normal.html">Ansel_GalleryMode_Normal</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Image.html">Ansel_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator.html">Ansel_ImageGenerator</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_Mini.html">Ansel_ImageGenerator_Mini</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_PolaroidThumb.html">Ansel_ImageGenerator_PolaroidThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_PolaroidThumbStack.html">Ansel_ImageGenerator_PolaroidThumbStack</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_RoundedThumb.html">Ansel_ImageGenerator_RoundedThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_RoundedThumbStack.html">Ansel_ImageGenerator_RoundedThumbStack</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_Screen.html">Ansel_ImageGenerator_Screen</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_ShadowThumb.html">Ansel_ImageGenerator_ShadowThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_ShadowThumbStack.html">Ansel_ImageGenerator_ShadowThumbStack</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_SquareThumb.html">Ansel_ImageGenerator_SquareThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_Thumb.html">Ansel_ImageGenerator_Thumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_LoginTasks_SystemTask_Upgrade.html">Ansel_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Prefs_Special_GallerySelect.html">Ansel_Prefs_Special_GallerySelect</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Prefs_Special_GalleryStyle.html">Ansel_Prefs_Special_GalleryStyle</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Queue_ProcessThumbs.html">Ansel_Queue_ProcessThumbs</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report.html">Ansel_Report</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report_letter.html">Ansel_Report_letter</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report_mail.html">Ansel_Report_mail</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report_tickets.html">Ansel_Report_tickets</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Storage.html">Ansel_Storage</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Style.html">Ansel_Style</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_TagBrowser.html">Ansel_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tagger.html">Ansel_Tagger</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Test.html">Ansel_Test</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tile_DateGallery.html">Ansel_Tile_DateGallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tile_Gallery.html">Ansel_Tile_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tile_Image.html">Ansel_Tile_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Ansel.html">Ansel_View_Ansel</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Base.html">Ansel_View_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_EmbeddedRenderer_GalleryLink.html">Ansel_View_EmbeddedRenderer_GalleryLink</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_EmbeddedRenderer_Mini.html">Ansel_View_EmbeddedRenderer_Mini</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_EmbeddedRenderer_Slideshow.html">Ansel_View_EmbeddedRenderer_Slideshow</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Gallery.html">Ansel_View_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryProperties.html">Ansel_View_GalleryProperties</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryRenderer_Base.html">Ansel_View_GalleryRenderer_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryRenderer_Gallery.html">Ansel_View_GalleryRenderer_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryRenderer_GalleryLightbox.html">Ansel_View_GalleryRenderer_GalleryLightbox</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Image.html">Ansel_View_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_List.html">Ansel_View_List</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Results.html">Ansel_View_Results</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Slideshow.html">Ansel_View_Slideshow</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Upload.html">Ansel_View_Upload</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget.html">Ansel_Widget</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Actions.html">Ansel_Widget_Actions</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Base.html">Ansel_Widget_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_GalleryFaces.html">Ansel_Widget_GalleryFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Geotag.html">Ansel_Widget_Geotag</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_ImageFaces.html">Ansel_Widget_ImageFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Links.html">Ansel_Widget_Links</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_OtherGalleries.html">Ansel_Widget_OtherGalleries</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_OwnerFaces.html">Ansel_Widget_OwnerFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_SimilarPhotos.html">Ansel_Widget_SimilarPhotos</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Tags.html">Ansel_Widget_Tags</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_XPPublisher.html">Ansel_XPPublisher</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Ansel_View_Image</h1>
+                    <p><em>The Ansel_View_Image:: class wraps display of individual images.</em></p>
+                    <p>See the enclosed file LICENSE for license information (GPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Ansel_View_Ansel.html#method_addWidget" class="">addWidget()</a><br />
+                                                                    <a href="../classes/Ansel_View_Ansel.html#method_renderWidgets" class="">renderWidgets()</a><br />
+                                                                    <a href="../classes/Ansel_View_Ansel.html#method_countWidgets" class="">countWidgets()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method_viewType" class="">viewType()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method_getGalleryCrumbData" class="">getGalleryCrumbData()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method_getTitle" class="">getTitle()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method_html" class="">html()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#method___set" class="">__set()</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#method___isset" class="">__isset()</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#method_getParams" class="">getParams()</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#method_json" class="">json()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Ansel_View_Ansel.html#property_resource" class="">$resource</a><br />
+                                                                    <a href="../classes/Ansel_View_Ansel.html#property_gallery" class="">$gallery</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Ansel_View_Ansel.html#method__renderWidgets" class="">_renderWidgets()</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#method__getGallery" class="">_getGallery()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method__prepare" class="">_prepare()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method__getView" class="">_getView()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method__html" class="">_html()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method__getCommentData" class="">_getCommentData()</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#method__includeViewSpecificScripts" class="">_includeViewSpecificScripts()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Ansel_View_Ansel.html#property__widgets" class="">$_widgets</a><br />
+                                                                    <a href="../classes/Ansel_View_Base.html#property__params" class="">$_params</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__slug" class="">$_slug</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__page" class="">$_page</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__date" class="">$_date</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__mode" class="">$_mode</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__style" class="">$_style</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__geometry" class="">$_geometry</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__imageList" class="">$_imageList</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__revList" class="">$_revList</a><br />
+                                                                    <a href="../classes/Ansel_View_Image.html#property__urls" class="">$_urls</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/View.Image.html"><div class="path-wrapper">View/Image.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Ansel</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                        <div class="namespace-wrapper"><a href="../classes/Ansel_View_Base.html">\Ansel_View_Base</a></div>
+                                                                    
+                                        <div class="namespace-wrapper"><a href="../classes/Ansel_View_Ansel.html">\Ansel_View_Ansel</a></div>
+                                                                                                    <div class="namespace-wrapper">\Ansel_View_Image</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2003-2017 Horde LLC (<a href="http://www.horde.org">http://www.horde.org</a>)</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a> GPL</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Chuck Hagenbuch <a href="mailto:chuck@horde.org">chuck@horde.org</a></p>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_resource" name="property_resource" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$resource</h3>
+                <pre class="signature">$resource : mixed</pre>
+                <p><em>The ansel resource this view is for.</em></p>
+                
+
+                                <h4>Type</h4>
+                mixed
+                &mdash; Either an Ansel_Gallery or Ansel_Image                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            TODO
+                        </th>
+                        <td>
+                                                            <p>: visibility protected</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_gallery" name="property_gallery" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$gallery</h3>
+                <pre class="signature">$gallery : \Ansel_Gallery</pre>
+                <p><em>The gallery object (will be eq to $resource in a gallery view</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Ansel_Gallery.html">\Ansel_Gallery</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            TODO
+                        </th>
+                        <td>
+                                                            <p>: visibility protected</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__widgets" name="property__widgets" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_widgets</h3>
+                <pre class="signature">$_widgets : array</pre>
+                <p><em>Collection of Ansel_Widgets to display in this view.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__params" name="property__params" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_params</h3>
+                <pre class="signature">$_params : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__slug" name="property__slug" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_slug</h3>
+                <pre class="signature">$_slug : string</pre>
+                <p><em>The parent gallery&#039;s slug name, if available.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__page" name="property__page" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_page</h3>
+                <pre class="signature">$_page : integer</pre>
+                <p><em>The page this image appears on in the current gallery view, if available.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__date" name="property__date" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_date</h3>
+                <pre class="signature">$_date : array</pre>
+                <p><em>The image&#039;s date for use in date browsing.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__mode" name="property__mode" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_mode</h3>
+                <pre class="signature">$_mode : string</pre>
+                <p><em>The gallery mode for this images&#039;s current gallery view.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__style" name="property__style" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_style</h3>
+                <pre class="signature">$_style : \Ansel_Style</pre>
+                <p><em>The parent gallery&#039;s current style.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Ansel_Style.html">\Ansel_Style</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__geometry" name="property__geometry" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_geometry</h3>
+                <pre class="signature">$_geometry : array</pre>
+                <p><em>The image geometry.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__imageList" name="property__imageList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_imageList</h3>
+                <pre class="signature">$_imageList : array</pre>
+                <p><em>List of image ids in the parent gallery. Used for next/prev fetching.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__revList" name="property__revList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_revList</h3>
+                <pre class="signature">$_revList : array</pre>
+                <p><em>Cache {@link self::_imageList} in reverse.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__urls" name="property__urls" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_urls</h3>
+                <pre class="signature">$_urls : array</pre>
+                <p><em>An array of various URLs that are displayed in the view.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addWidget" name="method_addWidget" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addWidget()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addWidget(\Ansel_Widget  <span class="argument">$widget</span>) </pre>
+                <p><em>Add an Ansel_Widget to be displayed in this view.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Ansel_Widget.html">\Ansel_Widget</a></td>
+                                <td>$widget </td>
+                                <td><p>The Ansel_Widget to display</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renderWidgets" name="method_renderWidgets" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">renderWidgets()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renderWidgets() </pre>
+                <p><em>Output any widgets associated with this view.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_countWidgets" name="method_countWidgets" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">countWidgets()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">countWidgets() : integer</pre>
+                <p><em>Count the number of widgets we have attached.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number of widgets attached to this view.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_viewType" name="method_viewType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">viewType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">viewType() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGalleryCrumbData" name="method_getGalleryCrumbData" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGalleryCrumbData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGalleryCrumbData() : array</pre>
+                <p><em>Return the gallery&#039;s breadcrumb data.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTitle" name="method_getTitle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTitle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTitle() : string</pre>
+                <p><em>Get the title for this view.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The title.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_html" name="method_html" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">html()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">html() : string</pre>
+                <p><em>Get the HTML representing this view.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params = array()</span>) </pre>
+                <p><em>Const&#039;r</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(  <span class="argument">$property</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$property </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___set" name="method___set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__set(  <span class="argument">$property</span>,   <span class="argument">$value</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$property </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___isset" name="method___isset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__isset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__isset(  <span class="argument">$property</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$property </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParams" name="method_getParams" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParams()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParams() : \unknown_type</pre>
+                <p><em>Getter for the view parameters.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \unknown_type
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_json" name="method_json" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">json()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">json(\Ansel_Gallery  <span class="argument">$gallery</span>, array  <span class="argument">$params = array()</span>) : string</pre>
+                <p><em>JSON representation of this gallery&#039;s images. We don&#039;t use
+Ansel_Gallery::toJson() on purpose since that is a general jsonification
+of the gallery data. This method is specific to the view, paging, links
+etc.</em></p>
+                <p>..</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Ansel_Gallery.html">\Ansel_Gallery</a></td>
+                                <td>$gallery </td>
+                                <td><p>The gallery to represent in this view</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>An array of parameters for this method:</p>
+<pre>
+     full       - Should a full URL be generated? [false]
+     from       - Starting image count [0]
+     count      - The number of images to include (starting at from) [0]
+     image_view - The type of ImageGenerator to obtain the src url for. [screen]
+     view_links - Should the JSON include links to the Image and/or Gallery View? [false]
+     perpage    - Number of images per page [from user prefs]
+  </pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A serialized JSON array.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__renderWidgets" name="method__renderWidgets" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_renderWidgets()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_renderWidgets() </pre>
+                <p><em>Default widget rendering, can be overridden by any subclass.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Ansel.html"><div class="path-wrapper">\Ansel_View_Ansel</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getGallery" name="method__getGallery" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getGallery()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getGallery(integer  <span class="argument">$galleryId = null</span>, string  <span class="argument">$slug = &#039;&#039;</span>) : \Ansel_Gallery</pre>
+                <p><em>Todo</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$galleryId </td>
+                                <td><p>The gallery id</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$slug </td>
+                                <td><p>The gallery slug</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Ansel_Gallery.html">\Ansel_Gallery</a>
+                                            &mdash; <p>The requested Ansel_Gallery object</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_View_Base.html"><div class="path-wrapper">\Ansel_View_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__prepare" name="method__prepare" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_prepare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_prepare() </pre>
+                <p><em>Build variables needed to output the html. Extracted to this method so
+child classes can use this as well.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getView" name="method__getView" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getView()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getView() : \Horde_View</pre>
+                <p><em>Generate the Horde_View and populate with basic/common properties.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_View
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__html" name="method__html" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_html()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_html() </pre>
+                <p><em>Image view specific HTML - done so we can extend View_Image for things
+like the slideshow view etc.</em></p>
+                <p>..</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getCommentData" name="method__getCommentData" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getCommentData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getCommentData() : boolean|array</pre>
+                <p><em>Helper for comments</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean|array
+                                            &mdash; <p>Either an array of comment data or false on failure</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__includeViewSpecificScripts" name="method__includeViewSpecificScripts" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_includeViewSpecificScripts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_includeViewSpecificScripts() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Image.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/View/Image.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:18.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

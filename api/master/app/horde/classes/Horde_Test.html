@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">227</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-603716584"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-603716584" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Ajax_Application.html">Horde_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Ajax_Application_FacebookHandler.html">Horde_Ajax_Application_FacebookHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Ajax_Application_Handler.html">Horde_Ajax_Application_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Ajax_Application_TwitterHandler.html">Horde_Ajax_Application_TwitterHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Api.html">Horde_Api</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Application.html">Horde_Application</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Autoloader_ClassPathMapper_HordeDevel.html">Horde_Autoloader_ClassPathMapper_HordeDevel</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account.html">Horde_Block_Account</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Base.html">Horde_Block_Account_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Finger.html">Horde_Block_Account_Finger</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Ldap.html">Horde_Block_Account_Ldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Account_Localhost.html">Horde_Block_Account_Localhost</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Cloud.html">Horde_Block_Cloud</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_FbStream.html">Horde_Block_FbStream</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Feed.html">Horde_Block_Feed</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Fortune.html">Horde_Block_Fortune</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Google.html">Horde_Block_Google</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Iframe.html">Horde_Block_Iframe</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Metar.html">Horde_Block_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Moon.html">Horde_Block_Moon</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Sunrise.html">Horde_Block_Sunrise</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Time.html">Horde_Block_Time</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_TwitterTimeline.html">Horde_Block_TwitterTimeline</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Vatid.html">Horde_Block_Vatid</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Block_Weather.html">Horde_Block_Weather</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Cli_Backup.html">Horde_Cli_Backup</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_SystemTask_GarbageCollection.html">Horde_LoginTasks_SystemTask_GarbageCollection</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_SystemTask_Upgrade.html">Horde_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_AdminCheck.html">Horde_LoginTasks_Task_AdminCheck</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_LastLogin.html">Horde_LoginTasks_Task_LastLogin</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_TosAgreement.html">Horde_LoginTasks_Task_TosAgreement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_LoginTasks_Task_UpgradeCheck.html">Horde_LoginTasks_Task_UpgradeCheck</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Activesync.html">Horde_Prefs_Special_Activesync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Category.html">Horde_Prefs_Special_Category</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Facebook.html">Horde_Prefs_Special_Facebook</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Syncml.html">Horde_Prefs_Special_Syncml</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Prefs_Special_Twitter.html">Horde_Prefs_Special_Twitter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test.html">Horde_Test</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Tree_Renderer_Menu.html">Horde_Tree_Renderer_Menu</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Tree_Renderer_Sidebar.html">Horde_Tree_Renderer_Sidebar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Sidebar.html">Horde_View_Sidebar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Topbar.html">Horde_View_Topbar</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Test</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Test.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_phpModuleCheck" class="">phpModuleCheck()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_phpSettingCheck" class="">phpSettingCheck()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_pearModuleCheck" class="">pearModuleCheck()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_requiredFileCheck" class="">requiredFileCheck()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_requiredAppCheck" class="">requiredAppCheck()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_getPhpVersionInformation" class="">getPhpVersionInformation()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method_appTests" class="">appTests()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Test.html#method__splitPhpVersion" class="">_splitPhpVersion()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkLzCompression" class="">_checkLzCompression()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkIconvImplementation" class="">_checkIconvImplementation()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkLibxmlVersion" class="">_checkLibxmlVersion()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkFileinfo" class="">_checkFileinfo()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkPam" class="">_checkPam()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkMongo" class="">_checkMongo()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkMysql" class="">_checkMysql()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkMemcache" class="">_checkMemcache()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkMemoryLimit" class="">_checkMemoryLimit()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkGcDivisor" class="">_checkGcDivisor()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__checkGcProbability" class="">_checkGcProbability()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__requiredFileCheck" class="">_requiredFileCheck()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__status" class="">_status()</a><br />
+                                                                    <a href="../classes/Horde_Test.html#method__outputLine" class="">_outputLine()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Test.html#property__phpver" class="">$_phpver</a><br />
+                                                                    <a href="../classes/Horde_Test.html#property__supported" class="">$_supported</a><br />
+                                                                    <a href="../classes/Horde_Test.html#property__moduleList" class="">$_moduleList</a><br />
+                                                                    <a href="../classes/Horde_Test.html#property__settingsList" class="">$_settingsList</a><br />
+                                                                    <a href="../classes/Horde_Test.html#property__pearList" class="">$_pearList</a><br />
+                                                                    <a href="../classes/Horde_Test.html#property__fileList" class="">$_fileList</a><br />
+                                                                    <a href="../classes/Horde_Test.html#property__appList" class="">$_appList</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Test.html"><div class="path-wrapper">Test.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Horde</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Test</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__phpver" name="property__phpver" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_phpver</h3>
+                <pre class="signature">$_phpver : array</pre>
+                <p><em>The PHP version of the system.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__supported" name="property__supported" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_supported</h3>
+                <pre class="signature">$_supported : array</pre>
+                <p><em>Supported versions of PHP.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__moduleList" name="property__moduleList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_moduleList</h3>
+                <pre class="signature">$_moduleList : array</pre>
+                <p><em>The module list
+&lt;pre&gt;
+KEY:   extension name
+VALUE: Either the description or an array with the following entries:
+       descrip: (string) Module description
+       error: (string) Error message
+       fatal: (boolean) Is missing extension fatal?
+       function: (string) Reference to function to run. If function
+                 returns boolean false, error message will be output.</em></p>
+                <p>If function returns a string, this error message
+will be used.
+phpver: (string) The PHP version above which to do the test
+</pre></p>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__settingsList" name="property__settingsList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_settingsList</h3>
+                <pre class="signature">$_settingsList : array</pre>
+                <p><em>PHP settings list.</em></p>
+                <pre>
+KEY:   setting name
+VALUE: An array with the following entries:
+       error: (string) Error message.
+       function: (string) Reference to function to run. If function
+                 returns non-empty value, error message will be output.
+       setting: (mixed) Either a boolean (whether setting should be
+                on or off) or 'value', which will simply output the
+                value of the setting.
+</pre>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__pearList" name="property__pearList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_pearList</h3>
+                <pre class="signature">$_pearList : array</pre>
+                <p><em>PEAR modules list.</em></p>
+                <pre>
+KEY:   PEAR class name
+VALUE: An array with the following entries:
+       depends: (?) This module depends on another module.
+       error: (string) Error message.
+       function: (string) Reference to function to run if module is
+                 found.
+       path: (string) The path to the PEAR module. Only needed if
+                KEY is not autoloadable.
+       required: (boolean) Is this PEAR module required?
+</pre>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__fileList" name="property__fileList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_fileList</h3>
+                <pre class="signature">$_fileList : array</pre>
+                <p><em>Required configuration files.</em></p>
+                <pre>
+KEY:   file path
+VALUE: The error message to use (null to use default message)
+</pre>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__appList" name="property__appList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_appList</h3>
+                <pre class="signature">$_appList : array</pre>
+                <p><em>Inter-Horde application dependencies.</em></p>
+                <pre>
+KEY:   app name
+VALUE: An array with the following entries:
+       error: (string) Error message.
+       version: (string) Minimum version required of the app.
+</pre>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct() </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_phpModuleCheck" name="method_phpModuleCheck" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">phpModuleCheck()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">phpModuleCheck() : string</pre>
+                <p><em>Check the list of PHP modules.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_phpSettingCheck" name="method_phpSettingCheck" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">phpSettingCheck()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">phpSettingCheck(  <span class="argument">$settings = null</span>) : string</pre>
+                <p><em>Checks the list of PHP settings.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$settings </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            params
+                        </th>
+                        <td>
+                                                                                            <p>array $settings  The list of settings to check.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pearModuleCheck" name="method_pearModuleCheck" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pearModuleCheck()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pearModuleCheck() : string</pre>
+                <p><em>Check the list of PEAR modules.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_requiredFileCheck" name="method_requiredFileCheck" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">requiredFileCheck()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">requiredFileCheck() : string</pre>
+                <p><em>Check the list of required files</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_requiredAppCheck" name="method_requiredAppCheck" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">requiredAppCheck()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">requiredAppCheck() : string</pre>
+                <p><em>Check the list of required Horde applications.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPhpVersionInformation" name="method_getPhpVersionInformation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPhpVersionInformation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPhpVersionInformation() : object</pre>
+                <p><em>Obtain information on the PHP version.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>stdClass  TODO</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_appTests" name="method_appTests" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">appTests()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">appTests() : string</pre>
+                <p><em>Any application specific tests that need to be done.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__splitPhpVersion" name="method__splitPhpVersion" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_splitPhpVersion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_splitPhpVersion(string  <span class="argument">$version</span>) </pre>
+                <p><em>Parse PHP version.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$version </td>
+                                <td><p>A PHP-style version string (X.X.X).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkLzCompression" name="method__checkLzCompression" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkLzCompression()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkLzCompression() : boolean</pre>
+                <p><em>Check for either horde_lz4 or lzf.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>False on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkIconvImplementation" name="method__checkIconvImplementation" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkIconvImplementation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkIconvImplementation() : boolean</pre>
+                <p><em>Additional check for iconv module implementation.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>False on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkLibxmlVersion" name="method__checkLibxmlVersion" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkLibxmlVersion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkLibxmlVersion() : boolean</pre>
+                <p><em>Additional check for libxml version.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>False on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkFileinfo" name="method__checkFileinfo" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkFileinfo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkFileinfo() : boolean</pre>
+                <p><em>Additional check for fileinfo module.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>False on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkPam" name="method__checkPam" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkPam()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkPam() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkMongo" name="method__checkMongo" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkMongo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkMongo() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkMysql" name="method__checkMysql" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkMysql()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkMysql() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkMemcache" name="method__checkMemcache" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkMemcache()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkMemcache() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkMemoryLimit" name="method__checkMemoryLimit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkMemoryLimit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkMemoryLimit() : boolean</pre>
+                <p><em>Additional check for &#039;session.gc_divisor&#039;.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Returns true if error string should be displayed.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkGcDivisor" name="method__checkGcDivisor" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkGcDivisor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkGcDivisor() : boolean</pre>
+                <p><em>Additional check for &#039;session.gc_divisor&#039;.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Returns true if error string should be displayed.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkGcProbability" name="method__checkGcProbability" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkGcProbability()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkGcProbability() : boolean</pre>
+                <p><em>Additional check for &#039;session.gc_probability&#039;.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Returns true if error string should be displayed.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__requiredFileCheck" name="method__requiredFileCheck" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_requiredFileCheck()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_requiredFileCheck(array  <span class="argument">$filelist</span>, string  <span class="argument">$php</span>, boolean  <span class="argument">$is_local = false</span>) : string</pre>
+                <p><em>Check the list of required files</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$filelist </td>
+                                <td><p>List of files to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$php </td>
+                                <td><p>PHP CLI location.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$is_local </td>
+                                <td><p>Is filelist a &quot;local&quot; file?</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__status" name="method__status" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_status()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_status(boolean  <span class="argument">$bool</span>, boolean  <span class="argument">$required = true</span>) : string</pre>
+                <p><em>Output the results of a status check.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$bool </td>
+                                <td><p>The result of the status check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$required </td>
+                                <td><p>Whether the checked item is required.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML of the result of the status check.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__outputLine" name="method__outputLine" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_outputLine()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_outputLine(array  <span class="argument">$entry</span>) : string</pre>
+                <p><em>Internal output function.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$entry </td>
+                                <td><p>Array with the following values:</p>
+<pre>
+1st value: Header
+2nd value: Test Result
+3rd value: Error message (if present)
+4th value: Error level (if present): 0 = error, 1 = warning
+</pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>HTML output.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Test.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Test.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:31.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

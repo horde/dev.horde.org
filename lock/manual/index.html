@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Horde/Routes: Manual: Setting Up Routes</title>
+
+  <link href="/routes/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="manual_setting-up-routes">
+  <div id="wrapper">
+
+  <div id="header" class="clr">
+    <div id="logo" class="left">
+      <span>
+      <a href="/routes/"><img alt="Horde/Routes" src="/routes/images/common/logo.gif" /></a>
+      </span>
+    </div>
+      <ul id="nav" class="right">
+        <li><a href="/routes/">Home</a></li>
+        <li><a href="/routes/install.html">Install</a></li>
+        <li><a href="/routes/integrate.html">Integrate</a></li>
+        <li>Manual</li>
+      </ul>
+  </div>
+
+  <div id="content" class="clr">
+      
+  <h1>Manual</h1>
+
+  <div id="main">
+    <h2 class="top" id="setting-up-routes">Setting Up Routes</h2>
+    <p>
+      To setup Horde/Routes, it is assumed that you are using a web framework that has the
+      Horde/Routes mechanism integrated for you. The web framework should have somewhere
+      setup for you to add a Route to your Mapper.
+    </p>
+
+    <dl>
+      <dt>Route (<code>Horde_Routes_Route</code>)</dt>
+      <dd>
+        A Route is a mapping of a URL to a controller, action, and/or additional
+        variables. Matching a Route will always result in a controller and action.
+        Route objects are typically created and managed by the Mapper.
+      </dd>
+      <dt>Mapper (<code>Horde_Routes_Mapper</code>)</dt>
+      <dd>
+        The Mapper is the main class used to hold, organize, and match Routes.
+        While you can create a Route object independently of the Mapper, its not
+        nearly as useful. The Mapper is what you will use to add Routes and what
+        the web framework uses to match incoming URLs.
+      </dd>
+    </dl>
+    
+    <p>
+      We will also assume for this introduction that your Mapper instance is exposed
+      to you as <code>$m</code>, for example:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span> <span class="punct">=</span> <span class="keyword">new</span> <span class="constant">Horde_Routes_Mapper</span><span class="punct">();</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">');</span></pre></div>
+
+    <p>
+      The above example covers one of the most common routes that is typically
+      considered the default route. This very flexible route allows virtually all of
+      your controllers and actions to be called. Adding more routes is done in a
+      similar manner, by calling <code>$m->connect(...)</code> and giving the Mapper 
+      instance a set of arguments.
+    </p>
+      
+    <p>
+      The following are all valid examples of adding routes:
+    </p>
+    
+    <div class="syntax syntax_php">
+    <pre>
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:year/:month/:day</span><span class="punct">',</span> 
+      <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;</span><span class="number">2004</span><span class="punct">,</span>
+      <span class="punct">'</span><span class="string">requirements</span><span class="punct">'=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">year</span><span class="punct">'=&gt;'</span><span class="string">d{2,4}</span><span class="punct">',</span> <span class="punct">'</span><span class="string">month</span><span class="punct">'=&gt;'</span><span class="string">d{1,2}</span><span class="punct">')));</span>
+
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">feeds/:category/atom.xml</span><span class="punct">',</span> 
+      <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">feeds</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">atom</span><span class="punct">'));</span>
+
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">history</span><span class="punct">',</span> <span class="punct">'</span><span class="string">archives/by_eon/:century</span><span class="punct">',</span> 
+      <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">aggregate</span><span class="punct">',</span> <span class="punct">'</span><span class="string">century</span><span class="punct">'=&gt;</span><span class="number">1800</span><span class="punct">));</span>
+
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">article</span><span class="punct">',</span> <span class="punct">'</span><span class="string">article/:section/:slug/:page.html</span><span class="punct">',</span>
+      <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">article</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">'));</span>
+
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">');</span>
+
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">home</span><span class="punct">',</span> <span class="punct">'</span><span class="string"></span><span class="punct">',</span> 
+      <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">index</span><span class="punct">'));</span></pre></div>
+    
+    <p>
+      In the following sections, we'll highlight the section of the Route we're
+      referring to in the first example.
+    </p>
+      
+    <h2>Route Name</h2>
+
+    <p>Optional</p>
+    
+    <div class="syntax syntax_php">
+    <pre>
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">history</span><span class="punct">',</span> <span class="punct">'</span><span class="string">archives/by_eon/:century</span><span class="punct">',</span> 
+      <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives...</span></pre></div>
+
+    <p>
+      A Route can have a name, this is also referred to as Named Routes and lets you
+      quickly reference the Defaults that the route was configured with. This is the
+      first non-keyword argument, and if not present the first non-keyword argument
+      is assumed to be the route path.
+
+      Route Names are mainly used when generating routes, and have no other effect
+      on matching a URL.
+    </p>
+
+    <h2>Static Named Routes</h2>
+
+    <p>
+      Horde/Routes also supports static named routes. These are routes that do not 
+      involve actual URL generation, but instead allow you to quickly alias common 
+      URLs.  For example:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">google_search</span><span class="punct">',</span> <span class="punct">'</span><span class="string">http://www.google.com/search</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">_static</span><span class="punct">'=&gt;</span><span class="constant">True</span><span class="punct">));</span></pre></div>
+
+    <p>
+      Static Named Routes are ignored entirely when matching a URL.
+    </p>
+
+
+    <h2>Filter Functions</h2>
+
+    <p>
+      Named routes can have functions associated with them that will operate on the
+      arguments used during generation. If you have a route that requires multiple
+      arguments to generate, like:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:year/:month/:day</span><span class="punct">',</span> <span class="ident">controller</span><span class="punct">='</span><span class="string">archives</span><span class="punct">',</span>
+          <span class="ident">action</span><span class="punct">='</span><span class="string">view</span><span class="punct">',</span> <span class="ident">year</span><span class="punct">=</span><span class="number">2004</span><span class="punct">,</span>
+          <span class="ident">requirements</span><span class="punct">=</span><span class="ident">dict</span><span class="punct">(</span><span class="ident">year</span><span class="punct">='</span><span class="string">d{2,4}</span><span class="punct">',</span> <span class="ident">month</span><span class="punct">='</span><span class="string">d{1,2}</span><span class="punct">'))</span></pre></div>
+
+    <p>
+      To generate a URL for this will require a month and day argument, and a year
+      argument if you don't want to use 2004. When using Routes with a database or
+      other objects that might have all this information, it's useful to let Routes
+      expand that information so you don't have to.
+    </p>
+
+    <p>
+      Consider the case where you have a story object which has a year, month, and
+      day attribute. You could generate the URL with:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">year</span><span class="punct">'</span>  <span class="punct">=&gt;</span> <span class="attribute">$story</span><span class="punct">-&gt;</span><span class="ident">year</span><span class="punct">,</span> 
+                    <span class="punct">'</span><span class="string">month</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="attribute">$story</span><span class="punct">-&gt;</span><span class="ident">month</span><span class="punct">,</span> 
+                    <span class="punct">'</span><span class="string">day</span><span class="punct">'</span>   <span class="punct">=&gt;</span> <span class="attribute">$story</span><span class="punct">-&gt;</span><span class="ident">day</span><span class="punct">));</span></pre></div>
+
+    <p>
+      This isn't terribly convenient, and can be brittle if for some reason you need
+      to change the story object's interface. Here's an example of setting up a
+      filter function:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="keyword">function </span><span class="method">story_expand($kargs) {</span>
+  <span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">only</span> <span class="ident">alter</span> <span class="attribute">$kargs</span> <span class="keyword">if</span> <span class="ident">a</span> <span class="ident">story</span> <span class="ident">keyword</span> <span class="ident">arg</span> <span class="ident">is</span> <span class="ident">present</span>
+  <span class="keyword">if</span> <span class="punct">(!</span> <span class="ident">in_array</span><span class="punct">('</span><span class="string">story</span><span class="punct">',</span> <span class="attribute">$kargs</span><span class="punct">))</span> <span class="punct">{</span>
+    <span class="keyword">return</span> <span class="attribute">$kargs</span><span class="punct">;</span>
+  <span class="punct">}</span>
+
+  <span class="attribute">$story</span> <span class="punct">=</span> <span class="attribute">$kargs</span><span class="punct">['</span><span class="string">story</span><span class="punct">'];</span>
+  <span class="ident">unset</span> <span class="punct">(</span><span class="attribute">$kargs</span><span class="punct">['</span><span class="string">story</span><span class="punct">']);</span>
+
+  <span class="attribute">$kargs</span><span class="punct">['</span><span class="string">year</span><span class="punct">']</span>  <span class="punct">=</span> <span class="attribute">$story</span><span class="punct">-&gt;</span><span class="ident">year</span><span class="punct">;</span>
+  <span class="attribute">$kargs</span><span class="punct">['</span><span class="string">month</span><span class="punct">']</span> <span class="punct">=</span> <span class="attribute">$story</span><span class="punct">-&gt;</span><span class="ident">month</span><span class="punct">;</span>
+  <span class="attribute">$kargs</span><span class="punct">['</span><span class="string">day</span><span class="punct">']</span>   <span class="punct">=</span> <span class="attribute">$story</span><span class="punct">-&gt;</span><span class="ident">day</span><span class="punct">;</span>
+
+  <span class="keyword">return</span> <span class="attribute">$kargs</span><span class="punct">;</span>
+<span class="punct">}</span>
+    
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">archives/:year/:month/:day</span><span class="punct">',</span>
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="number">2004</span><span class="punct">,</span>
+        <span class="punct">'</span><span class="string">requirements</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">year</span><span class="punct">'=&gt;'</span><span class="string">d{2,4}</span><span class="punct">',</span> <span class="punct">'</span><span class="string">month</span><span class="punct">'=&gt;'</span><span class="string">d{1,2}</span><span class="punct">'),</span>
+        <span class="punct">'</span><span class="string">filter</span><span class="punct">'=&gt;</span> <span class="punct">'</span><span class="string">story_expand</span><span class="punct">'));</span></pre></div>
+
+    <p>
+      This filter function will be used when using the named route archives. If a
+      story keyword argument is present, it will use that and alter the keyword
+      arguments used to generate the actual route.
+    </p>
+
+    <p>
+      If you have a story object with those attributes, making the route would now
+      be done with the following arguments:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">archives</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">story</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="attribute">$myStory</span><span class="punct">));</span></pre></div>
+
+    <p>
+      If the story interface changes, you can change how the arguments are pulled
+      out in a single location. This also makes it substantially easier to generate
+      the URL.
+    </p>
+
+    <p>
+      <strong>Warning</strong>
+          Using the filter function requires the route to be a named route. 
+          This is due to how the filter function can affect the route that
+          actually gets chosen. The only way to reliably ensure the proper
+          filter function gets used is by naming the route, and using its
+          route name with <code>Horde_Routes_Utils->urlFor()</code>.
+    </p>
+
+    <h2>Route Path</h2>
+
+    <p>Required</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">feeds/:category/atom.xml</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">feeds</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">atom</span><span class="punct">'));</span></pre></div>
+
+    <p>
+      The Route Path determines the URL mapping for the Route. In the above example
+      a URL like /feeds/electronics/atom.xml will match this route.
+    </p>
+
+    <p>
+      A Route Path is separated into parts that you define, the naming used when
+      referencing the different types of route parts are:
+    </p>
+    
+    <h3>Static Part</h3>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">feeds/:category/atom.xml</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">feeds</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">atom</span><span class="punct">'));</span></pre></div>
+
+    <p>A plain-text part of the URL, this doesn't result in any Route variables.</p>
+    
+    <h3>Dynamic Part</h3>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">feeds/:category/atom.xml</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">feeds</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">atom</span><span class="punct">'))</span></pre></div>
+
+    <p>
+      A dynamic part matches text in that part of the URL, and assigns what it
+      finds to the name after the : mark.
+    </p>
+    
+    <h3>Wildcard Part</h3>
+    
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">file/*url</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">file</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">serve</span><span class="punct">'));</span></pre></div>
+
+    <p>
+      A wildcard part will match everything except the other parts around it.
+    </p>
+
+    <h3>Groupings</h3>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">article</span><span class="punct">',</span> <span class="punct">'</span><span class="string">article/:section/:slug/:(page).html</span><span class="punct">',</span> <span class="punct">...</span>
+
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">file/*(url).html</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">file</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">serve</span><span class="punct">'));</span></pre></div>
+
+    <p>
+      Groupings let you define boundaries for the match with the () characters.
+      This allows you to match wildcards and dynamics next to other static and
+      dynamic parts. Care should be taken when using Groupings next to each
+      other.
+    </p>
+
+
+    <h2>Defaults</h2>
+
+    <p>Optional</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">history</span><span class="punct">',</span> <span class="punct">'</span><span class="string">archives/by_eon/:century</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">aggregate</span><span class="punct">',</span> <span class="punct">'</span><span class="string">century</span><span class="punct">'=&gt;</span><span class="number">1800</span><span class="punct">));</span></pre></div>
+
+The keyword options in a route (not including the requirements keyword arg)
+that can determine the default for a route. If a default is specified for a
+variable that is not a dynamic part, then its not only a default but is also a
+hardcoded variable*. The controller and action are hardcoded variables in the
+example above because despite the URL, they will always be 'archives' and
+'aggregate' respectively.
+
+    <dl>
+      <dt>Hardcoded Variable</dt>
+      <dd>
+        Default keyword that does not exist in the route path. This keyword
+        variable cannot be changed by the URL coming in.
+      </dd>
+    </dl>
+
+
+    <h2>Requirements</h2>
+
+    <p>Optional</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:year/:month/:day</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;</span><span class="number">2004</span><span class="punct">,</span> 
+        <span class="punct">'</span><span class="string">requirements</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">(</span><span class="ident">year</span><span class="punct">='</span><span class="string">d{2,4}</span><span class="punct">',</span> <span class="ident">month</span><span class="punct">='</span><span class="string">d{1,2}</span><span class="punct">')));</span></pre></div>
+
+    <p>
+      Requirements is a special keyword used by Routes to enforce a regular
+      expression restriction on the dynamic part or wildcard part of a route path.
+    </p>
+
+    <p>
+      Note in the example above that the regular expressions do not have boundaries
+      such as they would with a PHP function like preg_match().  The expression is 
+      simply <code>\d{2,4}</code> and not <code>/\d{2,4}/</code>.
+    </p>
+
+    <h3>Conditions</h3>
+
+    <p>Optional</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">user/new;preview</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">user</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">preview</span><span class="punct">',</span> 
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">POST</span><span class="punct">']))));</span></pre></div>
+
+    <p>
+      Conditions specifies a set of special conditions that must be met for the
+      route to be accepted as a valid match for the URL. The conditions argument
+      must always be a dictionary and can accept 3 different keys.
+    </p>
+
+    <dl>
+      <dt>method</dt>
+      <dd>
+        Request must be one of the HTTP methods defined here. This argument must
+        be a list of HTTP methods, and should be upper-case.
+      </dd>
+      <dt>subDomain</dt>
+      <dd>
+        Can either be True or a Python list of sub-domains, one of which must be
+        present.
+      </dd>
+      <dt>function</dt>
+      <dd>
+        A function that will be used to evaluate if the Route is a match. Must
+        return True or False, and will be called with the environ and match_dict.
+        The match_dict is a dict with all the Route variables for the request.
+        Modifications to match_dict will appear identical to Route variables from
+        the original match.
+      </dd>
+    </dl>
+
+    <p>
+      Examples:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">The</span> <span class="ident">method</span> <span class="ident">to</span> <span class="ident">be</span> <span class="ident">either</span> <span class="constant">GET</span> <span class="keyword">or</span> <span class="constant">HEAD</span>
+<span class="ident">m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">user/list</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">user</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">list</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">',</span> <span class="punct">'</span><span class="string">HEAD</span><span class="punct">'))));</span>
+
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">A</span> <span class="ident">sub</span><span class="punct">-</span><span class="ident">domain</span> <span class="ident">should</span> <span class="ident">be</span> <span class="ident">present</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string"></span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">user</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">home</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">subDomain</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="constant">true</span><span class="punct">)));</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Sub</span><span class="punct">-</span><span class="ident">domain</span> <span class="ident">should</span> <span class="ident">be</span> <span class="ident">either</span> <span class="punct">'</span><span class="string">fred</span><span class="punct">'</span> <span class="keyword">or</span> <span class="punct">'</span><span class="string">george</span><span class="punct">'</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string"></span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">user</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">home</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">subDomain</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">fred</span><span class="punct">',</span> <span class="punct">'</span><span class="string">george</span><span class="punct">')));</span>
+
+  <span class="punct">/</span><span class="regex">**
+   * Put the referrer into the resulting match dictionary, 
+   * this won't stop the match since it always returns True
+   *</span><span class="punct">/</span>
+  <span class="keyword">function </span><span class="method">referals($environ, $result) {</span>
+    <span class="attribute">$referer</span> <span class="punct">=</span> <span class="ident">isset</span><span class="punct">(</span><span class="attribute">$environ</span><span class="punct">['</span><span class="string">HTTP_REFERER</span><span class="punct">'])</span> <span class="punct">?</span> <span class="attribute">$environ</span><span class="punct">['</span><span class="string">HTTP_REFERER</span><span class="punct">']</span> <span class="punct">:</span> <span class="ident">null</span><span class="punct">;</span>
+    <span class="attribute">$result</span><span class="punct">['</span><span class="string">referer</span><span class="punct">']</span> <span class="punct">=</span> <span class="attribute">$referer</span><span class="punct">;</span>
+    <span class="keyword">return</span> <span class="constant">true</span><span class="punct">;</span>
+  <span class="punct">}</span>
+
+  <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">',</span> 
+    <span class="ident">array</span><span class="punct">('</span><span class="string">conditions</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">function</span><span class="punct">'=&gt;'</span><span class="string">referals</span><span class="punct">')));</span></pre></div>
+  </div>
+
+    <div id="sidebar">
+    <div class="side_item">
+      <h4>Manual</h4>
+      <p>Setting Up Routes</p>
+      <p><a href="/routes/manual/nitty-gritty-route-setup.html">Nitty Gritty of Route Setup</a></p>
+      <p><a href="/routes/manual/using-routes.html">Using Routes</a></p>
+      <p><a href="/routes/manual/subdomain-support.html">Sub-Domain Support</a></p>
+      <p><a href="/routes/manual/restful-services.html">RESTful Services</a></p>
+      <div class="side_bottom">&nbsp;</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer" class="clr">
+    <span class="right">
+      Horde/Routes is part of the <a href="http://www.horde.org">Horde Project</a>.<br/>
+      Development &amp; Website by <a href="http://maintainable.com">Maintainable Software</a>
+    </span>
+  </div>
+
+  
+
+  </div>
+</body>
+</html>

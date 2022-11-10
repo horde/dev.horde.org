@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">248</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2069743538"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-2069743538" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_View_Interface.html">Horde_View_Interface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_View.html">Horde_View</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Base.html">Horde_View_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Exception.html">Horde_View_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Base.html">Horde_View_Helper_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Benchmark.html">Horde_View_Helper_Benchmark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Benchmark_Timer.html">Horde_View_Helper_Benchmark_Timer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Block.html">Horde_View_Helper_Block</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Capture.html">Horde_View_Helper_Capture</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Capture_Base.html">Horde_View_Helper_Capture_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Capture_ContentFor.html">Horde_View_Helper_Capture_ContentFor</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Date.html">Horde_View_Helper_Date</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Debug.html">Horde_View_Helper_Debug</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Form.html">Horde_View_Helper_Form</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Form_Builder.html">Horde_View_Helper_Form_Builder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Form_InstanceTag_Base.html">Horde_View_Helper_Form_InstanceTag_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Form_InstanceTag_Form.html">Horde_View_Helper_Form_InstanceTag_Form</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_FormTag.html">Horde_View_Helper_FormTag</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Javascript.html">Horde_View_Helper_Javascript</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Number.html">Horde_View_Helper_Number</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Tag.html">Horde_View_Helper_Tag</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Text.html">Horde_View_Helper_Text</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Text_Cycle.html">Horde_View_Helper_Text_Cycle</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Helper_Url.html">Horde_View_Helper_Url</a></li>
+                                                    <li class="class"><a href="../classes/Horde_View_Json.html">Horde_View_Json</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_View_Helper_Url</h1>
+                    <p><em>View helpers for URLs</em></p>
+                    <p>All helpers hold a link back to the instance of the view.  The undefined
+property handlers (<strong>get()/</strong>call() methods) are used to mix helpers
+together, effectively placing them on the same pane of glass (the view) and
+allowing any helper to call any other.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_View_Helper_Base.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Base.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Base.html#method___set" class="">__set()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Base.html#method___call" class="">__call()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_urlFor" class="">urlFor()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_linkTo" class="">linkTo()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_linkToUnlessCurrent" class="">linkToUnlessCurrent()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_linkToUnless" class="">linkToUnless()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_linkToIf" class="">linkToIf()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_mailTo" class="">mailTo()</a><br />
+                                                                    <a href="../classes/Horde_View_Helper_Url.html#method_isCurrentPage" class="">isCurrentPage()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_View_Helper_Base.html#property__view" class="">$_view</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/View.Helper.Url.html"><div class="path-wrapper">View/Helper/Url.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">View\Helper</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_View_Helper_Base.html">\Horde_View_Helper_Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_View_Helper_Url</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Mike Naberezny <a href="mailto:mike@maintainable.com">mike@maintainable.com</a></p>
+                                                                    <p>Derek DeVries <a href="mailto:derek@maintainable.com">derek@maintainable.com</a></p>
+                                                                    <p>Chuck Hagenbuch <a href="mailto:chuck@horde.org">chuck@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/bsd">http://www.horde.org/licenses/bsd</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__view" name="property__view" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_view</h3>
+                <pre class="signature">$_view : \Horde_View</pre>
+                <p><em>The parent view invoking the helper.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_View.html">\Horde_View</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_View_Helper_Base.html"><div class="path-wrapper">\Horde_View_Helper_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_View  <span class="argument">$view</span>) </pre>
+                <p><em>Creates a helper for $view.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_View.html">\Horde_View</a></td>
+                                <td>$view </td>
+                                <td><p>The view to help.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_View_Helper_Base.html"><div class="path-wrapper">\Horde_View_Helper_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(  <span class="argument">$name</span>) </pre>
+                <p><em>Proxy on undefined property access (get).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_View_Helper_Base.html"><div class="path-wrapper">\Horde_View_Helper_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___set" name="method___set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__set(  <span class="argument">$name</span>,   <span class="argument">$value</span>) </pre>
+                <p><em>Proxy on undefined property access (set).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_View_Helper_Base.html"><div class="path-wrapper">\Horde_View_Helper_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___call" name="method___call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__call(string  <span class="argument">$method</span>, array  <span class="argument">$args</span>) : mixed</pre>
+                <p><em>Call chaining so members of the view can be called (including other
+helpers).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$method </td>
+                                <td><p>The method.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$args </td>
+                                <td><p>The parameters for the method.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The result of the method.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_View_Helper_Base.html"><div class="path-wrapper">\Horde_View_Helper_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_urlFor" name="method_urlFor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">urlFor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">urlFor(  <span class="argument">$first = array()</span>,   <span class="argument">$second = array()</span>) : string</pre>
+                <p><em>Returns the URL for the set of +options+ provided. This takes the
+same options as url_for in ActionController (see the
+documentation for ActionController::Base#url_for). Note that by default
+&lt;tt&gt;:only_path&lt;/tt&gt; is &lt;tt&gt;true&lt;/tt&gt; so you&#039;ll get the relative /controller/action
+instead of the fully qualified URL like http://example.com/controller/action.</em></p>
+                <p>When called from a view, url_for returns an HTML escaped url. If you
+need an unescaped url, pass :escape =&gt; false in the +options+.</p>
+<p>==== Options</p>
+<ul>
+<li><tt>:anchor</tt> -- specifies the anchor name to be appended to the path.</li>
+<li><tt>:only_path</tt> --  if true, returns the relative URL (omitting the protocol, host name, and port) (<tt>true</tt> by default unless <tt>:host</tt> is specified)</li>
+<li><tt>:trailing_slash</tt> --  if true, adds a trailing slash, as in &quot;/archive/2005/&quot;. Note that this
+is currently not recommended since it breaks caching.</li>
+<li><tt>:host</tt> -- overrides the default (current) host if provided</li>
+<li><tt>:protocol</tt> -- overrides the default (current) protocol if provided</li>
+<li><tt>:user</tt> -- Inline HTTP authentication (only plucked out if :password is also present)</li>
+<li><tt>:password</tt> -- Inline HTTP authentication (only plucked out if :user is also present)</li>
+<li><tt>:escape</tt> -- Determines whether the returned URL will be HTML escaped or not (<tt>true</tt> by default)</li>
+</ul>
+<p>==== Relying on named routes</p>
+<p>If you instead of a hash pass a record (like an Active Record or Active Resource) as the options parameter,
+you'll trigger the named route for that record. The lookup will happen on the name of the class. So passing
+a Workshop object will attempt to use the workshop_path route. If you have a nested route, such as
+admin_workshop_path you'll have to call that explicitly (it's impossible for url_for to guess that route).</p>
+<p>==== Examples
+&lt;%= url_for(:action =&gt; 'index') %&gt;</p>
+<h1>=&gt; /blog/</h1>
+<p>&lt;%= url_for(:action =&gt; 'find', :controller =&gt; 'books') %&gt;</p>
+<h1>=&gt; /books/find</h1>
+<p>&lt;%= url_for(:action =&gt; 'login', :controller =&gt; 'members', :only_path =&gt; false, :protocol =&gt; 'https') %&gt;</p>
+<h1>=&gt; <a href="https://www.railsapplication.com/members/login/">https://www.railsapplication.com/members/login/</a></h1>
+<p>&lt;%= url_for(:action =&gt; 'play', :anchor =&gt; 'player') %&gt;</p>
+<h1>=&gt; /messages/play/#player</h1>
+<p>&lt;%= url_for(:action =&gt; 'checkout', :anchor =&gt; 'tax&amp;ship') %&gt;</p>
+<h1>=&gt; /testing/jump/#tax&amp;ship</h1>
+<p>&lt;%= url_for(:action =&gt; 'checkout', :anchor =&gt; 'tax&amp;ship', :escape =&gt; false) %&gt;</p>
+<h1>=&gt; /testing/jump/#tax&amp;ship</h1>
+<p>&lt;%= url_for(Workshop.new) %&gt;</p>
+<h1>relies on Workshop answering a new_record? call (and in this case returning true)</h1>
+<h1>=&gt; /workshops</h1>
+<p>&lt;%= url_for(@workshop) %&gt;</p>
+<h1>calls @workshop.to_s</h1>
+<h1>=&gt; /workshops/5</h1>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$first </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$second </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_linkTo" name="method_linkTo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">linkTo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">linkTo(  <span class="argument">$name</span>,   <span class="argument">$options = array()</span>,   <span class="argument">$htmlOptions = array()</span>) </pre>
+                <p><em>Creates a link tag of the given +name+ using a URL created by the set of
++options+. See the valid options in the documentation for url_for. It&#039;s
+also possible to pass a string instead of an options hash to get a link
+tag that uses the value of the string as the href for the link, or use
++:back+ to link to the referrer - a JavaScript back link will be used in
+place of a referrer if none exists. If nil is passed as a name, the link
+itself will become the name.</em></p>
+                <p>==== Options</p>
+<ul>
+<li><tt>:confirm =&gt; 'question?'</tt> -- This will add a JavaScript confirm
+prompt with the question specified. If the user accepts, the link is
+processed normally, otherwise no action is taken.</li>
+<li><tt>:popup =&gt; true || array of window options</tt> -- This will force the
+link to open in a popup window. By passing true, a default browser window
+will be opened with the URL. You can also specify an array of options
+that are passed-thru to JavaScripts window.open method.</li>
+<li><tt>:method =&gt; symbol of HTTP verb</tt> -- This modifier will dynamically
+create an HTML form and immediately submit the form for processing using
+the HTTP verb specified. Useful for having links perform a POST operation
+in dangerous actions like deleting a record (which search bots can follow
+while spidering your site). Supported verbs are :post, :delete and :put.
+Note that if the user has JavaScript disabled, the request will fall back
+to using GET. If you are relying on the POST behavior, you should check
+for it in your controller's action by using the request object's methods
+for post?, delete? or put?.</li>
+<li>The +html_options+ will accept a hash of html attributes for the link tag.</li>
+</ul>
+<p>Note that if the user has JavaScript disabled, the request will fall back
+to using GET. If :href=&gt;'#' is used and the user has JavaScript disabled
+clicking the link will have no effect. If you are relying on the POST
+behavior, your should check for it in your controller's action by using
+the request object's methods for post?, delete? or put?.</p>
+<p>You can mix and match the +html_options+ with the exception of :popup and
+:method which will raise an ActionView::ActionViewError exception.</p>
+<p>==== Examples
+link_to &quot;Visit Other Site&quot;, &quot;<a href="http://www.rubyonrails.org/">http://www.rubyonrails.org/</a>&quot;, :confirm =&gt; &quot;Are you sure?&quot;</p>
+<h1>=&gt; <a href="http://www.rubyonrails.org/" onclick="return confirm('Are you sure?');">Visit Other Site</a></h1>
+<p>link_to &quot;Help&quot;, { :action =&gt; &quot;help&quot; }, :popup =&gt; true</p>
+<h1>=&gt; <a href="/testing/help/" onclick="window.open(this.href);return false;">Help</a></h1>
+<p>link_to &quot;View Image&quot;, { :action =&gt; &quot;view&quot; }, :popup =&gt; ['new_window_name', 'height=300,width=600']</p>
+<h1>=&gt; <a href="/testing/view/" onclick="window.open(this.href,'new_window_name','height=300,width=600');return false;">View Image</a></h1>
+<p>link_to &quot;Delete Image&quot;, { :action =&gt; &quot;delete&quot;, :id =&gt; @image.id }, :confirm =&gt; &quot;Are you sure?&quot;, :method =&gt; :delete</p>
+<h1>=&gt; &lt;a href=&quot;/testing/delete/9/&quot; onclick=&quot;if (confirm('Are you sure?')) { var f = document.createElement('form');</h1>
+<pre><code>   f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;
+   var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method');
+   m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;"&gt;Delete Image&lt;/a&gt;</code></pre>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$options </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$htmlOptions </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_linkToUnlessCurrent" name="method_linkToUnlessCurrent" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">linkToUnlessCurrent()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">linkToUnlessCurrent(  <span class="argument">$name</span>,   <span class="argument">$url</span>,   <span class="argument">$htmlOptions = array()</span>) </pre>
+                <p><em>Creates a link tag of the given +name+ using a URL created by the set of
++options+ unless the current request URI is the same as the links, in
+which case only the name is returned (or the given block is yielded, if
+one exists).  You can give link_to_unless_current a block which will
+specialize the default behavior (e.g., show a &quot;Start Here&quot; link rather
+than the link&#039;s text).</em></p>
+                <p>==== Examples
+Let's say you have a navigation menu...</p>
+<ul id="navbar">
+    <li><%= link_to_unless_current("Home", { :action => "index" }) %></li>
+    <li><%= link_to_unless_current("About Us", { :action => "about" }) %></li>
+  </ul>
+<p>If in the &quot;about&quot; action, it will render...</p>
+<ul id="navbar">
+    <li><a href="/controller/index">Home</a></li>
+    <li>About Us</li>
+  </ul>
+<p>...but if in the &quot;home&quot; action, it will render:</p>
+<ul id="navbar">
+    <li><a href="/controller/index">Home</a></li>
+    <li><a href="/controller/about">About Us</a></li>
+  </ul>
+<p>The implicit block given to link_to_unless_current is evaluated if the current
+action is the action given.  So, if we had a comments page and wanted to render a
+&quot;Go Back&quot; link instead of a link to the comments page, we could do something like this...</p>
+<p>&lt;%=
+link_to_unless_current(&quot;Comment&quot;, { :controller =&gt; 'comments', :action =&gt; 'new}) do
+link_to(&quot;Go back&quot;, { :controller =&gt; 'posts', :action =&gt; 'index' })
+end
+%&gt;</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$url </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$htmlOptions </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_linkToUnless" name="method_linkToUnless" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">linkToUnless()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">linkToUnless(  <span class="argument">$condition</span>,   <span class="argument">$name</span>,   <span class="argument">$url</span>,   <span class="argument">$htmlOptions = array()</span>) </pre>
+                <p><em>Creates a link tag of the given +name+ using a URL created by the set of
++options+ unless +condition+ is true, in which case only the name is
+returned. To specialize the default behavior (i.e., show a login link
+rather than just the plaintext link text), you can pass a block that
+accepts the name or the full argument list for link_to_unless.</em></p>
+                <p>==== Examples
+&lt;%= link_to_unless(@current_user.nil?, &quot;Reply&quot;, { :action =&gt; &quot;reply&quot; }) %&gt;</p>
+<h1>If the user is logged in...</h1>
+<h1>=&gt; <a href="/controller/reply/">Reply</a></h1>
+<p>&lt;%=
+link_to_unless(@current_user.nil?, &quot;Reply&quot;, { :action =&gt; &quot;reply&quot; }) do |name|
+link_to(name, { :controller =&gt; &quot;accounts&quot;, :action =&gt; &quot;signup&quot; })
+end
+%&gt;</p>
+<h1>If the user is logged in...</h1>
+<h1>=&gt; <a href="/controller/reply/">Reply</a></h1>
+<h1>If not...</h1>
+<h1>=&gt; <a href="/accounts/signup">Reply</a></h1>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$condition </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$url </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$htmlOptions </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_linkToIf" name="method_linkToIf" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">linkToIf()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">linkToIf(  <span class="argument">$condition</span>,   <span class="argument">$name</span>,   <span class="argument">$url</span>,   <span class="argument">$htmlOptions = array()</span>) </pre>
+                <p><em>Creates a link tag of the given +name+ using a URL created by the set of
++options+ if +condition+ is true, in which case only the name is
+returned. To specialize the default behavior, you can pass a block that
+accepts the name or the full argument list for link_to_unless (see the examples
+in link_to_unless).</em></p>
+                <p>==== Examples
+&lt;%= link_to_if(@current_user.nil?, &quot;Login&quot;, { :controller =&gt; &quot;sessions&quot;, :action =&gt; &quot;new&quot; }) %&gt;</p>
+<h1>If the user isn't logged in...</h1>
+<h1>=&gt; <a href="/sessions/new/">Login</a></h1>
+<p>&lt;%=
+link_to_if(@current_user.nil?, &quot;Login&quot;, { :controller =&gt; &quot;sessions&quot;, :action =&gt; &quot;new&quot; }) do
+link_to(@current_user.login, { :controller =&gt; &quot;accounts&quot;, :action =&gt; &quot;show&quot;, :id =&gt; @current_user })
+end
+%&gt;</p>
+<h1>If the user isn't logged in...</h1>
+<h1>=&gt; <a href="/sessions/new/">Login</a></h1>
+<h1>If they are logged in...</h1>
+<h1>=&gt; <a href="/accounts/show/3">my_username</a></h1>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$condition </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$url </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$htmlOptions </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_mailTo" name="method_mailTo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">mailTo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">mailTo(  <span class="argument">$emailAddress</span>,   <span class="argument">$name = null</span>,   <span class="argument">$htmlOptions = array()</span>) </pre>
+                <p><em>Creates a mailto link tag to the specified +email_address+, which is
+also used as the name of the link unless +name+ is specified. Additional
+HTML attributes for the link can be passed in +html_options+.</em></p>
+                <p>mail_to has several methods for hindering email harvestors and customizing
+the email itself by passing special keys to +html_options+.</p>
+<p>==== Options</p>
+<ul>
+<li><tt>encode</tt>  - This key will accept the strings &quot;javascript&quot; or &quot;hex&quot;.
+Passing &quot;javascript&quot; will dynamically create and encode the mailto: link then
+eval it into the DOM of the page. This method will not show the link on
+the page if the user has JavaScript disabled. Passing &quot;hex&quot; will hex
+encode the +email_address+ before outputting the mailto: link.</li>
+<li><tt>replace_at</tt>  - When the link +name+ isn't provided, the
++email_address+ is used for the link label. You can use this option to
+obfuscate the +email_address+ by substituting the @ sign with the string
+given as the value.</li>
+<li><tt>replace_dot</tt>  - When the link +name+ isn't provided, the
++email_address+ is used for the link label. You can use this option to
+obfuscate the +email_address+ by substituting the . in the email with the
+string given as the value.</li>
+<li><tt>subject</tt>  - Preset the subject line of the email.</li>
+<li><tt>body</tt> - Preset the body of the email.</li>
+<li><tt>cc</tt>  - Carbon Copy addition recipients on the email.</li>
+<li><tt>bcc</tt>  - Blind Carbon Copy additional recipients on the email.</li>
+</ul>
+<p>==== Examples
+mailTo(&quot;me@domain.com&quot;)</p>
+<h1>=&gt; <a href="mailto:me@domain.com">me@domain.com</a></h1>
+<p>mailTo(&quot;me@domain.com&quot;, &quot;My email&quot;, array('encode' =&gt; &quot;javascript&quot;))</p>
+<h1>=&gt; <script type="text/javascript">eval(unescape('%64%6f%63...%6d%65%6e'))</script></h1>
+<p>mailTo(&quot;me@domain.com&quot;, &quot;My email&quot;, array('encode' =&gt; &quot;hex&quot;))</p>
+<h1>=&gt; <a href="mailto:%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d">My email</a></h1>
+<p>mailTo(&quot;me@domain.com&quot;, null, array('replaceAt' =&gt; &quot;<em>at</em>&quot;, 'replaceDot' =&gt; &quot;<em>dot</em>&quot;, 'class' =&gt; &quot;email&quot;))</p>
+<h1>=&gt; <a href="mailto:me@domain.com" class="email">me_at_domain_dot_com</a></h1>
+<p>mailTo(&quot;me@domain.com&quot;, &quot;My email&quot;, array('cc' =&gt; &quot;ccaddress@domain.com&quot;,
+'subject' =&gt; &quot;This is an example email&quot;))</p>
+<h1>=&gt; <a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email">My email</a></h1>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$emailAddress </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$htmlOptions </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isCurrentPage" name="method_isCurrentPage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isCurrentPage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isCurrentPage(  <span class="argument">$options</span>) </pre>
+                <p><em>True if the current request URI was generated by the given +options+.</em></p>
+                <p>==== Examples
+Let's say we're in the <tt>/shop/checkout</tt> action.</p>
+<p>current_page?(:action =&gt; 'process')</p>
+<h1>=&gt; false</h1>
+<p>current_page?(:controller =&gt; 'shop', :action =&gt; 'checkout')</p>
+<h1>=&gt; true</h1>
+<p>current_page?(:action =&gt; 'checkout')</p>
+<h1>=&gt; true</h1>
+<p>current_page?(:controller =&gt; 'library', :action =&gt; 'checkout')</p>
+<h1>=&gt; false</h1>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$options </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>finish implementation</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Url.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/View/Helper/Url.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:35.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,3520 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Horde_Imap_Client_Socket</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Horde_Imap_Client_Socket</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Horde_Imap_Client_Socket:: provides an interface to an IMAP4rev1 server  (RFC 3501) using PHP functions.</p>
+<p class="description"><p>Optional Parameters: NONE</p><p>This driver implements the following IMAP-related RFCs:    RFC 2086/4314 - ACL    RFC 2087 - QUOTA    RFC 2088 - LITERAL+    RFC 2195 - AUTH=CRAM-MD5    RFC 2221 - LOGIN-REFERRALS    RFC 2342 - NAMESPACE    RFC 2595/4616 - TLS &amp; AUTH=PLAIN    RFC 2831 - DIGEST-MD5 authentication mechanism.    RFC 2971 - ID    RFC 3501 - IMAP4rev1 specification    RFC 3502 - MULTIAPPEND    RFC 3516 - BINARY    RFC 3691 - UNSELECT    RFC 4315 - UIDPLUS    RFC 4422 - SASL Authentication (for DIGEST-MD5)    RFC 4466 - Collected extensions (updates RFCs 2088, 3501, 3502, 3516)    RFC 4551 - CONDSTORE    RFC 4731 - ESEARCH    RFC 4959 - SASL-IR    RFC 5032 - WITHIN    RFC 5161 - ENABLE    RFC 5162 - QRESYNC    RFC 5182 - SEARCHRES    RFC 5255 - LANGUAGE/I18NLEVEL    RFC 5256 - THREAD/SORT    RFC 5267 - ESORT</p><p>[NO RFC] - XIMAPPROXY <ul><li>Requires imapproxy v1.2.7-rc1 or later</li><li>See http://lists.andrew.cmu.edu/pipermail/imapproxy-info/2008-October/000771.html and
+         http://lists.andrew.cmu.edu/pipermail/imapproxy-info/2008-October/000772.html</li></ul>  TODO (or not necessary?):    RFC 2177 - IDLE (probably not necessary due to the limited connection                     time by each HTTP/PHP request)    RFC 2193 - MAILBOX-REFERRALS    RFC 4467/5092 - URLAUTH    RFC 4469 - CATENATE    RFC 4978 - COMPRESS=DEFLATE    RFC 3348/5258 - LIST-EXTENDED    RFC 5257 - ANNOTATE    RFC 5259 - CONVERT    RFC 5267 - CONTEXT    RFC 5465 - NOTIFY    RFC 5466 - FILTERS</p><p>Originally based on code from: <ul><li>auth.php (1.49)</li><li>imap_general.php (1.212)</li><li>imap_messages.php (revision 13038)</li><li>strings.php (1.184.2.35)</li></ul>   from the Squirrelmail project.    Copyright (c) 1999-2007 The SquirrelMail Project Team</p><p>Copyright 2005-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If you  did not receive this file, see http://www.fsf.org/copyleft/lgpl.html.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Michael Slusarz &lt;<a href="mailto:slusarz@horde.org">slusarz@horde.org</a>&gt;</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Imap_Client---lib---Horde---Imap---Client---Socket.php.html">/Imap_Client/lib/Horde/Imap/Client/Socket.php</a> (line <span class="field">72</span>)
+		</p>
+		
+				
+		<pre><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html">Horde_Imap_Client_Base</a>
+   |
+   --Horde_Imap_Client_Socket</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">resource</span>
+					<a href="#$_stream" title="details" class="var-name">$_stream</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">integer</span>
+					<a href="#$_tag" title="details" class="var-name">$_tag</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
+				<div class="method-definition">
+					<img src="../media/images/Destructor.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#__destruct" title="details" class="method-name">__destruct</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#alerts" title="details" class="method-name">alerts</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_append" title="details" class="method-name">_append</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_capability" title="details" class="method-name">_capability</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_check" title="details" class="method-name">_check</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_clientSort" title="details" class="method-name">_clientSort</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$res</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$opts</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_clientThreadOrderedsubject" title="details" class="method-name">_clientThreadOrderedsubject</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$res</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$opts</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_close" title="details" class="method-name">_close</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_connect" title="details" class="method-name">_connect</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_copy" title="details" class="method-name">_copy</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$dest</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_createMailbox" title="details" class="method-name">_createMailbox</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_deleteMailbox" title="details" class="method-name">_deleteMailbox</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_enable" title="details" class="method-name">_enable</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$exts</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_expunge" title="details" class="method-name">_expunge</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_fetch" title="details" class="method-name">_fetch</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getACL" title="details" class="method-name">_getACL</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_getComparator" title="details" class="method-name">_getComparator</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getID" title="details" class="method-name">_getID</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_getLanguage" title="details" class="method-name">_getLanguage</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$list</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getLine" title="details" class="method-name">_getLine</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getMailboxList" title="details" class="method-name">_getMailboxList</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pattern</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$mode</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$subscribed</span> = <span class="var-default">null</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getMyACLRights" title="details" class="method-name">_getMyACLRights</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getNamespaces" title="details" class="method-name">_getNamespaces</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_getQuota" title="details" class="method-name">_getQuota</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$root</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_getQuotaRoot" title="details" class="method-name">_getQuotaRoot</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_getSentDates" title="details" class="method-name">_getSentDates</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$ids</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_listACLRights" title="details" class="method-name">_listACLRights</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$identifier</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_listMailboxes" title="details" class="method-name">_listMailboxes</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pattern</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$mode</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#_login" title="details" class="method-name">_login</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#_loginTasks" title="details" class="method-name">_loginTasks</a>
+											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$firstlogin</span> = <span class="var-default">true</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_logout" title="details" class="method-name">_logout</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_noop" title="details" class="method-name">_noop</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_openMailbox" title="details" class="method-name">_openMailbox</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$mode</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseACL" title="details" class="method-name">_parseACL</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_parseBodystructure" title="details" class="method-name">_parseBodystructure</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseCapability" title="details" class="method-name">_parseCapability</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseComparator" title="details" class="method-name">_parseComparator</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseEnabled" title="details" class="method-name">_parseEnabled</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_parseEnvelope" title="details" class="method-name">_parseEnvelope</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseEsearch" title="details" class="method-name">_parseEsearch</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseExpunge" title="details" class="method-name">_parseExpunge</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$seq</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseFetch" title="details" class="method-name">_parseFetch</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseID" title="details" class="method-name">_parseID</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseLanguage" title="details" class="method-name">_parseLanguage</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseList" title="details" class="method-name">_parseList</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseListRights" title="details" class="method-name">_parseListRights</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseMyRights" title="details" class="method-name">_parseMyRights</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseNamespace" title="details" class="method-name">_parseNamespace</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseQuota" title="details" class="method-name">_parseQuota</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseResponse" title="details" class="method-name">_parseResponse</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$tag</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseSearch" title="details" class="method-name">_parseSearch</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseServerResponse" title="details" class="method-name">_parseServerResponse</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$ob</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseStatus" title="details" class="method-name">_parseStatus</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseStatusResponse" title="details" class="method-name">_parseStatusResponse</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$ob</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_parseStructureParams" title="details" class="method-name">_parseStructureParams</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseThread" title="details" class="method-name">_parseThread</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">0</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$islast</span> = <span class="var-default">true</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_parseVanished" title="details" class="method-name">_parseVanished</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_readData" title="details" class="method-name">_readData</a>
+											([<span class="var-type">integer</span>&nbsp;<span class="var-name">$len</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$binary</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_renameMailbox" title="details" class="method-name">_renameMailbox</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$old</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$new</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_search" title="details" class="method-name">_search</a>
+											(<span class="var-type">object</span>&nbsp;<span class="var-name">$query</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_sendID" title="details" class="method-name">_sendID</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$info</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_sendLine" title="details" class="method-name">_sendLine</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_setACL" title="details" class="method-name">_setACL</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$identifier</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_setComparator" title="details" class="method-name">_setComparator</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$comparator</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_setLanguage" title="details" class="method-name">_setLanguage</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$langs</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$info</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_setQuota" title="details" class="method-name">_setQuota</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$root</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_status" title="details" class="method-name">_status</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$flags</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_store" title="details" class="method-name">_store</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_subscribeMailbox" title="details" class="method-name">_subscribeMailbox</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">boolean</span>&nbsp;<span class="var-name">$subscribe</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_thread" title="details" class="method-name">_thread</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_tokenizeData" title="details" class="method-name">_tokenizeData</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$line</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_tryLogin" title="details" class="method-name">_tryLogin</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#__sleep" title="details" class="method-name">__sleep</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_stream" id="$_stream"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">resource</span>
+			<span class="var-name">$_stream</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">86</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The socket connection to the IMAP server.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_tag" id="$_tag"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$_tag</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">79</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The unique tag to use when making an IMAP query.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html">Horde_Imap_Client_Base</a></span></p>
+					<blockquote>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$utils">Horde_Imap_Client_Base::$utils</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_cache">Horde_Imap_Client_Base::$_cache</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_debug">Horde_Imap_Client_Base::$_debug</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_init">Horde_Imap_Client_Base::$_init</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_isAuthenticated">Horde_Imap_Client_Base::$_isAuthenticated</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_isSecure">Horde_Imap_Client_Base::$_isSecure</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_mode">Horde_Imap_Client_Base::$_mode</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_params">Horde_Imap_Client_Base::$_params</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_selected">Horde_Imap_Client_Base::$_selected</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#var$_temp">Horde_Imap_Client_Base::$_temp</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__destruct" id="__destruct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Destructor.png" />
+		<span class="method-title">Destructor __destruct</span> (line <span class="line-number">91</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Destructor.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__destruct
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method__destruct">Horde_Imap_Client_Base::__destruct()</a></dt>
+						<dd>Destructor.</dd>
+					</dl>
+			
+	</div>
+<a name="methodalerts" id="alerts"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">alerts</span> (line <span class="line-number">241</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a list of alerts that MUST be presented to the user.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of alert messages.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			alerts
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodalerts">Horde_Imap_Client_Base::alerts()</a></dt>
+						<dd>Return a list of alerts that MUST be presented to the user (RFC 3501  [7.1]).</dd>
+					</dl>
+			
+	</div>
+<a name="method_append" id="_append"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_append</span> (line <span class="line-number">1151</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Append message(s) to a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of the UIDs of the appended messages (if server                 supports UIDPLUS extension) or true.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_append
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: The mailbox to append the message(s) to                          (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The message data.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_append">Horde_Imap_Client_Base::_append()</a></dt>
+						<dd>Append message(s) to a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_capability" id="_capability"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_capability</span> (line <span class="line-number">115</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get CAPABILITY info from the IMAP server.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The capability array.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_capability
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_capability">Horde_Imap_Client_Base::_capability()</a></dt>
+						<dd>Get CAPABILITY information from the IMAP server.</dd>
+					</dl>
+			
+	</div>
+<a name="method_check" id="_check"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_check</span> (line <span class="line-number">1246</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Request a checkpoint of the currently selected mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_check
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_check">Horde_Imap_Client_Base::_check()</a></dt>
+						<dd>Request a checkpoint of the currently selected mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_clientSort" id="_clientSort"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_clientSort</span> (line <span class="line-number">1686</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">If server does not support the SORT IMAP extension (RFC 5256), we need  to do sorting on the client side.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The sort results.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_clientSort
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$res</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$opts</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$res</span><span class="var-description">: The search results.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$opts</span><span class="var-description">: The options to search().</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_clientThreadOrderedsubject" id="_clientThreadOrderedsubject"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_clientThreadOrderedsubject</span> (line <span class="line-number">2008</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">If server does not support the THREAD IMAP extension (RFC 5256), do  ORDEREDSUBJECT threading on the client side.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The sort results.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_clientThreadOrderedsubject
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$res</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$opts</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$res</span><span class="var-description">: The search results.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$opts</span><span class="var-description">: The options to search().</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$data</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_close" id="_close"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_close</span> (line <span class="line-number">1260</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Close the connection to the currently selected mailbox, optionally  expunging all deleted messages (RFC 3501 [6.4.2]).</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_close
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_close">Horde_Imap_Client_Base::_close()</a></dt>
+						<dd>Close the connection to the currently selected mailbox, optionally  expunging all deleted messages (RFC 3501 [6.4.2]).</dd>
+					</dl>
+			
+	</div>
+<a name="method_connect" id="_connect"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_connect</span> (line <span class="line-number">401</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Connects to the IMAP server.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_connect
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_copy" id="_copy"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_copy</span> (line <span class="line-number">2747</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Copy messages to another mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array mapping old UIDs (keys) to new UIDs (values) on                 success (if the IMAP server and/or driver support the                 UIDPLUS extension) or true.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_copy
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$dest</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$dest</span><span class="var-description">: The destination mailbox (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_copy">Horde_Imap_Client_Base::_copy()</a></dt>
+						<dd>Copy messages to another mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_createMailbox" id="_createMailbox"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_createMailbox</span> (line <span class="line-number">845</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Create a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_createMailbox
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: The mailbox to create (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_createMailbox">Horde_Imap_Client_Base::_createMailbox()</a></dt>
+						<dd>Create a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_deleteMailbox" id="_deleteMailbox"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_deleteMailbox</span> (line <span class="line-number">860</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Delete a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_deleteMailbox
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: The mailbox to delete (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_deleteMailbox">Horde_Imap_Client_Base::_deleteMailbox()</a></dt>
+						<dd>Delete a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_enable" id="_enable"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_enable</span> (line <span class="line-number">739</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Enable an IMAP extension (see RFC 5161).</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_enable
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$exts</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$exts</span><span class="var-description">: The extensions to enable.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_expunge" id="_expunge"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_expunge</span> (line <span class="line-number">1303</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Expunge deleted messages from the given mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> If 'list' option is true, returns the list of                 expunged messages.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_expunge
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_expunge">Horde_Imap_Client_Base::_expunge()</a></dt>
+						<dd>Expunge all deleted messages from the given mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_fetch" id="_fetch"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_fetch</span> (line <span class="line-number">2062</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Fetch message data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> See self::fetch().</li>
+				<li><span class="field">todo:</span> Provide a function that would allow streaming of large data        items like bodytext.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_fetch
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The fetch criteria.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_fetch">Horde_Imap_Client_Base::_fetch()</a></dt>
+						<dd>Fetch message data.</dd>
+					</dl>
+			
+	</div>
+<a name="method_getACL" id="_getACL"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getACL</span> (line <span class="line-number">2900</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get ACL rights for a given mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array with identifiers as the keys and an array of                 rights as the values.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getACL
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: A mailbox (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getACL">Horde_Imap_Client_Base::_getACL()</a></dt>
+						<dd>Get ACL rights for a given mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_getComparator" id="_getComparator"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getComparator</span> (line <span class="line-number">1884</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the comparator used for searching/sorting (RFC 5255).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Null if the default comparator is being used, or an                 array of comparator information (see RFC 5255 [4.8]).</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_getComparator
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getComparator">Horde_Imap_Client_Base::_getComparator()</a></dt>
+						<dd>Get the comparator used for searching/sorting (RFC 5255).</dd>
+					</dl>
+			
+	</div>
+<a name="method_getID" id="_getID"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getID</span> (line <span class="line-number">654</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return ID information from the IMAP server (RFC 2971).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of information returned, with the keys as the                 'field' and the values as the 'value'.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getID
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getID">Horde_Imap_Client_Base::_getID()</a></dt>
+						<dd>Return ID information from the IMAP server (RFC 2971).</dd>
+					</dl>
+			
+	</div>
+<a name="method_getLanguage" id="_getLanguage"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getLanguage</span> (line <span class="line-number">698</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gets the preferred language for server response messages (RFC 5255).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> If $list is true, the list of languages available on the                 server (may be empty). If false, the language used by                 the server, or null if the default language is used.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_getLanguage
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$list</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$list</span><span class="var-description">: If true, return the list of available languages.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getLanguage">Horde_Imap_Client_Base::_getLanguage()</a></dt>
+						<dd>Gets the preferred language for server response messages (RFC 5255).</dd>
+					</dl>
+			
+	</div>
+<a name="method_getLine" id="_getLine"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getLine</span> (line <span class="line-number">3096</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gets data from the IMAP stream and parses it.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array with the following keys:  <pre> 'line' - (string) The server response text (set for all but an untagged
+          response with no response code).
+ 'response' - (string) Either 'OK', 'NO', 'BAD', 'PREAUTH', or ''.
+ 'tag' - (string) If tagged response, the tag string.
+ 'token' - (array) The tokenized response (set if an untagged response
+           with no response code).
+ 'type' - (string) Either 'tagged', 'untagged', or 'continuation'.</pre></li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getLine
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getMailboxList" id="_getMailboxList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getMailboxList</span> (line <span class="line-number">966</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Obtain a list of mailboxes matching a pattern.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> See self::listMailboxes(().</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getMailboxList
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pattern</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$mode</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$subscribed</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pattern</span><span class="var-description">: The mailbox search pattern.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$mode</span><span class="var-description">: Which mailboxes to return.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$subscribed</span><span class="var-description">: A list of subscribed mailboxes.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getMyACLRights" id="_getMyACLRights"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getMyACLRights</span> (line <span class="line-number">2964</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the ACL rights for the current user for a given mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of rights.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getMyACLRights
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: A mailbox (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getMyACLRights">Horde_Imap_Client_Base::_getMyACLRights()</a></dt>
+						<dd>Get the ACL rights for the current user for a given mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_getNamespaces" id="_getNamespaces"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getNamespaces</span> (line <span class="line-number">185</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the NAMESPACE information from the IMAP server (RFC 2342).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of namespace information.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getNamespaces
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getNamespaces">Horde_Imap_Client_Base::_getNamespaces()</a></dt>
+						<dd>Get the NAMESPACE information from the IMAP server.</dd>
+					</dl>
+			
+	</div>
+<a name="method_getQuota" id="_getQuota"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getQuota</span> (line <span class="line-number">2820</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get quota limits.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array with these possible keys: 'messages' and                 'storage'; each key holds an array with 2 values:                 'limit' and 'usage'.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_getQuota
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$root</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$root</span><span class="var-description">: The quota root (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getQuota">Horde_Imap_Client_Base::_getQuota()</a></dt>
+						<dd>Get quota limits.</dd>
+					</dl>
+			
+	</div>
+<a name="method_getQuotaRoot" id="_getQuotaRoot"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getQuotaRoot</span> (line <span class="line-number">2860</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get quota limits for a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array with the keys being the quota roots. Each key                 holds an array with two possible keys: 'messages' and                 'storage'; each of these keys holds an array with 2                 values: 'limit' and 'usage'.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_getQuotaRoot
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: A mailbox (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getQuotaRoot">Horde_Imap_Client_Base::_getQuotaRoot()</a></dt>
+						<dd>Get quota limits for a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_getSentDates" id="_getSentDates"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getSentDates</span> (line <span class="line-number">1837</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the sent dates for purposes of SORT/THREAD sorting under RFC 5256  [2.2].</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A mapping of IDs -&gt; UNIX timestamps.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getSentDates
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$ids</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: Data returned from fetch() that includes both the                      'envelope' and 'date' keys.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$ids</span><span class="var-description">: The IDs to process.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_listACLRights" id="_listACLRights"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_listACLRights</span> (line <span class="line-number">2933</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get ACL rights for a given mailbox/identifier.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of rights (keys: 'required' and 'optional').</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_listACLRights
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$identifier</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: A mailbox (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$identifier</span><span class="var-description">: The identifier (US-ASCII).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_listACLRights">Horde_Imap_Client_Base::_listACLRights()</a></dt>
+						<dd>Get ACL rights for a given mailbox/identifier.</dd>
+					</dl>
+			
+	</div>
+<a name="method_listMailboxes" id="_listMailboxes"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_listMailboxes</span> (line <span class="line-number">934</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Obtain a list of mailboxes matching a pattern.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> See self::listMailboxes().</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_listMailboxes
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pattern</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$mode</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pattern</span><span class="var-description">: The mailbox search pattern.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$mode</span><span class="var-description">: Which mailboxes to return.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_listMailboxes">Horde_Imap_Client_Base::_listMailboxes()</a></dt>
+						<dd>Obtain a list of mailboxes matching a pattern.</dd>
+					</dl>
+			
+	</div>
+<a name="method_login" id="_login"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_login</span> (line <span class="line-number">252</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Login to the IMAP server.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Return true if global login tasks should be run.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_login
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_login">Horde_Imap_Client_Base::_login()</a></dt>
+						<dd>Login to the IMAP server.</dd>
+					</dl>
+			
+	</div>
+<a name="method_loginTasks" id="_loginTasks"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_loginTasks</span> (line <span class="line-number">551</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Perform login tasks.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True if global login tasks should be performed.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_loginTasks
+		</span>
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$firstlogin</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$firstlogin</span><span class="var-description">: Is this the first login?</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_logout" id="_logout"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_logout</span> (line <span class="line-number">592</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Log out of the IMAP session.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_logout
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_logout">Horde_Imap_Client_Base::_logout()</a></dt>
+						<dd>Logout from the IMAP server (see RFC 3501 [6.1.3]).</dd>
+					</dl>
+			
+	</div>
+<a name="method_noop" id="_noop"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_noop</span> (line <span class="line-number">173</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Send a NOOP command.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_noop
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_noop">Horde_Imap_Client_Base::_noop()</a></dt>
+						<dd>Send a NOOP command.</dd>
+					</dl>
+			
+	</div>
+<a name="method_openMailbox" id="_openMailbox"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_openMailbox</span> (line <span class="line-number">766</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Open a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_openMailbox
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$mode</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: The mailbox to open (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$mode</span><span class="var-description">: The access mode.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_openMailbox">Horde_Imap_Client_Base::_openMailbox()</a></dt>
+						<dd>Open a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_parseACL" id="_parseACL"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseACL</span> (line <span class="line-number">2914</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse an ACL response (RFC 4314 [3.6]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseACL
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseBodystructure" id="_parseBodystructure"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseBodystructure</span> (line <span class="line-number">2435</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Recursively parse BODYSTRUCTURE data from a FETCH return (see  RFC 3501 [7.4.2]).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The array of bodystructure information.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_parseBodystructure
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The tokenized information from the server.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseCapability" id="_parseCapability"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseCapability</span> (line <span class="line-number">135</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a CAPABILITY Response (RFC 3501 [7.2.1]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseCapability
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The CAPABILITY data.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseComparator" id="_parseComparator"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseComparator</span> (line <span class="line-number">1898</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a COMPARATOR response (RFC 5255 [4.8])</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseComparator
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseEnabled" id="_parseEnabled"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseEnabled</span> (line <span class="line-number">753</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse an ENABLED response (RFC 5161 [3.2])</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseEnabled
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseEnvelope" id="_parseEnvelope"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseEnvelope</span> (line <span class="line-number">2582</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse ENVELOPE data from a FETCH return (see RFC 3501 [7.4.2]).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The array of envelope information.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_parseEnvelope
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The tokenized information from the server.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseEsearch" id="_parseEsearch"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseEsearch</span> (line <span class="line-number">1638</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse an ESEARCH response (RFC 4466 [2.6.2])  Format: (TAG &quot;a567&quot;) UID COUNT 5 ALL 4:19,21,28</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseEsearch
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseExpunge" id="_parseExpunge"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseExpunge</span> (line <span class="line-number">1433</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse an EXPUNGE response (RFC 3501 [7.4.1]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseExpunge
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$seq</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$seq</span><span class="var-description">: The message sequence number.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseFetch" id="_parseFetch"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseFetch</span> (line <span class="line-number">2274</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a FETCH response (RFC 3501 [7.4.2]). A FETCH response may occur  due to a FETCH command, or due to a change in a message's state (i.e.</p>
+<p class="description"><p>the flags change).</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseFetch
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: The message sequence number.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseID" id="_parseID"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseID</span> (line <span class="line-number">634</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse an ID response (RFC 2971 [3.2])</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseID
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseLanguage" id="_parseLanguage"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseLanguage</span> (line <span class="line-number">720</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a LANGUAGE response (RFC 5255 [3.3])</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseLanguage
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseList" id="_parseList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseList</span> (line <span class="line-number">993</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a LIST/LSUB response (RFC 3501 [7.2.2 &amp; 7.2.3]).</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseList
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response (includes type as first                      element).</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseListRights" id="_parseListRights"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseListRights</span> (line <span class="line-number">2947</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a LISTRIGHTS response (RFC 4314 [3.7]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseListRights
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseMyRights" id="_parseMyRights"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseMyRights</span> (line <span class="line-number">2978</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a MYRIGHTS response (RFC 4314 [3.8]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseMyRights
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseNamespace" id="_parseNamespace"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseNamespace</span> (line <span class="line-number">202</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a NAMESPACE response (RFC 2342 [5] &amp; RFC 5255 [3.4]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseNamespace
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The NAMESPACE data.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseQuota" id="_parseQuota"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseQuota</span> (line <span class="line-number">2834</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a QUOTA response (RFC 2087 [5.1]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseQuota
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseResponse" id="_parseResponse"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseResponse</span> (line <span class="line-number">3327</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse all untagged and tagged responses for a given command.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseResponse
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$tag</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tag</span><span class="var-description">: The IMAP tag of the current command.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseSearch" id="_parseSearch"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseSearch</span> (line <span class="line-number">1621</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a SEARCH/SORT response (RFC 3501 [7.2.5]; RFC 4466 [3];  RFC 5256 [4]; RFC 5267 [3]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseSearch
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseServerResponse" id="_parseServerResponse"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseServerResponse</span> (line <span class="line-number">3375</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Handle unilateral server responses - untagged data not returned from an  explicit server call (see RFC 3501 [2.2.2]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseServerResponse
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$ob</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$ob</span><span class="var-description">: An array returned from self::_getLine().</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseStatus" id="_parseStatus"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseStatus</span> (line <span class="line-number">1131</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a STATUS response (RFC 3501 [7.2.4], RFC 4551 [3.6])</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseStatus
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The server response.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseStatusResponse" id="_parseStatusResponse"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseStatusResponse</span> (line <span class="line-number">3500</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Handle status responses (see RFC 3501 [7.1]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseStatusResponse
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$ob</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$ob</span><span class="var-description">: An array returned from self::_getLine().</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseStructureParams" id="_parseStructureParams"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseStructureParams</span> (line <span class="line-number">2562</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Helper function to parse a parameters-like tokenized array.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The parameter array.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_parseStructureParams
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The tokenized data.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseThread" id="_parseThread"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseThread</span> (line <span class="line-number">1962</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a THREAD response (RFC 5256 [4]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseThread
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">0</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$islast</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: An array of thread token data.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$level</span><span class="var-description">: The current tree level.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$islast</span><span class="var-description">: Is this the last item in the level?</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_parseVanished" id="_parseVanished"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_parseVanished</span> (line <span class="line-number">1443</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parse a VANISHED response (RFC 5162 [3.6]).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseVanished
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The response data.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_readData" id="_readData"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_readData</span> (line <span class="line-number">3203</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Read data from stream.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The data requested (stripped of trailing CRLF).</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_readData
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$len</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$binary</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$len</span><span class="var-description">: The number of bytes to read. If not present,                          reads a single line of data.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$binary</span><span class="var-description">: Binary data?</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_renameMailbox" id="_renameMailbox"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_renameMailbox</span> (line <span class="line-number">899</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Rename a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_renameMailbox
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$old</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$new</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$old</span><span class="var-description">: The old mailbox name (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$new</span><span class="var-description">: The new mailbox name (UTF7-IMAP).</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_renameMailbox">Horde_Imap_Client_Base::_renameMailbox()</a></dt>
+						<dd>Rename a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_search" id="_search"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_search</span> (line <span class="line-number">1475</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Search a mailbox.  This driver supports all IMAP4rev1 search criteria  as defined in RFC 3501.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of UIDs (default) or an array of message                 sequence numbers (if 'sequence' is true).</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_search
+		</span>
+					(<span class="var-type">object</span>&nbsp;<span class="var-name">$query</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$query</span><span class="var-description">: The search query.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options. The '_query' key contains                         the value of $query-&gt;build().</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_search">Horde_Imap_Client_Base::_search()</a></dt>
+						<dd>Search a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_sendID" id="_sendID"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_sendID</span> (line <span class="line-number">614</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Send ID information to the IMAP server (RFC 2971).</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_sendID
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$info</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$info</span><span class="var-description">: The information to send to the server.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_sendID">Horde_Imap_Client_Base::_sendID()</a></dt>
+						<dd>Send ID information to the IMAP server (RFC 2971).</dd>
+					</dl>
+			
+	</div>
+<a name="method_sendLine" id="_sendLine"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_sendLine</span> (line <span class="line-number">3024</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Perform a command on the IMAP server. A connection to the server must  have already been made.</p>
+	<ul class="tags">
+				<li><span class="field">todo:</span> RFC 3501 allows the sending of multiple commands at once. For        simplicity of implementation at this time, we will execute        commands one at a time. This allows us to easily determine data        meant for a command while scanning for untagged responses        unilaterally sent by the server.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_sendLine
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query</span><span class="var-description">: The IMAP command to execute.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options:  <pre> 'binary' - (boolean) Does $query contain binary data?  If so, and the
+            'BINARY' extension is available on the server, the data
+            will be sent in literal8 format. If not available, an
+            exception will be returned. 'binary' requires literal to
+            be defined.
+            DEFAULT: Sends literals in a non-binary compliant method.
+ 'debug' - (string) When debugging, send this string instead of the
+           actual command/data sent.
+           DEFAULT: Raw data output to debug stream.
+ 'literal' - (integer) Send the command followed by a literal. The value
+             of 'literal' is the length of the literal data.
+             Will attempt to use LITERAL+ capability if possible.
+             DEFAULT: Do not send literal
+ 'literaldata' - (boolean) Is this literal data?  If so, will parse the
+                 server response based on the existence of LITERAL+.
+                 DEFAULT: Server specific.
+ 'noparse' - (boolean) Don't parse the response and instead return the
+             server response.
+             DEFAULT: Parses the response
+ 'notag' - (boolean) Don't prepend an IMAP tag (i.e. for a continuation
+           response).
+           DEFAULT: false</pre></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_setACL" id="_setACL"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setACL</span> (line <span class="line-number">2878</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set ACL rights for a given mailbox/identifier.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_setACL
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$identifier</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: A mailbox (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$identifier</span><span class="var-description">: The identifier to alter (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setACL">Horde_Imap_Client_Base::_setACL()</a></dt>
+						<dd>Set ACL rights for a given mailbox/identifier.</dd>
+					</dl>
+			
+	</div>
+<a name="method_setComparator" id="_setComparator"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setComparator</span> (line <span class="line-number">1865</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the comparator to use for searching/sorting (RFC 5255).</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_setComparator
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$comparator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$comparator</span><span class="var-description">: The comparator string (see RFC 4790 [3.1] -                             &quot;collation-id&quot; - for format). The reserved                             string 'default' can be used to select                             the default comparator.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setComparator">Horde_Imap_Client_Base::_setComparator()</a></dt>
+						<dd>Set the comparator to use for searching/sorting (RFC 5255).</dd>
+					</dl>
+			
+	</div>
+<a name="method_setLanguage" id="_setLanguage"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setLanguage</span> (line <span class="line-number">671</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the preferred language for server response messages (RFC 5255).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The language accepted by the server, or null if the                  default language is used.</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_setLanguage
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$langs</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$info</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$info</span><span class="var-description">: The preferred list of languages.</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$langs</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setLanguage">Horde_Imap_Client_Base::_setLanguage()</a></dt>
+						<dd>Sets the preferred language for server response messages (RFC 5255).</dd>
+					</dl>
+			
+	</div>
+<a name="method_setQuota" id="_setQuota"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_setQuota</span> (line <span class="line-number">2795</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set quota limits.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_setQuota
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$root</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$root</span><span class="var-description">: The quota root (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setQuota">Horde_Imap_Client_Base::_setQuota()</a></dt>
+						<dd>Set quota limits.</dd>
+					</dl>
+			
+	</div>
+<a name="method_status" id="_status"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_status</span> (line <span class="line-number">1038</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Obtain status information for a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> See Horde_Imap_Client_Base::status().</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_status
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$flags</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: The mailbox to query (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$flags</span><span class="var-description">: A bitmask of information requested from the                          server.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_status">Horde_Imap_Client_Base::_status()</a></dt>
+						<dd>Obtain status information for a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_store" id="_store"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_store</span> (line <span class="line-number">2637</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Store message flag data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> See Horde_Imap_Client::store().</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_store
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_store">Horde_Imap_Client_Base::_store()</a></dt>
+						<dd>Store message flag data.</dd>
+					</dl>
+			
+	</div>
+<a name="method_subscribeMailbox" id="_subscribeMailbox"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_subscribeMailbox</span> (line <span class="line-number">915</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Manage subscription status for a mailbox.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_subscribeMailbox
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$mailbox</span>, <span class="var-type">boolean</span>&nbsp;<span class="var-name">$subscribe</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mailbox</span><span class="var-description">: The mailbox to [un]subscribe to (UTF7-IMAP).</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$subscribe</span><span class="var-description">: True to subscribe, false to unsubscribe.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_subscribeMailbox">Horde_Imap_Client_Base::_subscribeMailbox()</a></dt>
+						<dd>Manage subscription status for a mailbox.</dd>
+					</dl>
+			
+	</div>
+<a name="method_thread" id="_thread"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_thread</span> (line <span class="line-number">1911</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Thread sort a given list of messages (RFC 5256).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> See Horde_Imap_Client_Base::_thread().</li>
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_thread
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$options</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: Additional options.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_thread">Horde_Imap_Client_Base::_thread()</a></dt>
+						<dd>Thread sort a given list of messages (RFC 5256).</dd>
+					</dl>
+			
+	</div>
+<a name="method_tokenizeData" id="_tokenizeData"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_tokenizeData</span> (line <span class="line-number">3247</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Tokenize IMAP data. Handles quoted strings and parantheses.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_tokenizeData
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$line</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$line</span><span class="var-description">: The raw IMAP data.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_tryLogin" id="_tryLogin"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_tryLogin</span> (line <span class="line-number">492</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Authenticate to the IMAP server.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Horde_Imap_Client_Exception</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_tryLogin
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: IMAP login method.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method__sleep" id="__sleep"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">__sleep</span> (line <span class="line-number">101</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Do cleanup prior to serialization and provide a list of variables  to serialize.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__sleep
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method__sleep">Horde_Imap_Client_Base::__sleep()</a></dt>
+						<dd>Do cleanup prior to serialization.</dd>
+					</dl>
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html">Horde_Imap_Client_Base</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method__construct">Horde_Imap_Client_Base::__construct()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodalerts">Horde_Imap_Client_Base::alerts()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodappend">Horde_Imap_Client_Base::append()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodcapability">Horde_Imap_Client_Base::capability()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodcheck">Horde_Imap_Client_Base::check()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodclose">Horde_Imap_Client_Base::close()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodcopy">Horde_Imap_Client_Base::copy()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodcreateMailbox">Horde_Imap_Client_Base::createMailbox()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodcurrentMailbox">Horde_Imap_Client_Base::currentMailbox()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methoddeleteMailbox">Horde_Imap_Client_Base::deleteMailbox()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodexpunge">Horde_Imap_Client_Base::expunge()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodfetch">Horde_Imap_Client_Base::fetch()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetACL">Horde_Imap_Client_Base::getACL()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetCache">Horde_Imap_Client_Base::getCache()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetCacheId">Horde_Imap_Client_Base::getCacheId()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetComparator">Horde_Imap_Client_Base::getComparator()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetID">Horde_Imap_Client_Base::getID()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetLanguage">Horde_Imap_Client_Base::getLanguage()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetMyACLRights">Horde_Imap_Client_Base::getMyACLRights()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetNamespaces">Horde_Imap_Client_Base::getNamespaces()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetParam">Horde_Imap_Client_Base::getParam()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetQuota">Horde_Imap_Client_Base::getQuota()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodgetQuotaRoot">Horde_Imap_Client_Base::getQuotaRoot()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodisSecureConnection">Horde_Imap_Client_Base::isSecureConnection()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodlistACLRights">Horde_Imap_Client_Base::listACLRights()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodlistMailboxes">Horde_Imap_Client_Base::listMailboxes()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodlogin">Horde_Imap_Client_Base::login()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodlogout">Horde_Imap_Client_Base::logout()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodnoop">Horde_Imap_Client_Base::noop()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodopenMailbox">Horde_Imap_Client_Base::openMailbox()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodqueryCapability">Horde_Imap_Client_Base::queryCapability()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodrenameMailbox">Horde_Imap_Client_Base::renameMailbox()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsearch">Horde_Imap_Client_Base::search()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsendID">Horde_Imap_Client_Base::sendID()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsetACL">Horde_Imap_Client_Base::setACL()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsetComparator">Horde_Imap_Client_Base::setComparator()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsetLanguage">Horde_Imap_Client_Base::setLanguage()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsetQuota">Horde_Imap_Client_Base::setQuota()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodstatus">Horde_Imap_Client_Base::status()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodstore">Horde_Imap_Client_Base::store()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodsubscribeMailbox">Horde_Imap_Client_Base::subscribeMailbox()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#methodthread">Horde_Imap_Client_Base::thread()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_append">Horde_Imap_Client_Base::_append()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_capability">Horde_Imap_Client_Base::_capability()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_check">Horde_Imap_Client_Base::_check()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_close">Horde_Imap_Client_Base::_close()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_closeDebug">Horde_Imap_Client_Base::_closeDebug()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_copy">Horde_Imap_Client_Base::_copy()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_createMailbox">Horde_Imap_Client_Base::_createMailbox()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_deleteMailbox">Horde_Imap_Client_Base::_deleteMailbox()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_expunge">Horde_Imap_Client_Base::_expunge()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_fetch">Horde_Imap_Client_Base::_fetch()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getACL">Horde_Imap_Client_Base::_getACL()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getComparator">Horde_Imap_Client_Base::_getComparator()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getID">Horde_Imap_Client_Base::_getID()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getLanguage">Horde_Imap_Client_Base::_getLanguage()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getMyACLRights">Horde_Imap_Client_Base::_getMyACLRights()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getNamespaces">Horde_Imap_Client_Base::_getNamespaces()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getQuota">Horde_Imap_Client_Base::_getQuota()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getQuotaRoot">Horde_Imap_Client_Base::_getQuotaRoot()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getSearchCache">Horde_Imap_Client_Base::_getSearchCache()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_getSeqUIDLookup">Horde_Imap_Client_Base::_getSeqUIDLookup()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_initCache">Horde_Imap_Client_Base::_initCache()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_listACLRights">Horde_Imap_Client_Base::_listACLRights()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_listMailboxes">Horde_Imap_Client_Base::_listMailboxes()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_login">Horde_Imap_Client_Base::_login()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_logout">Horde_Imap_Client_Base::_logout()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_noop">Horde_Imap_Client_Base::_noop()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_openMailbox">Horde_Imap_Client_Base::_openMailbox()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_renameMailbox">Horde_Imap_Client_Base::_renameMailbox()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_search">Horde_Imap_Client_Base::_search()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_sendID">Horde_Imap_Client_Base::_sendID()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setACL">Horde_Imap_Client_Base::_setACL()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setComparator">Horde_Imap_Client_Base::_setComparator()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setLanguage">Horde_Imap_Client_Base::_setLanguage()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setQuota">Horde_Imap_Client_Base::_setQuota()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_setSearchCache">Horde_Imap_Client_Base::_setSearchCache()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_status">Horde_Imap_Client_Base::_status()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_store">Horde_Imap_Client_Base::_store()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_subscribeMailbox">Horde_Imap_Client_Base::_subscribeMailbox()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_thread">Horde_Imap_Client_Base::_thread()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_updateCache">Horde_Imap_Client_Base::_updateCache()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method_updateMetaData">Horde_Imap_Client_Base::_updateMetaData()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method__destruct">Horde_Imap_Client_Base::__destruct()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method__sleep">Horde_Imap_Client_Base::__sleep()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Imap_Client/Horde_Imap_Client_Base.html#method__wakeup">Horde_Imap_Client_Base::__wakeup()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 08 Nov 2009 14:43:31 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

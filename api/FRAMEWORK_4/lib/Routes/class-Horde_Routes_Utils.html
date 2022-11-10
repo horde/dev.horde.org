@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_Routes_Utils</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="namespace-Horde.html">Horde<span></span></a>
+						<ul>
+				<li><a href="namespace-Horde.Routes.html">Routes</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Routes.html">Routes</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_Routes_Exception.html">Horde_Routes_Exception</a></li>
+				<li><a href="class-Horde_Routes_Mapper.html">Horde_Routes_Mapper</a></li>
+				<li><a href="class-Horde_Routes_Printer.html">Horde_Routes_Printer</a></li>
+				<li><a href="class-Horde_Routes_Route.html">Horde_Routes_Route</a></li>
+				<li class="active"><a href="class-Horde_Routes_Utils.html">Horde_Routes_Utils</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Routes.html" title="Summary of Routes"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_Routes_Utils</h1>
+
+
+	<div class="description">
+	<p>Utility functions for use in templates and controllers</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Routes<br>
+
+		<b>Located at</b> <a href="source-class-Horde_Routes_Utils.html#15-444" title="Go to source code">Horde/Routes/Utils.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#39-49" title="Go to source code">__construct</a>( <span><code><a href="class-Horde_Routes_Mapper.html">Horde_Routes_Mapper</a></code> <var>$mapper</var></span>, <span>callable <var>$redirect</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Constructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$mapper</var></dt>
+					<dd>Mapper for these utilities
+</dd>
+					<dt><var>$redirect</var></dt>
+					<dd>Redirect callback for redirectTo()
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="urlFor" id="_urlFor">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_urlFor">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#51-226" title="Go to source code">urlFor</a>( <span>mixed <var>$first</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$second</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Generates a URL.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Generates a URL.</p>
+
+<p>All keys given to urlFor are sent to the Routes Mapper instance for
+generation except for::
+ anchor          specified the anchor name to be appened to the path host            overrides the default (current) host if provided protocol        overrides the default (current) protocol if provided qualified       creates the URL with the host/port information as needed</p>
+
+<p>The URL is generated based on the rest of the keys. When generating a new
+URL, values will be used from the current request's parameters (if
+present). The following rules are used to determine when and how to keep
+the current requests parameters:</p>
+
+<ul>
+<li>If the controller is present and begins with '/', no defaults are used</li>
+<li>If the controller is changed, action is set to 'index' unless otherwise specified</li>
+</ul>
+
+<p>For example, if the current request yielded a dict (associative array) of
+array('controller'=>'blog', 'action'=>'view', 'id'=>2), with the standard
+':controller/:action/:id' route, you'd get the following results::
+ urlFor(array('id'=>4))                    =>  '/blog/view/4', urlFor(array('controller'=>'/admin'))     =>  '/admin', urlFor(array('controller'=>'admin'))      =>  '/admin/view/2' urlFor(array('action'=>'edit'))           =>  '/blog/edit/2', urlFor(array('action'=>'list', id=NULL))  =>  '/blog/list'</p>
+
+<p><strong>Static and Named Routes</strong></p>
+
+<p>If there is a string present as the first argument, a lookup is done
+against the named routes table to see if there's any matching routes. The
+keyword defaults used with static routes will be sent in as GET query
+arg's if a route matches.</p>
+
+<p>If no route by that name is found, the string is assumed to be a raw URL.
+Should the raw URL begin with <code>/</code> then appropriate SCRIPT_NAME data will
+be added if present, otherwise the string will be used as the url with
+keyword args becoming GET query args.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="redirectTo" id="_redirectTo">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_redirectTo">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#228-245" title="Go to source code">redirectTo</a>( <span>mixed <var>$first</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$second</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Issues a redirect based on the arguments.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Issues a redirect based on the arguments.</p>
+
+<p>Redirects <em>should</em> occur as a "302 Moved" header, however the web
+framework may utilize a different method.</p>
+
+<p>All arguments are passed to urlFor() to retrieve the appropriate URL, then
+the resulting URL it sent to the redirect function as the URL.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$first</var></dt>
+					<dd>First argument in varargs, same as urlFor()
+</dd>
+					<dt><var>$second</var></dt>
+					<dd>Second argument in varargs
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Result of redirect callback
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="printRoutes" id="_printRoutes">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_printRoutes">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#247-258" title="Go to source code">printRoutes</a>( <span>stream|null <var>$stream</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$eol</var> = PHP_EOL</span> )</code>
+
+		<div class="description short">
+			<p>Pretty-print a listing of the routes connected to the mapper.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Pretty-print a listing of the routes connected to the mapper.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$stream</var></dt>
+					<dd>Output stream for printing (optional)
+</dd>
+					<dt><var>$eol</var></dt>
+					<dd>Line ending (optional)
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="controllerScan" id="_controllerScan">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_controllerScan">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#260-314" title="Go to source code">controllerScan</a>( <span>string <var>$dirname</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$prefix</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			<p>Scan a directory for PHP files and use them as controllers.  Used
+as the default scanner callback for Horde_Routes_Mapper.  See the
+constructor of that class for more information.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Scan a directory for PHP files and use them as controllers.  Used
+as the default scanner callback for Horde_Routes_Mapper.  See the
+constructor of that class for more information.</p>
+
+<p>Given a directory with: foo.php, bar.php, baz.php
+Returns an array: foo, bar, baz</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dirname</var></dt>
+					<dd>Directory to scan for controller files
+</dd>
+					<dt><var>$prefix</var></dt>
+					<dd>Prefix controller names (optional)
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Array of controller names
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="urlQuote" id="_urlQuote">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_urlQuote">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#403-418" title="Go to source code">urlQuote</a>( <span>string <var>$url</var></span>, <span>string <var>$encoding</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Quote a string containing a URL in a given encoding.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Quote a string containing a URL in a given encoding.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$url</var></dt>
+					<dd>URL to encode
+</dd>
+					<dt><var>$encoding</var></dt>
+					<dd>Encoding to use
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="longestFirst" id="_longestFirst">
+
+		<td class="attributes"><code>
+			 public static
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_longestFirst">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#420-431" title="Go to source code">longestFirst</a>( <span>string <var>$fst</var></span>, <span>string <var>$lst</var></span> )</code>
+
+		<div class="description short">
+			<p>Callback used by usort() in controllerScan() to sort controller
+names by the longest first.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Callback used by usort() in controllerScan() to sort controller
+names by the longest first.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fst</var></dt>
+					<dd>First string to compare
+</dd>
+					<dt><var>$lst</var></dt>
+					<dd>Last string to compare
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>Difference of string length (first - last)
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="arraySubtract" id="_arraySubtract">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_arraySubtract">#</a>
+		<code><a href="source-class-Horde_Routes_Utils.html#433-443" title="Go to source code">arraySubtract</a>( <span>mixed <var>$a1</var></span>, <span>mixed <var>$a2</var></span> )</code>
+
+		<div class="description short">
+			
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="mapper" id="$mapper">
+		<td class="attributes"><code>
+			public  
+			<code><a href="class-Horde_Routes_Mapper.html">Horde_Routes_Mapper</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Horde_Routes_Utils.html#22-25" title="Go to source code"><var>$mapper</var></a>
+
+			<div class="description short">
+				
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$mapper" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="mapperDict" id="$mapperDict">
+		<td class="attributes"><code>
+			public  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Horde_Routes_Utils.html#27-31" title="Go to source code"><var>$mapperDict</var></a>
+
+			<div class="description short">
+				<p>Match data from last match; implements for urlFor() route memory</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Match data from last match; implements for urlFor() route memory</p>
+
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$mapperDict" class="anchor">#</a>
+				<code><span class="php-keyword1">array</span>()</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="redirect" id="$redirect">
+		<td class="attributes"><code>
+			public  
+			callable
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Horde_Routes_Utils.html#33-37" title="Go to source code"><var>$redirect</var></a>
+
+			<div class="description short">
+				<p>Callback function used for redirectTo()</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Callback function used for redirectTo()</p>
+
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$redirect" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2071874670"></script>
+</body>
+</html>

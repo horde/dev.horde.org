@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_Memcache</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Memcache.html">Memcache</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Horde_Memcache.html">Horde_Memcache</a></li>
+				<li><a href="class-Horde_Memcache_Exception.html">Horde_Memcache_Exception</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Memcache.html" title="Summary of Memcache"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_Memcache</h1>
+
+
+	<div class="description">
+	<p>This class provides an API or Horde code to interact with a centrally
+configured memcache installation.</p>
+
+<p>memcached website: http://www.danga.com/memcached/</p>
+
+<p>Copyright 2007-2012 Horde LLC (http://www.horde.org/)</p>
+
+<p>See the enclosed file COPYING for license information (LGPL). If you
+did not receive this file, see http://www.horde.org/licenses/lgpl21.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Horde_Memcache</span></b>			
+			 implements 
+<span>Serializable</span>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Memcache<br>
+
+				<b>Category:</b>
+				Horde
+<br>
+				<b>License:</b>
+				<a href="http://www.horde.org/licenses/lgpl21">LGPL 2.1</a><br>
+				<b>Author:</b>
+				Michael Slusarz <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x73;&#108;&#x75;&#115;&#x61;&#114;&#x7a;&#64;&#x68;&#111;&#x72;&#100;&#x65;.&#x6f;r&#103;">&#x73;&#108;&#x75;&#115;&#x61;&#114;&#x7a;&#64;&#x68;&#111;&#x72;&#100;&#x65;.&#x6f;r&#103;</a>
+<br>
+				<b>Author:</b>
+				Didi Rieder <a href="&#x6d;&#x61;&#105;&#108;&#116;o&#x3a;&#x61;&#x64;&#114;&#105;e&#x64;&#x65;&#x72;&#64;&#115;&#98;&#x6f;&#x78;&#x2e;&#116;&#117;&#103;&#x72;&#x61;&#x7a;&#46;&#97;&#116;">&#x61;&#x64;&#114;&#105;e&#x64;&#x65;&#x72;&#64;&#115;&#98;&#x6f;&#x78;&#x2e;&#116;&#117;&#103;&#x72;&#x61;&#x7a;&#46;&#97;&#116;</a>
+<br>
+		<b>Located at</b> <a href="source-class-Horde_Memcache.html#2-497" title="Go to source code">Horde/Memcache.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Horde_Memcache.html#95-132" title="Go to source code">__construct</a>( <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Constructor.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd>&lt;p&gt;Configuration parameters:
+  - compression: (boolean) Compress data inside memcache?
+                 DEFAULT: false
+  - c_threshold: (integer) The minimum value length before attempting
+                 to compress.
+                 DEFAULT: none
+  - hostspec: (array) The memcached host(s) to connect to.
+                 DEFAULT: 'localhost'
+  - large_items: (boolean) Allow storing large data items (larger than
+                 Horde_Memcache::MAX_SIZE)?
+                 DEFAULT: true
+  - persistent: (boolean) Use persistent DB connections?
+                DEFAULT: false
+  - prefix: (string) The prefix to use for the memcache keys.
+            DEFAULT: 'horde'
+  - port: (array) The port(s) memcache is listening on. Leave empty
+          if using UNIX sockets.
+          DEFAULT: 11211
+  - weight: (array) The weight(s) to use for each memcached host.
+            DEFAULT: none (equal weight to all servers)&lt;/p&gt;
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Memcache_Exception.html">Horde_Memcache_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_init" id="__init">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__init">#</a>
+		<code><a href="source-class-Horde_Memcache.html#134-165" title="Go to source code">_init</a>( )</code>
+
+		<div class="description short">
+			<p>Do initialization.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Do initialization.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Memcache_Exception.html">Horde_Memcache_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="shutdown" id="_shutdown">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_shutdown">#</a>
+		<code><a href="source-class-Horde_Memcache.html#167-177" title="Go to source code">shutdown</a>( )</code>
+
+		<div class="description short">
+			<p>Shutdown function.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Shutdown function.</p>
+
+
+
+
+
+
+				<h4>Since</h4>
+				<div class="list">
+						1.1.0
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-Horde_Memcache.html#179-194" title="Go to source code">delete</a>( <span>string <var>$key</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			<p>Delete a key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Delete a key.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The key.
+</dd>
+					<dt><var>$timeout</var></dt>
+					<dd>Expiration time in seconds.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>True on success.
+
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						Memcache::delete()
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code><a href="source-class-Horde_Memcache.html#196-292" title="Go to source code">get</a>( <span>mixed <var>$keys</var></span> )</code>
+
+		<div class="description short">
+			<p>Get data associated with a key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get data associated with a key.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$keys</var></dt>
+					<dd>The key or an array of keys.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><p>The string/array on success (return type is the type of
+               $keys), false on failure.</p>
+
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						Memcache::get()
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code><a href="source-class-Horde_Memcache.html#294-308" title="Go to source code">set</a>( <span>string <var>$key</var></span>, <span>string <var>$var</var></span>, <span>integer <var>$expire</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			<p>Set the value of a key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set the value of a key.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The key.
+</dd>
+					<dt><var>$var</var></dt>
+					<dd>The data to store.
+</dd>
+					<dt><var>$expire</var></dt>
+					<dd>$timeout  Expiration time in seconds.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>True on success.
+
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						Memcache::set()
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="replace" id="_replace">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_replace">#</a>
+		<code><a href="source-class-Horde_Memcache.html#345-370" title="Go to source code">replace</a>( <span>string <var>$key</var></span>, <span>string <var>$var</var></span>, <span>integer <var>$expire</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			<p>Replace the value of a key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Replace the value of a key.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The key.
+</dd>
+					<dt><var>$var</var></dt>
+					<dd>The data to store.
+</dd>
+					<dt><var>$expire</var></dt>
+					<dd>$timeout  Expiration time in seconds.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>True on success, false if key doesn't exist.
+
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						Memcache::replace()
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="lock" id="_lock">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_lock">#</a>
+		<code><a href="source-class-Horde_Memcache.html#372-385" title="Go to source code">lock</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			<p>Obtain lock on a key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Obtain lock on a key.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The key to lock.
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unlock" id="_unlock">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unlock">#</a>
+		<code><a href="source-class-Horde_Memcache.html#387-396" title="Go to source code">unlock</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			<p>Release lock on a key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Release lock on a key.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The key to lock.
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="flush" id="_flush">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_flush">#</a>
+		<code><a href="source-class-Horde_Memcache.html#398-404" title="Go to source code">flush</a>( )</code>
+
+		<div class="description short">
+			<p>Mark all entries on a memcache installation as expired.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Mark all entries on a memcache installation as expired.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="stats" id="_stats">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_stats">#</a>
+		<code><a href="source-class-Horde_Memcache.html#406-415" title="Go to source code">stats</a>( )</code>
+
+		<div class="description short">
+			<p>Get the statistics output from the current memcache pool.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the statistics output from the current memcache pool.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br><p>The output from Memcache::getExtendedStats() using the
+               current configuration values.</p>
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="serialize" id="_serialize">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_serialize">#</a>
+		<code><a href="source-class-Horde_Memcache.html#460-472" title="Go to source code">serialize</a>( )</code>
+
+		<div class="description short">
+			<p>Serialize.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Serialize.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Serialized representation of this object.
+
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code>Serializable::serialize()</code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unserialize" id="_unserialize">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unserialize">#</a>
+		<code><a href="source-class-Horde_Memcache.html#474-495" title="Go to source code">unserialize</a>( <span>string <var>$data</var></span> )</code>
+
+		<div class="description short">
+			<p>Unserialize.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Unserialize.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd>Serialized data.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>
+					<code><a href="class-Horde_Memcache_Exception.html">Horde_Memcache_Exception</a></code>
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code>Serializable::unserialize()</code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="FLAGS_RESERVED" id="FLAGS_RESERVED">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-Horde_Memcache.html#21-25" title="Go to source code"><b>FLAGS_RESERVED</b></a>
+			</code>
+
+			<div class="description short">
+				<p>The number of bits reserved by PHP's memcache layer for internal flag
+use.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The number of bits reserved by PHP's memcache layer for internal flag
+use.</p>
+
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#FLAGS_RESERVED" class="anchor">#</a>
+				<code><span class="php-num">16</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="LOCK_TIMEOUT" id="LOCK_TIMEOUT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-Horde_Memcache.html#27-32" title="Go to source code"><b>LOCK_TIMEOUT</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Locking timeout.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Locking timeout.</p>
+
+
+					<h4>Since</h4>
+					<div class="list">
+							1.1.1
+<br>
+					</div>
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#LOCK_TIMEOUT" class="anchor">#</a>
+				<code><span class="php-num">30</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="LOCK_SUFFIX" id="LOCK_SUFFIX">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-Horde_Memcache.html#34-39" title="Go to source code"><b>LOCK_SUFFIX</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Suffix added to key to create the lock entry.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Suffix added to key to create the lock entry.</p>
+
+
+					<h4>Since</h4>
+					<div class="list">
+							1.1.0
+<br>
+					</div>
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#LOCK_SUFFIX" class="anchor">#</a>
+				<code><span class="php-quote">'_l'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="MAX_SIZE" id="MAX_SIZE">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-Horde_Memcache.html#41-46" title="Go to source code"><b>MAX_SIZE</b></a>
+			</code>
+
+			<div class="description short">
+				<p>The max storage size of the memcache server.  This should be slightly
+smaller than the actual value due to overhead.  By default, the max
+slab size of memcached (as of 1.1.2) is 1 MB.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The max storage size of the memcache server.  This should be slightly
+smaller than the actual value due to overhead.  By default, the max
+slab size of memcached (as of 1.1.2) is 1 MB.</p>
+
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#MAX_SIZE" class="anchor">#</a>
+				<code><span class="php-num">1000000</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="VERSION" id="VERSION">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-Horde_Memcache.html#48-51" title="Go to source code"><b>VERSION</b></a>
+			</code>
+
+			<div class="description short">
+				<p>Serializable version.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Serializable version.</p>
+
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#VERSION" class="anchor">#</a>
+				<code><span class="php-num">1</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2388279038"></script>
+</body>
+</html>

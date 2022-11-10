@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Horde/ActiveSync/Message/Attendee.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-ActiveSync.html">ActiveSync</a>
+						</li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_ActiveSync_Message_Appointment.html">Horde_ActiveSync_Message_Appointment</a></li>
+				<li class="active"><a href="class-Horde_ActiveSync_Message_Attendee.html">Horde_ActiveSync_Message_Attendee</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Contact.html">Horde_ActiveSync_Message_Contact</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Exception.html">Horde_ActiveSync_Message_Exception</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Folder.html">Horde_ActiveSync_Message_Folder</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Recurrence.html">Horde_ActiveSync_Message_Recurrence</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Task.html">Horde_ActiveSync_Message_Task</a></li>
+				<li><a href="class-Horde_ActiveSync_State_Base.html">Horde_ActiveSync_State_Base</a></li>
+				<li><a href="class-Horde_ActiveSync_State_History.html">Horde_ActiveSync_State_History</a></li>
+				<li><a href="class-Horde_ActiveSync_Timezone.html">Horde_ActiveSync_Timezone</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-ActiveSync.html" title="Summary of ActiveSync"><span>Package</span></a>
+			</li>
+			<li>
+				<a href="class-Horde_ActiveSync_Message_Attendee.html" title="Summary of Horde_ActiveSync_Message_Attendee"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Horde_ActiveSync_Message_Attendee class represents a single ActiveSync
+</span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> * Attendee sub-object.
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> *
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Copyright 2010-2012 Horde LLC (http://www.horde.org/)
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @author Michael J. Rubinsky &lt;mrubinsk@horde.org&gt;
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * @package ActiveSync
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> */</span>
+</span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-keyword1">class</span> <a id="Horde_ActiveSync_Message_Attendee" href="#Horde_ActiveSync_Message_Attendee">Horde_ActiveSync_Message_Attendee</a> <span class="php-keyword1">extends</span> Horde_ActiveSync_Message_Base
+</span><span id="12" class="l"><a class="l" href="#12">12: </a>{
+</span><span id="13" class="l"><a class="l" href="#13">13: </a>    <span class="php-comment">/* Attendee Type Constants */</span>
+</span><span id="14" class="l"><a class="l" href="#14">14: </a>    <span class="php-keyword1">const</span> <a id="TYPE_REQUIRED" href="#TYPE_REQUIRED">TYPE_REQUIRED</a>     = <span class="php-num">1</span>;
+</span><span id="15" class="l"><a class="l" href="#15">15: </a>    <span class="php-keyword1">const</span> <a id="TYPE_OPTIONAL" href="#TYPE_OPTIONAL">TYPE_OPTIONAL</a>     = <span class="php-num">2</span>;
+</span><span id="16" class="l"><a class="l" href="#16">16: </a>    <span class="php-keyword1">const</span> <a id="TYPE_RESOURCE" href="#TYPE_RESOURCE">TYPE_RESOURCE</a>     = <span class="php-num">3</span>;
+</span><span id="17" class="l"><a class="l" href="#17">17: </a>
+</span><span id="18" class="l"><a class="l" href="#18">18: </a>    <span class="php-comment">/* Attendee Status */</span>
+</span><span id="19" class="l"><a class="l" href="#19">19: </a>    <span class="php-keyword1">const</span> <a id="STATUS_UNKNOWN" href="#STATUS_UNKNOWN">STATUS_UNKNOWN</a>    = <span class="php-num">0</span>;
+</span><span id="20" class="l"><a class="l" href="#20">20: </a>    <span class="php-keyword1">const</span> <a id="STATUS_TENTATIVE" href="#STATUS_TENTATIVE">STATUS_TENTATIVE</a>  = <span class="php-num">2</span>;
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>    <span class="php-keyword1">const</span> <a id="STATUS_ACCEPT" href="#STATUS_ACCEPT">STATUS_ACCEPT</a>     = <span class="php-num">3</span>;
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>    <span class="php-keyword1">const</span> <a id="STATUS_DECLINE" href="#STATUS_DECLINE">STATUS_DECLINE</a>    = <span class="php-num">4</span>;
+</span><span id="23" class="l"><a class="l" href="#23">23: </a>    <span class="php-keyword1">const</span> <a id="STATUS_NORESPONSE" href="#STATUS_NORESPONSE">STATUS_NORESPONSE</a> = <span class="php-num">5</span>;
+</span><span id="24" class="l"><a class="l" href="#24">24: </a>
+</span><span id="25" class="l"><a class="l" href="#25">25: </a>
+</span><span id="26" class="l"><a class="l" href="#26">26: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$_mapping" href="#$_mapping">$_mapping</a></span> = <span class="php-keyword1">array</span>(
+</span><span id="27" class="l"><a class="l" href="#27">27: </a>        Horde_ActiveSync_Message_Appointment::POOMCAL_EMAIL =&gt; <span class="php-keyword1">array</span> (self::KEY_ATTRIBUTE =&gt; <span class="php-quote">'email'</span>),
+</span><span id="28" class="l"><a class="l" href="#28">28: </a>        Horde_ActiveSync_Message_Appointment::POOMCAL_NAME  =&gt; <span class="php-keyword1">array</span> (self::KEY_ATTRIBUTE =&gt; <span class="php-quote">'name'</span>),
+</span><span id="29" class="l"><a class="l" href="#29">29: </a>        Horde_ActiveSync_Message_Appointment::POOMCAL_ATTENDEESTATUS =&gt; <span class="php-keyword1">array</span>(self::KEY_ATTRIBUTE =&gt; <span class="php-quote">'status'</span>),
+</span><span id="30" class="l"><a class="l" href="#30">30: </a>        Horde_ActiveSync_Message_Appointment::POOMCAL_ATTENDEETYPE =&gt; <span class="php-keyword1">array</span>(self::KEY_ATTRIBUTE =&gt; <span class="php-quote">'type'</span>)
+</span><span id="31" class="l"><a class="l" href="#31">31: </a>    );
+</span><span id="32" class="l"><a class="l" href="#32">32: </a>
+</span><span id="33" class="l"><a class="l" href="#33">33: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$_properties" href="#$_properties">$_properties</a></span> = <span class="php-keyword1">array</span>(
+</span><span id="34" class="l"><a class="l" href="#34">34: </a>        <span class="php-quote">'email'</span> =&gt; <span class="php-keyword1">false</span>,
+</span><span id="35" class="l"><a class="l" href="#35">35: </a>        <span class="php-quote">'name'</span>  =&gt; <span class="php-keyword1">false</span>,
+</span><span id="36" class="l"><a class="l" href="#36">36: </a>        <span class="php-quote">'status'</span> =&gt; <span class="php-keyword1">false</span>,
+</span><span id="37" class="l"><a class="l" href="#37">37: </a>        <span class="php-quote">'type'</span> =&gt; <span class="php-keyword1">false</span>
+</span><span id="38" class="l"><a class="l" href="#38">38: </a>    );
+</span><span id="39" class="l"><a class="l" href="#39">39: </a>
+</span><span id="40" class="l"><a class="l" href="#40">40: </a>}</span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?3161104126"></script>
+</body>
+</html>

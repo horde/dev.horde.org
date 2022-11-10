@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+        <script type="text/javascript">
+        function loadExternalCodeSnippets() {
+            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+                var src = pre.getAttribute('data-src');
+                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+                var language = 'php';
+
+                var code = document.createElement('code');
+                code.className = 'language-' + language;
+
+                pre.textContent = '';
+
+                code.textContent = 'Loading…';
+
+                pre.appendChild(code);
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', src, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+
+                            Prism.highlightElement(code);
+                        }
+                        else if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                        }
+                        else {
+                            code.textContent = '✖ Error: File does not exist or is empty';
+                        }
+                    }
+                };
+
+                xhr.send(null);
+            });
+        }
+
+        $(document).ready(function(){
+            loadExternalCodeSnippets();
+        });
+        $('#source-view').on('shown', function () {
+            loadExternalCodeSnippets();
+        })
+    </script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">147</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">7</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1934246866"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1934246866" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage.html">Horde_Kolab_Storage</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data.html">Horde_Kolab_Storage_Data</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data_Query.html">Horde_Kolab_Storage_Data_Query</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data_Query_History.html">Horde_Kolab_Storage_Data_Query_History</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data_Query_Preferences.html">Horde_Kolab_Storage_Data_Query_Preferences</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Driver.html">Horde_Kolab_Storage_Driver</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Folder.html">Horde_Kolab_Storage_Folder</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Folder_Stamp.html">Horde_Kolab_Storage_Folder_Stamp</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_HistoryPrefix.html">Horde_Kolab_Storage_HistoryPrefix</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_List_Manipulation_Listener.html">Horde_Kolab_Storage_List_Manipulation_Listener</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_List_Synchronization_Listener.html">Horde_Kolab_Storage_List_Synchronization_Listener</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Queriable.html">Horde_Kolab_Storage_Queriable</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Query.html">Horde_Kolab_Storage_Query</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_QuerySet.html">Horde_Kolab_Storage_QuerySet</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Base.html">Horde_Kolab_Storage_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Cache.html">Horde_Kolab_Storage_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Cache_Data.html">Horde_Kolab_Storage_Cache_Data</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Cached.html">Horde_Kolab_Storage_Cached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Base.html">Horde_Kolab_Storage_Data_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Cached.html">Horde_Kolab_Storage_Data_Cached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Decorator_Log.html">Horde_Kolab_Storage_Data_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Exception.html">Horde_Kolab_Storage_Data_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Old.html">Horde_Kolab_Storage_Data_Old</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_History_Base.html">Horde_Kolab_Storage_Data_Query_History_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_History_Cache.html">Horde_Kolab_Storage_Data_Query_History_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_Preferences_Base.html">Horde_Kolab_Storage_Data_Query_Preferences_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_Preferences_Cache.html">Horde_Kolab_Storage_Data_Query_Preferences_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Decorator_Log.html">Horde_Kolab_Storage_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Decorator_Synchronization.html">Horde_Kolab_Storage_Decorator_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Base.html">Horde_Kolab_Storage_Driver_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Cclient.html">Horde_Kolab_Storage_Driver_Cclient</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Decorator_Base.html">Horde_Kolab_Storage_Driver_Decorator_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Decorator_Log.html">Horde_Kolab_Storage_Driver_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Decorator_Timer.html">Horde_Kolab_Storage_Driver_Decorator_Timer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Imap.html">Horde_Kolab_Storage_Driver_Imap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Mock.html">Horde_Kolab_Storage_Driver_Mock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Mock_Data.html">Horde_Kolab_Storage_Driver_Mock_Data</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Pear.html">Horde_Kolab_Storage_Driver_Pear</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Rcube.html">Horde_Kolab_Storage_Driver_Rcube</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Exception.html">Horde_Kolab_Storage_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Exception_Pear.html">Horde_Kolab_Storage_Exception_Pear</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Factory.html">Horde_Kolab_Storage_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Base.html">Horde_Kolab_Storage_Folder_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Data.html">Horde_Kolab_Storage_Folder_Data</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace.html">Horde_Kolab_Storage_Folder_Namespace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Config.html">Horde_Kolab_Storage_Folder_Namespace_Config</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element.html">Horde_Kolab_Storage_Folder_Namespace_Element</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_Other.html">Horde_Kolab_Storage_Folder_Namespace_Element_Other</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_Personal.html">Horde_Kolab_Storage_Folder_Namespace_Element_Personal</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_Shared.html">Horde_Kolab_Storage_Folder_Namespace_Element_Shared</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_SharedWithPrefix.html">Horde_Kolab_Storage_Folder_Namespace_Element_SharedWithPrefix</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Fixed.html">Horde_Kolab_Storage_Folder_Namespace_Fixed</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Imap.html">Horde_Kolab_Storage_Folder_Namespace_Imap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Stamp_Uids.html">Horde_Kolab_Storage_Folder_Stamp_Uids</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Type.html">Horde_Kolab_Storage_Folder_Type</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Types.html">Horde_Kolab_Storage_Folder_Types</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Cache.html">Horde_Kolab_Storage_List_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Exception.html">Horde_Kolab_Storage_List_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Manipulation.html">Horde_Kolab_Storage_List_Manipulation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Manipulation_Base.html">Horde_Kolab_Storage_List_Manipulation_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Manipulation_Decorator_Log.html">Horde_Kolab_Storage_List_Manipulation_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Acl.html">Horde_Kolab_Storage_List_Query_Acl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Acl_Base.html">Horde_Kolab_Storage_List_Query_Acl_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Acl_Cache.html">Horde_Kolab_Storage_List_Query_Acl_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_ActiveSync.html">Horde_Kolab_Storage_List_Query_ActiveSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_ActiveSync_Base.html">Horde_Kolab_Storage_List_Query_ActiveSync_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_ActiveSync_Cache.html">Horde_Kolab_Storage_List_Query_ActiveSync_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List.html">Horde_Kolab_Storage_List_Query_List</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Base.html">Horde_Kolab_Storage_List_Query_List_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Cache.html">Horde_Kolab_Storage_List_Query_List_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Cache_Synchronization.html">Horde_Kolab_Storage_List_Query_List_Cache_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Defaults.html">Horde_Kolab_Storage_List_Query_List_Defaults</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Defaults_Bail.html">Horde_Kolab_Storage_List_Query_List_Defaults_Bail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Defaults_Log.html">Horde_Kolab_Storage_List_Query_List_Defaults_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Share.html">Horde_Kolab_Storage_List_Query_Share</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Share_Base.html">Horde_Kolab_Storage_List_Query_Share_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Share_Cache.html">Horde_Kolab_Storage_List_Query_Share_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Synchronization.html">Horde_Kolab_Storage_List_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Synchronization_Base.html">Horde_Kolab_Storage_List_Synchronization_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Synchronization_Decorator_Log.html">Horde_Kolab_Storage_List_Synchronization_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Tools.html">Horde_Kolab_Storage_List_Tools</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object.html">Horde_Kolab_Storage_Object</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Exception.html">Horde_Kolab_Storage_Object_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_MimeType.html">Horde_Kolab_Storage_Object_MimeType</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Writer.html">Horde_Kolab_Storage_Object_Writer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Writer_Format.html">Horde_Kolab_Storage_Object_Writer_Format</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Writer_Raw.html">Horde_Kolab_Storage_Object_Writer_Raw</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_QuerySet_Base.html">Horde_Kolab_Storage_QuerySet_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_QuerySet_Cached.html">Horde_Kolab_Storage_QuerySet_Cached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_QuerySet_Uncached.html">Horde_Kolab_Storage_QuerySet_Uncached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization.html">Horde_Kolab_Storage_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization_OncePerSession.html">Horde_Kolab_Storage_Synchronization_OncePerSession</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization_TimeBased.html">Horde_Kolab_Storage_Synchronization_TimeBased</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization_Token.html">Horde_Kolab_Storage_Synchronization_Token</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Translation.html">Horde_Kolab_Storage_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Uncached.html">Horde_Kolab_Storage_Uncached</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Kolab_Storage_Driver</h1>
+                    <p><em>The driver definition for accessing Kolab storage.</em></p>
+                    <p>Copyright 2004-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span6">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span6">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span6">
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_createBackend">createBackend()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getBackend">getBackend()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_setBackend">setBackend()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getAuth">getAuth()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getId">getId()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getParameters">getParameters()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_hasCatenateSupport">hasCatenateSupport()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_listFolders">listFolders()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_create">create()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_delete">delete()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_rename">rename()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_hasAclSupport">hasAclSupport()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getAcl">getAcl()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getMyAcl">getMyAcl()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_setAcl">setAcl()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_deleteAcl">deleteAcl()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_listAnnotation">listAnnotation()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getAnnotation">getAnnotation()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_setAnnotation">setAnnotation()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getNamespace">getNamespace()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getStamp">getStamp()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_status">status()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_getUids">getUids()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_fetchStructure">fetchStructure()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_fetchBodypart">fetchBodypart()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_fetchComplete">fetchComplete()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_fetchHeaders">fetchHeaders()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_appendMessage">appendMessage()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_deleteMessages">deleteMessages()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_moveMessage">moveMessage()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Driver.html#method_expunge">expunge()</a><br />
+                                                            </section>
+                            <section class="span6">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span6">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span6">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span6">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span6">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        <dl>
+                        <dt>File</dt>
+                            <dd>
+                                <a href="../files/Storage.Driver.html"><div class="path-wrapper">Storage/Driver.php</div></a>
+                            </dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Kolab_Storage</div></dd>
+                                                
+                                            </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>category</th>
+                            <td>
+                                                                    <p>Kolab</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>author</th>
+                            <td>
+                                                                    <p>Gunnar Wrobel <a href="mailto:wrobel@pardus.de">wrobel@pardus.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>license</th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL 2.1</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+            
+                        <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Methods</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createBackend" name="method_createBackend" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createBackend()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createBackend() : mixed</pre>
+                <p><em>Create the backend driver.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The backend driver.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBackend" name="method_getBackend" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBackend()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBackend() : mixed</pre>
+                <p><em>Returns the actual backend driver.</em></p>
+                <p>If there is no driver set the driver should be constructed within this
+method.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The backend driver.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setBackend" name="method_setBackend" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setBackend()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setBackend(mixed  <span class="argument">$backend</span>) : NULL</pre>
+                <p><em>Set the backend driver.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$backend </td>
+                                <td><p>The driver that should be used.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAuth" name="method_getAuth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAuth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAuth() : string</pre>
+                <p><em>Return the id of the user currently authenticated.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The id of the user that opened the connection.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getId" name="method_getId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getId() : string</pre>
+                <p><em>Return the unique connection id.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The connection id.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParameters" name="method_getParameters" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParameters()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParameters() : array</pre>
+                <p><em>Return the connection parameters.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The connection parameters.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasCatenateSupport" name="method_hasCatenateSupport" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasCatenateSupport()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasCatenateSupport() : boolean</pre>
+                <p><em>Checks if the backend supports CATENATE.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the backend supports CATENATE.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listFolders" name="method_listFolders" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listFolders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listFolders() : array</pre>
+                <p><em>Retrieves a list of folders from the server.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The list of folders.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_create" name="method_create" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">create()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">create(string  <span class="argument">$folder</span>) : NULL</pre>
+                <p><em>Create the specified folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to create.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$folder</span>) : NULL</pre>
+                <p><em>Delete the specified folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to delete.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rename" name="method_rename" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rename(string  <span class="argument">$old</span>, string  <span class="argument">$new</span>) : NULL</pre>
+                <p><em>Rename the specified folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$old </td>
+                                <td><p>The folder to rename.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$new </td>
+                                <td><p>The new name of the folder.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasAclSupport" name="method_hasAclSupport" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasAclSupport()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasAclSupport() : boolean</pre>
+                <p><em>Does the backend support ACL?</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the backend supports ACLs.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAcl" name="method_getAcl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAcl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAcl(string  <span class="argument">$folder</span>) : array</pre>
+                <p><em>Retrieve the access rights for a folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to retrieve the ACL for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of rights.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMyAcl" name="method_getMyAcl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMyAcl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMyAcl(string  <span class="argument">$folder</span>) : string</pre>
+                <p><em>Retrieve the access rights the current user has on a folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to retrieve the user ACL for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The user rights.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setAcl" name="method_setAcl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setAcl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setAcl(string  <span class="argument">$folder</span>, string  <span class="argument">$user</span>, string  <span class="argument">$acl</span>) : NULL</pre>
+                <p><em>Set the access rights for a folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to act upon.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The user to set the ACL for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$acl </td>
+                                <td><p>The ACL.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteAcl" name="method_deleteAcl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteAcl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteAcl(string  <span class="argument">$folder</span>, string  <span class="argument">$user</span>) : NULL</pre>
+                <p><em>Delete the access rights for user on a folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to act upon.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The user to delete the ACL for</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listAnnotation" name="method_listAnnotation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listAnnotation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listAnnotation(string  <span class="argument">$annotation</span>) : array</pre>
+                <p><em>Retrieves the specified annotation for the complete list of folders.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$annotation </td>
+                                <td><p>The name of the annotation to retrieve.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An associative array combining the folder names as key with
+the corresponding annotation value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAnnotation" name="method_getAnnotation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAnnotation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAnnotation(string  <span class="argument">$folder</span>, string  <span class="argument">$annotation</span>) : string</pre>
+                <p><em>Fetches the annotation from a folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The name of the folder.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$annotation </td>
+                                <td><p>The annotation to get.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The annotation value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setAnnotation" name="method_setAnnotation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setAnnotation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setAnnotation(string  <span class="argument">$folder</span>, string  <span class="argument">$annotation</span>, array  <span class="argument">$value</span>) : NULL</pre>
+                <p><em>Sets the annotation on a folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The name of the folder.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$annotation </td>
+                                <td><p>The annotation to set.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$value </td>
+                                <td><p>The values to set</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNamespace" name="method_getNamespace" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNamespace()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNamespace() : \Horde_Kolab_Storage_Driver_Namespace</pre>
+                <p><em>Retrieve the namespace information for this connection.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Kolab_Storage_Driver_Namespace
+                                            &mdash; <p>The initialized namespace handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStamp" name="method_getStamp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getStamp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStamp(string  <span class="argument">$folder</span>) : \Horde_Kolab_Storage_Folder_Stamp</pre>
+                <p><em>Returns a stamp for the current folder status. This stamp can be used to
+identify changes in the folder data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>Return the stamp for this folder.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Kolab_Storage_Folder_Stamp.html">\Horde_Kolab_Storage_Folder_Stamp</a>
+                                            &mdash; <p>A stamp indicating the current
+folder status.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_status" name="method_status" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">status()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">status(string  <span class="argument">$folder</span>) : array</pre>
+                <p><em>Returns the status of the current folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>Check the status of this folder.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array that contains 'uidvalidity' and 'uidnext'.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUids" name="method_getUids" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUids()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUids(string  <span class="argument">$folder</span>) : array</pre>
+                <p><em>Returns the message ids of the messages in this folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>Check the status of this folder.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The message ids.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchStructure" name="method_fetchStructure" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchStructure()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchStructure(string  <span class="argument">$folder</span>, array  <span class="argument">$uids</span>) : array</pre>
+                <p><em>Retrieves the messages for the given message ids.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to fetch the messages from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$uids </td>
+                                <td><p>The message UIDs.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of message structures parsed into Horde_Mime_Part
+instances.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchBodypart" name="method_fetchBodypart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchBodypart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchBodypart(string  <span class="argument">$folder</span>, array  <span class="argument">$uid</span>, array  <span class="argument">$id</span>) : resource|string</pre>
+                <p><em>Retrieves a bodypart for the given message ID and mime part ID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to fetch the messages from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$uid </td>
+                                <td><p>The message UID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$id </td>
+                                <td><p>The mime part ID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    resource|string
+                                            &mdash; <p>The body part, as a stream resource or string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchComplete" name="method_fetchComplete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchComplete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchComplete(string  <span class="argument">$folder</span>, array  <span class="argument">$uid</span>) : array</pre>
+                <p><em>Retrieves a complete message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to fetch the messages from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$uid </td>
+                                <td><p>The message UID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The message encapsuled as an array that contains a
+Horde_Mime_Headers and a Horde_Mime_Part object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchHeaders" name="method_fetchHeaders" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchHeaders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchHeaders(string  <span class="argument">$folder</span>, array  <span class="argument">$uid</span>) : \Horde_Mime_Headers</pre>
+                <p><em>Retrieves the message headers.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to fetch the message from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$uid </td>
+                                <td><p>The message UID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Mime_Headers
+                                            &mdash; <p>The message headers.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_appendMessage" name="method_appendMessage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">appendMessage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">appendMessage(string  <span class="argument">$folder</span>, resource  <span class="argument">$msg</span>) : mixed</pre>
+                <p><em>Appends a message to the given folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to append the message(s) to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>resource</td>
+                                <td>$msg </td>
+                                <td><p>The message to append.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>True or the UID of the new message in case the backend
+supports UIDPLUS.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteMessages" name="method_deleteMessages" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteMessages()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteMessages(string  <span class="argument">$folder</span>, integer  <span class="argument">$uids</span>) : NULL</pre>
+                <p><em>Deletes messages from the specified folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to delete messages from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$uids </td>
+                                <td><p>IMAP message ids.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_moveMessage" name="method_moveMessage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">moveMessage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">moveMessage(integer  <span class="argument">$uid</span>, string  <span class="argument">$old_folder</span>, string  <span class="argument">$new_folder</span>) : NULL</pre>
+                <p><em>Moves a message to a new folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$uid </td>
+                                <td><p>IMAP message id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$old_folder </td>
+                                <td><p>Source folder.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$new_folder </td>
+                                <td><p>Target folder.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_expunge" name="method_expunge" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">expunge()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">expunge(string  <span class="argument">$folder</span>) : NULL</pre>
+                <p><em>Expunges messages in the current folder.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$folder </td>
+                                <td><p>The folder to expunge.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Driver.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Storage/Driver.php.txt" class="language-php"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:33.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

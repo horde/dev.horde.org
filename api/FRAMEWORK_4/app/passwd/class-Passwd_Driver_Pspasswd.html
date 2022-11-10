@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Passwd_Driver_Pspasswd</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li class="active"><a href="namespace-Passwd.html">Passwd</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Passwd.html">Passwd</a></li>
+				<li><a href="class-Passwd_Driver.html">Passwd_Driver</a></li>
+				<li><a href="class-Passwd_Driver_Adsi.html">Passwd_Driver_Adsi</a></li>
+				<li><a href="class-Passwd_Driver_Composite.html">Passwd_Driver_Composite</a></li>
+				<li><a href="class-Passwd_Driver_Expect.html">Passwd_Driver_Expect</a></li>
+				<li><a href="class-Passwd_Driver_Expectpecl.html">Passwd_Driver_Expectpecl</a></li>
+				<li><a href="class-Passwd_Driver_Horde.html">Passwd_Driver_Horde</a></li>
+				<li><a href="class-Passwd_Driver_Http.html">Passwd_Driver_Http</a></li>
+				<li><a href="class-Passwd_Driver_Kolab.html">Passwd_Driver_Kolab</a></li>
+				<li><a href="class-Passwd_Driver_Ldap.html">Passwd_Driver_Ldap</a></li>
+				<li><a href="class-Passwd_Driver_Pine.html">Passwd_Driver_Pine</a></li>
+				<li><a href="class-Passwd_Driver_Poppassd.html">Passwd_Driver_Poppassd</a></li>
+				<li><a href="class-Passwd_Driver_Procopen.html">Passwd_Driver_Procopen</a></li>
+				<li class="active"><a href="class-Passwd_Driver_Pspasswd.html">Passwd_Driver_Pspasswd</a></li>
+				<li><a href="class-Passwd_Driver_Servuftp.html">Passwd_Driver_Servuftp</a></li>
+				<li><a href="class-Passwd_Driver_Smbldap.html">Passwd_Driver_Smbldap</a></li>
+				<li><a href="class-Passwd_Driver_Smbpasswd.html">Passwd_Driver_Smbpasswd</a></li>
+				<li><a href="class-Passwd_Driver_Soap.html">Passwd_Driver_Soap</a></li>
+				<li><a href="class-Passwd_Driver_Sql.html">Passwd_Driver_Sql</a></li>
+				<li><a href="class-Passwd_Driver_Vmailmgr.html">Passwd_Driver_Vmailmgr</a></li>
+				<li><a href="class-Passwd_Driver_Vpopmail.html">Passwd_Driver_Vpopmail</a></li>
+				<li><a href="class-Passwd_Exception.html">Passwd_Exception</a></li>
+				<li><a href="class-Passwd_Factory_Driver.html">Passwd_Factory_Driver</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Passwd.html" title="Summary of Passwd"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Passwd_Driver_Pspasswd</h1>
+
+
+	<div class="description">
+	<p>The PSPasswd class changes a user's password on any Windows Machine
+(NT+) using the pspasswd free utility available at Sysinternals
+website: http://www.sysinternals.com/ntw2k/freeware/pspasswd.shtml</p>
+
+<p>IMPORTANT!</p>
+
+<p>This driver should be used only as a last resort when there's no
+possibility of using the ADSI or LDAP drivers, which are far more
+secure and fast. This driver needs administrative credentials
+exposed on the backends.php file, which is required by the
+pspasswd.exe tool. It's an alternative driver that should be
+avoided, but could also be the only option for a few scenarios.
+(eg: When you don't have ADSI or LDAP support)</p>
+
+<p>Sample backend configuration:</p>
+
+<pre><span class="php-var">$backends</span>[<span class="php-quote">'pspasswd'</span>] = <span class="php-keyword1">array</span>(
+  <span class="php-quote">'name'</span> =&gt; <span class="php-quote">'Sample pspasswd backend'</span>,
+  <span class="php-quote">'preferred'</span> =&gt; <span class="php-quote">'localhost'</span>,
+  <span class="php-quote">'policy'</span> =&gt; <span class="php-keyword1">array</span>(
+      <span class="php-quote">'minLength'</span> =&gt; <span class="php-num">8</span>,
+      <span class="php-quote">'maxLength'</span> =&gt; <span class="php-num">14</span>
+  ),
+  <span class="php-quote">'driver'</span> =&gt; <span class="php-quote">'pspasswd'</span>,
+  <span class="php-quote">'params'</span> =&gt; <span class="php-keyword1">array</span>(
+     <span class="php-quote">'server'</span> =&gt; <span class="php-quote">'YOUR_SERVER_NAME'</span>,
+     <span class="php-quote">'bin'</span> =&gt; <span class="php-quote">'DRIVE:\\DIR\\pspasswd.exe'</span>, <span class="php-comment">// Notice: &quot;\\&quot;</span>
+     <span class="php-quote">'admusr'</span> =&gt; <span class="php-quote">'Administrator'</span>,
+     <span class="php-quote">'admpwd'</span> =&gt; <span class="php-quote">'Password'</span>,
+      <span class="php-quote">'domain'</span> =&gt; <span class="php-quote">'YOUR_DOMAIN_NAME'</span>
+  )
+);</pre>
+
+<p>Backend parameters:</p>
+
+<pre>server  = Machine where you want to change the password (Required)
+bin     = Full pathname of the pspasswd.exe program (Required)
+admusr  = User with administrative privileges (Required)
+admpwd  = Password of the administrative user (Required)
+domain  = Windows domain name (Optional)</pre>
+
+<p>For example: Passing a NT4 PDC server name to the server parameter
+means you can change the user's password on that NT4 Domain.</p>
+
+<p>Special thanks to Mark Russinovich (mark@sysinternals.com) for the
+tool and helping me solve some questions about it.</p>
+
+<p>Copyright 2004-2012 Horde LLC (http://www.horde.org/)</p>
+
+<p>See the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see http://www.horde.org/licenses/gpl.php.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Passwd_Driver.html"><span>Passwd_Driver</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Passwd_Driver_Pspasswd</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Passwd<br>
+
+				<b>Author:</b>
+				Luiz R Malheiros (malheiros@gmail.com)
+<br>
+		<b>Located at</b> <a href="source-class-Passwd_Driver_Pspasswd.html#2-121" title="Go to source code">Driver/Pspasswd.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Passwd_Driver_Pspasswd.html#61-79" title="Go to source code">__construct</a>( <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Constructor.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd>A hash containing connection parameters.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Passwd_Exception.html">Passwd_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Passwd_Driver.html#___construct">Passwd_Driver::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="changePassword" id="_changePassword">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_changePassword">#</a>
+		<code><a href="source-class-Passwd_Driver_Pspasswd.html#81-120" title="Go to source code">changePassword</a>( <span>string <var>$user_name</var></span>, <span>string <var>$old_password</var></span>, <span>string <var>$new_password</var></span> )</code>
+
+		<div class="description short">
+			<p>Changes the user's password.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Changes the user's password.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$user_name</var></dt>
+					<dd>The user for which to change the password.
+</dd>
+					<dt><var>$old_password</var></dt>
+					<dd>The old (current) user password.
+</dd>
+					<dt><var>$new_password</var></dt>
+					<dd>The new user password to set.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Passwd_Exception.html">Passwd_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2591281985"></script>
+</body>
+</html>

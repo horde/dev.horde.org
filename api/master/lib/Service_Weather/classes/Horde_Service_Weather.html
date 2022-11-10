@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">103</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-46129211"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-46129211" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Service_Weather.html">Horde_Service_Weather</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Alerts_Base.html">Horde_Service_Weather_Alerts_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Alerts_WeatherUnderground.html">Horde_Service_Weather_Alerts_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Base.html">Horde_Service_Weather_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Base.html">Horde_Service_Weather_Current_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Metar.html">Horde_Service_Weather_Current_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Owm.html">Horde_Service_Weather_Current_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_WeatherUnderground.html">Horde_Service_Weather_Current_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Wwo.html">Horde_Service_Weather_Current_Wwo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Exception.html">Horde_Service_Weather_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Exception_InvalidProperty.html">Horde_Service_Weather_Exception_InvalidProperty</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Base.html">Horde_Service_Weather_Forecast_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Owm.html">Horde_Service_Weather_Forecast_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Taf.html">Horde_Service_Weather_Forecast_Taf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_WeatherUnderground.html">Horde_Service_Weather_Forecast_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Wwo.html">Horde_Service_Weather_Forecast_Wwo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Wwov2.html">Horde_Service_Weather_Forecast_Wwov2</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Metar.html">Horde_Service_Weather_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Owm.html">Horde_Service_Weather_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Parser_Base.html">Horde_Service_Weather_Parser_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Parser_Metar.html">Horde_Service_Weather_Parser_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Parser_Taf.html">Horde_Service_Weather_Parser_Taf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Base.html">Horde_Service_Weather_Period_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Owm.html">Horde_Service_Weather_Period_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Taf.html">Horde_Service_Weather_Period_Taf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_WeatherUnderground.html">Horde_Service_Weather_Period_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Wwo.html">Horde_Service_Weather_Period_Wwo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Wwov2.html">Horde_Service_Weather_Period_Wwov2</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Station.html">Horde_Service_Weather_Station</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Translation.html">Horde_Service_Weather_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_WeatherUnderground.html">Horde_Service_Weather_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Wwo.html">Horde_Service_Weather_Wwo</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Service_Weather</h1>
+                    <p><em>Horde_Service_Weather class</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_degToDirection" class="">degToDirection()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_calculateWindChill" class="">calculateWindChill()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_calculateHumidity" class="">calculateHumidity()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_calculateDewPoint" class="">calculateDewPoint()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_convertPressure" class="">convertPressure()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_convertSpeed" class="">convertSpeed()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_convertDistance" class="">convertDistance()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#method_convertTemperature" class="">convertTemperature()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_3DAY" class="">FORECAST_3DAY</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_5DAY" class="">FORECAST_5DAY</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_7DAY" class="">FORECAST_7DAY</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_10DAY" class="">FORECAST_10DAY</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_TYPE_STANDARD" class="">FORECAST_TYPE_STANDARD</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_TYPE_DETAILED" class="">FORECAST_TYPE_DETAILED</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_TYPE_HOURLY" class="">FORECAST_TYPE_HOURLY</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_FIELD_WIND" class="">FORECAST_FIELD_WIND</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_FIELD_PRECIPITATION" class="">FORECAST_FIELD_PRECIPITATION</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_FIELD_HUMIDITY" class="">FORECAST_FIELD_HUMIDITY</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_FORECAST_FIELD_ACCUMULATION" class="">FORECAST_FIELD_ACCUMULATION</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_UNITS_STANDARD" class="">UNITS_STANDARD</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_UNITS_METRIC" class="">UNITS_METRIC</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_CONVERSION_MPH_TO_KNOTS" class="">CONVERSION_MPH_TO_KNOTS</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_CONVERSION_KPH_TO_KNOTS" class="">CONVERSION_KPH_TO_KNOTS</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_CONVERSION_MPH_TO_KPH" class="">CONVERSION_MPH_TO_KPH</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_CONVERSION_KPH_TO_MPH" class="">CONVERSION_KPH_TO_MPH</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_CONVERSION_MB_TO_INCHES" class="">CONVERSION_MB_TO_INCHES</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_CONVERSION_KM_TO_SM" class="">CONVERSION_KM_TO_SM</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_SEARCHTYPE_STANDARD" class="">SEARCHTYPE_STANDARD</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_SEARCHTYPE_IP" class="">SEARCHTYPE_IP</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_SEARCHTYPE_ZIP" class="">SEARCHTYPE_ZIP</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather.html#constant_SEARCHTYPE_CITYSTATE" class="">SEARCHTYPE_CITYSTATE</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Weather.html"><div class="path-wrapper">Weather.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Service_Weather</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Service_Weather</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_3DAY" name="constant_FORECAST_3DAY" class="anchor"></a>
+            <article id="constant_FORECAST_3DAY" class="constant">
+                <h3 class="">FORECAST_3DAY</h3>
+                <pre class="signature">FORECAST_3DAY</pre>
+                <p><em>Forecast length constants *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_5DAY" name="constant_FORECAST_5DAY" class="anchor"></a>
+            <article id="constant_FORECAST_5DAY" class="constant">
+                <h3 class="">FORECAST_5DAY</h3>
+                <pre class="signature">FORECAST_5DAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_7DAY" name="constant_FORECAST_7DAY" class="anchor"></a>
+            <article id="constant_FORECAST_7DAY" class="constant">
+                <h3 class="">FORECAST_7DAY</h3>
+                <pre class="signature">FORECAST_7DAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_10DAY" name="constant_FORECAST_10DAY" class="anchor"></a>
+            <article id="constant_FORECAST_10DAY" class="constant">
+                <h3 class="">FORECAST_10DAY</h3>
+                <pre class="signature">FORECAST_10DAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_TYPE_STANDARD" name="constant_FORECAST_TYPE_STANDARD" class="anchor"></a>
+            <article id="constant_FORECAST_TYPE_STANDARD" class="constant">
+                <h3 class="">FORECAST_TYPE_STANDARD</h3>
+                <pre class="signature">FORECAST_TYPE_STANDARD</pre>
+                <p><em>Standard forecast summary *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_TYPE_DETAILED" name="constant_FORECAST_TYPE_DETAILED" class="anchor"></a>
+            <article id="constant_FORECAST_TYPE_DETAILED" class="constant">
+                <h3 class="">FORECAST_TYPE_DETAILED</h3>
+                <pre class="signature">FORECAST_TYPE_DETAILED</pre>
+                <p><em>Detailed forecast, contains a day/night component for each day *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_TYPE_HOURLY" name="constant_FORECAST_TYPE_HOURLY" class="anchor"></a>
+            <article id="constant_FORECAST_TYPE_HOURLY" class="constant">
+                <h3 class="">FORECAST_TYPE_HOURLY</h3>
+                <pre class="signature">FORECAST_TYPE_HOURLY</pre>
+                <p><em>Hourly forecast *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_FIELD_WIND" name="constant_FORECAST_FIELD_WIND" class="anchor"></a>
+            <article id="constant_FORECAST_FIELD_WIND" class="constant">
+                <h3 class="">FORECAST_FIELD_WIND</h3>
+                <pre class="signature">FORECAST_FIELD_WIND</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_FIELD_PRECIPITATION" name="constant_FORECAST_FIELD_PRECIPITATION" class="anchor"></a>
+            <article id="constant_FORECAST_FIELD_PRECIPITATION" class="constant">
+                <h3 class="">FORECAST_FIELD_PRECIPITATION</h3>
+                <pre class="signature">FORECAST_FIELD_PRECIPITATION</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_FIELD_HUMIDITY" name="constant_FORECAST_FIELD_HUMIDITY" class="anchor"></a>
+            <article id="constant_FORECAST_FIELD_HUMIDITY" class="constant">
+                <h3 class="">FORECAST_FIELD_HUMIDITY</h3>
+                <pre class="signature">FORECAST_FIELD_HUMIDITY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FORECAST_FIELD_ACCUMULATION" name="constant_FORECAST_FIELD_ACCUMULATION" class="anchor"></a>
+            <article id="constant_FORECAST_FIELD_ACCUMULATION" class="constant">
+                <h3 class="">FORECAST_FIELD_ACCUMULATION</h3>
+                <pre class="signature">FORECAST_FIELD_ACCUMULATION</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_UNITS_STANDARD" name="constant_UNITS_STANDARD" class="anchor"></a>
+            <article id="constant_UNITS_STANDARD" class="constant">
+                <h3 class="">UNITS_STANDARD</h3>
+                <pre class="signature">UNITS_STANDARD</pre>
+                <p><em>Unit constants *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_UNITS_METRIC" name="constant_UNITS_METRIC" class="anchor"></a>
+            <article id="constant_UNITS_METRIC" class="constant">
+                <h3 class="">UNITS_METRIC</h3>
+                <pre class="signature">UNITS_METRIC</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONVERSION_MPH_TO_KNOTS" name="constant_CONVERSION_MPH_TO_KNOTS" class="anchor"></a>
+            <article id="constant_CONVERSION_MPH_TO_KNOTS" class="constant">
+                <h3 class="">CONVERSION_MPH_TO_KNOTS</h3>
+                <pre class="signature">CONVERSION_MPH_TO_KNOTS</pre>
+                <p><em>Conversion constants *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONVERSION_KPH_TO_KNOTS" name="constant_CONVERSION_KPH_TO_KNOTS" class="anchor"></a>
+            <article id="constant_CONVERSION_KPH_TO_KNOTS" class="constant">
+                <h3 class="">CONVERSION_KPH_TO_KNOTS</h3>
+                <pre class="signature">CONVERSION_KPH_TO_KNOTS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONVERSION_MPH_TO_KPH" name="constant_CONVERSION_MPH_TO_KPH" class="anchor"></a>
+            <article id="constant_CONVERSION_MPH_TO_KPH" class="constant">
+                <h3 class="">CONVERSION_MPH_TO_KPH</h3>
+                <pre class="signature">CONVERSION_MPH_TO_KPH</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONVERSION_KPH_TO_MPH" name="constant_CONVERSION_KPH_TO_MPH" class="anchor"></a>
+            <article id="constant_CONVERSION_KPH_TO_MPH" class="constant">
+                <h3 class="">CONVERSION_KPH_TO_MPH</h3>
+                <pre class="signature">CONVERSION_KPH_TO_MPH</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONVERSION_MB_TO_INCHES" name="constant_CONVERSION_MB_TO_INCHES" class="anchor"></a>
+            <article id="constant_CONVERSION_MB_TO_INCHES" class="constant">
+                <h3 class="">CONVERSION_MB_TO_INCHES</h3>
+                <pre class="signature">CONVERSION_MB_TO_INCHES</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONVERSION_KM_TO_SM" name="constant_CONVERSION_KM_TO_SM" class="anchor"></a>
+            <article id="constant_CONVERSION_KM_TO_SM" class="constant">
+                <h3 class="">CONVERSION_KM_TO_SM</h3>
+                <pre class="signature">CONVERSION_KM_TO_SM</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SEARCHTYPE_STANDARD" name="constant_SEARCHTYPE_STANDARD" class="anchor"></a>
+            <article id="constant_SEARCHTYPE_STANDARD" class="constant">
+                <h3 class="">SEARCHTYPE_STANDARD</h3>
+                <pre class="signature">SEARCHTYPE_STANDARD</pre>
+                <p><em>Location search types *</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SEARCHTYPE_IP" name="constant_SEARCHTYPE_IP" class="anchor"></a>
+            <article id="constant_SEARCHTYPE_IP" class="constant">
+                <h3 class="">SEARCHTYPE_IP</h3>
+                <pre class="signature">SEARCHTYPE_IP</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SEARCHTYPE_ZIP" name="constant_SEARCHTYPE_ZIP" class="anchor"></a>
+            <article id="constant_SEARCHTYPE_ZIP" class="constant">
+                <h3 class="">SEARCHTYPE_ZIP</h3>
+                <pre class="signature">SEARCHTYPE_ZIP</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SEARCHTYPE_CITYSTATE" name="constant_SEARCHTYPE_CITYSTATE" class="anchor"></a>
+            <article id="constant_SEARCHTYPE_CITYSTATE" class="constant">
+                <h3 class="">SEARCHTYPE_CITYSTATE</h3>
+                <pre class="signature">SEARCHTYPE_CITYSTATE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_degToDirection" name="method_degToDirection" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">degToDirection()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">degToDirection(integer  <span class="argument">$degree</span>) : string</pre>
+                <p><em>Utility function to return textual cardinal compass directions from degress.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$degree </td>
+                                <td><p>The degree direction (0 - 360).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The cardinal direction.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.3.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_calculateWindChill" name="method_calculateWindChill" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">calculateWindChill()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">calculateWindChill(double  <span class="argument">$temperature</span>, double  <span class="argument">$speed</span>) : double</pre>
+                <p><em>Calculate windchill from temperature and windspeed.</em></p>
+                <p>Temperature has to be entered in deg F, speed in mph!</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$temperature </td>
+                                <td><p>The temperature in degrees F.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>double</td>
+                                <td>$speed </td>
+                                <td><p>The wind speed in MPH.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                            &mdash; <p>The windchill factor.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.nws.noaa.gov/om/windchill/"><span class="namespace-wrapper">http://www.nws.noaa.gov/om/windchill/</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_calculateHumidity" name="method_calculateHumidity" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">calculateHumidity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">calculateHumidity(double  <span class="argument">$temperature</span>, double  <span class="argument">$dewPoint</span>) : double</pre>
+                <p><em>Calculate humidity from temperature and dewpoint
+This is only an approximation, there is no exact formula, this
+one here is called Magnus-Formula</em></p>
+                <p>Temperature and dewpoint have to be entered in deg C!</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$temperature </td>
+                                <td><p>Temperature in degrees C.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>double</td>
+                                <td>$dewPoint </td>
+                                <td><p>Dewpoint in degrees C.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.faqs.org/faqs/meteorology/temp-dewpoint/"><span class="namespace-wrapper">http://www.faqs.org/faqs/meteorology/temp-dewpoint/</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_calculateDewPoint" name="method_calculateDewPoint" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">calculateDewPoint()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">calculateDewPoint(double  <span class="argument">$temperature</span>, double  <span class="argument">$humidity</span>) : double</pre>
+                <p><em>Calculate dewpoint from temperature and humidity
+This is only an approximation, there is no exact formula, this
+one here is called Magnus-Formula</em></p>
+                <p>Temperature has to be entered in deg C!</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$temperature </td>
+                                <td><p>Temperature in degrees C.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>double</td>
+                                <td>$humidity </td>
+                                <td><p>Humidity.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.faqs.org/faqs/meteorology/temp-dewpoint/"><span class="namespace-wrapper">http://www.faqs.org/faqs/meteorology/temp-dewpoint/</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertPressure" name="method_convertPressure" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertPressure()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertPressure(double  <span class="argument">$pressure</span>, string  <span class="argument">$from</span>, string  <span class="argument">$to</span>) : float</pre>
+                <p><em>Convert pressure between in, hpa, mb, mm and atm</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$pressure </td>
+                                <td><p>The pressure in $from units.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$from </td>
+                                <td><p>Units converting from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$to </td>
+                                <td><p>Units converting to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                            &mdash; <p>The converted pressure</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertSpeed" name="method_convertSpeed" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertSpeed()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertSpeed(double  <span class="argument">$speed</span>, string  <span class="argument">$from</span>, string  <span class="argument">$to</span>) : double|integer|boolean</pre>
+                <p><em>Convert speed between mph, kph, kt, mps, fps and bft</em></p>
+                <p>Function will return 'false' when trying to convert from
+Beaufort, as it is a scale and not a true measurement</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$speed </td>
+                                <td><p>The speed in $from units.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$from </td>
+                                <td><p>The units to convert from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$to </td>
+                                <td><p>The units to convert to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double|integer|boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.spc.noaa.gov/faq/tornado/beaufort.html"><span class="namespace-wrapper">http://www.spc.noaa.gov/faq/tornado/beaufort.html</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertDistance" name="method_convertDistance" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertDistance()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertDistance(double  <span class="argument">$distance</span>, string  <span class="argument">$from</span>, string  <span class="argument">$to</span>) : double</pre>
+                <p><em>Convert distance between m, km, ft and sm</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$distance </td>
+                                <td><p>The distance in $from units.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$from </td>
+                                <td><p>The units to convert from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$to </td>
+                                <td><p>The units to convert to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertTemperature" name="method_convertTemperature" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertTemperature()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertTemperature(double  <span class="argument">$temperature</span>, string  <span class="argument">$from</span>, string  <span class="argument">$to</span>) : double</pre>
+                <p><em>Convert temperature between f and c</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>double</td>
+                                <td>$temperature </td>
+                                <td><p>The temperature in $from units.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$from </td>
+                                <td><p>Units to convert from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$to </td>
+                                <td><p>Units to convert to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    double
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Weather.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Weather.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:32.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

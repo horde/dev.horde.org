@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Todo List</title>
+			<link rel="stylesheet" href="media/stylesheet.css" />
+											</head>
+		<body>
+						<div align="center"><h1>Todo List</h1></div>
+<h2>SyncML</h2>
+<h3><a href="SyncML/SyncML_State.html#var$maxMsgSize">SyncML_State::$maxMsgSize</a></h3>
+<ul>
+    <li>Change to PHP_INT_MAX.</li>
+</ul>
+<h3><a href="SyncML/_SyncML---SyncML---Backend.php.html">Backend.php</a></h3>
+<ul>
+    <li><p>describe sync anchors     Have a look at the SyncML spec     http://www.openmobilealliance.org/tech/affiliates/syncml/syncmlindex.html     to find out more.</p><p>4) Changes and Timestamps</p></li>
+    <li><p>description of Changes and Timestamps, &quot;mirroring effect&quot;     This is real tricky stuff.     First it's important to know, that the SyncML protocol requires the     ending timestamp of the sync timeframe to be exchanged _before_ the     actual syncing starts. So all changes made during a sync have timestamps     that are in the timeframe for the next upcoming sync.  Data exchange in     a sync session works in two steps: 1st) the clients sends its changes to     the server, 2nd) the server sends its changes to the client.     So when in step 2, the backend datastore API is called with a request     like &quot;give me all changes in the server since the last sync&quot;.  Thus you     also get the changes induced by the client in step 1 as well.  You have     to somehow &quot;tag&quot; them to avoid echoing (and thus duplicating) them back     to the client. Simply storing the guids in the session is not     sufficient: the changes are made _after_ the end timestamp (see 1) of     the current sync so you'll dupe them in the next sync.     The current implementation deals with this as follows: whenever a client     induced change is done in the backend, the timestamp for this change is     stored in the cuid&lt;-&gt;suid map in an additional field. That's the perfect     place as the tagging needs to be done &quot;per client device&quot;: when an add     is received from the PDA it must not be sent back as an add to this     device, but to mobile phone it must be sent.     This is sorted out during the getServerChanges() process: if a server     change has a timestamp that's the same as in the guid&lt;-&gt;suid map, it     came from the client and must not be added to the list of changes to be     sent to this client.     See the description of SyncML_Backend_Sql::_getChangeTS() for some more     information.</p><p>5) Messages and Packages     A message is a single HTTP Request. A package is single &quot;logical     message&quot;, a sync step. Normally the two coincide. However due to message     size restrictions one package may be transferred in multiple messages     (HTTP requests).</p><p>7) Server mode, client mode and test mode     Per default, a backend is used for an SyncML server. Regarding the     SyncML protocol, the working of client and server is similar, except     that     a) the client initiates the sync requests and the server respons to them,        and     b) the server must maintain the client id&lt;-&gt;server id map.</p><p>Currently the SyncML package is designed to create servers. But is's an     obvious (and straightforward) extension to do it for clients as well.     And as a client has actually less work to do than a server, the backend     should work for servers _and_ clients. During the sessionStart(), the     backend gets a parameter to let it know whether it's in client or server     mode (or test, see below). When in client mode, it should behave     slightly different:     a) the client doesn't do suid&lt;-&gt;cuid mapping, so all invokations to the        map creation method createUidMap().     b) the client has only client ids, no server ids. So all arguments are        considered cuids even when named suid. See the SyncML_Backend_Sql        implementation, it's actually not that difficult.</p><p>Finally there's the test mode. The test cases consist of replaying     pre-recorded sessions. For that to work, the test script must &quot;simulate&quot;     user entries in the server data store. To do so, it creates a backend in     test mode. This behaves similar to a client: when an server entry is     created (modified) using addEntry() (replaceEntry()), no map entry must     be done.     The test backend uses also the two methods testSetup() and     testTearDown() to create a clean (empty) enviroment for the test user     &quot;syncmltest&quot;.  See the SyncML_Backend_Sql implementation for details.</p><p>$Horde: framework/SyncML/SyncML/Backend.php,v 1.8.2.21 2009/12/30 01:15:21 jan Exp $</p><p>Copyright 2005-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If you  did not receive this file, see http://www.fsf.org/copyleft/lgpl.html.</p></li>
+</ul>
+<h3><a href="SyncML/SyncML_Device.html#methodconvertClient2Server">SyncML_Device::convertClient2Server()</a></h3>
+<ul>
+    <li>remove UID stripping or move it anywhere else.</li>
+</ul>
+<h3><a href="SyncML/SyncML_Sync.html#methodcreateSyncOutput">SyncML_Sync::createSyncOutput()</a></h3>
+<ul>
+    <li>Check for Mem/FreeMem and Mem/FreeID when checking MaxObjSize</li>
+</ul>
+<h3><a href="SyncML/SyncML_Sync.html#methodhandleClientSyncItem">SyncML_Sync::handleClientSyncItem()</a></h3>
+<ul>
+    <li>maybe this should be moved to SyncItem</li>
+</ul>
+<h3><a href="SyncML/SyncML_Command_Map.html#methodhandleCommand">SyncML_Command_Map::handleCommand()</a></h3>
+<ul>
+    <li>No OK response on error.</li>
+</ul>
+<h2>Horde_CLI</h2>
+<h3><a href="Horde_CLI/Horde_CLI.html#methodprompt">Horde_CLI::prompt()</a></h3>
+<ul>
+    <li>Horde 4: switch $choices and $default</li>
+</ul>
+<h2>Net_SMS</h2>
+<h3><a href="Net_SMS/Net_SMS_clickatell_http.html#methodgetDefaultSendParams">Net_SMS_clickatell_http::getDefaultSendParams()</a></h3>
+<ul>
+    <li>Set up batch fields/params, would be nice to have ringtone/logo         support too, queue choice, unicode choice.</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_sms2email_http.html#methodgetError">Net_SMS_sms2email_http::getError()</a></h3>
+<ul>
+    <li>Check which of these are actually required and trim down the         list.</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_win_http.html#methodgetError">Net_SMS_win_http::getError()</a></h3>
+<ul>
+    <li>Check which of these are actually required and trim down the         list.</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_clickatell_http.html#methodgetError">Net_SMS_clickatell_http::getError()</a></h3>
+<ul>
+    <li>Check which of these are actually required and trim down the         list.</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_vodafoneitaly_smtp.html#methodgetError">Net_SMS_vodafoneitaly_smtp::getError()</a></h3>
+<ul>
+    <li>Check which of these are actually required and trim down the         list.</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_win_http.html#methodgetSendParams">Net_SMS_win_http::getSendParams()</a></h3>
+<ul>
+    <li>Would be nice to use a time/date setup rather than minutes from         now for the delivery time. Upload field for ringtones/logos?</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_sms2email_http.html#methodgetSendParams">Net_SMS_sms2email_http::getSendParams()</a></h3>
+<ul>
+    <li>Would be nice to use a time/date setup rather than minutes from         now for the delivery time. Upload field for ringtones/logos?</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_clickatell_http.html#methodgetSendParams">Net_SMS_clickatell_http::getSendParams()</a></h3>
+<ul>
+    <li>Would be nice to use a time/date setup rather than minutes from         now for the delivery time. Upload field for ringtones/logos?</li>
+</ul>
+<h3><a href="Net_SMS/Net_SMS_vodafoneitaly_smtp.html#methodgetSendParams">Net_SMS_vodafoneitaly_smtp::getSendParams()</a></h3>
+<ul>
+    <li>Would be nice to use a time/date setup rather than minutes from         now for the delivery time. Upload field for ringtones/logos?</li>
+</ul>
+<h2>Kolab_FreeBusy</h2>
+<h3><a href="Kolab_FreeBusy/Horde_Kolab_FreeBusy_Resource_Kolab.html#methodgetAttributeAcl">Horde_Kolab_FreeBusy_Resource_Kolab::getAttributeAcl()</a></h3>
+<ul>
+    <li>It would be nice if we would not only have the free/busy specific  attribute acls but a generic way of setting attribute ACL for resources.</li>
+</ul>
+<h3><a href="Kolab_FreeBusy/Horde_Kolab_FreeBusy_Resource_Kolab.html#methodgetRelevance">Horde_Kolab_FreeBusy_Resource_Kolab::getRelevance()</a></h3>
+<ul>
+    <li>It would be nice if we would not only have the free/busy specific  relevance but a generic way of setting the relevance of resources.</li>
+</ul>
+<h3><a href="Kolab_FreeBusy/Horde_Kolab_FreeBusy_Export_Freebusy_Combined.html#method_fetchRemote">Horde_Kolab_FreeBusy_Export_Freebusy_Combined::_fetchRemote()</a></h3>
+<ul>
+    <li>Fixme and extract to class. Combine with the other &quot;fetchRemote&quot;</li>
+</ul>
+<h2>Kolab_Filter</h2>
+<h3><a href="Kolab_Filter/_Kolab_Resource---lib---Horde---Kolab---Resource---Freebusy.php.html">Freebusy.php</a></h3>
+<ul>
+    <li>Merge this class with Kolab_FreeBusy and Kronolith_FreeBusy into a        single Horde_Freebusy handler.</li>
+</ul>
+<h2>Horde_MIME</h2>
+<h3><a href="Horde_MIME/MIME_Headers.html#methodgetOb">MIME_Headers::getOb()</a></h3>
+<ul>
+    <li>Replace with getOb() from IMP's IMP_Headers for Horde 4.0.</li>
+</ul>
+<h2>Horde_Framework</h2>
+<h3><a href="Horde_Framework/Horde_Script_Files.html#methoddisableAutoloadHordeJS">Horde_Script_Files::disableAutoloadHordeJS()</a></h3>
+<ul>
+    <li>Remove for Horde 4</li>
+</ul>
+<h3><a href="Horde_Framework/Horde.html#methoddisableAutoloadHordeJS">Horde::disableAutoloadHordeJS()</a></h3>
+<ul>
+    <li>Remove for Horde 4</li>
+</ul>
+<h2>Horde_UI</h2>
+<h3><a href="Horde_UI/Horde_UI_VarRenderer_html.html#method_renderVarInput_image">Horde_UI_VarRenderer_html::_renderVarInput_image()</a></h3>
+<ul>
+    <li>Show image dimensions in the width/height boxes.</li>
+</ul>
+<h2>Horde_iCalendar</h2>
+<h3><a href="Horde_iCalendar/Horde_iCalendar_vfreebusy.html">Horde_iCalendar_vfreebusy</a></h3>
+<ul>
+    <li>Don't use timestamps</li>
+</ul>
+<h3><a href="Horde_iCalendar/Horde_iCalendar.html#methodparsevCalendar">Horde_iCalendar::parsevCalendar()</a></h3>
+<ul>
+    <li>This method doesn't work well at all, if $base is VCARD.</li>
+</ul>
+<h3><a href="Horde_iCalendar/_iCalendar---iCalendar---vfreebusy.php.html">vfreebusy.php</a></h3>
+<ul>
+    <li>Don't use timestamps</li>
+</ul>
+<h3><a href="Horde_iCalendar/Horde_iCalendar.html#method_parseDateTime">Horde_iCalendar::_parseDateTime()</a></h3>
+<ul>
+    <li>This function should be moved to Horde_Date and made public.</li>
+</ul>
+<h2>Horde_Yaml</h2>
+<h3><a href="Horde_Yaml/Horde_Yaml_Loader.html#method_inlineEscape">Horde_Yaml_Loader::_inlineEscape()</a></h3>
+<ul>
+    <li>There should be a cleaner way to do this.  While         pure sequences seem to be nesting just fine,         pure mappings and mappings with sequences inside         can't go very deep.  This needs to be fixed.</li>
+</ul>
+<h2>Horde_Crypt</h2>
+<h3><a href="Horde_Crypt/Horde_Crypt_pgp.html#methodgetSignersFingerprint">Horde_Crypt_pgp::getSignersFingerprint()</a></h3>
+<ul>
+    <li>Remove for Horde 4</li>
+</ul>
+<h2>Horde_RPC</h2>
+<h3><a href="Horde_RPC/HTTP_WebDAV_Server_Horde.html#method_checkHTTPcode">HTTP_WebDAV_Server_Horde::_checkHTTPcode()</a></h3>
+<ul>
+    <li>Remove for Horde 4.0</li>
+</ul>
+<h3><a href="Horde_RPC/Horde_RPC_PhpSoap_Caller.html#method__call">Horde_RPC_PhpSoap_Caller::__call()</a></h3>
+<ul>
+    <li>PEAR SOAP operates on a copy of this object at some unknown         point and therefore doesn't have access to instance         variables if they're set here. Instead, globals are used         to track the method name and args for the logging code.         Once this is PHP 5-only, the globals can go in favor of         instance variables.</li>
+</ul>
+<h2>Horde_IMAP</h2>
+<h3><a href="Horde_IMAP/IMAP_ACL_rfc2086.html#methodcreateACL">IMAP_ACL_rfc2086::createACL()</a></h3>
+<ul>
+    <li>Cleanup for PHP 5.</li>
+</ul>
+<h2>Horde_Routes</h2>
+<h3><a href="Horde_Routes/Horde_Routes_Utils.html#methodurlQuote">Horde_Routes_Utils::urlQuote()</a></h3>
+<ul>
+    <li>This is a placeholder.  Multiple encodings aren't yet supported.</li>
+</ul>
+<h2>VC</h2>
+<h3><a href="VC/VC_Diff.html#methodhumanReadable">VC_Diff::humanReadable()</a></h3>
+<ul>
+    <li>document this thoroughly, as the format is a bit complex.</li>
+</ul>
+<h2>VFS</h2>
+<h3><a href="VFS/_VFS---scripts---VFS---vfs.php.html#functionurl2params">url2params()</a></h3>
+<ul>
+    <li>Document the possible URL formats.</li>
+</ul>
+<h2>Kolab_Format</h2>
+<h3><a href="Kolab_Format/Horde_Kolab_Format_XML.html#methodload">Horde_Kolab_Format_XML::load()</a></h3>
+<ul>
+    <li>Check encoding of the returned array. It seems to be ISO-8859-1 at  the moment and UTF-8 would seem more appropriate.</li>
+</ul>
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 30 Jan 2011 05:23:35 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

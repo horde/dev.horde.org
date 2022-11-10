@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">164</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1344428757"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1344428757" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_SyncMl.html">Horde_SyncMl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend.html">Horde_SyncMl_Backend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Horde.html">Horde_SyncMl_Backend_Horde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Sql.html">Horde_SyncMl_Backend_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command.html">Horde_SyncMl_Command</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Alert.html">Horde_SyncMl_Command_Alert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Final.html">Horde_SyncMl_Command_Final</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Get.html">Horde_SyncMl_Command_Get</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Map.html">Horde_SyncMl_Command_Map</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Put.html">Horde_SyncMl_Command_Put</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Replace.html">Horde_SyncMl_Command_Replace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Results.html">Horde_SyncMl_Command_Results</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Status.html">Horde_SyncMl_Command_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Sync.html">Horde_SyncMl_Command_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_SyncHdr.html">Horde_SyncMl_Command_SyncHdr</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_ContentHandler.html">Horde_SyncMl_ContentHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DataStore.html">Horde_SyncMl_DataStore</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device.html">Horde_SyncMl_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Nokia.html">Horde_SyncMl_Device_Nokia</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_P800.html">Horde_SyncMl_Device_P800</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_sync4j.html">Horde_SyncMl_Device_sync4j</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Sync4JMozilla.html">Horde_SyncMl_Device_Sync4JMozilla</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Synthesis.html">Horde_SyncMl_Device_Synthesis</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DeviceInfo.html">Horde_SyncMl_DeviceInfo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Property.html">Horde_SyncMl_Property</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_PropertyParameter.html">Horde_SyncMl_PropertyParameter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_State.html">Horde_SyncMl_State</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Sync.html">Horde_SyncMl_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_SyncElement.html">Horde_SyncMl_SyncElement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Translation.html">Horde_SyncMl_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_XmlOutput.html">Horde_SyncMl_XmlOutput</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_SyncMl_Device</h1>
+                    <p><em>The Horde_SyncMl_Device:: class provides functionality that is potentially
+(client) device dependant.</em></p>
+                    <p>If a sync client needs any kind of special conversion of the data sent to it
+or received from it, this is done here. There are two sources of information
+to identify an device: The first (and better) one is the DevInf device info
+sent by the device during a request. If DevInf is not supported or sent by
+the client, the Source/LocURI of the device request might be sufficent to
+identify it.</p>
+<p>Copyright 2005-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_factory" class="">factory()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_getPreferredContentType" class="">getPreferredContentType()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_getPreferredContentTypeClient" class="">getPreferredContentTypeClient()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_convertClient2Server" class="">convertClient2Server()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_convertServer2Client" class="">convertServer2Client()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_handleTasksInCalendar" class="">handleTasksInCalendar()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_omitIndividualSyncStatus" class="">omitIndividualSyncStatus()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_useCdataTag" class="">useCdataTag()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method_useLocalTime" class="">useLocalTime()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#property_requestedContentType" class="">$requestedContentType</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Device.html#method__convertUTC2LocalTime" class="">_convertUTC2LocalTime()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/SyncMl.Device.html"><div class="path-wrapper">SyncMl/Device.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">SyncMl</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_SyncMl_Device</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Karsten Fourmont <a href="mailto:karsten@horde.org">karsten@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_requestedContentType" name="property_requestedContentType" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$requestedContentType</h3>
+                <pre class="signature">$requestedContentType : string</pre>
+                <p><em>The original preferred content type of the client, if provided through
+DevInf.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_factory" name="method_factory" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">factory()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">factory(string  <span class="argument">$driver</span>) : \Horde_SyncMl_Device</pre>
+                <p><em>Attempts to return a concrete Horde_SyncMl_Device instance based on $driver.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$driver </td>
+                                <td><p>The type of concrete Horde_SyncMl_Device subclass to
+return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_SyncMl_Device.html">\Horde_SyncMl_Device</a>
+                                            &mdash; <p>The newly created concrete Horde_SyncMl_Device
+instance, or false on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPreferredContentType" name="method_getPreferredContentType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPreferredContentType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPreferredContentType(string  <span class="argument">$database</span>) : string</pre>
+                <p><em>Returns the guessed content type for a database URI.</em></p>
+                <p>When a client sends data during a sync but does not provide information
+about the MIME content type with this individual item, this function
+returns the content type the item is supposed to be in.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$database </td>
+                                <td><p>A database URI.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A MIME type that might match the database URI.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPreferredContentTypeClient" name="method_getPreferredContentTypeClient" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPreferredContentTypeClient()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPreferredContentTypeClient(string  <span class="argument">$serverSyncURI</span>, string  <span class="argument">$sourceSyncURI</span>) </pre>
+                <p><em>Returns the preferrred MIME content type of the client for the given
+sync data type (contacts/tasks/notes/calendar).</em></p>
+                <p>The result is passed as an option to the backend export functions.
+This is not the content type ultimately passed to the client but rather
+the content type presented to the backend export functions.</p>
+<p>After the data is retrieved from the backend, convertServer2Client()
+can do some post-processing and set the correct content type acceptable
+for the client if necessary.</p>
+<p>The default implementation tries to extract the content type from the
+device info. If this does not work, some defaults are used.</p>
+<p>If the client does not provice proper DevInf data, this public function may
+have to be overwritten to return the correct values.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$serverSyncURI </td>
+                                <td><p>The URI for the server database: contacts,
+notes, calendar or tasks.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sourceSyncURI </td>
+                                <td><p>The URI for the client database. This is
+needed as the DevInf is grouped by
+sourceSyncURIs.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertClient2Server" name="method_convertClient2Server" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertClient2Server()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertClient2Server(string  <span class="argument">$content</span>, string  <span class="argument">$contentType</span>) : array</pre>
+                <p><em>Converts the content received from the client for the backend.</em></p>
+                <p>Currently strips UID (primary key) information as client and server
+might use different ones.</p>
+<p>Charset conversions might be added here too.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The content to convert.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>The content type of the content.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Two-element array with the converted content and the
+(possibly changed) new content type.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>remove UID stripping or move it anywhere else.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertServer2Client" name="method_convertServer2Client" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertServer2Client()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertServer2Client(string  <span class="argument">$content</span>, string  <span class="argument">$contentType</span>, string  <span class="argument">$database</span>) : array</pre>
+                <p><em>Converts the content from the backend to a format suitable for the
+client device.</em></p>
+                <p>Strips the UID (primary key) information as client and server might use
+different ones.</p>
+<p>Charset conversions might be added here too.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The content to convert</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>The content type of content as returned
+from the backend</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$database </td>
+                                <td><p>The server database URI.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Three-element array with the converted content, the
+(possibly changed) new content type, and encoding type
+(like b64 as used by Funambol).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handleTasksInCalendar" name="method_handleTasksInCalendar" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">handleTasksInCalendar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handleTasksInCalendar() : boolean</pre>
+                <p><em>Returns whether the device handles tasks and events in a single
+&quot;calendar&quot; sync.</em></p>
+                <p>This requires special actions on our side as we store this in different
+backend databases.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if tasks and events are processed in a single
+request.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_omitIndividualSyncStatus" name="method_omitIndividualSyncStatus" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">omitIndividualSyncStatus()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">omitIndividualSyncStatus() : boolean</pre>
+                <p><em>Returns whether to send individual status response for each Add, Delete
+and Replace.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>False if individual status responses should be send.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_useCdataTag" name="method_useCdataTag" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">useCdataTag()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">useCdataTag() : boolean</pre>
+                <p><em>Returns whether the payload data should be enclosed in a [CDATA[
+section when sending via XML.</em></p>
+                <p>The synchronized data may contain XML special characters like &amp;,
+&lt; or &gt;. Clients might choke when sending these embedded in XML.
+The data should be enclosed in [CDATA[ in these cases.  This applies
+only to XML, not to WBXML devices.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the data should be enclosed in [CDATA[.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_useLocalTime" name="method_useLocalTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">useLocalTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">useLocalTime() : boolean</pre>
+                <p><em>Returns whether the device accepts datetimes only in local time format
+(DTSTART:20061222T130000) instead of the more robust UTC time
+(DTSTART:20061222T110000Z).</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the client doesn't accept UTC datetimes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__convertUTC2LocalTime" name="method__convertUTC2LocalTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_convertUTC2LocalTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_convertUTC2LocalTime(array  <span class="argument">$utc</span>) : string</pre>
+                <p><em>Converts an UTC timestamp like &quot;20061222T110000Z&quot; into a local
+timestamp like &quot;20061222T130000&quot; using the server timezone.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$utc </td>
+                                <td><p>Array with a datetime string in UTC.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The datetime string converted to the local timezone.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Device.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/SyncMl/Device.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:39.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

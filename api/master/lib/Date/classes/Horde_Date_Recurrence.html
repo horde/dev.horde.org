@@ -1,0 +1,2638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">197</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1667074130"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1667074130" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Date.html">Horde_Date</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Exception.html">Horde_Date_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Recurrence.html">Horde_Date_Recurrence</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater.html">Horde_Date_Repeater</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Day.html">Horde_Date_Repeater_Day</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_DayName.html">Horde_Date_Repeater_DayName</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_DayPortion.html">Horde_Date_Repeater_DayPortion</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Exception.html">Horde_Date_Repeater_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Fortnight.html">Horde_Date_Repeater_Fortnight</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Hour.html">Horde_Date_Repeater_Hour</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Minute.html">Horde_Date_Repeater_Minute</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Month.html">Horde_Date_Repeater_Month</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_MonthName.html">Horde_Date_Repeater_MonthName</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Season.html">Horde_Date_Repeater_Season</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_SeasonName.html">Horde_Date_Repeater_SeasonName</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Second.html">Horde_Date_Repeater_Second</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Time.html">Horde_Date_Repeater_Time</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Week.html">Horde_Date_Repeater_Week</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Weekend.html">Horde_Date_Repeater_Weekend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Repeater_Year.html">Horde_Date_Repeater_Year</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Span.html">Horde_Date_Span</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Translation.html">Horde_Date_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Date_Utils.html">Horde_Date_Utils</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Date_Recurrence</h1>
+                    <p><em>The Horde_Date_Recurrence class implements algorithms for calculating
+recurrences of events, including several recurrence types, intervals,
+exceptions, and conversion from and to vCalendar and iCalendar recurrence
+rules.</em></p>
+                    <p>All methods expecting dates as parameters accept all values that the
+Horde_Date constructor accepts, i.e. a timestamp, another Horde_Date
+object, an ISO time string or a hash.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_fromHash" class="">fromHash()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_reset" class="">reset()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_recurOnDay" class="">recurOnDay()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_setRecurOnDay" class="">setRecurOnDay()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurOnDays" class="">getRecurOnDays()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_hasRecurType" class="">hasRecurType()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_setRecurType" class="">setRecurType()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurType" class="">getRecurType()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurName" class="">getRecurName()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_setRecurInterval" class="">setRecurInterval()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurInterval" class="">getRecurInterval()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_setRecurCount" class="">setRecurCount()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurCount" class="">getRecurCount()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_hasRecurCount" class="">hasRecurCount()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_setRecurStart" class="">setRecurStart()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurStart" class="">getRecurStart()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_setRecurEnd" class="">setRecurEnd()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getRecurEnd" class="">getRecurEnd()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_hasRecurEnd" class="">hasRecurEnd()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_nextRecurrence" class="">nextRecurrence()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_hasActiveRecurrence" class="">hasActiveRecurrence()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_nextActiveRecurrence" class="">nextActiveRecurrence()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_addException" class="">addException()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_deleteException" class="">deleteException()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_hasException" class="">hasException()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getExceptions" class="">getExceptions()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_addCompletion" class="">addCompletion()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_deleteCompletion" class="">deleteCompletion()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_hasCompletion" class="">hasCompletion()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_getCompletions" class="">getCompletions()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_fromRRule10" class="">fromRRule10()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_toRRule10" class="">toRRule10()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_fromRRule20" class="">fromRRule20()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_toRRule20" class="">toRRule20()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_fromKolab" class="">fromKolab()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_toKolab" class="">toKolab()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_toHash" class="">toHash()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_toJson" class="">toJson()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_toString" class="">toString()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method_isEqual" class="">isEqual()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_start" class="">$start</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_recurEnd" class="">$recurEnd</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_recurCount" class="">$recurCount</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_recurType" class="">$recurType</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_recurInterval" class="">$recurInterval</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_recurData" class="">$recurData</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_exceptions" class="">$exceptions</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#property_completions" class="">$completions</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_NONE" class="">RECUR_NONE</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_DAILY" class="">RECUR_DAILY</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_WEEKLY" class="">RECUR_WEEKLY</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_MONTHLY_DATE" class="">RECUR_MONTHLY_DATE</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_MONTHLY_WEEKDAY" class="">RECUR_MONTHLY_WEEKDAY</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_MONTHLY_LAST_WEEKDAY" class="">RECUR_MONTHLY_LAST_WEEKDAY</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_YEARLY_DATE" class="">RECUR_YEARLY_DATE</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_YEARLY_DAY" class="">RECUR_YEARLY_DAY</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#constant_RECUR_YEARLY_WEEKDAY" class="">RECUR_YEARLY_WEEKDAY</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextDaily" class="">_nextDaily()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextWeekly" class="">_nextWeekly()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextMonthlyDate" class="">_nextMonthlyDate()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextMonthlyWeekday" class="">_nextMonthlyWeekday()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextYearlyDate" class="">_nextYearlyDate()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextYearlyDay" class="">_nextYearlyDay()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__nextYearlyWeekday" class="">_nextYearlyWeekday()</a><br />
+                                                                    <a href="../classes/Horde_Date_Recurrence.html#method__formatExceptionDate" class="">_formatExceptionDate()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Date.Recurrence.html"><div class="path-wrapper">Date/Recurrence.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Date</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Date_Recurrence</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2007-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_NONE" name="constant_RECUR_NONE" class="anchor"></a>
+            <article id="constant_RECUR_NONE" class="constant">
+                <h3 class="">RECUR_NONE</h3>
+                <pre class="signature">RECUR_NONE</pre>
+                <p><em>No Recurrence</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_DAILY" name="constant_RECUR_DAILY" class="anchor"></a>
+            <article id="constant_RECUR_DAILY" class="constant">
+                <h3 class="">RECUR_DAILY</h3>
+                <pre class="signature">RECUR_DAILY</pre>
+                <p><em>Recurs daily.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_WEEKLY" name="constant_RECUR_WEEKLY" class="anchor"></a>
+            <article id="constant_RECUR_WEEKLY" class="constant">
+                <h3 class="">RECUR_WEEKLY</h3>
+                <pre class="signature">RECUR_WEEKLY</pre>
+                <p><em>Recurs weekly.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_MONTHLY_DATE" name="constant_RECUR_MONTHLY_DATE" class="anchor"></a>
+            <article id="constant_RECUR_MONTHLY_DATE" class="constant">
+                <h3 class="">RECUR_MONTHLY_DATE</h3>
+                <pre class="signature">RECUR_MONTHLY_DATE</pre>
+                <p><em>Recurs monthly on the same date.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_MONTHLY_WEEKDAY" name="constant_RECUR_MONTHLY_WEEKDAY" class="anchor"></a>
+            <article id="constant_RECUR_MONTHLY_WEEKDAY" class="constant">
+                <h3 class="">RECUR_MONTHLY_WEEKDAY</h3>
+                <pre class="signature">RECUR_MONTHLY_WEEKDAY</pre>
+                <p><em>Recurs monthly on the same week day.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_MONTHLY_LAST_WEEKDAY" name="constant_RECUR_MONTHLY_LAST_WEEKDAY" class="anchor"></a>
+            <article id="constant_RECUR_MONTHLY_LAST_WEEKDAY" class="constant">
+                <h3 class="">RECUR_MONTHLY_LAST_WEEKDAY</h3>
+                <pre class="signature">RECUR_MONTHLY_LAST_WEEKDAY</pre>
+                <p><em>Recurs monthly on the same last week day.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            <p>Horde_Date 2.1.0</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_YEARLY_DATE" name="constant_RECUR_YEARLY_DATE" class="anchor"></a>
+            <article id="constant_RECUR_YEARLY_DATE" class="constant">
+                <h3 class="">RECUR_YEARLY_DATE</h3>
+                <pre class="signature">RECUR_YEARLY_DATE</pre>
+                <p><em>Recurs yearly on the same date.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_YEARLY_DAY" name="constant_RECUR_YEARLY_DAY" class="anchor"></a>
+            <article id="constant_RECUR_YEARLY_DAY" class="constant">
+                <h3 class="">RECUR_YEARLY_DAY</h3>
+                <pre class="signature">RECUR_YEARLY_DAY</pre>
+                <p><em>Recurs yearly on the same day of the year.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RECUR_YEARLY_WEEKDAY" name="constant_RECUR_YEARLY_WEEKDAY" class="anchor"></a>
+            <article id="constant_RECUR_YEARLY_WEEKDAY" class="constant">
+                <h3 class="">RECUR_YEARLY_WEEKDAY</h3>
+                <pre class="signature">RECUR_YEARLY_WEEKDAY</pre>
+                <p><em>Recurs yearly on the same week day.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_start" name="property_start" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$start</h3>
+                <pre class="signature">$start : \Horde_Date</pre>
+                <p><em>The start time of the event.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Date.html">\Horde_Date</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_recurEnd" name="property_recurEnd" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$recurEnd</h3>
+                <pre class="signature">$recurEnd : \Horde_Date</pre>
+                <p><em>The end date of the recurrence interval.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Date.html">\Horde_Date</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_recurCount" name="property_recurCount" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$recurCount</h3>
+                <pre class="signature">$recurCount : integer</pre>
+                <p><em>The number of recurrences.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_recurType" name="property_recurType" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$recurType</h3>
+                <pre class="signature">$recurType : integer</pre>
+                <p><em>The type of recurrence this event follows. RECUR_* constant.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_recurInterval" name="property_recurInterval" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$recurInterval</h3>
+                <pre class="signature">$recurInterval : integer</pre>
+                <p><em>The length of time between recurrences. The time unit depends on the
+recurrence type.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_recurData" name="property_recurData" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$recurData</h3>
+                <pre class="signature">$recurData : integer</pre>
+                <p><em>Any additional recurrence data.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_exceptions" name="property_exceptions" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$exceptions</h3>
+                <pre class="signature">$exceptions : array</pre>
+                <p><em>All the exceptions from recurrence for this event.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_completions" name="property_completions" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$completions</h3>
+                <pre class="signature">$completions : array</pre>
+                <p><em>All the dates this recurrence has been marked as completed.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_Date  <span class="argument">$start</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a></td>
+                                <td>$start </td>
+                                <td><p>Start of the recurring event.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromHash" name="method_fromHash" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromHash()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromHash(array  <span class="argument">$hash</span>) </pre>
+                <p><em>Creates an instance of this class from a hash.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$hash </td>
+                                <td><p>A hash of this object.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Horde_Date_Recurrence.html#method_toHash"><span class="namespace-wrapper">\Horde_Date_Recurrence::toHash()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                                                            <p>Horde_Date 2.4.0</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_reset" name="method_reset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">reset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">reset() </pre>
+                <p><em>Resets the class properties.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_recurOnDay" name="method_recurOnDay" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">recurOnDay()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">recurOnDay(integer  <span class="argument">$dayMask</span>) : boolean</pre>
+                <p><em>Checks if this event recurs on a given day of the week.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$dayMask </td>
+                                <td><p>A mask consisting of Horde<em>Date::MASK</em>*
+constants specifying the day(s) to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this event recurs on the given day(s).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRecurOnDay" name="method_setRecurOnDay" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRecurOnDay()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRecurOnDay(integer  <span class="argument">$dayMask</span>) </pre>
+                <p><em>Specifies the days this event recurs on.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$dayMask </td>
+                                <td><p>A mask consisting of Horde<em>Date::MASK</em>*
+constants specifying the day(s) to recur on.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurOnDays" name="method_getRecurOnDays" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurOnDays()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurOnDays() : integer</pre>
+                <p><em>Returns the days this event recurs on.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>A mask consisting of Horde<em>Date::MASK</em>* constants
+specifying the day(s) this event recurs on.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasRecurType" name="method_hasRecurType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasRecurType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasRecurType(integer  <span class="argument">$recurrence</span>) : boolean</pre>
+                <p><em>Returns whether this event has a specific recurrence type.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$recurrence </td>
+                                <td><p>RECUR_* constant of the
+recurrence type to check for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the event has the specified recurrence type.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRecurType" name="method_setRecurType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRecurType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRecurType(integer  <span class="argument">$recurrence</span>) </pre>
+                <p><em>Sets a recurrence type for this event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$recurrence </td>
+                                <td><p>A RECUR_* constant.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurType" name="method_getRecurType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurType() : integer</pre>
+                <p><em>Returns recurrence type of this event.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>A RECUR_* constant.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurName" name="method_getRecurName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurName() : string</pre>
+                <p><em>Returns a description of this event&#039;s recurring type.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Human readable recurring type.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRecurInterval" name="method_setRecurInterval" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRecurInterval()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRecurInterval(integer  <span class="argument">$interval</span>) </pre>
+                <p><em>Sets the length of time between recurrences of this event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$interval </td>
+                                <td><p>The time between recurrences.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurInterval" name="method_getRecurInterval" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurInterval()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurInterval() : integer</pre>
+                <p><em>Retrieves the length of time between recurrences of this event.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number of seconds between recurrences.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRecurCount" name="method_setRecurCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRecurCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRecurCount(integer  <span class="argument">$count</span>) </pre>
+                <p><em>Sets the number of recurrences of this event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>The number of recurrences.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurCount" name="method_getRecurCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurCount() : integer</pre>
+                <p><em>Retrieves the number of recurrences of this event.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number recurrences.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasRecurCount" name="method_hasRecurCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasRecurCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasRecurCount() : boolean</pre>
+                <p><em>Returns whether this event has a recurrence with a fixed count.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this recurrence has a fixed count.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRecurStart" name="method_setRecurStart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRecurStart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRecurStart(\Horde_Date  <span class="argument">$start</span>) </pre>
+                <p><em>Sets the start date of the recurrence interval.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a></td>
+                                <td>$start </td>
+                                <td><p>The recurrence start.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurStart" name="method_getRecurStart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurStart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurStart() : \Horde_Date</pre>
+                <p><em>Retrieves the start date of the recurrence interval.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>
+                                            &mdash; <p>The recurrence start.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRecurEnd" name="method_setRecurEnd" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRecurEnd()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRecurEnd(\Horde_Date  <span class="argument">$end</span>) </pre>
+                <p><em>Sets the end date of the recurrence interval.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a></td>
+                                <td>$end </td>
+                                <td><p>The recurrence end.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRecurEnd" name="method_getRecurEnd" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRecurEnd()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRecurEnd() : \Horde_Date</pre>
+                <p><em>Retrieves the end date of the recurrence interval.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>
+                                            &mdash; <p>The recurrence end.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasRecurEnd" name="method_hasRecurEnd" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasRecurEnd()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasRecurEnd() : boolean</pre>
+                <p><em>Returns whether this event has a recurrence end.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this recurrence ends.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_nextRecurrence" name="method_nextRecurrence" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">nextRecurrence()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">nextRecurrence(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next recurrence of this event that&#039;s after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasActiveRecurrence" name="method_hasActiveRecurrence" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasActiveRecurrence()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasActiveRecurrence() : boolean</pre>
+                <p><em>Returns whether this event has any date that matches the recurrence
+rules and is not an exception.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if an active recurrence exists.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_nextActiveRecurrence" name="method_nextActiveRecurrence" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">nextActiveRecurrence()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">nextActiveRecurrence(\Horde_Date  <span class="argument">$afterDate</span>) : \Horde_Date|boolean</pre>
+                <p><em>Returns the next active recurrence.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a></td>
+                                <td>$afterDate </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next active
+recurrence or false if the event
+has no active recurrence after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addException" name="method_addException" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addException()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addException(integer  <span class="argument">$year</span>, integer  <span class="argument">$month</span>, integer  <span class="argument">$mday</span>) </pre>
+                <p><em>Adds an exception to a recurring event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$month </td>
+                                <td><p>The month of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mday </td>
+                                <td><p>The day of the month of the exception.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteException" name="method_deleteException" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteException()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteException(integer  <span class="argument">$year</span>, integer  <span class="argument">$month</span>, integer  <span class="argument">$mday</span>) </pre>
+                <p><em>Deletes an exception from a recurring event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$month </td>
+                                <td><p>The month of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mday </td>
+                                <td><p>The day of the month of the exception.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasException" name="method_hasException" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasException()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasException(integer  <span class="argument">$year</span>, integer  <span class="argument">$month</span>, integer  <span class="argument">$mday</span>) : boolean</pre>
+                <p><em>Checks if an exception exists for a given reccurence of an event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year of the reucrance.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$month </td>
+                                <td><p>The month of the reucrance.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mday </td>
+                                <td><p>The day of the month of the reucrance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if an exception exists for the given date.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getExceptions" name="method_getExceptions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getExceptions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getExceptions() : array</pre>
+                <p><em>Retrieves all the exceptions for this event.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Array containing the dates of all the exceptions in
+YYYYMMDD form.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addCompletion" name="method_addCompletion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addCompletion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addCompletion(integer  <span class="argument">$year</span>, integer  <span class="argument">$month</span>, integer  <span class="argument">$mday</span>) </pre>
+                <p><em>Adds a completion to a recurring event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$month </td>
+                                <td><p>The month of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mday </td>
+                                <td><p>The day of the month of the completion.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteCompletion" name="method_deleteCompletion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteCompletion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteCompletion(integer  <span class="argument">$year</span>, integer  <span class="argument">$month</span>, integer  <span class="argument">$mday</span>) </pre>
+                <p><em>Deletes a completion from a recurring event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$month </td>
+                                <td><p>The month of the exception.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mday </td>
+                                <td><p>The day of the month of the completion.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasCompletion" name="method_hasCompletion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasCompletion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasCompletion(integer  <span class="argument">$year</span>, integer  <span class="argument">$month</span>, integer  <span class="argument">$mday</span>) : boolean</pre>
+                <p><em>Checks if a completion exists for a given reccurence of an event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$year </td>
+                                <td><p>The year of the recurrance.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$month </td>
+                                <td><p>The month of the recurrance.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$mday </td>
+                                <td><p>The day of the month of the recurrance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if a completion exists for the given date.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCompletions" name="method_getCompletions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCompletions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCompletions() : array</pre>
+                <p><em>Retrieves all the completions for this event.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Array containing the dates of all the completions in
+YYYYMMDD form.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromRRule10" name="method_fromRRule10" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromRRule10()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromRRule10(string  <span class="argument">$rrule</span>) </pre>
+                <p><em>Parses a vCalendar 1.0 recurrence rule.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$rrule </td>
+                                <td><p>A vCalendar 1.0 conform RRULE value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.imc.org/pdi/vcal-10.txt"><span class="namespace-wrapper">http://www.imc.org/pdi/vcal-10.txt</span></a></dd>
+                                            <dd><a href="http://www.shuchow.com/vCalAddendum.html"><span class="namespace-wrapper">http://www.shuchow.com/vCalAddendum.html</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toRRule10" name="method_toRRule10" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toRRule10()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toRRule10(\Horde_Icalendar  <span class="argument">$calendar</span>) : string</pre>
+                <p><em>Creates a vCalendar 1.0 recurrence rule.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Icalendar</td>
+                                <td>$calendar </td>
+                                <td><p>A Horde_Icalendar object instance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A vCalendar 1.0 conform RRULE value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.imc.org/pdi/vcal-10.txt"><span class="namespace-wrapper">http://www.imc.org/pdi/vcal-10.txt</span></a></dd>
+                                            <dd><a href="http://www.shuchow.com/vCalAddendum.html"><span class="namespace-wrapper">http://www.shuchow.com/vCalAddendum.html</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromRRule20" name="method_fromRRule20" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromRRule20()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromRRule20(string  <span class="argument">$rrule</span>) </pre>
+                <p><em>Parses an iCalendar 2.0 recurrence rule.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$rrule </td>
+                                <td><p>An iCalendar 2.0 conform RRULE value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://tools.ietf.org/html/rfc5545#section-3.3.10"><span class="namespace-wrapper">http://tools.ietf.org/html/rfc5545#section-3.3.10</span></a></dd>
+                                            <dd><a href="http://tools.ietf.org/html/rfc5545#section-3.8.5"><span class="namespace-wrapper">http://tools.ietf.org/html/rfc5545#section-3.8.5</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toRRule20" name="method_toRRule20" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toRRule20()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toRRule20(\Horde_Icalendar  <span class="argument">$calendar</span>) : string</pre>
+                <p><em>Creates an iCalendar 2.0 recurrence rule.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Icalendar</td>
+                                <td>$calendar </td>
+                                <td><p>A Horde_Icalendar object instance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>An iCalendar 2.0 conform RRULE value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://rfc.net/rfc2445.html#s4.3.10"><span class="namespace-wrapper">http://rfc.net/rfc2445.html#s4.3.10</span></a></dd>
+                                            <dd><a href="http://rfc.net/rfc2445.html#s4.8.5"><span class="namespace-wrapper">http://rfc.net/rfc2445.html#s4.8.5</span></a></dd>
+                                            <dd><a href="http://www.shuchow.com/vCalAddendum.html"><span class="namespace-wrapper">http://www.shuchow.com/vCalAddendum.html</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromKolab" name="method_fromKolab" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromKolab()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromKolab(array  <span class="argument">$hash</span>) : boolean</pre>
+                <p><em>Parses the recurrence data from a Kolab hash.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$hash </td>
+                                <td><p>The hash to convert.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the hash seemed valid, false otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toKolab" name="method_toKolab" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toKolab()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toKolab() : array</pre>
+                <p><em>Export this object into a Kolab hash.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The recurrence hash.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toHash" name="method_toHash" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toHash()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toHash() : array</pre>
+                <p><em>Returns a hash representing this object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A hash of this object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Horde_Date_Recurrence.html#method_fromHash"><span class="namespace-wrapper">\Horde_Date_Recurrence::fromHash()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                                                            <p>Horde_Date 2.4.0</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toJson" name="method_toJson" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toJson()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toJson() : object</pre>
+                <p><em>Returns a simple object suitable for json transport representing this
+object.</em></p>
+                <p>Possible properties are:</p>
+<ul>
+<li>t: type</li>
+<li>i: interval</li>
+<li>e: end date</li>
+<li>c: count</li>
+<li>d: data</li>
+<li>co: completions</li>
+<li>ex: exceptions</li>
+</ul>
+
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>A simple object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toString" name="method_toString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toString(  <span class="argument">$date_format</span>,   <span class="argument">$time_format = &#039;%X&#039;</span>) : string</pre>
+                <p><em>Output a human readable description of the recurrence rule.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$date_format </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$time_format </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.1.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isEqual" name="method_isEqual" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isEqual()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isEqual(\Horde_Date_Recurrence  <span class="argument">$recurrence</span>) : boolean</pre>
+                <p><em>Return whether or not this object is equal to another recurrence object.</em></p>
+                <p>The objects are considered equal if the recurrence rules are the same.
+This does not take any exceptions into account.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date_Recurrence.html">\Horde_Date_Recurrence</a></td>
+                                <td>$recurrence </td>
+                                <td><p>The recurrence object to check
+equality to.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the recurrence rules are the same.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextDaily" name="method__nextDaily" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextDaily()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextDaily(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next daily recurrence of this event that&#039;s after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextWeekly" name="method__nextWeekly" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextWeekly()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextWeekly(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next weekly recurrence of this event that&#039;s after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextMonthlyDate" name="method__nextMonthlyDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextMonthlyDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextMonthlyDate(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next monthly recurrence on the same date of this event that&#039;s
+after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextMonthlyWeekday" name="method__nextMonthlyWeekday" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextMonthlyWeekday()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextMonthlyWeekday(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next monthly recurrence on the same weekday of this event
+that&#039;s after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextYearlyDate" name="method__nextYearlyDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextYearlyDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextYearlyDate(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next yearly recurrence on the same date of this event that&#039;s
+after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextYearlyDay" name="method__nextYearlyDay" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextYearlyDay()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextYearlyDay(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next yearly recurrence on the same day of the year of this
+event that&#039;s after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__nextYearlyWeekday" name="method__nextYearlyWeekday" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_nextYearlyWeekday()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_nextYearlyWeekday(\Horde_Date|string  <span class="argument">$after</span>) : \Horde_Date|boolean</pre>
+                <p><em>Finds the next yearly recurrence on the same weekday of this event
+that&#039;s after $afterDate.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Date.html">\Horde_Date</a>|string</td>
+                                <td>$after </td>
+                                <td><p>Return events after this date.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Date.html">\Horde_Date</a>|boolean
+                                            &mdash; <p>The date of the next recurrence or false
+if the event does not recur after
+$afterDate.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__formatExceptionDate" name="method__formatExceptionDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_formatExceptionDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_formatExceptionDate(string  <span class="argument">$date</span>, string  <span class="argument">$format</span>) : string</pre>
+                <p><em>Returns a correcty formatted exception date for recurring events.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$date </td>
+                                <td><p>Exception in the format Ymd.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$format </td>
+                                <td><p>The format to display in.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The formatted date and delete link.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.1.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Recurrence.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Date/Recurrence.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:34.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

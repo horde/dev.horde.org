@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">164</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-251448080"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-251448080" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_SyncMl.html">Horde_SyncMl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend.html">Horde_SyncMl_Backend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Horde.html">Horde_SyncMl_Backend_Horde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Sql.html">Horde_SyncMl_Backend_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command.html">Horde_SyncMl_Command</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Alert.html">Horde_SyncMl_Command_Alert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Final.html">Horde_SyncMl_Command_Final</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Get.html">Horde_SyncMl_Command_Get</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Map.html">Horde_SyncMl_Command_Map</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Put.html">Horde_SyncMl_Command_Put</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Replace.html">Horde_SyncMl_Command_Replace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Results.html">Horde_SyncMl_Command_Results</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Status.html">Horde_SyncMl_Command_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Sync.html">Horde_SyncMl_Command_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_SyncHdr.html">Horde_SyncMl_Command_SyncHdr</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_ContentHandler.html">Horde_SyncMl_ContentHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DataStore.html">Horde_SyncMl_DataStore</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device.html">Horde_SyncMl_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Nokia.html">Horde_SyncMl_Device_Nokia</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_P800.html">Horde_SyncMl_Device_P800</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_sync4j.html">Horde_SyncMl_Device_sync4j</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Sync4JMozilla.html">Horde_SyncMl_Device_Sync4JMozilla</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Synthesis.html">Horde_SyncMl_Device_Synthesis</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DeviceInfo.html">Horde_SyncMl_DeviceInfo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Property.html">Horde_SyncMl_Property</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_PropertyParameter.html">Horde_SyncMl_PropertyParameter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_State.html">Horde_SyncMl_State</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Sync.html">Horde_SyncMl_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_SyncElement.html">Horde_SyncMl_SyncElement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Translation.html">Horde_SyncMl_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_XmlOutput.html">Horde_SyncMl_XmlOutput</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_SyncMl_Sync</h1>
+                    <p><em>Copyright 2003-2017 Horde LLC (http://www.horde.org/)</em></p>
+                    <p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_handleClientSyncItem" class="">handleClientSyncItem()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_createSyncOutput" class="">createSyncOutput()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_handleFinal" class="">handleFinal()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_hasPendingElements" class="">hasPendingElements()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_addSyncReceived" class="">addSyncReceived()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getSyncsReceived" class="">getSyncsReceived()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_isComplete" class="">isComplete()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_closeSync" class="">closeSync()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getServerLocURI" class="">getServerLocURI()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getClientLocURI" class="">getClientLocURI()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getClientAnchorNext" class="">getClientAnchorNext()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getServerAnchorNext" class="">getServerAnchorNext()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getServerAnchorLast" class="">getServerAnchorLast()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_createUidMap" class="">createUidMap()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_getServerChange" class="">getServerChange()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_setServerChange" class="">setServerChange()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method_unsetServerChange" class="">unsetServerChange()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#constant_STATE_INIT" class="">STATE_INIT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#constant_STATE_SYNC" class="">STATE_SYNC</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#constant_STATE_MAP" class="">STATE_MAP</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#constant_STATE_COMPLETED" class="">STATE_COMPLETED</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method__retrieveChanges" class="">_retrieveChanges()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method__taskToCalendar" class="">_taskToCalendar()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#method__getServerLargeObjChunk" class="">_getServerLargeObjChunk()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__targetLocURI" class="">$_targetLocURI</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__sourceLocURI" class="">$_sourceLocURI</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__syncType" class="">$_syncType</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__syncsSent" class="">$_syncsSent</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__syncsReceived" class="">$_syncsReceived</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__expectingMapData" class="">$_expectingMapData</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__state" class="">$_state</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__clientAnchorNext" class="">$_clientAnchorNext</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__serverAnchorLast" class="">$_serverAnchorLast</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__serverAnchorNext" class="">$_serverAnchorNext</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__client_add_count" class="">$_client_add_count</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__client_replace_count" class="">$_client_replace_count</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__client_delete_count" class="">$_client_delete_count</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__client_addreplaces" class="">$_client_addreplaces</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_add_count" class="">$_server_add_count</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_replace_count" class="">$_server_replace_count</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_delete_count" class="">$_server_delete_count</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__errors" class="">$_errors</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_adds" class="">$_server_adds</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_replaces" class="">$_server_replaces</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_deletes" class="">$_server_deletes</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_task_adds" class="">$_server_task_adds</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Sync.html#property__server_largeobj" class="">$_server_largeobj</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/SyncMl.Sync.html"><div class="path-wrapper">SyncMl/Sync.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">SyncMl</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_SyncMl_Sync</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Anthony Mills <a href="mailto:amills@pyramid6.com">amills@pyramid6.com</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_STATE_INIT" name="constant_STATE_INIT" class="anchor"></a>
+            <article id="constant_STATE_INIT" class="constant">
+                <h3 class="">STATE_INIT</h3>
+                <pre class="signature">STATE_INIT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_SyncMl_Sync::_state</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_STATE_SYNC" name="constant_STATE_SYNC" class="anchor"></a>
+            <article id="constant_STATE_SYNC" class="constant">
+                <h3 class="">STATE_SYNC</h3>
+                <pre class="signature">STATE_SYNC</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_STATE_MAP" name="constant_STATE_MAP" class="anchor"></a>
+            <article id="constant_STATE_MAP" class="constant">
+                <h3 class="">STATE_MAP</h3>
+                <pre class="signature">STATE_MAP</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_STATE_COMPLETED" name="constant_STATE_COMPLETED" class="anchor"></a>
+            <article id="constant_STATE_COMPLETED" class="constant">
+                <h3 class="">STATE_COMPLETED</h3>
+                <pre class="signature">STATE_COMPLETED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__targetLocURI" name="property__targetLocURI" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_targetLocURI</h3>
+                <pre class="signature">$_targetLocURI : string</pre>
+                <p><em>Target (client) URI (database).</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__sourceLocURI" name="property__sourceLocURI" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_sourceLocURI</h3>
+                <pre class="signature">$_sourceLocURI : string</pre>
+                <p><em>Source (server) URI (database).</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__syncType" name="property__syncType" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_syncType</h3>
+                <pre class="signature">$_syncType : integer</pre>
+                <p><em>The synchronization method, one of the Horde_SyncMl::ALERT_* constants.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__syncsSent" name="property__syncsSent" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_syncsSent</h3>
+                <pre class="signature">$_syncsSent : integer</pre>
+                <p><em>Counts the &lt;Sync&gt;s sent by the server.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__syncsReceived" name="property__syncsReceived" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_syncsReceived</h3>
+                <pre class="signature">$_syncsReceived : integer</pre>
+                <p><em>Counts the &lt;Sync&gt;s received by the server. Currently unused.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__expectingMapData" name="property__expectingMapData" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_expectingMapData</h3>
+                <pre class="signature">$_expectingMapData : boolean</pre>
+                <p><em>Map data is expected whenever an add is sent to the client.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__state" name="property__state" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_state</h3>
+                <pre class="signature">$_state : \constant</pre>
+                <p><em>State of the current sync.</em></p>
+                <p>A sync starts in Horde_SyncMl_Sync::STATE_INIT and moves on to the next state with every</p>
+<Final> received from the client: Horde_SyncMl_Sync::STATE_INIT, Horde_SyncMl_Sync::STATE_SYNC, Horde_SyncMl_Sync::STATE_MAP,
+Horde_SyncMl_Sync::STATE_COMPLETED.  Horde_SyncMl_Sync::STATE_MAP doesn't occur for _FROM_CLIENT syncs.
+
+                                <h4>Type</h4>
+                \constant
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__clientAnchorNext" name="property__clientAnchorNext" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_clientAnchorNext</h3>
+                <pre class="signature">$_clientAnchorNext : integer</pre>
+                <p><em>Sync Anchors determine the interval from which changes are retrieved.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__serverAnchorLast" name="property__serverAnchorLast" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_serverAnchorLast</h3>
+                <pre class="signature">$_serverAnchorLast : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__serverAnchorNext" name="property__serverAnchorNext" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_serverAnchorNext</h3>
+                <pre class="signature">$_serverAnchorNext : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__client_add_count" name="property__client_add_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_client_add_count</h3>
+                <pre class="signature">$_client_add_count : integer</pre>
+                <p><em>Number of objects that have been sent to the server for adding.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__client_replace_count" name="property__client_replace_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_client_replace_count</h3>
+                <pre class="signature">$_client_replace_count : integer</pre>
+                <p><em>Number of objects that have been sent to the server for replacement.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__client_delete_count" name="property__client_delete_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_client_delete_count</h3>
+                <pre class="signature">$_client_delete_count : integer</pre>
+                <p><em>Number of objects that have been sent to the server for deletion.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__client_addreplaces" name="property__client_addreplaces" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_client_addreplaces</h3>
+                <pre class="signature">$_client_addreplaces : integer</pre>
+                <p><em>Add due to client replace request when map entry is not found. Happens
+during SlowSync.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_add_count" name="property__server_add_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_add_count</h3>
+                <pre class="signature">$_server_add_count : integer</pre>
+                <p><em>Number of objects that have been sent to the client for adding.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_replace_count" name="property__server_replace_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_replace_count</h3>
+                <pre class="signature">$_server_replace_count : integer</pre>
+                <p><em>Number of objects that have been sent to the client for replacement.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_delete_count" name="property__server_delete_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_delete_count</h3>
+                <pre class="signature">$_server_delete_count : integer</pre>
+                <p><em>Number of objects that have been sent to the client for deletion.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__errors" name="property__errors" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_errors</h3>
+                <pre class="signature">$_errors : integer</pre>
+                <p><em>Number of failed actions, for logging purposes only.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_adds" name="property__server_adds" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_adds</h3>
+                <pre class="signature">$_server_adds : array</pre>
+                <p><em>List of object UIDs (in the keys) that have been added on the server
+since the last synchronization and are supposed to be sent to the
+client.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_replaces" name="property__server_replaces" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_replaces</h3>
+                <pre class="signature">$_server_replaces : array</pre>
+                <p><em>List of object UIDs (in the keys) that have been changed on the server
+since the last synchronization and are supposed to be sent to the
+client.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_deletes" name="property__server_deletes" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_deletes</h3>
+                <pre class="signature">$_server_deletes : array</pre>
+                <p><em>List of object UIDs (in the keys) that have been deleted on the server
+since the last synchronization and are supposed to be sent to the
+client.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_task_adds" name="property__server_task_adds" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_task_adds</h3>
+                <pre class="signature">$_server_task_adds : array</pre>
+                <p><em>List of task UIDs (in the keys) that have been added on the server
+since the last synchronization and are supposed to be sent to the
+client.</em></p>
+                <p>This is only used for clients handling tasks and events in one
+database. We need to seperately store the server tasks adds, so when we
+get a Map command from the client, we know whether to put this in tasks
+or calendar.</p>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server_largeobj" name="property__server_largeobj" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_server_largeobj</h3>
+                <pre class="signature">$_server_largeobj : array</pre>
+                <p><em>Array holding the remaining content when splitting a large object into
+multiple messages. Keys are numeric, values are:
+command, chunkContent, clientContentType, clientEncodingType, cuid, suid</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$syncType</span>, string  <span class="argument">$serverURI</span>, string  <span class="argument">$clientURI</span>, integer  <span class="argument">$serverAnchorLast</span>, integer  <span class="argument">$serverAnchorNext</span>, string  <span class="argument">$clientAnchorNext</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$syncType </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$serverURI </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$clientURI </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$serverAnchorLast </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$serverAnchorNext </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$clientAnchorNext </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handleClientSyncItem" name="method_handleClientSyncItem" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">handleClientSyncItem()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handleClientSyncItem(  <span class="argument">$output</span>, \Horde_SyncMl_SyncElement  <span class="argument">$item</span>) </pre>
+                <p><em>Here&#039;s where the actual processing of a client-sent Sync Item takes
+place. Entries are added, deleted or replaced from the server database
+by using backend API calls.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$output </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/Horde_SyncMl_SyncElement.html">\Horde_SyncMl_SyncElement</a></td>
+                                <td>$item </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>maybe this should be moved to SyncItem</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createSyncOutput" name="method_createSyncOutput" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createSyncOutput()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createSyncOutput(  <span class="argument">$output</span>) </pre>
+                <p><em>Creates a &lt;Sync&gt; output containing the server changes.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$output </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>Check for Mem/FreeMem and Mem/FreeID when checking MaxObjSize</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handleFinal" name="method_handleFinal" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">handleFinal()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handleFinal(  <span class="argument">$output</span>,   <span class="argument">$debug = false</span>) </pre>
+                <p><em>Notifies the sync that a final has been received by the client.</em></p>
+                <p>Depending on the current state of the sync this can mean various
+things:
+a) Init phase (Alerts) done. Next package contaings actual syncs.
+b) Sync sending from client done. Next package are maps (or finish
+or finish if ONE_WAY_FROM_CLIENT sync
+c) Maps finished, completly done.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$output </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$debug </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasPendingElements" name="method_hasPendingElements" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasPendingElements()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasPendingElements() </pre>
+                <p><em>Returns true if there are still outstanding server sync items to
+be sent to the client.</em></p>
+                <p>This is the case if the MaxMsgSize has been reached and the pending
+elements are to be sent in another message.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addSyncReceived" name="method_addSyncReceived" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addSyncReceived()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addSyncReceived() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSyncsReceived" name="method_getSyncsReceived" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSyncsReceived()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSyncsReceived() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isComplete" name="method_isComplete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isComplete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isComplete() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_closeSync" name="method_closeSync" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">closeSync()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">closeSync() </pre>
+                <p><em>Completes a sync once everything is done: store the sync anchors so the
+next sync can be a delta sync and produce some debug info.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServerLocURI" name="method_getServerLocURI" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getServerLocURI()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServerLocURI() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getClientLocURI" name="method_getClientLocURI" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getClientLocURI()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getClientLocURI() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getClientAnchorNext" name="method_getClientAnchorNext" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getClientAnchorNext()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getClientAnchorNext() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServerAnchorNext" name="method_getServerAnchorNext" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getServerAnchorNext()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServerAnchorNext() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServerAnchorLast" name="method_getServerAnchorLast" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getServerAnchorLast()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServerAnchorLast() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createUidMap" name="method_createUidMap" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createUidMap()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createUidMap(  <span class="argument">$databaseURI</span>,   <span class="argument">$cuid</span>,   <span class="argument">$suid</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$databaseURI </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$cuid </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$suid </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServerChange" name="method_getServerChange" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getServerChange()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServerChange(string  <span class="argument">$change</span>, string  <span class="argument">$id</span>) : string</pre>
+                <p><em>Returns the client ID of server change identified by the change type
+and server ID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$change </td>
+                                <td><p>The change type (add, replace, delete).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>The object's server UID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The matching client ID or null if none found.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setServerChange" name="method_setServerChange" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setServerChange()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setServerChange(string  <span class="argument">$change</span>, string  <span class="argument">$sid</span>, string  <span class="argument">$cid</span>) </pre>
+                <p><em>Sets the client ID of server change identified by the change type and
+server ID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$change </td>
+                                <td><p>The change type (add, replace, delete).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sid </td>
+                                <td><p>The object's server UID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$cid </td>
+                                <td><p>The object's client UID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_unsetServerChange" name="method_unsetServerChange" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">unsetServerChange()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">unsetServerChange(string  <span class="argument">$change</span>, string  <span class="argument">$id</span>) </pre>
+                <p><em>Unsets the server-client-map of server change identified by the change
+type and server ID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$change </td>
+                                <td><p>The change type (add, replace, delete).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>The object's server UID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__retrieveChanges" name="method__retrieveChanges" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_retrieveChanges()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_retrieveChanges(string  <span class="argument">$syncDB</span>, array  <span class="argument">$adds</span>, array  <span class="argument">$replaces</span>, array  <span class="argument">$deletes</span>) </pre>
+                <p><em>Retrieves and condenses the changes on the server side since the last
+synchronization.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$syncDB </td>
+                                <td><p>The database being synchronized.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$adds </td>
+                                <td><p>Will be set with the server-client-uid mappings
+of added objects.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$replaces </td>
+                                <td><p>Will be set with the server-client-uid mappings
+of changed objects.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$deletes </td>
+                                <td><p>Will be set with the server-client-uid mappings
+of deleted objects.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__taskToCalendar" name="method__taskToCalendar" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_taskToCalendar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_taskToCalendar(  <span class="argument">$databaseURI</span>) </pre>
+                <p><em>Converts a calendar databaseURI to a tasks databaseURI for devices with
+handleTasksInCalendar.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$databaseURI </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getServerLargeObjChunk" name="method__getServerLargeObjChunk" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getServerLargeObjChunk()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getServerLargeObjChunk(integer  <span class="argument">$chunkLength</span>) : string</pre>
+                <p><em>Get the next chunk from the cached large object with maximum length
+of chunkLength or return false.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$chunkLength </td>
+                                <td><p>The maximum length of the chunk.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The next chunk of the cached large object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Sync.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/SyncMl/Sync.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:39.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

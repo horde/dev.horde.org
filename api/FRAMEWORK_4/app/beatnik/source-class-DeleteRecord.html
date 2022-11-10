@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Forms/DeleteRecord.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Beatnik.html">Beatnik</a>
+						</li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Autogenerate.html">Autogenerate</a></li>
+				<li><a href="class-Beatnik.html">Beatnik</a></li>
+				<li><a href="class-Beatnik_Driver.html">Beatnik_Driver</a></li>
+				<li><a href="class-Beatnik_Driver_ldap2dns.html">Beatnik_Driver_ldap2dns</a></li>
+				<li><a href="class-Beatnik_Driver_pdnsgsql.html">Beatnik_Driver_pdnsgsql</a></li>
+				<li><a href="class-Beatnik_Driver_sql.html">Beatnik_Driver_sql</a></li>
+				<li class="active"><a href="class-DeleteRecord.html">DeleteRecord</a></li>
+				<li><a href="class-EditRecord.html">EditRecord</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Beatnik.html" title="Summary of Beatnik"><span>Package</span></a>
+			</li>
+			<li>
+				<a href="class-DeleteRecord.html" title="Summary of DeleteRecord"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Copyright 2005-2007 Alkaloid Networks &lt;http://www.alkaloid.net&gt;
+</span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> *
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> * See the enclosed file LICENSE for license information (GPL). If you
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * did not receive this file, see http://www.horde.org/licenses/gpl.php.
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @author Ben Klang &lt;ben@alkaloid.net&gt;
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * @package Beatnik
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> */</span>
+</span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-keyword1">class</span> <a id="DeleteRecord" href="#DeleteRecord">DeleteRecord</a> <span class="php-keyword1">extends</span> Horde_Form
+</span><span id="12" class="l"><a class="l" href="#12">12: </a>{
+</span><span id="13" class="l"><a class="l" href="#13">13: </a>    <span class="php-comment">/**
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment">     */</span>
+</span><span id="15" class="l"><a class="l" href="#15">15: </a>    <span class="php-keyword1">function</span> <a id="_DeleteRecord" href="#_DeleteRecord">DeleteRecord</a>(&amp;<span class="php-var">$vars</span>)
+</span><span id="16" class="l"><a class="l" href="#16">16: </a>    {
+</span><span id="17" class="l"><a class="l" href="#17">17: </a>        parent::Horde_Form(<span class="php-var">$vars</span>, _(<span class="php-quote">&quot;Are you sure you want to delete this record?&quot;</span>));
+</span><span id="18" class="l"><a class="l" href="#18">18: </a>
+</span><span id="19" class="l"><a class="l" href="#19">19: </a>        <span class="php-var">$rectype</span> = <span class="php-var">$vars</span>-&gt;get(<span class="php-quote">'rectype'</span>);
+</span><span id="20" class="l"><a class="l" href="#20">20: </a>        <span class="php-var">$types</span> = Beatnik::getRecTypes();
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>        <span class="php-var">$this</span>-&gt;addHidden(<span class="php-quote">''</span>, <span class="php-quote">'id'</span>, <span class="php-quote">'text'</span>, <span class="php-var">$vars</span>-&gt;get(<span class="php-quote">'id'</span>));
+</span><span id="23" class="l"><a class="l" href="#23">23: </a>        <span class="php-var">$this</span>-&gt;addHidden(<span class="php-quote">''</span>, <span class="php-quote">'curdomain'</span>, <span class="php-quote">'text'</span>, <span class="php-var">$vars</span>-&gt;get(<span class="php-quote">'curdomain'</span>));
+</span><span id="24" class="l"><a class="l" href="#24">24: </a>        <span class="php-var">$this</span>-&gt;addHidden(<span class="php-quote">''</span>, <span class="php-quote">'rectype'</span>, <span class="php-quote">'text'</span>, <span class="php-var">$vars</span>-&gt;get(<span class="php-quote">'rectype'</span>));
+</span><span id="25" class="l"><a class="l" href="#25">25: </a>        <span class="php-var">$this</span>-&gt;addVariable(_(<span class="php-quote">&quot;Type&quot;</span>), <span class="php-quote">'rectype'</span>, <span class="php-quote">'text'</span>, <span class="php-keyword1">false</span>, <span class="php-keyword1">true</span>);
+</span><span id="26" class="l"><a class="l" href="#26">26: </a>
+</span><span id="27" class="l"><a class="l" href="#27">27: </a>        <span class="php-var">$recset</span> = Beatnik::getRecFields(<span class="php-var">$rectype</span>);
+</span><span id="28" class="l"><a class="l" href="#28">28: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$recset</span> <span class="php-keyword1">as</span> <span class="php-var">$field</span> =&gt; <span class="php-var">$fdata</span>) {
+</span><span id="29" class="l"><a class="l" href="#29">29: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$fdata</span>[<span class="php-quote">'type'</span>] != <span class="php-quote">'hidden'</span> &amp;&amp; (<span class="php-var">$fdata</span>[<span class="php-quote">'infoset'</span>] == <span class="php-quote">'basic'</span> || <span class="php-var">$_SESSION</span>[<span class="php-quote">'beatnik'</span>][<span class="php-quote">'expertmode'</span>])) {
+</span><span id="30" class="l"><a class="l" href="#30">30: </a>                <span class="php-var">$this</span>-&gt;addVariable(_(<span class="php-var">$fdata</span>[<span class="php-quote">'description'</span>]), <span class="php-var">$field</span>, <span class="php-var">$fdata</span>[<span class="php-quote">'type'</span>], <span class="php-keyword1">false</span>, <span class="php-keyword1">true</span>);
+</span><span id="31" class="l"><a class="l" href="#31">31: </a>            }
+</span><span id="32" class="l"><a class="l" href="#32">32: </a>
+</span><span id="33" class="l"><a class="l" href="#33">33: </a>        }
+</span><span id="34" class="l"><a class="l" href="#34">34: </a>
+</span><span id="35" class="l"><a class="l" href="#35">35: </a>        <span class="php-var">$this</span>-&gt;setButtons(<span class="php-keyword1">array</span>(_(<span class="php-quote">&quot;Delete&quot;</span>), _(<span class="php-quote">&quot;Cancel&quot;</span>)));
+</span><span id="36" class="l"><a class="l" href="#36">36: </a>
+</span><span id="37" class="l"><a class="l" href="#37">37: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+</span><span id="38" class="l"><a class="l" href="#38">38: </a>    }
+</span><span id="39" class="l"><a class="l" href="#39">39: </a>}
+</span><span id="40" class="l"><a class="l" href="#40">40: </a></span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?342511034"></script>
+</body>
+</html>

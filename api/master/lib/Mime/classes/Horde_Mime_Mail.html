@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">269</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">22</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2050115986"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-2050115986" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_Mime_Headers_Element_Address.html">Horde_Mime_Headers_Element_Address</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Mime_Headers_Extension_Mime.html">Horde_Mime_Headers_Extension_Mime</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_Mime.html">Horde_Mime</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_ContentParam_Decode.html">Horde_Mime_ContentParam_Decode</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Exception.html">Horde_Mime_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Filter_Encoding.html">Horde_Mime_Filter_Encoding</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers.html">Horde_Mime_Headers</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Addresses.html">Horde_Mime_Headers_Addresses</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_AddressesMulti.html">Horde_Mime_Headers_AddressesMulti</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentDescription.html">Horde_Mime_Headers_ContentDescription</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentId.html">Horde_Mime_Headers_ContentId</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentLanguage.html">Horde_Mime_Headers_ContentLanguage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentParam.html">Horde_Mime_Headers_ContentParam</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentParam_ContentDisposition.html">Horde_Mime_Headers_ContentParam_ContentDisposition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentParam_ContentType.html">Horde_Mime_Headers_ContentParam_ContentType</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_ContentTransferEncoding.html">Horde_Mime_Headers_ContentTransferEncoding</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Date.html">Horde_Mime_Headers_Date</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Deprecated.html">Horde_Mime_Headers_Deprecated</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Element.html">Horde_Mime_Headers_Element</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Element_Multiple.html">Horde_Mime_Headers_Element_Multiple</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Element_Single.html">Horde_Mime_Headers_Element_Single</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Identification.html">Horde_Mime_Headers_Identification</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_MessageId.html">Horde_Mime_Headers_MessageId</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Mime.html">Horde_Mime_Headers_Mime</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_MimeVersion.html">Horde_Mime_Headers_MimeVersion</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Received.html">Horde_Mime_Headers_Received</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_Subject.html">Horde_Mime_Headers_Subject</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Headers_UserAgent.html">Horde_Mime_Headers_UserAgent</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Id.html">Horde_Mime_Id</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Magic.html">Horde_Mime_Magic</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Mail.html">Horde_Mime_Mail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Mdn.html">Horde_Mime_Mdn</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Part.html">Horde_Mime_Part</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Part_Iterator.html">Horde_Mime_Part_Iterator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Part_Upgrade_V1.html">Horde_Mime_Part_Upgrade_V1</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_QuotedPrintable.html">Horde_Mime_QuotedPrintable</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Related.html">Horde_Mime_Related</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Translation.html">Horde_Mime_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mime_Uudecode.html">Horde_Mime_Uudecode</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Mime_Mail</h1>
+                    <p><em>The Horde_Mime_Mail:: class wraps around the various MIME library classes
+to provide a simple interface for creating and sending MIME messages.</em></p>
+                    <p>All content has to be passed UTF-8 encoded. The charset parameters is used
+for the generated message only.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addHeaders" class="">addHeaders()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addHeader" class="">addHeader()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addHeaderOb" class="">addHeaderOb()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_removeHeader" class="">removeHeader()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_setBody" class="">setBody()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_setHtmlBody" class="">setHtmlBody()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addPart" class="">addPart()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addMimePart" class="">addMimePart()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_setBasePart" class="">setBasePart()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addAttachment" class="">addAttachment()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_removePart" class="">removePart()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_clearParts" class="">clearParts()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_addRecipients" class="">addRecipients()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_removeRecipients" class="">removeRecipients()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_clearRecipients" class="">clearRecipients()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_send" class="">send()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_getRaw" class="">getRaw()</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#method_getBasePart" class="">getBasePart()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__headers" class="">$_headers</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__base" class="">$_base</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__body" class="">$_body</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__htmlBody" class="">$_htmlBody</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__recipients" class="">$_recipients</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__bcc" class="">$_bcc</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__parts" class="">$_parts</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__mailer_driver" class="">$_mailer_driver</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__charset" class="">$_charset</a><br />
+                                                                    <a href="../classes/Horde_Mime_Mail.html#property__mailer_params" class="">$_mailer_params</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Mime.Mail.html"><div class="path-wrapper">Mime/Mail.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Mime</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Mime_Mail</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2007-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL 2.1</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__headers" name="property__headers" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_headers</h3>
+                <pre class="signature">$_headers : \Horde_Mime_Headers</pre>
+                <p><em>The message headers.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Mime_Headers.html">\Horde_Mime_Headers</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__base" name="property__base" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_base</h3>
+                <pre class="signature">$_base : \Horde_Mime_Part</pre>
+                <p><em>The base MIME part.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Mime_Part.html">\Horde_Mime_Part</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__body" name="property__body" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_body</h3>
+                <pre class="signature">$_body : \Horde_Mime_Part</pre>
+                <p><em>The main body part.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Mime_Part.html">\Horde_Mime_Part</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__htmlBody" name="property__htmlBody" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_htmlBody</h3>
+                <pre class="signature">$_htmlBody : \Horde_Mime_Part</pre>
+                <p><em>The main HTML body part.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Mime_Part.html">\Horde_Mime_Part</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__recipients" name="property__recipients" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_recipients</h3>
+                <pre class="signature">$_recipients : \Horde_Mail_Rfc822_List</pre>
+                <p><em>The message recipients.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Mail_Rfc822_List
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__bcc" name="property__bcc" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_bcc</h3>
+                <pre class="signature">$_bcc : string</pre>
+                <p><em>Bcc recipients.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__parts" name="property__parts" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_parts</h3>
+                <pre class="signature">$_parts : array</pre>
+                <p><em>All MIME parts except the main body part.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__mailer_driver" name="property__mailer_driver" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_mailer_driver</h3>
+                <pre class="signature">$_mailer_driver : string</pre>
+                <p><em>The Mail driver name.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://pear.php.net/Mail"><span class="namespace-wrapper">http://pear.php.net/Mail</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__charset" name="property__charset" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_charset</h3>
+                <pre class="signature">$_charset : string</pre>
+                <p><em>The charset to use for the message.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__mailer_params" name="property__mailer_params" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_mailer_params</h3>
+                <pre class="signature">$_mailer_params : array</pre>
+                <p><em>The Mail driver parameters.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://pear.php.net/Mail"><span class="namespace-wrapper">http://pear.php.net/Mail</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params = array()</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>A hash with basic message information. 'charset'
+is the character set of the message.  'body' is
+the message body. All other parameters are
+assumed to be message headers.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mime_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addHeaders" name="method_addHeaders" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addHeaders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addHeaders(  <span class="argument">$headers = array()</span>) </pre>
+                <p><em>Adds several message headers at once.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$headers </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mime_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addHeader" name="method_addHeader" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addHeader()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addHeader(string  <span class="argument">$header</span>, string  <span class="argument">$value</span>, boolean  <span class="argument">$overwrite = null</span>) </pre>
+                <p><em>Adds a message header.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$header </td>
+                                <td><p>The header name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td><p>The header value.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$overwrite </td>
+                                <td><p>If true, an existing header of the same name
+is being overwritten; if false, multiple
+headers are added; if null, the correct
+behaviour is automatically chosen depending
+on the header name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mime_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addHeaderOb" name="method_addHeaderOb" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addHeaderOb()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addHeaderOb(\Horde_Mime_Headers_Element  <span class="argument">$ob</span>) </pre>
+                <p><em>Add a Horde_Mime_Headers_Element object to the current header list.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Mime_Headers_Element.html">\Horde_Mime_Headers_Element</a></td>
+                                <td>$ob </td>
+                                <td><p>Header object to add.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.5.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeHeader" name="method_removeHeader" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeHeader()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeHeader(string  <span class="argument">$header</span>) </pre>
+                <p><em>Removes a message header.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$header </td>
+                                <td><p>The header name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setBody" name="method_setBody" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setBody()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setBody(string  <span class="argument">$body</span>, string  <span class="argument">$charset = null</span>, boolean|integer  <span class="argument">$wrap = false</span>) </pre>
+                <p><em>Sets the message body text.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$body </td>
+                                <td><p>The message content.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$charset </td>
+                                <td><p>The character set of the message.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean|integer</td>
+                                <td>$wrap </td>
+                                <td><p>If true, wrap the message at column 76;
+If an integer wrap the message at that
+column. Don't use wrapping if sending
+flowed messages.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setHtmlBody" name="method_setHtmlBody" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setHtmlBody()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setHtmlBody(string  <span class="argument">$body</span>, string  <span class="argument">$charset = null</span>, boolean  <span class="argument">$alternative = true</span>) </pre>
+                <p><em>Sets the HTML message body text.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$body </td>
+                                <td><p>The message content.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$charset </td>
+                                <td><p>The character set of the message.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$alternative </td>
+                                <td><p>If true, a multipart/alternative message is
+created and the text/plain part is
+generated automatically. If false, a
+text/html message is generated.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addPart" name="method_addPart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addPart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addPart(string  <span class="argument">$mime_type</span>, string  <span class="argument">$content</span>, string  <span class="argument">$charset = &#039;us-ascii&#039;</span>, string  <span class="argument">$disposition = null</span>) : integer</pre>
+                <p><em>Adds a message part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$mime_type </td>
+                                <td><p>The content type of the part.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The content of the part.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$charset </td>
+                                <td><p>The character set of the part.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$disposition </td>
+                                <td><p>The content disposition of the part.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The part number.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addMimePart" name="method_addMimePart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addMimePart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addMimePart(\Horde_Mime_Part  <span class="argument">$part</span>) : integer</pre>
+                <p><em>Adds a MIME message part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Mime_Part.html">\Horde_Mime_Part</a></td>
+                                <td>$part </td>
+                                <td><p>A Horde_Mime_Part object.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The part number.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setBasePart" name="method_setBasePart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setBasePart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setBasePart(\Horde_Mime_Part  <span class="argument">$part</span>) </pre>
+                <p><em>Sets the base MIME part.</em></p>
+                <p>If the base part is set, any text bodies will be ignored when building
+the message.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_Mime_Part.html">\Horde_Mime_Part</a></td>
+                                <td>$part </td>
+                                <td><p>A Horde_Mime_Part object.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addAttachment" name="method_addAttachment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addAttachment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addAttachment(string  <span class="argument">$file</span>, string  <span class="argument">$name = null</span>, string  <span class="argument">$type = null</span>, string  <span class="argument">$charset = &#039;us-ascii&#039;</span>) : integer</pre>
+                <p><em>Adds an attachment.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$file </td>
+                                <td><p>The path to the file.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The file name to use for the attachment.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The content type of the file.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$charset </td>
+                                <td><p>The character set of the part (only relevant for
+text parts.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The part number.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removePart" name="method_removePart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removePart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removePart(integer  <span class="argument">$part</span>) </pre>
+                <p><em>Removes a message part.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$part </td>
+                                <td><p>The part number.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clearParts" name="method_clearParts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">clearParts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clearParts() </pre>
+                <p><em>Removes all (additional) message parts but leaves the body parts
+untouched.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addRecipients" name="method_addRecipients" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addRecipients()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addRecipients(  <span class="argument">$recipients</span>) </pre>
+                <p><em>Adds message recipients.</em></p>
+                <p>Recipients specified by To:, Cc:, or Bcc: headers are added
+automatically.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$recipients </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mime_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeRecipients" name="method_removeRecipients" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeRecipients()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeRecipients(  <span class="argument">$recipients</span>) </pre>
+                <p><em>Removes message recipients.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$recipients </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mime_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clearRecipients" name="method_clearRecipients" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">clearRecipients()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clearRecipients() </pre>
+                <p><em>Removes all message recipients.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_send" name="method_send" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">send()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">send(\Mail  <span class="argument">$mailer</span>, boolean  <span class="argument">$resend = false</span>, boolean  <span class="argument">$flowed = true</span>) </pre>
+                <p><em>Sends this message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Mail</td>
+                                <td>$mailer </td>
+                                <td><p>A Mail object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$resend </td>
+                                <td><p>If true, the message id and date are re-used;
+If false, they will be updated.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$flowed </td>
+                                <td><p>Send message in flowed text format.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mime_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRaw" name="method_getRaw" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRaw()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRaw(boolean  <span class="argument">$stream = true</span>) : \stream|string</pre>
+                <p><em>Get the raw email data sent by this object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$stream </td>
+                                <td><p>If true, return a stream resource, otherwise
+a string is returned.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \stream|string
+                                            &mdash; <p>The raw email data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            2.4.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBasePart" name="method_getBasePart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBasePart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBasePart() : \Horde_Mime_Part</pre>
+                <p><em>Return the base MIME part.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Mime_Part.html">\Horde_Mime_Part</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Mail.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Mime/Mail.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:38.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

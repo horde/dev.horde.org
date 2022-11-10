@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs for page api.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/lib/api.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Kronolith external API interface.</p>
+<p class="description"><p>$Horde: kronolith/lib/api.php,v 1.241 2008/11/22 02:04:23 bklang Exp $</p><p>This file defines Kronolith's external API interface. Other applications  can interact with Kronolith through this API.</p></p>
+		
+			</div>
+</div>
+		
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="function_kronolith_browse" id="function_kronolith_browse"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_browse</span> (line <span class="line-number">243</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Browse through Kronolith's object tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The contents of $path</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_browse
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">&#039;&#039;</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$properties</span> = <span class="var-default">array()</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The level of the tree to browse.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$properties</span><span class="var-description">: The item properties to return. Defaults to 'name',                            'icon', and 'browseable'.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_delete" id="function_kronolith_delete"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_delete</span> (line <span class="line-number">969</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes an event identified by UID.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Success or failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_kronolith_delete
+		</span>
+					(<span class="var-type">string|array</span>&nbsp;<span class="var-name">$uid</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|array</span>
+				<span class="var-name">$uid</span><span class="var-description">: A single UID or an array identifying the event(s)                            to delete.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_eventFromUID" id="function_kronolith_eventFromUID"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_eventFromUID</span> (line <span class="line-number">1133</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieves a Kronolith_Event object, given an event UID.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A valid Kronolith_Event on success, or a PEAR_Error                           on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result"><a href="../Kronolith/Kronolith_Event.html">Kronolith_Event</a></span>
+		<span class="method-name">
+			&amp;_kronolith_eventFromUID
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: The event's UID.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_export" id="function_kronolith_export"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_export</span> (line <span class="line-number">869</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Exports an event, identified by UID, in the requested content type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The requested data.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_kronolith_export
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: Identify the event to export.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format should the data be in?                             A string with one of:                             <pre>                             text/calendar (VCALENDAR 2.0. Recommended as
+                                            this is specified in rfc2445)
+                             text/x-vcalendar (old VCALENDAR 1.0 format.
+                                              Still in wide use)</pre></span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_exportCalendar" id="function_kronolith_exportCalendar"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_exportCalendar</span> (line <span class="line-number">919</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Exports a calendar in the requested content type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The iCalendar representation of the calendar.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_kronolith_exportCalendar
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$calendar</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$calendar</span><span class="var-description">: The calendar to export.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format should the data be in?                              A string with one of:                              <pre>                             text/calendar (VCALENDAR 2.0. Recommended as
+                                            this is specified in rfc2445)
+                             text/x-vcalendar (old VCALENDAR 1.0 format.
+                                              Still in wide use)</pre></span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_getActionTimestamp" id="function_kronolith_getActionTimestamp"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_getActionTimestamp</span> (line <span class="line-number">744</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the timestamp of an operation for a given uid an action</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The timestamp for this action.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			_kronolith_getActionTimestamp
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$action</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$calendar</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: The uid to look for.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action</span><span class="var-description">: The action to check for - add, modify, or delete.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$calendar</span><span class="var-description">: The calendar to search in.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_getFreeBusy" id="function_kronolith_getFreeBusy"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_getFreeBusy</span> (line <span class="line-number">1110</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Generates free/busy information for a given time period.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A freebusy object that covers the                                     specified time period.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">Horde_iCalendar_vfreebusy</span>
+		<span class="method-name">
+			_kronolith_getFreeBusy
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$startstamp</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$endstamp</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$calendar</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$startstamp</span><span class="var-description">: The start of the time period to retrieve.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$endstamp</span><span class="var-description">: The end of the time period to retrieve.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$calendar</span><span class="var-description">: The calendar to view free/busy slots for.                              Defaults to the user's default calendar.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_import" id="function_kronolith_import"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_import</span> (line <span class="line-number">775</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Imports an event represented in the specified content type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The event's UID, or a PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_kronolith_import
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$calendar</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content</span><span class="var-description">: The content of the event.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format is the data in? Currently supports:                              <pre>                             text/calendar
+                             text/x-vcalendar</pre></span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$calendar</span><span class="var-description">: What calendar should the event be added to?</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_list" id="function_kronolith_list"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_list</span> (line <span class="line-number">677</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns all the events that happen within a time period.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The events happening in this time period.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_list
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$calendar</span> = <span class="var-default">null</span>], [<span class="var-type">object</span>&nbsp;<span class="var-name">$startstamp</span> = <span class="var-default">0</span>], [<span class="var-type">object</span>&nbsp;<span class="var-name">$endstamp</span> = <span class="var-default">0</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$calendar</span><span class="var-description">: The calendar to check for events.</span>			</li>
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$startstamp</span><span class="var-description">: The start of the time range.</span>			</li>
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$endstamp</span><span class="var-description">: The end of the time range.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_listAlarms" id="function_kronolith_listAlarms"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_listAlarms</span> (line <span class="line-number">1283</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lists alarms for a given moment.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of UIDs</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_listAlarms
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$time</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$user</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$time</span><span class="var-description">: The time to retrieve alarms for.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$user</span><span class="var-description">: The user to retrieve alarms for. All users if null.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_listBy" id="function_kronolith_listBy"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_listBy</span> (line <span class="line-number">712</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an array of UIDs for events that have had $action happen since  $timestamp.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of UIDs matching the action and time criteria.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_listBy
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$timestamp</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$calendar</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action</span><span class="var-description">: The action to check for - add, modify, or delete.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$timestamp</span><span class="var-description">: The time to start the search.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$calendar</span><span class="var-description">: The calendar to search in.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_listCalendars" id="function_kronolith_listCalendars"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_listCalendars</span> (line <span class="line-number">659</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns all calendars a user has access to, according to several  parameters/permission levels.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The calendar list.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_listCalendars
+		</span>
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$owneronly</span> = <span class="var-default">false</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$permission</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$owneronly</span><span class="var-description">: Only return calenders that this user owns?                              Defaults to false.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$permission</span><span class="var-description">: The permission to filter calendars by.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_listEvents" id="function_kronolith_listEvents"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_listEvents</span> (line <span class="line-number">1254</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lists events for a given time period.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A list of event hashes.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_listEvents
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$startstamp</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$endstamp</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$calendars</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$showRecurrence</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$alarmsOnly</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$startstamp</span><span class="var-description">: The start of the time period to retrieve.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$endstamp</span><span class="var-description">: The end of the time period to retrieve.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$calendars</span><span class="var-description">: The calendars to view events from.                                  Defaults to the user's default calendar.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$showRecurrence</span><span class="var-description">: Return every instance of a recurring event?                                  If false, will only return recurring events                                  once inside the $startDate - $endDate range.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$alarmsOnly</span><span class="var-description">: Filter results for events with alarms.                                  Defaults to false.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_path_delete" id="function_kronolith_path_delete"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_path_delete</span> (line <span class="line-number">607</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes a file from the Kronolith tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The event's UID, or a PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_kronolith_path_delete
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path to the file.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_perms" id="function_kronolith_perms"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_perms</span> (line <span class="line-number">134</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a list of available permissions.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array describing all available permissions.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_perms
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="function_kronolith_put" id="function_kronolith_put"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_put</span> (line <span class="line-number">474</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Saves a file into the Kronolith tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The event UIDs, or a PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_kronolith_put
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content_type</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path where to PUT the file.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content</span><span class="var-description">: The file content.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content_type</span><span class="var-description">: The file's content type.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_removeUserData" id="function_kronolith_removeUserData"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_removeUserData</span> (line <span class="line-number">151</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes user data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true on success | PEAR_Error on failure</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_kronolith_removeUserData
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$user</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$user</span><span class="var-description">: Name of user to remove data for.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_replace" id="function_kronolith_replace"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_replace</span> (line <span class="line-number">1041</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Replaces the event identified by UID with the content represented in the  specified contentType.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success, PEAR_Error otherwise.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_kronolith_replace
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: Idenfity the event to replace.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$content</span><span class="var-description">: The content of the event. String or                              Horde_iCalendar_vevent</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format is the data in? Currently supports:                              text/calendar                              text/x-vcalendar                              (Ignored if content is Horde_iCalendar_vevent)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_shareHelp" id="function_kronolith_shareHelp"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_shareHelp</span> (line <span class="line-number">213</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the share helper prefix</p>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_kronolith_shareHelp
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="function_kronolith_subscribe" id="function_kronolith_subscribe"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_subscribe</span> (line <span class="line-number">1357</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Subscribe to a calendar.</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_kronolith_subscribe
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$calendar</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$calendar</span><span class="var-description">: Calendar description hash, with required 'type'                          parameter. Currently supports 'http' and 'webcal'                          for remote calendars.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_unsubscribe" id="function_kronolith_unsubscribe"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_unsubscribe</span> (line <span class="line-number">1407</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Unsubscribe from a calendar.</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_kronolith_unsubscribe
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$calendar</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$calendar</span><span class="var-description">: Calendar description array, with required 'type'                          parameter. Currently supports 'http' and 'webcal'                          for remote calendars.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_kronolith_updateAttendee" id="function_kronolith_updateAttendee"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_kronolith_updateAttendee</span> (line <span class="line-number">1165</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Updates an attendee's response status for a specified event.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success, PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_kronolith_updateAttendee
+		</span>
+					(<span class="var-type">Horde_iCalender_vevent</span>&nbsp;<span class="var-name">$response</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$sender</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">Horde_iCalender_vevent</span>
+				<span class="var-name">$response</span><span class="var-description">: A Horde_iCalender_vevent object,                                           with a valid UID attribute that                                           points to an existing event.                                           This is typically the vEvent                                           portion of an iTip meeting-request                                           response, with the attendee's                                           response in an ATTENDEE parameter.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sender</span><span class="var-description">: The email address of the person                                           initiating the update. Attendees                                           are only updated if this address                                           matches.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function__kronolith_modified" id="function__kronolith_modified"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">__kronolith_modified</span> (line <span class="line-number">225</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the last modification timestamp for the given uid.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The timestamp for the last modification of $uid.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			__kronolith_modified
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: The uid to look for.</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 08 Nov 2009 14:53:46 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

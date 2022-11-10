@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Horde_Lock_sql</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Horde_Lock_sql</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The Horde_Lock_sql driver implements a storage backend for the Horde_Lock API</p>
+<p class="description"><p>Required parameters:<pre>   'phptype'      The database type (ie. 'pgsql', 'mysql', etc.).</pre></p><p>Required by some database implementations:<pre>   'database'     The name of the database.
+   'hostspec'     The hostname of the database server.
+   'username'     The username with which to connect to the database.
+   'password'     The password associated with 'username'.
+   'options'      Additional options to pass to the database.
+   'tty'          The TTY on which to connect to the database.
+   'port'         The port on which to connect to the database.</pre></p><p>Optional parameters:<pre>   'table'               The name of the lock table in 'database'.
+                         Defaults to 'horde_locks'.
+
+ Optional values when using separate reading and writing servers, for example
+ in replication settings:<pre>
+   'splitread'   Boolean, whether to implement the separation or not.
+   'read'        Array containing the parameters which are different for
+                 the read database connection, currently supported
+                 only 'hostspec' and 'port' parameters.</pre></p><p>The table structure for the locks is as follows:  <pre> CREATE TABLE horde_locks (
+     lock_id                  VARCHAR(36) NOT NULL,
+     lock_owner               VARCHAR(32) NOT NULL,
+     lock_scope               VARCHAR(32) NOT NULL,
+     lock_principal           VARCHAR(255) NOT NULL,
+     lock_origin_timestamp    BIGINT NOT NULL,
+     lock_update_timestamp    BIGINT NOT NULL,
+     lock_expiry_timestamp    BIGINT NOT NULL,
+     lock_type                TINYINT NOT NULL,
+
+     PRIMARY KEY (lock_id)
+ );</pre></p><p>Copyright 2008-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If you did  not receive this file, see http://opensource.org/licenses/lgpl-license.php.</p><p>$Horde: framework/Lock/Lock/sql.php,v 1.8.2.8 2009/02/25 05:35:42 chuck Exp $</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Ben Klang &lt;<a href="mailto:ben@alkaloid.net">ben@alkaloid.net</a>&gt;</li>
+				<li><span class="field">since:</span> Horde 3.2</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Lock---Lock---sql.php.html">/Lock/Lock/sql.php</a> (line <span class="field">56</span>)
+		</p>
+		
+				
+		<pre><a href="../Horde_Lock/Horde_Lock.html">Horde_Lock</a>
+   |
+   --Horde_Lock_sql</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">boolean</span>
+					<a href="#$_connected" title="details" class="var-name">$_connected</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">DB</span>
+					<a href="#$_db" title="details" class="var-name">$_db</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">DB</span>
+					<a href="#$_write_db" title="details" class="var-name">$_write_db</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																							
+				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Horde_Lock_sql</span>
+										<a href="#Horde_Lock_sql" title="details" class="method-name">Horde_Lock_sql</a>
+											([<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#clearLock" title="details" class="method-name">clearLock</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$lockid</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#getLockInfo" title="details" class="method-name">getLockInfo</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$lockid</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#getLocks" title="details" class="method-name">getLocks</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$scope</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$principal</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">null</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#resetLock" title="details" class="method-name">resetLock</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$lockid</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$extend</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#setLock" title="details" class="method-name">setLock</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$requestor</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$scope</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$principal</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lifetime</span> = <span class="var-default">1</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">HORDE_LOCK_TYPE_SHARED</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#_connect" title="details" class="method-name">_connect</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_connected" id="$_connected"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$_connected</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">78</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Boolean indicating whether or not we're connected to the SQL server.</p>
+	
+	
+		
+		
+
+</div>
+<a name="var$_db" id="$_db"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">DB</span>
+			<span class="var-name">$_db</span>
+						(line <span class="line-number">63</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Handle for the current database connection.</p>
+	
+	
+		
+		
+
+</div>
+<a name="var$_write_db" id="$_write_db"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">DB</span>
+			<span class="var-name">$_write_db</span>
+						(line <span class="line-number">71</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Handle for the current database connection, used for writing. Defaults  to the same handle as $_db if a separate write database isn't required.</p>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../Horde_Lock/Horde_Lock.html">Horde_Lock</a></span></p>
+					<blockquote>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_Lock/Horde_Lock.html#var$_params">Horde_Lock::$_params</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodHorde_Lock_sql" id="Horde_Lock_sql"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Horde_Lock_sql</span> (line <span class="line-number">85</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructs a new Horde_Lock_sql object.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">Horde_Lock_sql</span>
+		<span class="method-name">
+			Horde_Lock_sql
+		</span>
+					([<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span><span class="var-description">: A hash containing configuration parameters.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodclearLock" id="clearLock"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">clearLock</span> (line <span class="line-number">335</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes a lock given the lock ID.</p>
+<p class="description"><p>NOTE: No security checks are done in the Horde_Lock API.  It is expected  that the calling application has done all necessary security checks  before requesting a lock be cleared.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success; PEAR_Error on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			clearLock
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$lockid</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$lockid</span><span class="var-description">: The lock ID as generated by a previous call                         to setLock()</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Lock/Horde_Lock.html#methodclearLock">Horde_Lock::clearLock()</a></dt>
+						<dd>Removes a lock given the lock ID.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetLockInfo" id="getLockInfo"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLockInfo</span> (line <span class="line-number">116</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return an array of information about the requested lock.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Array of lock information on success; false if no                          valid lock exists; PEAR_Error on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getLockInfo
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$lockid</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$lockid</span><span class="var-description">: Lock ID to look up</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Lock/Horde_Lock.html#methodgetLockInfo">Horde_Lock::getLockInfo()</a></dt>
+						<dd>Return an array of information about the requested lock.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetLocks" id="getLocks"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getLocks</span> (line <span class="line-number">163</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a list of valid locks with the option to limit the results  by principal, scope and/or type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Array of locks with the ID as the key and the lock details                 as the value. If there are no current locks this will                 return an empty array. On failure a PEAR_Error object                 will be returned.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getLocks
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$scope</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$principal</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$scope</span><span class="var-description">: The scope of the lock.  Typically the name of                            the application requesting the lock or some                            other identifier used to group locks together.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$principal</span><span class="var-description">: Principal for which to check for locks</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$type</span><span class="var-description">: Only return locks of the given type.                            Defaults to null, or all locks</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Lock/Horde_Lock.html#methodgetLocks">Horde_Lock::getLocks()</a></dt>
+						<dd>Return a list of valid locks with the option to limit the results  by principal, scope and/or type.</dd>
+					</dl>
+			
+	</div>
+<a name="methodresetLock" id="resetLock"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">resetLock</span> (line <span class="line-number">219</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Extend the valid lifetime of a valid lock to now + $newtimeout.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success; false on expired lock;                         PEAR_Error on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			resetLock
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$lockid</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$extend</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$lockid</span><span class="var-description">: Lock ID to reset.  Must be a valid, non-expired                         lock.</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$extend</span><span class="var-description">: Extend lock this many seconds from now.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Lock/Horde_Lock.html#methodresetLock">Horde_Lock::resetLock()</a></dt>
+						<dd>Extend the valid lifetime of a valid lock to now + $extend.</dd>
+					</dl>
+			
+	</div>
+<a name="methodsetLock" id="setLock"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setLock</span> (line <span class="line-number">286</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets a lock on the requested principal and returns the generated lock ID.</p>
+<p class="description"><p>NOTE: No security checks are done in the Horde_Lock API.  It is expected  that the calling application has done all necessary security checks  before requesting a lock be granted.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A string lock ID on success; PEAR_Error on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			setLock
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$requestor</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$scope</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$principal</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lifetime</span> = <span class="var-default">1</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">HORDE_LOCK_TYPE_SHARED</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$requestor</span><span class="var-description">: User ID of the lock requestor.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$scope</span><span class="var-description">: The scope of the lock.  Typically the name of                            the application requesting the lock or some                            other identifier used to group locks together.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$principal</span><span class="var-description">: A principal on which a lock should be granted.                            The format can be any string but is suggested                            to be in URI form.</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lifetime</span><span class="var-description">: Time (in seconds) for which the lock will be                            considered valid.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: type        One of HORDE_LOCK_TYPE_SHARED or                            HORDE_LOCK_TYPE_EXCLUSIVE. <ul><li>An exclusive lock will be enforced strictly
+                             and must be interpreted to mean that the
+                             resource can not be modified.  Only one
+                             exclusive lock per principal is allowed.</li><li>A shared lock is one that notifies other
+                             potential lock requestors that the resource
+                             is in use.  This lock can be overridden
+                             (cleared or replaced with a subsequent
+                             call to setLock()) by other users.  Multiple
+                             users may request (and will be granted) a
+                             shared lock on a given principal.  All locks
+                             will be considered valid until they are
+                             cleared or expire.</li></ul></span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_Lock/Horde_Lock.html#methodsetLock">Horde_Lock::setLock()</a></dt>
+						<dd>Sets a lock on the requested principal and returns the generated lock ID.</dd>
+					</dl>
+			
+	</div>
+<a name="method_connect" id="_connect"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_connect</span> (line <span class="line-number">368</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Opens a connection to the SQL server.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success, a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_connect
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Horde_Lock/Horde_Lock.html">Horde_Lock</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodHorde_Lock">Horde_Lock::Horde_Lock()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodclearLock">Horde_Lock::clearLock()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodfactory">Horde_Lock::factory()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodgetLockInfo">Horde_Lock::getLockInfo()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodgetLocks">Horde_Lock::getLocks()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodresetLock">Horde_Lock::resetLock()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodsetLock">Horde_Lock::setLock()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#methodsingleton">Horde_Lock::singleton()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_Lock/Horde_Lock.html#method_uuidgen">Horde_Lock::_uuidgen()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 30 Jan 2011 05:22:02 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

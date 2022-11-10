@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Nag.html">\Nag</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">309</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-136395439"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-136395439" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-232065254"></a>
+                                <a href="../namespaces/Nag.html" style="margin-left: 30px; padding-left: 0">Nag</a>
+            </div>
+            <div id="namespace-232065254" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-367505797"></a>
+                                <a href="../namespaces/Nag.Backup.html" style="margin-left: 30px; padding-left: 0">Backup</a>
+            </div>
+            <div id="namespace-367505797" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Nag.Backup.Tasks.html">Tasks</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Core_Ui_VarRenderer_Nag.html">Horde_Core_Ui_VarRenderer_Nag</a></li>
+                                                    <li class="class"><a href="../classes/Nag.html">Nag</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Application.html">Nag_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Application_Handler_Smartmobile.html">Nag_Ajax_Application_Handler_Smartmobile</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Imple_ContactAutoCompleter.html">Nag_Ajax_Imple_ContactAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Imple_TagAutoCompleter.html">Nag_Ajax_Imple_TagAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Api.html">Nag_Api</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Application.html">Nag_Application</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Block_Summary.html">Nag_Block_Summary</a></li>
+                                                    <li class="class"><a href="../classes/Nag_CompleteTask.html">Nag_CompleteTask</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver.html">Nag_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver_Kolab.html">Nag_Driver_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver_Smartlist.html">Nag_Driver_Smartlist</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver_Sql.html">Nag_Driver_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Exception.html">Nag_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Factory_Driver.html">Nag_Factory_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Factory_TagBrowser.html">Nag_Factory_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Factory_Tasklists.html">Nag_Factory_Tasklists</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_CreateTaskList.html">Nag_Form_CreateTaskList</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_DeleteTaskList.html">Nag_Form_DeleteTaskList</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_EditTaskList.html">Nag_Form_EditTaskList</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Search.html">Nag_Form_Search</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Task.html">Nag_Form_Task</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagAlarm.html">Nag_Form_Type_NagAlarm</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagContact.html">Nag_Form_Type_NagContact</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagDue.html">Nag_Form_Type_NagDue</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagMethod.html">Nag_Form_Type_NagMethod</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagRecurrence.html">Nag_Form_Type_NagRecurrence</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagSearchDue.html">Nag_Form_Type_NagSearchDue</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagStart.html">Nag_Form_Type_NagStart</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagTags.html">Nag_Form_Type_NagTags</a></li>
+                                                    <li class="class"><a href="../classes/Nag_LoginTasks_Task_PurgeCompleted.html">Nag_LoginTasks_Task_PurgeCompleted</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Prefs_Special_TaskAlarms.html">Nag_Prefs_Special_TaskAlarms</a></li>
+                                                    <li class="class"><a href="../classes/Nag_QuickParser.html">Nag_QuickParser</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Search.html">Nag_Search</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Smartmobile.html">Nag_Smartmobile</a></li>
+                                                    <li class="class"><a href="../classes/Nag_TagBrowser.html">Nag_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tagger.html">Nag_Tagger</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Task.html">Nag_Task</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklist.html">Nag_Tasklist</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklists_Base.html">Nag_Tasklists_Base</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklists_Default.html">Nag_Tasklists_Default</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklists_Kolab.html">Nag_Tasklists_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Nag_View_Helper_List.html">Nag_View_Helper_List</a></li>
+                                                    <li class="class"><a href="../classes/Nag_View_List.html">Nag_View_List</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Nag_Task</h1>
+                    <p><em>Nag_Task handles as single task as well as a list of tasks and implements a
+recursive iterator to handle a (hierarchical) list of tasks.</em></p>
+                    <p>See the enclosed file LICENSE for license information (GPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Nag_Task.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method___set" class="">__set()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method___clone" class="">__clone()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_merge" class="">merge()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_orphan" class="">orphan()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_save" class="">save()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_getParent" class="">getParent()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_add" class="">add()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_loadChildren" class="">loadChildren()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_mergeChildren" class="">mergeChildren()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_get" class="">get()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_hasTasks" class="">hasTasks()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_hasSubTasks" class="">hasSubTasks()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_childrenCompleted" class="">childrenCompleted()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_childrenOverdue" class="">childrenOverdue()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_count" class="">count()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_estimation" class="">estimation()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_actuals" class="">actuals()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_recurs" class="">recurs()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_toggleComplete" class="">toggleComplete()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_getNextStart" class="">getNextStart()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_getNextDue" class="">getNextDue()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_getFormattedDescription" class="">getFormattedDescription()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_reset" class="">reset()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_hasTask" class="">hasTask()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_each" class="">each()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_getSlice" class="">getSlice()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_process" class="">process()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_backgroundColor" class="">backgroundColor()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_foregroundColor" class="">foregroundColor()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_treeIcons" class="">treeIcons()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_loadTags" class="">loadTags()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_synchronizeTags" class="">synchronizeTags()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_sort" class="">sort()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_toHash" class="">toHash()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_toJson" class="">toJson()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_toAlarm" class="">toAlarm()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_toiCalendar" class="">toiCalendar()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_toASTask" class="">toASTask()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_fromiCalendar" class="">fromiCalendar()</a><br />
+                                                                    <a href="../classes/Nag_Task.html#method_fromASTask" class="">fromASTask()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Nag_Task.html#property_id" class="">$id</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_tasklist" class="">$tasklist</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_tasklist_name" class="">$tasklist_name</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_uid" class="">$uid</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_owner" class="">$owner</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_assignee" class="">$assignee</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_name" class="">$name</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_desc" class="">$desc</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_start" class="">$start</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_due" class="">$due</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_recurrence" class="">$recurrence</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_priority" class="">$priority</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_estimate" class="">$estimate</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_actual" class="">$actual</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_completed" class="">$completed</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_completed_date" class="">$completed_date</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_created" class="">$created</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_createdby" class="">$createdby</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_modified" class="">$modified</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_modifiedby" class="">$modifiedby</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_alarm" class="">$alarm</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_methods" class="">$methods</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_snooze" class="">$snooze</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_private" class="">$private</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_view_link" class="">$view_link</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_complete_link" class="">$complete_link</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_edit_link" class="">$edit_link</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_delete_link" class="">$delete_link</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_parent_id" class="">$parent_id</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_parent" class="">$parent</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_children" class="">$children</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_indent" class="">$indent</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_lastChild" class="">$lastChild</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_internaltags" class="">$internaltags</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_organizer" class="">$organizer</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_status" class="">$status</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property_" class="">$</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Nag_Task.html#property__storage" class="">$_storage</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property__inlist" class="">$_inlist</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property__pointer" class="">$_pointer</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property__dict" class="">$_dict</a><br />
+                                                                    <a href="../classes/Nag_Task.html#property__tags" class="">$_tags</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Task.html"><div class="path-wrapper">Task.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Nag</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Nag_Task</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_id" name="property_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$id</h3>
+                <pre class="signature">$id : string</pre>
+                <p><em>The task id.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tasklist" name="property_tasklist" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$tasklist</h3>
+                <pre class="signature">$tasklist : string</pre>
+                <p><em>This task&#039;s tasklist id.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tasklist_name" name="property_tasklist_name" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$tasklist_name</h3>
+                <pre class="signature">$tasklist_name : string</pre>
+                <p><em>This task&#039;s tasklist name.</em></p>
+                <p>Overrides the $tasklist's share name.</p>
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_uid" name="property_uid" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$uid</h3>
+                <pre class="signature">$uid : string</pre>
+                <p><em>The task uid.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_owner" name="property_owner" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$owner</h3>
+                <pre class="signature">$owner : string</pre>
+                <p><em>The task owner.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_assignee" name="property_assignee" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$assignee</h3>
+                <pre class="signature">$assignee : string</pre>
+                <p><em>The task assignee.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_name" name="property_name" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$name</h3>
+                <pre class="signature">$name : string</pre>
+                <p><em>The task title.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_desc" name="property_desc" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$desc</h3>
+                <pre class="signature">$desc : string</pre>
+                <p><em>The task decription.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_start" name="property_start" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$start</h3>
+                <pre class="signature">$start : integer</pre>
+                <p><em>The start date timestamp.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_due" name="property_due" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$due</h3>
+                <pre class="signature">$due : integer</pre>
+                <p><em>The due date timestamp.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_recurrence" name="property_recurrence" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$recurrence</h3>
+                <pre class="signature">$recurrence : \Horde_Date_Recurrence</pre>
+                <p><em>Recurrence rules for recurring tasks.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Date_Recurrence
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_priority" name="property_priority" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$priority</h3>
+                <pre class="signature">$priority : integer</pre>
+                <p><em>The task priority from 1 = highest to 5 = lowest.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_estimate" name="property_estimate" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$estimate</h3>
+                <pre class="signature">$estimate : float</pre>
+                <p><em>The estimated task length.</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_actual" name="property_actual" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$actual</h3>
+                <pre class="signature">$actual : float</pre>
+                <p><em>The actual task length.</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_completed" name="property_completed" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$completed</h3>
+                <pre class="signature">$completed : boolean</pre>
+                <p><em>Whether the task is completed.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_completed_date" name="property_completed_date" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$completed_date</h3>
+                <pre class="signature">$completed_date : integer</pre>
+                <p><em>The completion date timestamp.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_created" name="property_created" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$created</h3>
+                <pre class="signature">$created : \Horde_Date</pre>
+                <p><em>The creation time.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Date
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_createdby" name="property_createdby" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$createdby</h3>
+                <pre class="signature">$createdby : string</pre>
+                <p><em>The creator string.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_modified" name="property_modified" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$modified</h3>
+                <pre class="signature">$modified : \Horde_Date</pre>
+                <p><em>The last modification time.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Date
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_modifiedby" name="property_modifiedby" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$modifiedby</h3>
+                <pre class="signature">$modifiedby : string</pre>
+                <p><em>The last-modifier string.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_alarm" name="property_alarm" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$alarm</h3>
+                <pre class="signature">$alarm : integer</pre>
+                <p><em>The task alarm threshold in minutes.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_methods" name="property_methods" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$methods</h3>
+                <pre class="signature">$methods : array</pre>
+                <p><em>The particular alarm methods overridden for this task.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_snooze" name="property_snooze" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$snooze</h3>
+                <pre class="signature">$snooze : integer</pre>
+                <p><em>Snooze minutes for this event&#039;s alarm.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_Alarm::snooze()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_private" name="property_private" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$private</h3>
+                <pre class="signature">$private : boolean</pre>
+                <p><em>Whether the task is private.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_view_link" name="property_view_link" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$view_link</h3>
+                <pre class="signature">$view_link : string</pre>
+                <p><em>URL to view the task.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_complete_link" name="property_complete_link" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$complete_link</h3>
+                <pre class="signature">$complete_link : string</pre>
+                <p><em>URL to complete the task.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_edit_link" name="property_edit_link" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$edit_link</h3>
+                <pre class="signature">$edit_link : string</pre>
+                <p><em>URL to edit the task.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_delete_link" name="property_delete_link" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$delete_link</h3>
+                <pre class="signature">$delete_link : string</pre>
+                <p><em>URL to delete the task.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_parent_id" name="property_parent_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$parent_id</h3>
+                <pre class="signature">$parent_id : string</pre>
+                <p><em>The parent task&#039;s id.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_parent" name="property_parent" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$parent</h3>
+                <pre class="signature">$parent : \Nag_Task</pre>
+                <p><em>The parent task.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Nag_Task.html">\Nag_Task</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_children" name="property_children" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$children</h3>
+                <pre class="signature">$children : array</pre>
+                <p><em>The sub-tasks.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_indent" name="property_indent" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$indent</h3>
+                <pre class="signature">$indent : integer</pre>
+                <p><em>This task&#039;s idention (child) level.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_lastChild" name="property_lastChild" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$lastChild</h3>
+                <pre class="signature">$lastChild : boolean</pre>
+                <p><em>Whether this is the last sub-task.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_internaltags" name="property_internaltags" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$internaltags</h3>
+                <pre class="signature">$internaltags : array</pre>
+                <p><em>Task tags from the storage backend (e.g. Kolab)</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_organizer" name="property_organizer" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$organizer</h3>
+                <pre class="signature">$organizer : string</pre>
+                <p><em>Task organizer</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_status" name="property_status" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$status</h3>
+                <pre class="signature">$status : integer</pre>
+                <p><em>The assignment status of this task.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_" name="property_" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$</h3>
+                <pre class="signature">$ : \tags</pre>
+                <p><em></em></p>
+                <p>array  An array of tags this task is tagged with.</p>
+
+                                <h4>Type</h4>
+                \tags
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__storage" name="property__storage" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_storage</h3>
+                <pre class="signature">$_storage : \Nag_Driver</pre>
+                <p><em>A storage driver.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Nag_Driver.html">\Nag_Driver</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__inlist" name="property__inlist" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_inlist</h3>
+                <pre class="signature">$_inlist : boolean</pre>
+                <p><em>Internal flag.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Nag_Task.html#method_each"><span class="namespace-wrapper">\Nag_Task::each()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__pointer" name="property__pointer" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_pointer</h3>
+                <pre class="signature">$_pointer : integer</pre>
+                <p><em>Internal pointer.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Nag_Task.html#method_each"><span class="namespace-wrapper">\Nag_Task::each()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__dict" name="property__dict" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_dict</h3>
+                <pre class="signature">$_dict : array</pre>
+                <p><em>Task id =&gt; pointer dictionary.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__tags" name="property__tags" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_tags</h3>
+                <pre class="signature">$_tags : string</pre>
+                <p><em>Task tags (lazy loaded).</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Nag_Driver  <span class="argument">$storage = null</span>, array  <span class="argument">$task = null</span>) </pre>
+                <p><em>Constructor.</em></p>
+                <p>Takes a hash and returns a nice wrapper around it.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Nag_Driver.html">\Nag_Driver</a></td>
+                                <td>$storage </td>
+                                <td><p>A storage driver.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$task </td>
+                                <td><p>A task hash.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(string  <span class="argument">$name</span>) : mixed</pre>
+                <p><em>Getter.</em></p>
+                <p>Returns 'tags' property.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Property name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Property value.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___set" name="method___set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__set(string  <span class="argument">$name</span>, mixed  <span class="argument">$value</span>) </pre>
+                <p><em>Setter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Property name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>Property value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___clone" name="method___clone" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__clone()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__clone() </pre>
+                <p><em>Deep clone so we can clone the child objects too.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_merge" name="method_merge" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">merge()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">merge(array  <span class="argument">$task</span>) </pre>
+                <p><em>Merges a task hash into this task object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$task </td>
+                                <td><p>A task hash.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_orphan" name="method_orphan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">orphan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">orphan() </pre>
+                <p><em>Disconnect this task from any child tasks. Used when building search
+result sets since child tasks will be re-added if they actually match
+the result, and there is no guarentee that a tasks&#039;s parent will
+be present in the result set.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_save" name="method_save" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">save()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">save() </pre>
+                <p><em>Saves this task in the storage backend.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Nag_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParent" name="method_getParent" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParent()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParent() : mixed</pre>
+                <p><em>Returns the parent task of this task, if one exists.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The parent task, null if none exists</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add" name="method_add" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add(\Nag_Task  <span class="argument">$task</span>,   <span class="argument">$replace = false</span>) </pre>
+                <p><em>Adds a sub task to this task.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Nag_Task.html">\Nag_Task</a></td>
+                                <td>$task </td>
+                                <td><p>A sub task.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$replace </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadChildren" name="method_loadChildren" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadChildren()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadChildren(  <span class="argument">$include_history = true</span>) </pre>
+                <p><em>Loads all sub-tasks.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$include_history </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_mergeChildren" name="method_mergeChildren" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">mergeChildren()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">mergeChildren(array  <span class="argument">$children</span>) </pre>
+                <p><em>Merges an array of tasks into this task&#039;s children.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$children </td>
+                                <td><p>A list of Nag_Tasks.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get" name="method_get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$key</span>) : \Nag_Task</pre>
+                <p><em>Returns a sub task by its id.</em></p>
+                <p>The methods goes recursively through all sub tasks until it finds the
+searched task.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td><p>A task id.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Nag_Task.html">\Nag_Task</a>
+                                            &mdash; <p>The searched task or null.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasTasks" name="method_hasTasks" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasTasks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasTasks() : boolean</pre>
+                <p><em>Returns whether this is a task (not a container) or contains any sub
+tasks.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this is a task or has sub tasks.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasSubTasks" name="method_hasSubTasks" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasSubTasks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasSubTasks() : boolean</pre>
+                <p><em>Returns whether this task contains any sub tasks.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this task has sub tasks.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_childrenCompleted" name="method_childrenCompleted" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">childrenCompleted()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">childrenCompleted() : boolean</pre>
+                <p><em>Returns whether all sub tasks are completed.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if all sub tasks are completed.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_childrenOverdue" name="method_childrenOverdue" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">childrenOverdue()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">childrenOverdue() : boolean</pre>
+                <p><em>Returns whether any tasks in the list are overdue.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if any task or sub tasks are overdue.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_count" name="method_count" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">count()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">count() : integer</pre>
+                <p><em>Returns the number of tasks including this and any sub tasks.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number of tasks and sub tasks.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_estimation" name="method_estimation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">estimation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">estimation() : integer</pre>
+                <p><em>Returns the estimated length for this and any sub tasks.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The estimated length sum.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_actuals" name="method_actuals" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">actuals()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">actuals() : integer</pre>
+                <p><em>Returns the actual length for this and any sub tasks.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The actual length sum.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_recurs" name="method_recurs" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">recurs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">recurs() : boolean</pre>
+                <p><em>Returns whether this task is a recurring task.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if this is a recurring task.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toggleComplete" name="method_toggleComplete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toggleComplete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toggleComplete(  <span class="argument">$ignore_children = false</span>) </pre>
+                <p><em>Toggles completion status of this task. Moves a recurring task
+to the next occurence on completion. Enforces the rule that sub
+tasks must be completed before parent tasks.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$ignore_children </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNextStart" name="method_getNextStart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNextStart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNextStart() : \Horde_Date</pre>
+                <p><em>Returns the next start date of this task.</em></p>
+                <p>Takes recurring tasks into account.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Date
+                                            &mdash; <p>The next start date.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNextDue" name="method_getNextDue" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNextDue()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNextDue() : \Horde_Date|null</pre>
+                <p><em>Returns the next due date of this task.</em></p>
+                <p>Takes recurring tasks into account.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Date|null
+                                            &mdash; <p>The next due date or null if no due date.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFormattedDescription" name="method_getFormattedDescription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFormattedDescription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFormattedDescription() : string</pre>
+                <p><em>Format the description - link URLs, etc.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_reset" name="method_reset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">reset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">reset() </pre>
+                <p><em>Resets the tasks iterator.</em></p>
+                <p>Call this each time before looping through the tasks.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Nag_Task.html#method_each"><span class="namespace-wrapper">\Nag_Task::each()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasTask" name="method_hasTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasTask(string  <span class="argument">$taskId</span>) : \Nag_Task|false</pre>
+                <p><em>Return the task, if present anywhere in this tasklist, regardless of
+child depth.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$taskId </td>
+                                <td><p>The task id we are looking for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Nag_Task.html">\Nag_Task</a>|false
+                                            &mdash; <p>The task object, if found. Otherwise false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_each" name="method_each" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">each()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">each() </pre>
+                <p><em>Returns the next task iterating through all tasks and sub tasks.</em></p>
+                <p>Call reset() each time before looping through the tasks:
+<code>
+$tasks-&gt;reset();
+while ($task = $tasks-&gt;each() {
+...
+}</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Nag_Task.html#method_reset"><span class="namespace-wrapper">\Nag_Task::reset()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSlice" name="method_getSlice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSlice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSlice(integer  <span class="argument">$page</span>, integer  <span class="argument">$perpage = null</span>) : \Nag_Task</pre>
+                <p><em>Helper method for getting only a slice of the total tasks in this list.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$page </td>
+                                <td><p>The starting page.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$perpage </td>
+                                <td><p>The count of tasks per page.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Nag_Task.html">\Nag_Task</a>
+                                            &mdash; <p>The resulting task list.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_process" name="method_process" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">process()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">process(integer  <span class="argument">$indent = null</span>) </pre>
+                <p><em>Processes a list of tasks by adding action links, obscuring details of
+private tasks and calculating indentation.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$indent </td>
+                                <td><p>The indention level of the tasks.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_backgroundColor" name="method_backgroundColor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">backgroundColor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">backgroundColor() : string</pre>
+                <p><em>Returns the background color.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A HTML color code.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_foregroundColor" name="method_foregroundColor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">foregroundColor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">foregroundColor() : string</pre>
+                <p><em>Returns the foreground color.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A HTML color code.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_treeIcons" name="method_treeIcons" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">treeIcons()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">treeIcons() : string</pre>
+                <p><em>Returns the HTML code for any tree icons, when displaying this task in
+a tree view.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The HTML code for necessary tree icons.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadTags" name="method_loadTags" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadTags()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadTags() </pre>
+                <p><em>Recursively loads tags for all tasks contained in this object.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_synchronizeTags" name="method_synchronizeTags" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">synchronizeTags()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">synchronizeTags(array  <span class="argument">$tags</span>) </pre>
+                <p><em>Syncronizes tags from the tagging backend with the task storage backend,
+if necessary.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$tags </td>
+                                <td><p>Tags from the tagging backend.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sort" name="method_sort" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sort()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sort(string  <span class="argument">$sortby</span>, integer  <span class="argument">$sortdir</span>, string  <span class="argument">$altsortby</span>) </pre>
+                <p><em>Sorts sub tasks by the given criteria.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sortby </td>
+                                <td><p>The field by which to sort
+(Nag::SORT_PRIORITY, Nag::SORT_NAME
+Nag::SORT_DUE, Nag::SORT_COMPLETION).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$sortdir </td>
+                                <td><p>The direction by which to sort
+(Nag::SORT_ASCEND, Nag::SORT_DESCEND).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$altsortby </td>
+                                <td><p>The secondary sort field.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toHash" name="method_toHash" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toHash()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toHash() : array</pre>
+                <p><em>Returns a hash representation for this task.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A task hash.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toJson" name="method_toJson" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toJson()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toJson(boolean  <span class="argument">$full = false</span>, string  <span class="argument">$time_format = &#039;H:i&#039;</span>) : object</pre>
+                <p><em>Returns a simple object suitable for json transport representing this
+task.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$full </td>
+                                <td><p>Whether to return all task details.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$time_format </td>
+                                <td><p>The date() format to use for time formatting.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>A simple object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toAlarm" name="method_toAlarm" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toAlarm()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toAlarm(string  <span class="argument">$user = null</span>, \Prefs  <span class="argument">$prefs = null</span>) : array</pre>
+                <p><em>Returns an alarm hash of this task suitable for Horde_Alarm.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The user to return alarms for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\Prefs</td>
+                                <td>$prefs </td>
+                                <td><p>A Prefs instance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Alarm hash or null.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toiCalendar" name="method_toiCalendar" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toiCalendar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toiCalendar(\Horde_Icalendar  <span class="argument">$calendar</span>) : \Horde_Icalendar_Vtodo</pre>
+                <p><em>Exports this task in iCalendar format.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Icalendar</td>
+                                <td>$calendar </td>
+                                <td><p>A Horde_Icalendar object that acts as
+the container.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Icalendar_Vtodo
+                                            &mdash; <p>A vtodo component of this task.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toASTask" name="method_toASTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toASTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toASTask(array  <span class="argument">$options = array()</span>) : \Horde_ActiveSync_Message_Task</pre>
+                <p><em>Create an AS message from this task</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Options:</p>
+<ul>
+<li>protocolversion: (float)  The EAS version to support
+DEFAULT: 2.5</li>
+<li>bodyprefs: (array)  A BODYPREFERENCE array.
+DEFAULT: none (No body prefs enforced).</li>
+<li>truncation: (integer)  Truncate event body to this length
+DEFAULT: none (No truncation).</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_ActiveSync_Message_Task
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromiCalendar" name="method_fromiCalendar" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromiCalendar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromiCalendar(\Horde_Icalendar_Vtodo  <span class="argument">$vTodo</span>) </pre>
+                <p><em>Creates a task from a Horde_Icalendar_Vtodo object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Icalendar_Vtodo</td>
+                                <td>$vTodo </td>
+                                <td><p>The iCalendar data to update from.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fromASTask" name="method_fromASTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fromASTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fromASTask(\Horde_ActiveSync_Message_Task  <span class="argument">$message</span>) </pre>
+                <p><em>Create a nag Task object from an activesync message</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_ActiveSync_Message_Task</td>
+                                <td>$message </td>
+                                <td><p>The task object</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Task.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Task.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Nag.html">\Nag</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:28.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

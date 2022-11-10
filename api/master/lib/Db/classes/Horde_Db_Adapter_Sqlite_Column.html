@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">309</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">6</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1095289644"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1095289644" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_Db_Adapter.html">Horde_Db_Adapter</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Db_Value.html">Horde_Db_Value</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_Db.html">Horde_Db</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base.html">Horde_Db_Adapter_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Column.html">Horde_Db_Adapter_Base_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_ColumnDefinition.html">Horde_Db_Adapter_Base_ColumnDefinition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Index.html">Horde_Db_Adapter_Base_Index</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Result.html">Horde_Db_Adapter_Base_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Schema.html">Horde_Db_Adapter_Base_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_Table.html">Horde_Db_Adapter_Base_Table</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Base_TableDefinition.html">Horde_Db_Adapter_Base_TableDefinition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql.html">Horde_Db_Adapter_Mysql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql_Column.html">Horde_Db_Adapter_Mysql_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql_Result.html">Horde_Db_Adapter_Mysql_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysql_Schema.html">Horde_Db_Adapter_Mysql_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysqli.html">Horde_Db_Adapter_Mysqli</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Mysqli_Result.html">Horde_Db_Adapter_Mysqli_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oci8.html">Horde_Db_Adapter_Oci8</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_Column.html">Horde_Db_Adapter_Oracle_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_Result.html">Horde_Db_Adapter_Oracle_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_Schema.html">Horde_Db_Adapter_Oracle_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Oracle_TableDefinition.html">Horde_Db_Adapter_Oracle_TableDefinition</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Base.html">Horde_Db_Adapter_Pdo_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Mysql.html">Horde_Db_Adapter_Pdo_Mysql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Pgsql.html">Horde_Db_Adapter_Pdo_Pgsql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Result.html">Horde_Db_Adapter_Pdo_Result</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Pdo_Sqlite.html">Horde_Db_Adapter_Pdo_Sqlite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Postgresql_Column.html">Horde_Db_Adapter_Postgresql_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Postgresql_Schema.html">Horde_Db_Adapter_Postgresql_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_SplitRead.html">Horde_Db_Adapter_SplitRead</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Sqlite_Column.html">Horde_Db_Adapter_Sqlite_Column</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Adapter_Sqlite_Schema.html">Horde_Db_Adapter_Sqlite_Schema</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Exception.html">Horde_Db_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Migration_Base.html">Horde_Db_Migration_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Migration_Exception.html">Horde_Db_Migration_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Migration_Migrator.html">Horde_Db_Migration_Migrator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_SearchParser.html">Horde_Db_SearchParser</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_StatementParser.html">Horde_Db_StatementParser</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Value_Binary.html">Horde_Db_Value_Binary</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Value_Lob.html">Horde_Db_Value_Lob</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Db_Value_Text.html">Horde_Db_Value_Text</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Db_Adapter_Sqlite_Column</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_isText" class="">isText()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_isNumber" class="">isNumber()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_typeCast" class="">typeCast()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Sqlite_Column.html#method_extractDefault" class="">extractDefault()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_getName" class="">getName()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_getDefault" class="">getDefault()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_getType" class="">getType()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_getLimit" class="">getLimit()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_precision" class="">precision()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_scale" class="">scale()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_isUnsigned" class="">isUnsigned()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_isNull" class="">isNull()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_getSqlType" class="">getSqlType()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Sqlite_Column.html#method_binaryToString" class="">binaryToString()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_stringToDate" class="">stringToDate()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_stringToTime" class="">stringToTime()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_stringToDummyTime" class="">stringToDummyTime()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Sqlite_Column.html#method_valueToBoolean" class="">valueToBoolean()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method_valueToDecimal" class="">valueToDecimal()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method__extractLimit" class="">_extractLimit()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method__extractPrecision" class="">_extractPrecision()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method__extractScale" class="">_extractScale()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method__extractUnsigned" class="">_extractUnsigned()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#method__setSimplifiedType" class="">_setSimplifiedType()</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Sqlite_Column.html#method__unquote" class="">_unquote()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__name" class="">$_name</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__type" class="">$_type</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__null" class="">$_null</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__limit" class="">$_limit</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__precision" class="">$_precision</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__scale" class="">$_scale</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__unsigned" class="">$_unsigned</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__default" class="">$_default</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__sqlType" class="">$_sqlType</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__isText" class="">$_isText</a><br />
+                                                                    <a href="../classes/Horde_Db_Adapter_Base_Column.html#property__isNumber" class="">$_isNumber</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Db.Adapter.Sqlite.Column.html"><div class="path-wrapper">Db/Adapter/Sqlite/Column.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Db\Adapter</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_Db_Adapter_Base_Column.html">\Horde_Db_Adapter_Base_Column</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Db_Adapter_Sqlite_Column</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Mike Naberezny <a href="mailto:mike@maintainable.com">mike@maintainable.com</a></p>
+                                                                    <p>Derek DeVries <a href="mailto:derek@maintainable.com">derek@maintainable.com</a></p>
+                                                                    <p>Chuck Hagenbuch <a href="mailto:chuck@horde.org">chuck@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2007 Maintainable Software, LLC</p>
+                                                                    <p>2008-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/bsd">http://www.horde.org/licenses/bsd</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__name" name="property__name" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_name</h3>
+                <pre class="signature">$_name : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__type" name="property__type" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_type</h3>
+                <pre class="signature">$_type : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__null" name="property__null" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_null</h3>
+                <pre class="signature">$_null : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__limit" name="property__limit" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_limit</h3>
+                <pre class="signature">$_limit : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__precision" name="property__precision" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_precision</h3>
+                <pre class="signature">$_precision : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__scale" name="property__scale" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_scale</h3>
+                <pre class="signature">$_scale : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__unsigned" name="property__unsigned" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_unsigned</h3>
+                <pre class="signature">$_unsigned : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__default" name="property__default" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_default</h3>
+                <pre class="signature">$_default : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__sqlType" name="property__sqlType" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_sqlType</h3>
+                <pre class="signature">$_sqlType : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__isText" name="property__isText" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_isText</h3>
+                <pre class="signature">$_isText : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__isNumber" name="property__isNumber" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_isNumber</h3>
+                <pre class="signature">$_isNumber : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$name</span>, string  <span class="argument">$default</span>, string  <span class="argument">$sqlType = null</span>, boolean  <span class="argument">$null = true</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The column's name, such as &quot;supplier_id&quot; in
+&quot;supplier_id int(11)&quot;.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$default </td>
+                                <td><p>The type-casted default value, such as &quot;new&quot; in
+&quot;sales_stage varchar(20) default 'new'&quot;.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sqlType </td>
+                                <td><p>Used to extract the column's type, length and
+signed status, if necessary. For example
+&quot;varchar&quot; and &quot;60&quot; in &quot;company_name varchar(60)&quot;
+or &quot;unsigned =&gt; true&quot; in &quot;int(10) UNSIGNED&quot;.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$null </td>
+                                <td><p>Whether this column allows NULL values.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isText" name="method_isText" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isText() : boolean</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isNumber" name="method_isNumber" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isNumber()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isNumber() : boolean</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_typeCast" name="method_typeCast" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">typeCast()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">typeCast(  <span class="argument">$value</span>) </pre>
+                <p><em>Casts value (which is a String) to an appropriate instance.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_extractDefault" name="method_extractDefault" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">extractDefault()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">extractDefault(  <span class="argument">$default</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$default </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getName" name="method_getName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getName() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDefault" name="method_getDefault" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDefault()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDefault() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getType" name="method_getType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getType() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLimit" name="method_getLimit" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLimit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLimit() : integer</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_precision" name="method_precision" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">precision()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">precision() : integer</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_scale" name="method_scale" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">scale()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">scale() : integer</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isUnsigned" name="method_isUnsigned" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isUnsigned()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isUnsigned() : boolean</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isNull" name="method_isNull" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isNull()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isNull() : boolean</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSqlType" name="method_getSqlType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSqlType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSqlType() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_binaryToString" name="method_binaryToString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">binaryToString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">binaryToString(  <span class="argument">$value</span>) : string</pre>
+                <p><em>Used to convert from BLOBs to Strings</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stringToDate" name="method_stringToDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stringToDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stringToDate(string  <span class="argument">$string</span>) : \Horde_Date</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$string </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Date
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stringToTime" name="method_stringToTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stringToTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stringToTime(string  <span class="argument">$string</span>) : \Horde_Date</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$string </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Date
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stringToDummyTime" name="method_stringToDummyTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stringToDummyTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stringToDummyTime(  <span class="argument">$value</span>) : \Horde_Date</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Date
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_valueToBoolean" name="method_valueToBoolean" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">valueToBoolean()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">valueToBoolean(mixed  <span class="argument">$value</span>) : boolean</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_valueToDecimal" name="method_valueToDecimal" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">valueToDecimal()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">valueToDecimal(mixed  <span class="argument">$value</span>) : \decimal</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \decimal
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__extractLimit" name="method__extractLimit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_extractLimit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_extractLimit(string  <span class="argument">$sqlType</span>) : integer</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sqlType </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__extractPrecision" name="method__extractPrecision" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_extractPrecision()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_extractPrecision(string  <span class="argument">$sqlType</span>) : integer</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sqlType </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__extractScale" name="method__extractScale" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_extractScale()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_extractScale(string  <span class="argument">$sqlType</span>) : integer</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sqlType </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__extractUnsigned" name="method__extractUnsigned" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_extractUnsigned()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_extractUnsigned(string  <span class="argument">$sqlType</span>) : integer</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sqlType </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__setSimplifiedType" name="method__setSimplifiedType" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_setSimplifiedType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_setSimplifiedType() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Db_Adapter_Base_Column.html"><div class="path-wrapper">\Horde_Db_Adapter_Base_Column</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__unquote" name="method__unquote" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_unquote()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_unquote(  <span class="argument">$string</span>) : string</pre>
+                <p><em>Unquote a string value</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$string </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Column.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Db/Adapter/Sqlite/Column.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:36.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

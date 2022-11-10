@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Horde/Core/Auth/Imsp.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Auth.html">Auth</a>
+						</li>
+				<li><a href="namespace-Core.html">Core</a>
+						</li>
+				<li><a href="namespace-Horde.html">Horde<span></span></a>
+						<ul>
+				<li><a href="namespace-Horde.Imsp.html">Imsp</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-Notification.html">Notification</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Horde_Core_Auth_Imsp.html">Horde_Core_Auth_Imsp</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Auth.html" title="Summary of Auth"><span>Package</span></a>
+			</li>
+			<li>
+				<a href="class-Horde_Core_Auth_Imsp.html" title="Summary of Horde_Core_Auth_Imsp"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * The Horde_Corde_Auth_Imsp class provides basic authentication against an IMSP
+</span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> * server.
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> *
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Copyright 2004-2012 Horde LLC (http://www.horde.org/)
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * See the enclosed file COPYING for license information (LGPL). If you did
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * not receive this file, see http://opensource.org/licenses/lgpl-2.1.php
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> *
+</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> * @author   Michael J Rubinsky &lt;mrubinsk@horde.org&gt;
+</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * @category Horde
+</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> * @license  http://opensource.org/licenses/lgpl-2.1.php LGPL
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment"> * @package  Auth
+</span></span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-comment"> */</span>
+</span><span id="16" class="l"><a class="l" href="#16">16: </a><span class="php-keyword1">class</span> <a id="Horde_Core_Auth_Imsp" href="#Horde_Core_Auth_Imsp">Horde_Core_Auth_Imsp</a> <span class="php-keyword1">extends</span> Horde_Auth_Base
+</span><span id="17" class="l"><a class="l" href="#17">17: </a>{
+</span><span id="18" class="l"><a class="l" href="#18">18: </a>    <span class="php-comment">/**
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     *
+</span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment">     * @var Horde_Imsp_Client_Base
+</span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment">     */</span>
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$_imsp" href="#$_imsp">$_imsp</a></span>;
+</span><span id="23" class="l"><a class="l" href="#23">23: </a>
+</span><span id="24" class="l"><a class="l" href="#24">24: </a>    <span class="php-comment">/**
+</span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment">     * Private authentication function.
+</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment">     *
+</span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment">     * @param string $userID      Username for IMSP server.
+</span></span><span id="28" class="l"><a class="l" href="#28">28: </a><span class="php-comment">     * @param array $credentials  Hash containing 'password' element.
+</span></span><span id="29" class="l"><a class="l" href="#29">29: </a><span class="php-comment">     *
+</span></span><span id="30" class="l"><a class="l" href="#30">30: </a><span class="php-comment">     * @return boolean  True on success / False on failure.
+</span></span><span id="31" class="l"><a class="l" href="#31">31: </a><span class="php-comment">     */</span>
+</span><span id="32" class="l"><a class="l" href="#32">32: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__authenticate" href="#__authenticate">_authenticate</a>(<span class="php-var">$userID</span>, <span class="php-var">$credentials</span>)
+</span><span id="33" class="l"><a class="l" href="#33">33: </a>    {
+</span><span id="34" class="l"><a class="l" href="#34">34: </a>        <span class="php-comment">// Need to create the Imsp socket here since it requires a user/password</span>
+</span><span id="35" class="l"><a class="l" href="#35">35: </a>        <span class="php-comment">// to create, and we don't have one until this method.</span>
+</span><span id="36" class="l"><a class="l" href="#36">36: </a>        <span class="php-var">$this</span>-&gt;_params[<span class="php-quote">'username'</span>] = <span class="php-var">$userID</span>;
+</span><span id="37" class="l"><a class="l" href="#37">37: </a>        <span class="php-var">$this</span>-&gt;_params[<span class="php-quote">'password'</span>] = <span class="php-var">$credentials</span>[<span class="php-quote">'password'</span>];
+</span><span id="38" class="l"><a class="l" href="#38">38: </a>        <span class="php-var">$this</span>-&gt;_imsp = <span class="php-var">$GLOBALS</span>[<span class="php-quote">'injector'</span>]-&gt;getInstance(<span class="php-quote">'Horde_Core_Factory_Imsp'</span>)-&gt;create(<span class="php-keyword1">null</span>, <span class="php-var">$this</span>-&gt;_params);
+</span><span id="39" class="l"><a class="l" href="#39">39: </a>        <span class="php-keyword1">if</span> (!<span class="php-var">$result</span> = <span class="php-var">$this</span>-&gt;_imsp-&gt;authenticate(<span class="php-keyword1">false</span>)) {
+</span><span id="40" class="l"><a class="l" href="#40">40: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Horde_Auth_Exception(<span class="php-quote">''</span>, Horde_Auth::REASON_BADLOGIN);
+</span><span id="41" class="l"><a class="l" href="#41">41: </a>        }
+</span><span id="42" class="l"><a class="l" href="#42">42: </a>    }
+</span><span id="43" class="l"><a class="l" href="#43">43: </a>
+</span><span id="44" class="l"><a class="l" href="#44">44: </a>}
+</span><span id="45" class="l"><a class="l" href="#45">45: </a></span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2699981221"></script>
+</body>
+</html>

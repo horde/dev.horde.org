@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">164</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1617090594"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1617090594" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_SyncMl.html">Horde_SyncMl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend.html">Horde_SyncMl_Backend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Horde.html">Horde_SyncMl_Backend_Horde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Sql.html">Horde_SyncMl_Backend_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command.html">Horde_SyncMl_Command</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Alert.html">Horde_SyncMl_Command_Alert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Final.html">Horde_SyncMl_Command_Final</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Get.html">Horde_SyncMl_Command_Get</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Map.html">Horde_SyncMl_Command_Map</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Put.html">Horde_SyncMl_Command_Put</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Replace.html">Horde_SyncMl_Command_Replace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Results.html">Horde_SyncMl_Command_Results</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Status.html">Horde_SyncMl_Command_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Sync.html">Horde_SyncMl_Command_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_SyncHdr.html">Horde_SyncMl_Command_SyncHdr</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_ContentHandler.html">Horde_SyncMl_ContentHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DataStore.html">Horde_SyncMl_DataStore</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device.html">Horde_SyncMl_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Nokia.html">Horde_SyncMl_Device_Nokia</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_P800.html">Horde_SyncMl_Device_P800</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_sync4j.html">Horde_SyncMl_Device_sync4j</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Sync4JMozilla.html">Horde_SyncMl_Device_Sync4JMozilla</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Synthesis.html">Horde_SyncMl_Device_Synthesis</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DeviceInfo.html">Horde_SyncMl_DeviceInfo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Property.html">Horde_SyncMl_Property</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_PropertyParameter.html">Horde_SyncMl_PropertyParameter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_State.html">Horde_SyncMl_State</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Sync.html">Horde_SyncMl_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_SyncElement.html">Horde_SyncMl_SyncElement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Translation.html">Horde_SyncMl_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_XmlOutput.html">Horde_SyncMl_XmlOutput</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_SyncMl_Backend</h1>
+                    <p><em>A SyncML Backend provides the interface between the SyncML protocol and an
+actual calendar or address book application. This &quot;actual application&quot; is
+called the &quot;data store&quot; in this description.</em></p>
+                    <p>The backend provides the following groups of functions:</p>
+<p>1) Access to the datastore
+Reading, adding, replacing and deleting of entries.  Also retrieve
+information about changes in data store.  This is done via the
+retrieveEntry(), addEntry(), replaceEntry(), deleteEntry() and
+getServerChanges() methods.</p>
+<p>2) User management functions
+This is the checkAuthentication() method to verify that a given user
+password combination is allowed to access the backend data store, and
+the setUser() method which does a &quot;login&quot; to the backend data store if
+required by the type of backend data store. Please note that the
+password is only transferred once in a sync session, so when handling
+the subsequent packets messages, the user may need to be &quot;logged in&quot;
+without a password. (Or the session management keeps the user &quot;logged
+in&quot;).</p>
+<p>3) Maintainig the client ID &lt;-&gt; server ID map
+The SyncML protocol does not require clients and servers to use the same
+primary keys for the data entries. So a map has to be in place to
+convert between client primary keys (called cuid's here) and server
+primary keys (called suid's). It's up to the server to maintain this
+map.  Method for this is createUidMap().</p>
+<p>4) Sync anchor handling
+After a successful initial sync, the client and server sync timestamps
+are stored. This allows to perform subsequent syncs as delta syncs,
+where only new changes are replicated. Servers as well as clients need
+to be able to store two sync anchors (the client's and the server's) for
+a sync. Methods for this are readSyncAnchors() and writeSyncAnchors().</p>
+<p>5) Test supporting functions
+The SyncML module comes with its own testing framework. All you need to
+do is implement the two methods testSetup() and testTearDown() and you
+are able to test your backend with all the test cases that are part of
+the module.</p>
+<p>6) Miscellaneous functions
+This involves session handling (sessionStart() and sessionClose()),
+logging (logMessage() and logFile()), timestamp creation
+(getCurrentTimeStamp()), charset handling (getCharset(), setCharset())
+and database identification (isValidDatabaseURI()). For all of these
+functions, a default implementation is provided in Horde_SyncMl_Backend.</p>
+<p>If you want to create a backend for your own appliction, you can either
+derive from Horde_SyncMl_Backend and implement everything in groups 1 to 5
+or you derive from Horde_SyncMl_Backend_Sql which implements an example
+backend based on direct database access using the PEAR MDB2 package. In this
+case you only need to implement groups 1 to 3 and can use the implementation
+from Horde_SyncMl_Backend_Sql as a guideline for these functions.</p>
+<h2>Key Concepts</h2>
+<p>In order to successfully create a backend, some understanding of a few key
+concepts in SyncML and the Horde_SyncMl package are certainly helpful.  So
+here's some stuff that should make some issues clear (or at lest less
+obfuscated):</p>
+<p>1) DatabaseURIs and Databases
+The SyncML protocol itself is completly independant from the data that
+is replicated. Normally the data are calendar or address book entries
+but it may really be anything from browser bookmarks to comeplete
+database tables. An ID (string name) of the database you want to
+actually replicate has to be configured in the client. Typically that's
+something like 'calendar' or 'tasks'. Client and server must agree on
+these names.  In addition this string may be used to provide additional
+arguments.  These are provided in a HTTP GET query style: like
+tasks?ignorecompletedtasks to replicate only pending tasks. Such a &quot;sync
+identifier&quot; is called a DatabaseURI and is really a database name plus
+some additional options.
+The Horde_SyncMl package completly ignores these options and simply passes
+them on to the backend. It's up to the backend to decide what to do with
+them. However when dealing with the internal maps (cuid&lt;-&gt;suid and sync
+anchors), it's most likely to use the database name only rather than the
+full databaseURI. The map information saying that server entry
+20070101203040xxa@mypc.org has id 768 in the client device is valid for
+the database &quot;tasks&quot;, not for &quot;tasks?somesillyoptions&quot;. So what you
+normally do is calling some kind of <code>$database =
+$this-&gt;normalize($databaseURI)</cod> in every backend method that deals
+with databaseURIs and use $database afterwards. However actual usage of
+options is up to the backend implementation. SyncML works fine without.</p>
+<p>2) Suid and Guid mapping
+This is the mapping of client IDs to server IDs and vice versa.  Please
+note that this map is per user and per client device: the server entry
+20070101203040xxa@mypc.org may have ID 720 in your PDA and AA10FC3A in
+your mobile phone.</p>
+<p>3) Sync Anchors</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_factory" class="">factory()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_setCharset" class="">setCharset()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_getCharset" class="">getCharset()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_getSyncDeviceID" class="">getSyncDeviceID()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_setUser" class="">setUser()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_getUser" class="">getUser()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_setupState" class="">setupState()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_sessionStart" class="">sessionStart()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_sessionClose" class="">sessionClose()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_isValidDatabaseURI" class="">isValidDatabaseURI()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_getServerChanges" class="">getServerChanges()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_retrieveEntry" class="">retrieveEntry()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_addEntry" class="">addEntry()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_replaceEntry" class="">replaceEntry()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_deleteEntry" class="">deleteEntry()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_checkAuthentication" class="">checkAuthentication()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_writeSyncAnchors" class="">writeSyncAnchors()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_readSyncAnchors" class="">readSyncAnchors()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_createUidMap" class="">createUidMap()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_eraseMap" class="">eraseMap()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_logMessage" class="">logMessage()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_logFile" class="">logFile()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_close" class="">close()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_getCurrentTimeStamp" class="">getCurrentTimeStamp()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_testSetup" class="">testSetup()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_testStart" class="">testStart()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_testTearDown" class="">testTearDown()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_normalize" class="">normalize()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method_getParameter" class="">getParameter()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property_state" class="">$state</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_LOGFILE_CLIENTMESSAGE" class="">LOGFILE_CLIENTMESSAGE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_LOGFILE_SERVERMESSAGE" class="">LOGFILE_SERVERMESSAGE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_LOGFILE_DEVINF" class="">LOGFILE_DEVINF</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_LOGFILE_DATA" class="">LOGFILE_DATA</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_MODE_SERVER" class="">MODE_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_MODE_CLIENT" class="">MODE_CLIENT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#constant_MODE_TEST" class="">MODE_TEST</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method__checkAuthentication" class="">_checkAuthentication()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#method__setAuthenticated" class="">_setAuthenticated()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__logtext" class="">$_logtext</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__debugDir" class="">$_debugDir</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__debugFiles" class="">$_debugFiles</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__logLevel" class="">$_logLevel</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__charset" class="">$_charset</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__user" class="">$_user</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__syncDeviceID" class="">$_syncDeviceID</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Backend.html#property__backendMode" class="">$_backendMode</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/SyncMl.Backend.html"><div class="path-wrapper">SyncMl/Backend.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">SyncMl</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_SyncMl_Backend</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                todo
+                            </th>
+                            <td>
+                                                                    <p>describe sync anchors
+Have a look at the SyncML spec
+<a href="http://www.openmobilealliance.org/tech/affiliates/syncml/syncmlindex.html">http://www.openmobilealliance.org/tech/affiliates/syncml/syncmlindex.html</a>
+to find out more.</p>
+<p>4) Changes and Timestamps
+@todo description of Changes and Timestamps, &quot;mirroring effect&quot;
+This is real tricky stuff.
+First it's important to know, that the SyncML protocol requires the
+ending timestamp of the sync timeframe to be exchanged <em>before</em> the
+actual syncing starts. So all changes made during a sync have timestamps
+that are in the timeframe for the next upcoming sync.  Data exchange in
+a sync session works in two steps: 1st) the clients sends its changes to
+the server, 2nd) the server sends its changes to the client.
+So when in step 2, the backend datastore API is called with a request
+like &quot;give me all changes in the server since the last sync&quot;.  Thus you
+also get the changes induced by the client in step 1 as well.  You have
+to somehow &quot;tag&quot; them to avoid echoing (and thus duplicating) them back
+to the client. Simply storing the guids in the session is not
+sufficient: the changes are made <em>after</em> the end timestamp (see 1) of
+the current sync so you'll dupe them in the next sync.
+The current implementation deals with this as follows: whenever a client
+induced change is done in the backend, the timestamp for this change is
+stored in the cuid&lt;-&gt;suid map in an additional field. That's the perfect
+place as the tagging needs to be done &quot;per client device&quot;: when an add
+is received from the PDA it must not be sent back as an add to this
+device, but to mobile phone it must be sent.
+This is sorted out during the getServerChanges() process: if a server
+change has a timestamp that's the same as in the guid&lt;-&gt;suid map, it
+came from the client and must not be added to the list of changes to be
+sent to this client.
+See the description of Horde_SyncMl_Backend_Sql::_getChangeTS() for some
+more information.</p>
+<p>5) Messages and Packages
+A message is a single HTTP Request. A package is single &quot;logical
+message&quot;, a sync step. Normally the two coincide. However due to message
+size restrictions one package may be transferred in multiple messages
+(HTTP requests).</p>
+<p>7) Server mode, client mode and test mode
+Per default, a backend is used for an SyncML server. Regarding the
+SyncML protocol, the working of client and server is similar, except
+that
+a) the client initiates the sync requests and the server respons to them,
+and
+b) the server must maintain the client id&lt;-&gt;server id map.</p>
+<p>Currently the Horde_SyncMl package is designed to create servers. But
+is's an obvious (and straightforward) extension to do it for clients as
+well.  And as a client has actually less work to do than a server, the
+backend should work for servers <em>and</em> clients. During the sessionStart(),
+the backend gets a parameter to let it know whether it's in client or
+server mode (or test, see below). When in client mode, it should behave
+slightly different:
+a) the client doesn't do suid&lt;-&gt;cuid mapping, so all invokations to the
+map creation method createUidMap().
+b) the client has only client ids, no server ids. So all arguments are
+considered cuids even when named suid. See the Horde_SyncMl_Backend_Sql
+implementation, it's actually not that difficult.</p>
+<p>Finally there's the test mode. The test cases consist of replaying
+pre-recorded sessions. For that to work, the test script must &quot;simulate&quot;
+user entries in the server data store. To do so, it creates a backend in
+test mode. This behaves similar to a client: when an server entry is
+created (modified) using addEntry() (replaceEntry()), no map entry must
+be done.
+The test backend uses also the two methods testSetup() and testTearDown()
+to create a clean (empty) enviroment for the test user &quot;syncmltest&quot;.  See
+the Horde_SyncMl_Backend_Sql implementation for details.</p>
+<p>Copyright 2005-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Karsten Fourmont <a href="mailto:karsten@horde.org">karsten@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_LOGFILE_CLIENTMESSAGE" name="constant_LOGFILE_CLIENTMESSAGE" class="anchor"></a>
+            <article id="constant_LOGFILE_CLIENTMESSAGE" class="constant">
+                <h3 class="">LOGFILE_CLIENTMESSAGE</h3>
+                <pre class="signature">LOGFILE_CLIENTMESSAGE</pre>
+                <p><em>Types of logfiles. See logFile() method.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_LOGFILE_SERVERMESSAGE" name="constant_LOGFILE_SERVERMESSAGE" class="anchor"></a>
+            <article id="constant_LOGFILE_SERVERMESSAGE" class="constant">
+                <h3 class="">LOGFILE_SERVERMESSAGE</h3>
+                <pre class="signature">LOGFILE_SERVERMESSAGE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_LOGFILE_DEVINF" name="constant_LOGFILE_DEVINF" class="anchor"></a>
+            <article id="constant_LOGFILE_DEVINF" class="constant">
+                <h3 class="">LOGFILE_DEVINF</h3>
+                <pre class="signature">LOGFILE_DEVINF</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_LOGFILE_DATA" name="constant_LOGFILE_DATA" class="anchor"></a>
+            <article id="constant_LOGFILE_DATA" class="constant">
+                <h3 class="">LOGFILE_DATA</h3>
+                <pre class="signature">LOGFILE_DATA</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MODE_SERVER" name="constant_MODE_SERVER" class="anchor"></a>
+            <article id="constant_MODE_SERVER" class="constant">
+                <h3 class="">MODE_SERVER</h3>
+                <pre class="signature">MODE_SERVER</pre>
+                <p><em>Backend modes.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MODE_CLIENT" name="constant_MODE_CLIENT" class="anchor"></a>
+            <article id="constant_MODE_CLIENT" class="constant">
+                <h3 class="">MODE_CLIENT</h3>
+                <pre class="signature">MODE_CLIENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MODE_TEST" name="constant_MODE_TEST" class="anchor"></a>
+            <article id="constant_MODE_TEST" class="constant">
+                <h3 class="">MODE_TEST</h3>
+                <pre class="signature">MODE_TEST</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_state" name="property_state" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$state</h3>
+                <pre class="signature">$state : \Horde_SyncMl_State</pre>
+                <p><em>The State object.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_SyncMl_State.html">\Horde_SyncMl_State</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__logtext" name="property__logtext" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_logtext</h3>
+                <pre class="signature">$_logtext : string</pre>
+                <p><em>The concatenated log messages.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__debugDir" name="property__debugDir" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_debugDir</h3>
+                <pre class="signature">$_debugDir : string</pre>
+                <p><em>The directory where debugging information is stored.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_SyncMl_Backend()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__debugFiles" name="property__debugFiles" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_debugFiles</h3>
+                <pre class="signature">$_debugFiles : boolean</pre>
+                <p><em>Whether to save SyncML messages in the debug directory.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_SyncMl_Backend()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__logLevel" name="property__logLevel" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_logLevel</h3>
+                <pre class="signature">$_logLevel : string</pre>
+                <p><em>The log level.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_SyncMl_Backend()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__charset" name="property__charset" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_charset</h3>
+                <pre class="signature">$_charset : string</pre>
+                <p><em>The charset used in the SyncML messages.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__user" name="property__user" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_user</h3>
+                <pre class="signature">$_user : string</pre>
+                <p><em>The current user.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__syncDeviceID" name="property__syncDeviceID" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_syncDeviceID</h3>
+                <pre class="signature">$_syncDeviceID : string</pre>
+                <p><em>The ID of the client device.</em></p>
+                <p>This is used for all data access as an ID to allow to distinguish
+between syncs with different devices.  $this-&gt;_user together with
+$this-&gt;_syncDeviceID is used as an additional key for all persistence
+operations.</p>
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__backendMode" name="property__backendMode" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_backendMode</h3>
+                <pre class="signature">$_backendMode : integer</pre>
+                <p><em>The backend mode. One of the Horde_SyncMl_Backend::MODE_* constants.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params</span>) </pre>
+                <p><em>Constructor.</em></p>
+                <p>Sets up the default logging mechanism.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>A hash with parameters. The following are
+supported by the default implementation.
+Individual backends may support other parameters.</p>
+<ul>
+<li>debug_dir:   A directory to write debug output
+to. Must be writeable by the web
+server.</li>
+<li>debug_files: If true, log all incoming and
+outgoing packets and data
+conversions and devinf log in
+debug_dir.</li>
+<li>log_level:   Only log entries with at least
+this level. Defaults to 'INFO'.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_factory" name="method_factory" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">factory()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">factory(string  <span class="argument">$driver</span>, array  <span class="argument">$params = null</span>) : \Horde_SyncMl_Backend</pre>
+                <p><em>Attempts to return a concrete Horde_SyncMl_Backend instance based on $driver.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$driver </td>
+                                <td><p>The type of concrete Backend subclass to return.
+The code is dynamically included from
+Backend/$driver.php if no path is given or
+directly with &quot;include_once $driver . '.php'&quot;
+if a path is included. So make sure this parameter
+is &quot;safe&quot; and not directly taken from web input.
+The class in the file must be named
+'Horde_SyncMl<em>Backend</em>' . basename($driver) and extend
+Horde_SyncMl_Backend.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>A hash containing any additional configuration or
+connection parameters a subclass might need.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_SyncMl_Backend.html">\Horde_SyncMl_Backend</a>
+                                            &mdash; <p>The newly created concrete Horde_SyncMl_Backend
+instance, or false on an error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCharset" name="method_setCharset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCharset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCharset(string  <span class="argument">$charset</span>) </pre>
+                <p><em>Sets the charset.</em></p>
+                <p>All data passed to the backend uses this charset and data returned from
+the backend must use this charset, too.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$charset </td>
+                                <td><p>A valid charset.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCharset" name="method_getCharset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCharset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCharset() : string</pre>
+                <p><em>Returns the charset.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The charset used when talking to the backend.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSyncDeviceID" name="method_getSyncDeviceID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSyncDeviceID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSyncDeviceID() : string</pre>
+                <p><em>Returns the current device&#039;s ID.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The device ID.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setUser" name="method_setUser" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setUser()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setUser(string  <span class="argument">$user</span>) </pre>
+                <p><em>Sets the user used for this session.</em></p>
+                <p>This method is called by SyncML right after sessionStart() when either
+authentication is accepted via checkAuthentication() or a valid user
+has been retrieved from the state.  $this-&gt;_user together with
+$this-&gt;_syncDeviceID is used as an additional key for all persistence
+operations.
+This method may have to force a &quot;login&quot;, when the backend doesn't keep
+auth state within a session or when in test mode.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>A user name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUser" name="method_getUser" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUser()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUser() : string</pre>
+                <p><em>Returns the current user.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The current user.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setupState" name="method_setupState" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setupState()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setupState() </pre>
+                <p><em>Is called after the Horde_SyncMl_State object has been set up, either
+restored from the session, or freshly created.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sessionStart" name="method_sessionStart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sessionStart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sessionStart(string  <span class="argument">$syncDeviceID</span>,   <span class="argument">$sessionId</span>, integer  <span class="argument">$backendMode = \Horde_SyncMl_Backend::MODE_SERVER</span>) </pre>
+                <p><em>Starts a PHP session.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$syncDeviceID </td>
+                                <td><p>The device ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$sessionId </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$backendMode </td>
+                                <td><p>The backend mode, one of the
+Horde_SyncMl<em>Backend::MODE</em>* constants.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sessionClose" name="method_sessionClose" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sessionClose()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sessionClose() </pre>
+                <p><em>Closes the PHP session.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isValidDatabaseURI" name="method_isValidDatabaseURI" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isValidDatabaseURI()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isValidDatabaseURI(string  <span class="argument">$databaseURI</span>) : boolean</pre>
+                <p><em>Returns whether a database URI is valid to be synced with this backend.</em></p>
+                <p>This default implementation accepts &quot;tasks&quot;, &quot;calendar&quot;, &quot;notes&quot; and
+&quot;contacts&quot;.  However individual backends may offer replication of
+different or completly other databases (like browser bookmarks or
+cooking recipes).</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of a database. Like calendar, tasks,
+contacts or notes. May include optional
+parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if a valid URI.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServerChanges" name="method_getServerChanges" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getServerChanges()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServerChanges(string  <span class="argument">$databaseURI</span>, integer  <span class="argument">$from_ts</span>, integer  <span class="argument">$to_ts</span>,   <span class="argument">$adds</span>,   <span class="argument">$mods</span>,   <span class="argument">$dels</span>) : mixed</pre>
+                <p><em>Returns entries that have been modified in the server database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of Database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from_ts </td>
+                                <td><p>Start timestamp.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$to_ts </td>
+                                <td><p>Exclusive end timestamp. Not yet
+implemented.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$adds </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$mods </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$dels </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>True on success or a PEAR_Error object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_retrieveEntry" name="method_retrieveEntry" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">retrieveEntry()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">retrieveEntry(string  <span class="argument">$databaseURI</span>, string  <span class="argument">$suid</span>, string  <span class="argument">$contentType</span>, array  <span class="argument">$fields</span>) : mixed</pre>
+                <p><em>Retrieves an entry from the backend.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of Database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$suid </td>
+                                <td><p>Server unique id of the entry: for horde
+this is the guid.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>Content-Type: the MIME type in which the
+public function should return the data.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$fields </td>
+                                <td><p>Hash of field names and Horde_SyncMl_Property
+properties with the requested fields.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>A string with the data entry or a PEAR_Error object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addEntry" name="method_addEntry" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addEntry()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addEntry(string  <span class="argument">$databaseURI</span>, string  <span class="argument">$content</span>, string  <span class="argument">$contentType</span>, string  <span class="argument">$cuid</span>) : array</pre>
+                <p><em>Adds an entry into the server database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of Database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The actual data.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>MIME type of the content.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$cuid </td>
+                                <td><p>Client ID of this entry.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>PEAR_Error or suid (Horde guid) of new entry</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_replaceEntry" name="method_replaceEntry" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">replaceEntry()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">replaceEntry(string  <span class="argument">$databaseURI</span>, string  <span class="argument">$content</span>, string  <span class="argument">$contentType</span>, string  <span class="argument">$cuid</span>) : string</pre>
+                <p><em>Replaces an entry in the server database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of Database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The actual data.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>MIME type of the content.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$cuid </td>
+                                <td><p>Client ID of this entry.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>PEAR_Error or server ID (Horde GUID) of modified entry.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteEntry" name="method_deleteEntry" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteEntry()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteEntry(string  <span class="argument">$databaseURI</span>, string  <span class="argument">$cuid</span>) : boolean</pre>
+                <p><em>Deletes an entry from the server database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of Database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$cuid </td>
+                                <td><p>Client ID of the entry.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True on success or false on failed (item not found).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_checkAuthentication" name="method_checkAuthentication" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">checkAuthentication()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">checkAuthentication(string  <span class="argument">$username</span>, string  <span class="argument">$credData</span>, string  <span class="argument">$credFormat</span>, string  <span class="argument">$credType</span>) : boolean|string</pre>
+                <p><em>Authenticates the user at the backend.</em></p>
+                <p>For some types of authentications (notably auth:basic) the username
+gets extracted from the authentication data and is then stored in
+username.  For security reasons the caller must ensure that this is the
+username that is used for the session, overriding any username
+specified in <LocName>.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$username </td>
+                                <td><p>Username as provided in the <SyncHdr>.
+May be overwritten by $credData.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$credData </td>
+                                <td><p>Authentication data provided by <Cred><Data>
+in the <SyncHdr>.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$credFormat </td>
+                                <td><p>Format of data as <Cread><Meta><Format> in
+the <SyncHdr>. Typically 'b64'.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$credType </td>
+                                <td><p>Auth type as provided by <Cred><Meta><Type>
+in the <SyncHdr>. Typically
+'syncml:auth-basic'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean|string
+                                            &mdash; <p>The user name if authentication succeeded, false
+otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_writeSyncAnchors" name="method_writeSyncAnchors" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">writeSyncAnchors()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">writeSyncAnchors(string  <span class="argument">$databaseURI</span>, string  <span class="argument">$clientAnchorNext</span>, string  <span class="argument">$serverAnchorNext</span>) </pre>
+                <p><em>Stores Sync anchors after a successful synchronization to allow two-way
+synchronization next time.</em></p>
+                <p>The backend has to store the parameters in its persistence engine
+where user, syncDeviceID and database are the keys while client and
+server anchor ar the payload. See readSyncAnchors() for retrieval.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$clientAnchorNext </td>
+                                <td><p>The client anchor as sent by the
+client.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$serverAnchorNext </td>
+                                <td><p>The anchor as used internally by the
+server.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_readSyncAnchors" name="method_readSyncAnchors" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">readSyncAnchors()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">readSyncAnchors(string  <span class="argument">$databaseURI</span>) : mixed</pre>
+                <p><em>Reads the previously written sync anchors from the database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Two-element array with client anchor and server anchor as
+stored in previous writeSyncAnchor() calls. False if no
+data found.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createUidMap" name="method_createUidMap" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createUidMap()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createUidMap(string  <span class="argument">$databaseURI</span>, string  <span class="argument">$cuid</span>, string  <span class="argument">$suid</span>, integer  <span class="argument">$timestamp</span>) </pre>
+                <p><em>Creates a map entry to map between server and client IDs.</em></p>
+                <p>If an entry already exists, it is overwritten.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$cuid </td>
+                                <td><p>Client ID of the entry.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$suid </td>
+                                <td><p>Server ID of the entry.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$timestamp </td>
+                                <td><p>Optional timestamp. This can be used to
+'tag' changes made in the backend during the
+sync process. This allows to identify these,
+and ensure that these changes are not
+replicated back to the client (and thus
+duplicated). See key concept &quot;Changes and
+timestamps&quot;.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_eraseMap" name="method_eraseMap" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">eraseMap()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">eraseMap(string  <span class="argument">$databaseURI</span>) </pre>
+                <p><em>Erases all mapping entries for one combination of user, device ID.</em></p>
+                <p>This is used during SlowSync so that we really sync everything properly
+and no old mapping entries remain.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of database to sync. Like calendar,
+tasks, contacts or notes. May include
+optional parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_logMessage" name="method_logMessage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">logMessage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">logMessage(mixed  <span class="argument">$message</span>, integer  <span class="argument">$priority = &#039;INFO&#039;</span>) </pre>
+                <p><em>Logs a message in the backend.</em></p>
+                <p>TODO: This should be done via Horde_Log or the equivalent.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$message </td>
+                                <td><p>Either a string or a PEAR_Error object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$priority </td>
+                                <td><p>The priority of the message. One of:</p>
+<ul>
+<li>EMERG</li>
+<li>ALERT</li>
+<li>CRIT</li>
+<li>ERR</li>
+<li>WARN</li>
+<li>NOTICE</li>
+<li>INFO</li>
+<li>DEBUG</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_logFile" name="method_logFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">logFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">logFile(integer  <span class="argument">$type</span>, string  <span class="argument">$content</span>, boolean  <span class="argument">$wbxml = false</span>, boolean  <span class="argument">$sessionClose = false</span>) </pre>
+                <p><em>Logs data to a file in the debug directory.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$type </td>
+                                <td><p>The data type. One of the Horde_SyncMl<em>Backend::LOGFILE</em>*
+constants.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The data content.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$wbxml </td>
+                                <td><p>Whether the data is wbxml encoded.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$sessionClose </td>
+                                <td><p>Whether this is the last SyncML message
+in a session. Bump the file number.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_close" name="method_close" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">close()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">close() </pre>
+                <p><em>Cleanup public function called after all message processing is finished.</em></p>
+                <p>Allows for things like closing databases or flushing logs.  When
+running in test mode, tearDown() must be called rather than close.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCurrentTimeStamp" name="method_getCurrentTimeStamp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCurrentTimeStamp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCurrentTimeStamp() : mixed</pre>
+                <p><em>Returns the current timestamp in the same format as used by
+getServerChanges().</em></p>
+                <p>Backends can use their own way to represent timestamps, like unix epoch
+integers or UTC Datetime strings.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>A timestamp of the current time.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testSetup" name="method_testSetup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testSetup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testSetup(string  <span class="argument">$user</span>, string  <span class="argument">$pwd</span>) </pre>
+                <p><em>Creates a clean test environment in the backend.</em></p>
+                <p>Ensures there's a user with the given credentials and an empty data
+store.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>This user accout has to be created in the backend.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pwd </td>
+                                <td><p>The password for user $user.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testStart" name="method_testStart" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testStart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testStart(string  <span class="argument">$user</span>) </pre>
+                <p><em>Prepares the test start.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>This user accout has to be created in the backend.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testTearDown" name="method_testTearDown" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testTearDown()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testTearDown() </pre>
+                <p><em>Tears down the test environment after the test is run.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_normalize" name="method_normalize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">normalize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">normalize(string  <span class="argument">$databaseURI</span>) : string</pre>
+                <p><em>Normalizes a databaseURI to a database name, so that
+_normalize(&#039;tasks?ignorecompleted&#039;) should return just &#039;tasks&#039;.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$databaseURI </td>
+                                <td><p>URI of a database. Like calendar, tasks,
+contacts or notes. May include optional
+parameters:
+tasks?options=ignorecompleted.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The normalized database name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParameter" name="method_getParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParameter(string  <span class="argument">$url</span>, string  <span class="argument">$parameter</span>, string  <span class="argument">$default = null</span>) </pre>
+                <p><em>Extracts an HTTP GET like parameter from an URL.</em></p>
+                <p>Example: <code>getParameter('test?q=1', 'q') == 1</code></p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url </td>
+                                <td><p>The complete URL.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$parameter </td>
+                                <td><p>The parameter name to extract.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$default </td>
+                                <td><p>A default value to return if none has been
+provided in the URL.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            static
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkAuthentication" name="method__checkAuthentication" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkAuthentication()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkAuthentication(string  <span class="argument">$username</span>, string  <span class="argument">$password</span>) : boolean|string</pre>
+                <p><em>Authenticates the user at the backend.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$username </td>
+                                <td><p>A user name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$password </td>
+                                <td><p>A password.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean|string
+                                            &mdash; <p>The user name if authentication succeeded, false
+otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__setAuthenticated" name="method__setAuthenticated" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_setAuthenticated()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_setAuthenticated(string  <span class="argument">$username</span>, string  <span class="argument">$credData</span>) : string</pre>
+                <p><em>Sets a user as being authenticated at the backend.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$username </td>
+                                <td><p>A user name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$credData </td>
+                                <td><p>Authentication data provided by <Cred><Data>
+in the <SyncHdr>.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The user name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Backend.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/SyncMl/Backend.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:39.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

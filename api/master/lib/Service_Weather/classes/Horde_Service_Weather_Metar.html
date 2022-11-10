@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">103</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1410370425"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1410370425" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Service_Weather.html">Horde_Service_Weather</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Alerts_Base.html">Horde_Service_Weather_Alerts_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Alerts_WeatherUnderground.html">Horde_Service_Weather_Alerts_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Base.html">Horde_Service_Weather_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Base.html">Horde_Service_Weather_Current_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Metar.html">Horde_Service_Weather_Current_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Owm.html">Horde_Service_Weather_Current_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_WeatherUnderground.html">Horde_Service_Weather_Current_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Current_Wwo.html">Horde_Service_Weather_Current_Wwo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Exception.html">Horde_Service_Weather_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Exception_InvalidProperty.html">Horde_Service_Weather_Exception_InvalidProperty</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Base.html">Horde_Service_Weather_Forecast_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Owm.html">Horde_Service_Weather_Forecast_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Taf.html">Horde_Service_Weather_Forecast_Taf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_WeatherUnderground.html">Horde_Service_Weather_Forecast_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Wwo.html">Horde_Service_Weather_Forecast_Wwo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Forecast_Wwov2.html">Horde_Service_Weather_Forecast_Wwov2</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Metar.html">Horde_Service_Weather_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Owm.html">Horde_Service_Weather_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Parser_Base.html">Horde_Service_Weather_Parser_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Parser_Metar.html">Horde_Service_Weather_Parser_Metar</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Parser_Taf.html">Horde_Service_Weather_Parser_Taf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Base.html">Horde_Service_Weather_Period_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Owm.html">Horde_Service_Weather_Period_Owm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Taf.html">Horde_Service_Weather_Period_Taf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_WeatherUnderground.html">Horde_Service_Weather_Period_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Wwo.html">Horde_Service_Weather_Period_Wwo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Period_Wwov2.html">Horde_Service_Weather_Period_Wwov2</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Station.html">Horde_Service_Weather_Station</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Translation.html">Horde_Service_Weather_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_WeatherUnderground.html">Horde_Service_Weather_WeatherUnderground</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Service_Weather_Wwo.html">Horde_Service_Weather_Wwo</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Service_Weather_Metar</h1>
+                    <p><em>Horde_Service_Weather_Metar</em></p>
+                    <p>Responsible for parsing encoded METAR and TAF data.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method_getCurrentConditions" class="">getCurrentConditions()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method_getForecast" class="">getForecast()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method_searchLocations" class="">searchLocations()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method_getSupportedForecastLengths" class="">getSupportedForecastLengths()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#method_getAlerts" class="">getAlerts()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#method_getRadarImageUrl" class="">getRadarImageUrl()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#method_getTileServerUrl" class="">getTileServerUrl()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method_autocompleteLocation" class="">autocompleteLocation()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#method_getUnits" class="">getUnits()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#method_getStation" class="">getStation()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method_getLocations" class="">getLocations()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property_units" class="">$units</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property_logo" class="">$logo</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property_link" class="">$link</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property_title" class="">$title</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property_iconMap" class="">$iconMap</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#method__ipIsUnique" class="">_ipIsUnique()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method__makeRequest" class="">_makeRequest()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method__getLocations" class="">_getLocations()</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#method__getStation" class="">_getStation()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__params" class="">$_params</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__cache" class="">$_cache</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__cache_lifetime" class="">$_cache_lifetime</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__http" class="">$_http</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__current" class="">$_current</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__forecast" class="">$_forecast</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__station" class="">$_station</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__lastLocation" class="">$_lastLocation</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__lastLength" class="">$_lastLength</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__alerts" class="">$_alerts</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Base.html#property__radar" class="">$_radar</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#property__db" class="">$_db</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#property__tableName" class="">$_tableName</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#property__metar_path" class="">$_metar_path</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#property__taf_path" class="">$_taf_path</a><br />
+                                                                    <a href="../classes/Horde_Service_Weather_Metar.html#property__locations" class="">$_locations</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Weather.Metar.html"><div class="path-wrapper">Weather/Metar.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Service_Weather</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_Service_Weather_Base.html">\Horde_Service_Weather_Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Service_Weather_Metar</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_units" name="property_units" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$units</h3>
+                <pre class="signature">$units : integer</pre>
+                <p><em>Units to display results in.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_logo" name="property_logo" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$logo</h3>
+                <pre class="signature">$logo : string</pre>
+                <p><em>URL to a logo for this provider</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_link" name="property_link" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$link</h3>
+                <pre class="signature">$link : string</pre>
+                <p><em>URL to the provider&#039;s site</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_title" name="property_title" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$title</h3>
+                <pre class="signature">$title : string</pre>
+                <p><em>Title for the provider</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_iconMap" name="property_iconMap" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$iconMap</h3>
+                <pre class="signature">$iconMap : array</pre>
+                <p><em>Driver spcific icon map for condition icons. Made public so icons can
+be overridden in client code if desired.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__params" name="property__params" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_params</h3>
+                <pre class="signature">$_params : array</pre>
+                <p><em>Parameters</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__cache" name="property__cache" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_cache</h3>
+                <pre class="signature">$_cache : \Horde_Cache</pre>
+                <p><em>Cache object</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Cache
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__cache_lifetime" name="property__cache_lifetime" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_cache_lifetime</h3>
+                <pre class="signature">$_cache_lifetime : integer</pre>
+                <p><em>Lifetime for cached data.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__http" name="property__http" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_http</h3>
+                <pre class="signature">$_http : \Horde_Http_Client</pre>
+                <p><em>The http client</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Http_Client
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__current" name="property__current" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_current</h3>
+                <pre class="signature">$_current : </pre>
+                <p><em>Local cache of current conditions</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__forecast" name="property__forecast" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_forecast</h3>
+                <pre class="signature">$_forecast : \Horde_Service_Weather_Forecast_Base</pre>
+                <p><em>Local cache of forecast</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Service_Weather_Forecast_Base.html">\Horde_Service_Weather_Forecast_Base</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__station" name="property__station" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_station</h3>
+                <pre class="signature">$_station : \Horde_Service_Weather_Station</pre>
+                <p><em>Local cache of station data</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Service_Weather_Station.html">\Horde_Service_Weather_Station</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__lastLocation" name="property__lastLocation" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_lastLocation</h3>
+                <pre class="signature">$_lastLocation : string</pre>
+                <p><em>Last location requested.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__lastLength" name="property__lastLength" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_lastLength</h3>
+                <pre class="signature">$_lastLength : integer</pre>
+                <p><em>Last requested forecast length.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__alerts" name="property__alerts" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_alerts</h3>
+                <pre class="signature">$_alerts : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__radar" name="property__radar" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_radar</h3>
+                <pre class="signature">$_radar : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__db" name="property__db" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_db</h3>
+                <pre class="signature">$_db : \Horde_Db_Adapter_Base</pre>
+                <p><em>Database handle. Expects to have the following table available:</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Db_Adapter_Base
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__tableName" name="property__tableName" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_tableName</h3>
+                <pre class="signature">$_tableName : string</pre>
+                <p><em>Name of table containing the NOAA METAR database.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__metar_path" name="property__metar_path" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_metar_path</h3>
+                <pre class="signature">$_metar_path : string</pre>
+                <p><em>Default paths to download weather data.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__taf_path" name="property__taf_path" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_taf_path</h3>
+                <pre class="signature">$_taf_path : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__locations" name="property__locations" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_locations</h3>
+                <pre class="signature">$_locations : array</pre>
+                <p><em>Local cache of locations.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params = array()</span>) </pre>
+                <p><em>Constructor.</em></p>
+                <p>In addtion to the params for the parent class, you can also set a
+database adapter for NOAA station lookups, and if you don't want
+to use the default METAR/TAF http locations, you can set them here too.
+Note only HTTP is currently supported, but file and ftp are @todo.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Parameters:</p>
+<ul>
+<li>cache: (Horde_Cache)             Optional Horde_Cache object.</li>
+<li>cache_lifetime: (integer)        Lifetime of cached data, if caching.</li>
+<li>http_client: (Horde_Http_Client) Required http client object.</li>
+<li>db: (Horde_Db_Adapter_Base)      DB Adapter for METAR DB.</li>
+<li>metar_path: (string)             Path or URL to METAR data.</li>
+<li>taf_path: (string)               Path or URL to TAF data.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCurrentConditions" name="method_getCurrentConditions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCurrentConditions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCurrentConditions(string  <span class="argument">$location</span>) : \Horde_Service_Weather_Current_Base</pre>
+                <p><em>Returns the current observations (METAR).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>The location string.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Service_Weather_Current_Base.html">\Horde_Service_Weather_Current_Base</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getForecast" name="method_getForecast" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getForecast()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getForecast(string  <span class="argument">$location</span>, integer  <span class="argument">$length = \Horde_Service_Weather::FORECAST_3DAY</span>, integer  <span class="argument">$type = \Horde_Service_Weather::FORECAST_TYPE_STANDARD</span>) : \Horde_Service_Weather_Forecast_Base</pre>
+                <p><em>Returns the forecast for the current location.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>The location code.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$length </td>
+                                <td><p>The forecast length, a
+Horde_Service<em>Weather::FORECAST</em>* constant.
+(Ignored)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$type </td>
+                                <td><p>The type of forecast to return, a
+Horde_Service_Weather::FORECAST<em>TYPE</em>* constant
+(Ignored)</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Service_Weather_Forecast_Base.html">\Horde_Service_Weather_Forecast_Base</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_searchLocations" name="method_searchLocations" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">searchLocations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">searchLocations(string  <span class="argument">$location</span>, integer  <span class="argument">$type = \Horde_Service_Weather::SEARCHTYPE_STANDARD</span>) : \Horde_Service_Weather_Station</pre>
+                <p><em>Searches locations.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>The location string to search.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$type </td>
+                                <td><p>The type of search to perform, a
+Horde_Service<em>Weather::SEARCHTYPE</em>* constant.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Service_Weather_Station.html">\Horde_Service_Weather_Station</a>
+                                            &mdash; <p>The search location suitable to use
+directly in a weather request.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSupportedForecastLengths" name="method_getSupportedForecastLengths" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSupportedForecastLengths()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSupportedForecastLengths() : array</pre>
+                <p><em>Get array of supported forecast lengths.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The array of supported lengths.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAlerts" name="method_getAlerts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAlerts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAlerts(  <span class="argument">$location</span>) : array</pre>
+                <p><em>Return array of weather alerts, if available.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$location </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRadarImageUrl" name="method_getRadarImageUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRadarImageUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRadarImageUrl(string  <span class="argument">$location</span>) : string|boolean</pre>
+                <p><em>Return the URL to a (possibly animated) radar image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>The location</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string|boolean
+                                            &mdash; <p>The Url, or false if not available.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTileServerUrl" name="method_getTileServerUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTileServerUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTileServerUrl(string  <span class="argument">$location</span>, string  <span class="argument">$type = null</span>) : string|boolean</pre>
+                <p><em>Return the URL a OpenLayers suitable tile server.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>The location.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The optional layer type.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string|boolean
+                                            &mdash; <p>The Url, or false if not available.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_autocompleteLocation" name="method_autocompleteLocation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">autocompleteLocation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">autocompleteLocation(string  <span class="argument">$search</span>) : array</pre>
+                <p><em>Searches for locations that begin with the text in $search.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$search </td>
+                                <td><p>The text to search.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of stdClass objects with 'name' and 'code'
+properties.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUnits" name="method_getUnits" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUnits()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUnits(integer  <span class="argument">$type = null</span>) : array</pre>
+                <p><em>Returns a mapping of units for each UNIT type.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$type </td>
+                                <td><p>The units for measurement. A
+Horde_Service<em>Weather::UNITS</em>* constant.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The mapping of measurements (as keys) and units (as values).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStation" name="method_getStation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getStation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStation() : \Horde_Service_Weather_Station</pre>
+                <p><em>Returns the station information associated with the last request.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd><p>if not request has yet been made.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Service_Weather_Station.html">\Horde_Service_Weather_Station</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLocations" name="method_getLocations" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLocations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLocations() : array</pre>
+                <p><em>Return an array containing all available METAR locations/airports.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of station information. Each entry contains:</p>
+<ul>
+<li>icao: The ICAO identifier of the location.</li>
+<li>name: The human readable name of the station.</li>
+<li>country: The country the station is located in (if available).</li>
+</ul>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__ipIsUnique" name="method__ipIsUnique" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_ipIsUnique()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_ipIsUnique(string  <span class="argument">$ip</span>) : boolean</pre>
+                <p><em>Check if an IP address is a globally unique address and not in RFC1918 or
+RFC3330 address space.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ip </td>
+                                <td><p>The IPv4 IP address to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the IP address is globally unique, otherwise
+false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Service_Weather_Base.html"><div class="path-wrapper">\Horde_Service_Weather_Base</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://tools.ietf.org/html/rfc3330"><span class="namespace-wrapper">http://tools.ietf.org/html/rfc3330</span></a></dd>
+                                            <dd><a href="http://www.faqs.org/rfcs/rfc1918.html"><span class="namespace-wrapper">http://www.faqs.org/rfcs/rfc1918.html</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__makeRequest" name="method__makeRequest" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_makeRequest()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_makeRequest(string  <span class="argument">$url</span>, integer  <span class="argument">$lifetime = 86400</span>) : string</pre>
+                <p><em>Performs a HTTP request.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url </td>
+                                <td><p>The URL endpoint.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$lifetime </td>
+                                <td><p>The cache lifetime.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The response body of the request.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getLocations" name="method__getLocations" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getLocations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getLocations() : array</pre>
+                <p><em>Perform DB query to obtain list of airport codes.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of station information. Each entry contains:</p>
+<ul>
+<li>icao: The ICAO identifier of the location.</li>
+<li>name: The human readable name of the station.</li>
+<li>country: The country the station is located in (if available).</li>
+</ul>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getStation" name="method__getStation" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getStation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getStation(string  <span class="argument">$code</span>) : \Horde_Service_Weather_Station</pre>
+                <p><em>Return a station object matching $code.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>The ICAO station identifier.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Service_Weather_Exception</dt>
+                            <dd></dd>
+                                                    <dt>\Horde_Exception_NotFound</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Service_Weather_Station.html">\Horde_Service_Weather_Station</a>
+                                            &mdash; <p>The station object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Metar.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Weather/Metar.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:32.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_Ldap_Util</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Ldap.html">Ldap</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_Ldap.html">Horde_Ldap</a></li>
+				<li><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></li>
+				<li><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></li>
+				<li><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></li>
+				<li><a href="class-Horde_Ldap_Ldif.html">Horde_Ldap_Ldif</a></li>
+				<li><a href="class-Horde_Ldap_RootDse.html">Horde_Ldap_RootDse</a></li>
+				<li><a href="class-Horde_Ldap_Schema.html">Horde_Ldap_Schema</a></li>
+				<li><a href="class-Horde_Ldap_Search.html">Horde_Ldap_Search</a></li>
+				<li class="active"><a href="class-Horde_Ldap_Util.html">Horde_Ldap_Util</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Ldap.html" title="Summary of Ldap"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_Ldap_Util</h1>
+
+
+	<div class="description">
+	<p>Utility Class for Horde_Ldap</p>
+
+<p>This class servers some functionality to the other classes of Horde_Ldap but
+most of the methods can be used separately as well.</p>
+
+<p>Copyright 2009 Benedikt Hallinger
+Copyright 2010-2012 Horde LLC (http://www.horde.org/)</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Ldap<br>
+
+				<b>Category:</b>
+				Horde
+<br>
+				<b>License:</b>
+				<a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL-3.0</a><br>
+				<b>Author:</b>
+				Benedikt Hallinger <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x62;&#x65;&#110;&#105;&#x40;&#x70;&#104;&#112;&#x2e;&#x6e;&#101;t">&#x62;&#x65;&#110;&#105;&#x40;&#x70;&#104;&#112;&#x2e;&#x6e;&#101;t</a>
+<br>
+				<b>Author:</b>
+				Jan Schneider <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;j&#97;&#110;&#64;&#x68;&#x6f;&#x72;&#x64;e&#46;&#111;&#114;&#x67;">j&#97;&#110;&#64;&#x68;&#x6f;&#x72;&#x64;e&#46;&#111;&#114;&#x67;</a>
+<br>
+		<b>Located at</b> <a href="source-class-Horde_Ldap_Util.html#2-599" title="Go to source code">Horde/Ldap/Util.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="explodeDN" id="_explodeDN">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_explodeDN">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#19-155" title="Go to source code">explodeDN</a>( <span>string <var>$dn</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Explodes the given DN into its elements</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Explodes the given DN into its elements</p>
+
+<p><a href="http://www.ietf.org/rfc/rfc2253.txt">RFC 2253</a> says, a
+Distinguished Name is a sequence of Relative Distinguished Names (RDNs),
+which themselves are sets of Attributes. For each RDN a array is
+constructed where the RDN part is stored.</p>
+
+<p>For example, the DN 'OU=Sales+CN=J. Smith,DC=example,DC=net' is exploded
+to:</p>
+
+<pre><span class="php-keyword1">array</span>(<span class="php-keyword1">array</span>(<span class="php-quote">'OU=Sales'</span>, <span class="php-quote">'CN=J. Smith'</span>),
+      <span class="php-quote">'DC=example'</span>,
+      <span class="php-quote">'DC=net'</span>)</pre>
+
+<p>[NOT IMPLEMENTED] DNs might also contain values, which are the bytes of
+the BER encoding of the X.500 AttributeValue rather than some LDAP
+string syntax. These values are hex-encoded and prefixed with a #. To
+distinguish such BER values, explodeDN uses references to the
+actual values, e.g. '1.3.6.1.4.1.1466.0=#04024869,DC=example,DC=com' is
+exploded to:
+<code>
+array(array('1.3.6.1.4.1.1466.0' => "\004\002Hi"), array('DC' => 'example', array('DC' => 'com'))
+<code>
+See <a href="http://www.vijaymukhi.com/vmis/berldap.htm">http://www.vijaymukhi.com/vmis/berldap.htm</a> for more
+information on BER.</p>
+
+<p>It also performs the following operations on the given DN:
+- Unescape "\" followed by ",", "+", """, "\", "&lt;", ">", ";", "#", "=", " ", or a hexpair and strings beginning with "#".
+- Removes the leading 'OID.' characters if the type is an OID instead of a name.
+- If an RDN contains multiple parts, the parts are re-ordered so that the attribute type names are in alphabetical order.</p>
+
+<p>$options is a list of name/value pairs, valid options are:
+- casefold:   Controls case folding of attribute types names. Attribute values are not affected by this option. The default is to uppercase. Valid values are: - lower: Lowercase attribute types names. - upper: Uppercase attribute type names. This is the default. - none:  Do not change attribute type names.
+- reverse:    If true, the RDN sequence is reversed.
+- onlyvalues: If true, then only attributes values are returned ('foo' instead of 'cn=foo')</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dn</var></dt>
+					<dd>The DN that should be exploded.
+</dd>
+					<dt><var>$options</var></dt>
+					<dd>Options to use.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Parts of the exploded DN.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="escapeDNValue" id="_escapeDNValue">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_escapeDNValue">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#157-199" title="Go to source code">escapeDNValue</a>( <span>string|array <var>$values</var></span> )</code>
+
+		<div class="description short">
+			<p>Escapes DN values according to RFC 2253.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Escapes DN values according to RFC 2253.</p>
+
+<p>Escapes the given VALUES according to RFC 2253 so that they can be
+safely used in LDAP DNs.  The characters ",", "+", """, "\", "&lt;", ">",
+";", "#", "=" with a special meaning in RFC 2252 are preceeded by ba
+backslash. Control characters with an ASCII code &lt; 32 are represented as
+\hexpair.  Finally all leading and trailing spaces are converted to
+sequences of \20.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$values</var></dt>
+					<dd>DN values that should be escaped.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>The escaped values.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unescapeDNValue" id="_unescapeDNValue">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unescapeDNValue">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#201-232" title="Go to source code">unescapeDNValue</a>( <span>array <var>$values</var></span> )</code>
+
+		<div class="description short">
+			<p>Unescapes DN values according to RFC 2253.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Unescapes DN values according to RFC 2253.</p>
+
+<p>Reverts the conversion done by escapeDNValue().</p>
+
+<p>Any escape sequence starting with a baskslash - hexpair or special
+character - will be transformed back to the corresponding character.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$values</var></dt>
+					<dd>DN values.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Unescaped DN values.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canonicalDN" id="_canonicalDN">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canonicalDN">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#234-404" title="Go to source code">canonicalDN</a>( <span>array|string <var>$dn</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Converts a DN into a canonical form.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Converts a DN into a canonical form.</p>
+
+<p>DN can either be a string or an array as returned by explodeDN(),
+which is useful when constructing a DN.  The DN array may have be
+indexed (each array value is a OCL=VALUE pair) or associative (array key
+is OCL and value is VALUE).</p>
+
+<p>It performs the following operations on the given DN:
+- Removes the leading 'OID.' characters if the type is an OID instead of a name.
+- Escapes all RFC 2253 special characters (",", "+", """, "\", "&lt;", ">", ";", "#", "="), slashes ("/"), and any other character where the ASCII code is &lt; 32 as \hexpair.
+- Converts all leading and trailing spaces in values to be \20.
+- If an RDN contains multiple parts, the parts are re-ordered so that the attribute type names are in alphabetical order.</p>
+
+<p>$options is a list of name/value pairs, valid options are:</p>
+
+<ul>
+<li>casefold:  Controls case folding of attribute type names. Attribute values are not affected by this option. The default is to uppercase. Valid values are: - lower: Lowercase attribute type names. - upper: Uppercase attribute type names. - none:  Do not change attribute type names.</li>
+<li>reverse:   If true, the RDN sequence is reversed.</li>
+<li>separator: Separator to use between RDNs. Defaults to comma (',').</li>
+</ul>
+
+<p>The empty string "" is a valid DN, so be sure not to do a "$can_dn ==
+false" test, because an empty string evaluates to false. Use the "==="
+operator instead.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dn</var></dt>
+					<dd>The DN.
+</dd>
+					<dt><var>$options</var></dt>
+					<dd>Options to use.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean|string</code><br>The canonical DN or false if the DN is not valid.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="escapeFilterValue" id="_escapeFilterValue">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_escapeFilterValue">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#406-444" title="Go to source code">escapeFilterValue</a>( <span>array <var>$values</var></span> )</code>
+
+		<div class="description short">
+			<p>Escapes the given values according to RFC 2254 so that they can be
+safely used in LDAP filters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Escapes the given values according to RFC 2254 so that they can be
+safely used in LDAP filters.</p>
+
+<p>Any control characters with an ACII code &lt; 32 as well as the characters
+with special meaning in LDAP filters "*", "(", ")", and "\" (the
+backslash) are converted into the representation of a backslash followed
+by two hex digits representing the hexadecimal value of the character.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$values</var></dt>
+					<dd>Values to escape.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Escaped values.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unescapeFilterValue" id="_unescapeFilterValue">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unescapeFilterValue">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#446-471" title="Go to source code">unescapeFilterValue</a>( <span>array <var>$values</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Unescapes the given values according to RFC 2254.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Unescapes the given values according to RFC 2254.</p>
+
+<p>Reverses the conversion done by <code><a href="class-Horde_Ldap_Util.html#_escapeFilterValue">Horde_Ldap_Util::escapeFilterValue()</a></code>.</p>
+
+<p>Converts any sequences of a backslash followed by two hex digits into
+the corresponding character.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$values</var></dt>
+					<dd>Values to unescape.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Unescaped values.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="asc2hex32" id="_asc2hex32">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_asc2hex32">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#473-493" title="Go to source code">asc2hex32</a>( <span>string <var>$string</var></span> )</code>
+
+		<div class="description short">
+			<p>Converts all ASCII chars &lt; 32 to "\HEX".</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Converts all ASCII chars &lt; 32 to "\HEX".</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$string</var></dt>
+					<dd>String to convert.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Hexadecimal representation of $string.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hex2asc" id="_hex2asc">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hex2asc">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#495-508" title="Go to source code">hex2asc</a>( <span>string <var>$string</var></span> )</code>
+
+		<div class="description short">
+			<p>Converts all hexadecimal expressions ("\HEX") to their original ASCII
+characters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Converts all hexadecimal expressions ("\HEX") to their original ASCII
+characters.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$string</var></dt>
+					<dd>String to convert.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>ASCII representation of $string.
+
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						beni@php.net, heavily based on work from DavidSmith@byu.net
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="splitRDNMultivalue" id="_splitRDNMultivalue">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_splitRDNMultivalue">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#510-547" title="Go to source code">splitRDNMultivalue</a>( <span>string <var>$rdn</var></span> )</code>
+
+		<div class="description short">
+			<p>Splits a multivalued RDN value into an array.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Splits a multivalued RDN value into an array.</p>
+
+<p>A RDN can contain multiple values, spearated by a plus sign. This method
+returns each separate ocl=value pair of the RDN part.</p>
+
+<p>If no multivalued RDN is detected, an array containing only the original
+RDN part is returned.</p>
+
+<p>For example, the multivalued RDN 'OU=Sales+CN=J. Smith' is exploded to:
+<kbd>array([0] => 'OU=Sales', [1] => 'CN=J. Smith')</kbd></p>
+
+<p>The method tries to be smart if it encounters unescaped "+" characters,
+but may fail, so better ensure escaped "+" in attribute names and
+values.</p>
+
+<p>[BUG] If you have a multivalued RDN with unescaped plus characters and there is a unescaped plus sign at the end of an value followed by an attribute name containing an unescaped plus, then you will get wrong splitting: $rdn = 'OU=Sales+C+N=J. Smith'; returns: array('OU=Sales+C', 'N=J. Smith'); The "C+" is treaten as the value of the first pair instead of as the attribute name of the second pair. To prevent this, escape correctly.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$rdn</var></dt>
+					<dd>&lt;p&gt;Part of a (multivalued) escaped RDN (e.g. ou=foo or
+                   ou=foo+cn=bar)&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>The components of the multivalued RDN.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="splitAttributeString" id="_splitAttributeString">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_splitAttributeString">#</a>
+		<code><a href="source-class-Horde_Ldap_Util.html#549-561" title="Go to source code">splitAttributeString</a>( <span>string <var>$attr</var></span> )</code>
+
+		<div class="description short">
+			<p>Splits a attribute=value syntax into an array.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Splits a attribute=value syntax into an array.</p>
+
+<p>The split will occur at the first unescaped '=' character.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$attr</var></dt>
+					<dd>An attribute-value string.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Indexed array: 0=attribute name, 1=attribute value.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?561741522"></script>
+</body>
+</html>

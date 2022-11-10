@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Horde_Notification"],["c","Horde_Notification_Event"],["c","Horde_Notification_Event_Status"],["c","Horde_Notification_Exception"],["c","Horde_Notification_Handler"],["c","Horde_Notification_Handler_Decorator_Alarm"],["c","Horde_Notification_Handler_Decorator_Base"],["c","Horde_Notification_Handler_Decorator_Log"],["c","Horde_Notification_Listener"],["c","Horde_Notification_Listener_Audio"],["c","Horde_Notification_Listener_Status"],["c","Horde_Notification_Storage_Interface"],["c","Horde_Notification_Storage_Object"],["c","Horde_Notification_Storage_Session"]];

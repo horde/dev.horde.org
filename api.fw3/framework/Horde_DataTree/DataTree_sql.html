@@ -1,0 +1,1595 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class DataTree_sql</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> DataTree_sql</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The DataTree_sql:: class provides an SQL implementation of the Horde  DataTree system.</p>
+<p class="description"><p>Required parameters:<pre>   'phptype'      The database type (ie. 'pgsql', 'mysql', etc.).
+   'charset'      The charset used by the database.</pre></p><p>Optional parameters:<pre>   'table'        The name of the data table in 'database'.
+                  DEFAULT: 'horde_datatree'</pre></p><p>Required by some database implementations:<pre>   'database'     The name of the database.
+   'username'     The username with which to connect to the database.
+   'password'     The password associated with 'username'.
+   'hostspec'     The hostname of the database server.
+   'protocol'     The communication protocol ('tcp', 'unix', etc.).
+   'options'      Additional options to pass to the database.
+   'port'         The port on which to connect to the database.
+   'tty'          The TTY on which to connect to the database.</pre></p><p>Optional values when using separate reading and writing servers, for example  in replication settings:<pre>   'splitread'   Boolean, whether to implement the separation or not.
+   'read'        Array containing the parameters which are different for
+                 the read database connection, currently supported
+                 only 'hostspec' and 'port' parameters.</pre></p><p>The table structure for the DataTree system is in  scripts/sql/horde_datatree.sql.</p><p>$Horde: framework/DataTree/DataTree/sql.php,v 1.156.2.46 2010-10-21 20:02:46 jan Exp $</p><p>Copyright 1999-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If  you did not receive this file, see  http://www.fsf.org/copyleft/lgpl.html.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Stephane Huther &lt;<a href="mailto:shuther1@free.fr">shuther1@free.fr</a>&gt;</li>
+				<li><span class="field">author:</span> Chuck Hagenbuch &lt;<a href="mailto:chuck@horde.org">chuck@horde.org</a>&gt;</li>
+				<li><span class="field">author:</span> Jan Schneider &lt;<a href="mailto:jan@horde.org">jan@horde.org</a>&gt;</li>
+				<li><span class="field">since:</span> Horde 2.1</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_DataTree---DataTree---sql.php.html">/DataTree/DataTree/sql.php</a> (line <span class="field">48</span>)
+		</p>
+		
+				
+		<pre><a href="../Horde_DataTree/DataTree.html">DataTree</a>
+   |
+   --DataTree_sql</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">DB</span>
+					<a href="#$_db" title="details" class="var-name">$_db</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">integer</span>
+					<a href="#$_tableCount" title="details" class="var-name">$_tableCount</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">DB</span>
+					<a href="#$_write_db" title="details" class="var-name">$_write_db</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#add" title="details" class="method-name">add</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$object</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$id_as_name</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#buildAttributeQuery" title="details" class="method-name">buildAttributeQuery</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$operation</span> = <span class="var-default">DATATREE_BUILD_SELECT</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#countByAttributes" title="details" class="method-name">countByAttributes</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#countValuesByAttributes" title="details" class="method-name">countValuesByAttributes</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">null</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_key</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getAttributes" title="details" class="method-name">getAttributes</a>
+											(<span class="var-type">integer|array</span>&nbsp;<span class="var-name">$cid</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$keys</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getAttributeValues" title="details" class="method-name">getAttributeValues</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_key</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getByAttributes" title="details" class="method-name">getByAttributes</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$from</span> = <span class="var-default">0</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">0</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getData" title="details" class="method-name">getData</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$cid</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getGroups" title="details" class="method-name">getGroups</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getSortedTree" title="details" class="method-name">getSortedTree</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$root</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$loadTree</span> = <span class="var-default">false</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getValuesByAttributes" title="details" class="method-name">getValuesByAttributes</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$from</span> = <span class="var-default">0</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">0</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">null</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_key</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#move" title="details" class="method-name">move</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$object</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$newparent</span> = <span class="var-default">null</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#remove" title="details" class="method-name">remove</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$object</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$force</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#removeByIds" title="details" class="method-name">removeByIds</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$ids</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#removeByNames" title="details" class="method-name">removeByNames</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$names</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#rename" title="details" class="method-name">rename</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$old_object</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$new_object_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#reorder" title="details" class="method-name">reorder</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$cid</span> = <span class="var-default">null</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setOrder" title="details" class="method-name">setOrder</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$order</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#sortByAttributes" title="details" class="method-name">sortByAttributes</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$unordered_ids</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#updateData" title="details" class="method-name">updateData</a>
+											(<span class="var-type">DataTree</span>&nbsp;<span class="var-name">$object</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#_buildAttributeQuery" title="details" class="method-name">_buildAttributeQuery</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$glue</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$join</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#_exists" title="details" class="method-name">_exists</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$object_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_getAlias" title="details" class="method-name">_getAlias</a>
+											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$increment</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">integer</span>
+										<a href="#_getId" title="details" class="method-name">_getId</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#_getName" title="details" class="method-name">_getName</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#_init" title="details" class="method-name">_init</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_db" id="$_db"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">DB</span>
+			<span class="var-name">$_db</span>
+						(line <span class="line-number">55</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Handle for the current database connection, used for reading.</p>
+	
+	
+		
+		
+
+</div>
+<a name="var$_tableCount" id="$_tableCount"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$_tableCount</span>
+			 = <span class="var-default"> 1</span>			(line <span class="line-number">71</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The number of copies of the horde_datatree_attributes table  that we need to join on in the current query.</p>
+	
+	
+		
+		
+
+</div>
+<a name="var$_write_db" id="$_write_db"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">DB</span>
+			<span class="var-name">$_write_db</span>
+						(line <span class="line-number">63</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Handle for the current database connection, used for writing. Defaults  to the same handle as $_db if a separate write database is not required.</p>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../Horde_DataTree/DataTree.html">DataTree</a></span></p>
+					<blockquote>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_DataTree/DataTree.html#var$_data">DataTree::$_data</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_DataTree/DataTree.html#var$_nameMap">DataTree::$_nameMap</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_DataTree/DataTree.html#var$_params">DataTree::$_params</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../Horde_DataTree/DataTree.html#var$_sortHash">DataTree::$_sortHash</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodadd" id="add"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">add</span> (line <span class="line-number">515</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds an object.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			add
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$object</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$id_as_name</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$object</span><span class="var-description">: The object to add (string or                              DataTreeObject).</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$id_as_name</span><span class="var-description">: Whether the object ID is to be used as                              object name.  Used in situations where                              there is no available unique input for                              object name.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodadd">DataTree::add()</a></dt>
+						<dd>Adds an object.</dd>
+					</dl>
+			
+	</div>
+<a name="methodbuildAttributeQuery" id="buildAttributeQuery"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">buildAttributeQuery</span> (line <span class="line-number">1544</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Builds an attribute query. Here is an example $criteria array:</p>
+<p class="description"><p><div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$criteria</span><span class="src-sym">[</span><span class="src-str">'OR'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'AND'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'name'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'op'&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'='</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'key'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'op'&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'='</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'abc'</span><span class="src-sym">)))</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'AND'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'name'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'op'&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'='</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'bar'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'key'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'op'&nbsp;&nbsp;&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'='</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'test'&nbsp;&nbsp;</span>=&gt;&nbsp;<span class="src-str">'xyz'</span><span class="src-sym">))))</span><span class="src-sym">;</span></div></li>
+</ol></div></p><p>This would fetch all object ids where attribute name is &quot;foo&quot; AND key  is &quot;abc&quot;, OR &quot;bar&quot; AND &quot;xyz&quot;.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An SQL query and a list of values suitable for binding                 as an array.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			buildAttributeQuery
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$operation</span> = <span class="var-default">DATATREE_BUILD_SELECT</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The array of criteria.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The parent node to start searching from.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$allLevels</span><span class="var-description">: Return all levels, or just the direct                               children of $parent? Defaults to all levels.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$restrict</span><span class="var-description">: Only return attributes with the same                               attribute_name or attribute_id.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$operation</span><span class="var-description">: Type of query to build</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_name</span><span class="var-description">: Attribute name to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_key</span><span class="var-description">: Attribute key to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$direction</span><span class="var-description">: Sort direction: <ol><li>- ascending</li><li>- descending</li></ol></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcountByAttributes" id="countByAttributes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">countByAttributes</span> (line <span class="line-number">1132</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the number of objects matching a set of attribute criteria.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Horde_DataTree/DataTree_sql.html#methodbuildAttributeQuery">DataTree_sql::buildAttributeQuery()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			countByAttributes
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The array of criteria.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The parent node to start searching from.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$allLevels</span><span class="var-description">: Return all levels, or just the direct                             children of $parent? Defaults to all levels.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$restrict</span><span class="var-description">: Only return attributes with the same                             attribute_name or attribute_id.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodcountByAttributes">DataTree::countByAttributes()</a></dt>
+						<dd>Returns the number of objects matching a set of attribute criteria.</dd>
+					</dl>
+			
+	</div>
+<a name="methodcountValuesByAttributes" id="countValuesByAttributes"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">countValuesByAttributes</span> (line <span class="line-number">1330</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the number of all of the available values matching the  given criteria. Either attribute_name or attribute_key MUST be  supplied, and both MAY be supplied.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Horde_DataTree/DataTree_sql.html#methodbuildAttributeQuery">DataTree_sql::buildAttributeQuery()</a></li>
+				<li><span class="field">since:</span> Horde 3.2</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			countValuesByAttributes
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">null</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The array of criteria.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The parent node to start searching from.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$allLevels</span><span class="var-description">: Return all levels, or just the direct                               children of $parent? Defaults to all levels.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$restrict</span><span class="var-description">: Only return attributes with the same                               attribute_name or attribute_id.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$attribute_name</span><span class="var-description">: The name of the attribute.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$attribute_key</span><span class="var-description">: The key value of the attribute.</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$key</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetAttributes" id="getAttributes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getAttributes</span> (line <span class="line-number">1068</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieves data for an object from the horde_datatree_attributes table.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A hash of attributes, or a multi-level hash of object                 ids =&gt; their attributes.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getAttributes
+		</span>
+					(<span class="var-type">integer|array</span>&nbsp;<span class="var-name">$cid</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$keys</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer|array</span>
+				<span class="var-name">$cid</span><span class="var-description">: The object id to fetch, or an array of                             object ids.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$keys</span><span class="var-description">: The attributes keys to fetch.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodgetAttributes">DataTree::getAttributes()</a></dt>
+						<dd>Retrieve data for an object from the horde_datatree_attributes  table.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetAttributeValues" id="getAttributeValues"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getAttributeValues</span> (line <span class="line-number">1436</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a list of all of the available values of the given attribute  name/key combination. Either attribute_name or attribute_key MUST be  supplied, and both MAY be supplied.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of all of the available values.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getAttributeValues
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_key</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$attribute_name</span><span class="var-description">: The name of the attribute.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$attribute_key</span><span class="var-description">: The key value of the attribute.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The parent node to start searching from.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$allLevels</span><span class="var-description">: Return all levels, or just the direct                                  children of $parent? Defaults to all                                  levels.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetByAttributes" id="getByAttributes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getByAttributes</span> (line <span class="line-number">1184</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a set of object ids based on a set of attribute criteria.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Horde_DataTree/DataTree_sql.html#methodbuildAttributeQuery">DataTree_sql::buildAttributeQuery()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getByAttributes
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$from</span> = <span class="var-default">0</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">0</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The array of criteria.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The parent node to start searching from.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$allLevels</span><span class="var-description">: Return all levels, or just the direct                               children of $parent? Defaults to all levels.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$restrict</span><span class="var-description">: Only return attributes with the same                               attribute_name or attribute_id.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$from</span><span class="var-description">: The object to start to fetching</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$count</span><span class="var-description">: The number of objects to fetch</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_name</span><span class="var-description">: Attribute name to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_key</span><span class="var-description">: Attribute key to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$direction</span><span class="var-description">: Sort direction: <ol><li>- ascending</li><li>- descending</li></ol></span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodgetByAttributes">DataTree::getByAttributes()</a></dt>
+						<dd>Returns a set of object ids based on a set of attribute criteria.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetData" id="getData"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getData</span> (line <span class="line-number">1002</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieves data for an object from the datatree_data field.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getData
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$cid</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$cid</span><span class="var-description">: The object id to fetch, or an array of object ids.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodgetData">DataTree::getData()</a></dt>
+						<dd>Retrieve data for an object from the datatree_data field.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetGroups" id="getGroups"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getGroups</span> (line <span class="line-number">78</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a list of all groups (root nodes) of the data tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The the group IDs</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getGroups
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodgetGroups">DataTree::getGroups()</a></dt>
+						<dd>Returns a list of all groups (root nodes) of the data tree.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetSortedTree" id="getSortedTree"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getSortedTree</span> (line <span class="line-number">489</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a tree sorted by the specified attribute name and/or key.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TODO</li>
+				<li><span class="field">since:</span> Horde 3.1</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getSortedTree
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$root</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$loadTree</span> = <span class="var-default">false</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$root</span><span class="var-description">: Which portion of the tree to sort.                              Defaults to all of it.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$loadTree</span><span class="var-description">: Sort the tree starting at $root, or just the                              requested level and direct parents?                              Defaults to single level.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_name</span><span class="var-description">: Attribute name to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_key</span><span class="var-description">: Attribute key to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$direction</span><span class="var-description">: Sort direction: <ol><li>- ascending</li><li>- descending</li></ol></span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodgetSortedTree">DataTree::getSortedTree()</a></dt>
+						<dd>Returns a tree sorted by the specified attribute name and/or key.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetValuesByAttributes" id="getValuesByAttributes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getValuesByAttributes</span> (line <span class="line-number">1384</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a list of all of the available values of the given criteria  Either attribute_name or attribute_key MUST be  supplied, and both MAY be supplied.</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Horde_DataTree/DataTree_sql.html#methodbuildAttributeQuery">DataTree_sql::buildAttributeQuery()</a></li>
+				<li><span class="field">since:</span> Horde 3.2</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getValuesByAttributes
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span> = <span class="var-default">DATATREE_ROOT</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allLevels</span> = <span class="var-default">true</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$restrict</span> = <span class="var-default">'name'</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$from</span> = <span class="var-default">0</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$count</span> = <span class="var-default">0</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">null</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$attribute_key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The array of criteria.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The parent node to start searching from.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$allLevels</span><span class="var-description">: Return all levels, or just the direct                               children of $parent? Defaults to all levels.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$restrict</span><span class="var-description">: Only return attributes with the same                               attribute_name or attribute_id.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$from</span><span class="var-description">: The object to start to fetching</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$count</span><span class="var-description">: The number of objects to fetch</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_name</span><span class="var-description">: Attribute name to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby_key</span><span class="var-description">: Attribute key to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$direction</span><span class="var-description">: Sort direction: <ol><li>- ascending</li><li>- descending</li></ol></span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$attribute_name</span><span class="var-description">: The name of the attribute.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$attribute_key</span><span class="var-description">: The key value of the attribute.</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$key</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmove" id="move"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">move</span> (line <span class="line-number">901</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Move an object to a new parent.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			move
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$object</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$newparent</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$object</span><span class="var-description">: The object to move.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$newparent</span><span class="var-description">: The new parent object. Defaults to the root.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodmove">DataTree::move()</a></dt>
+						<dd>Move an object to a new parent.</dd>
+					</dl>
+			
+	</div>
+<a name="methodremove" id="remove"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">remove</span> (line <span class="line-number">751</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes an object.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			remove
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$object</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$force</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$object</span><span class="var-description">: The object to remove.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$force</span><span class="var-description">: Force removal of every child object?</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodremove">DataTree::remove()</a></dt>
+						<dd>Removes an object.</dd>
+					</dl>
+			
+	</div>
+<a name="methodremoveByIds" id="removeByIds"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">removeByIds</span> (line <span class="line-number">827</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes one or more objects by id.</p>
+<p class="description"><p>This function does *not* do the validation, reordering, etc. that  remove() does. If you need to check for children, re-do ordering, etc.,  then you must remove() objects one-by-one. This is for code that knows  it's dealing with single (non-parented) objects and needs to delete a  batch of them quickly.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeByIds
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$ids</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$ids</span><span class="var-description">: The objects to remove.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremoveByNames" id="removeByNames"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">removeByNames</span> (line <span class="line-number">871</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes one or more objects by name.</p>
+<p class="description"><p>This function does *not* do the validation, reordering, etc. that  remove() does. If you need to check for children, re-do ordering, etc.,  then you must remove() objects one-by-one. This is for code that knows  it's dealing with single (non-parented) objects and needs to delete a  batch of them quickly.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeByNames
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$names</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$names</span><span class="var-description">: The objects to remove.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrename" id="rename"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">rename</span> (line <span class="line-number">976</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Change an object's name.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			rename
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$old_object</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$new_object_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$old_object</span><span class="var-description">: The old object.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$new_object_name</span><span class="var-description">: The new object name.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodrename">DataTree::rename()</a></dt>
+						<dd>Change an object's name.</dd>
+					</dl>
+			
+	</div>
+<a name="methodreorder" id="reorder"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">reorder</span> (line <span class="line-number">658</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Changes the order of the children of an object.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			reorder
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$parent</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$cid</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$parent</span><span class="var-description">: The full id path of the parent object.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$order</span><span class="var-description">: If an array it specifies the new positions for                         all child objects.                         If an integer and $cid is specified, the position                         where the child specified by $cid is inserted. If                         $cid is not specified, the position gets deleted,                         causing the following positions to shift up.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$cid</span><span class="var-description">: See $order.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodreorder">DataTree::reorder()</a></dt>
+						<dd>Changes the order of the children of an object.</dd>
+					</dl>
+			
+	</div>
+<a name="methodsetOrder" id="setOrder"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setOrder</span> (line <span class="line-number">734</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Explicitly set the order for a datatree object.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setOrder
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$order</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: The datatree object id to change.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$order</span><span class="var-description">: The new order.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodsetOrder">DataTree::setOrder()</a></dt>
+						<dd>Explicitly set the order for a datatree object.</dd>
+					</dl>
+			
+	</div>
+<a name="methodsortByAttributes" id="sortByAttributes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">sortByAttributes</span> (line <span class="line-number">1279</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sorts IDs by attribute values. IDs without attributes will be added to  the end of the sorted list.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Sorted ids.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			sortByAttributes
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$unordered_ids</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$sortby_name</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$sortby_key</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$direction</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$unordered_ids</span><span class="var-description">: Array of ids to sort.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$sortby_name</span><span class="var-description">: Attribute name to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$sortby_key</span><span class="var-description">: Attribute key to use for sorting.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$direction</span><span class="var-description">: Sort direction: <ol><li>- ascending</li><li>- descending</li></ol></span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodsortByAttributes">DataTree::sortByAttributes()</a></dt>
+						<dd>Sorts IDs by attribute values. IDs without attributes will be added to  the end of the sorted list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodupdateData" id="updateData"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">updateData</span> (line <span class="line-number">1768</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Update the data in an object. Does not change the object's  parent or name, just serialized data or attributes.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updateData
+		</span>
+					(<span class="var-type">DataTree</span>&nbsp;<span class="var-name">$object</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">DataTree</span>
+				<span class="var-name">$object</span><span class="var-description">: A DataTree object.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Horde_DataTree/DataTree.html#methodupdateData">DataTree::updateData()</a></dt>
+						<dd>Update the data in an object. Does not change the object's  parent or name, just serialized data or attributes.</dd>
+					</dl>
+			
+	</div>
+<a name="method_buildAttributeQuery" id="_buildAttributeQuery"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_buildAttributeQuery</span> (line <span class="line-number">1695</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Builds a piece of an attribute query.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An SQL fragment and a list of values suitable for binding                 as an array.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_buildAttributeQuery
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$glue</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$join</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$glue</span><span class="var-description">: The glue to join the criteria (OR/AND).</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: The array of criteria.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$join</span><span class="var-description">: Should we join on a clean                          horde_datatree_attributes table? Defaults to                          false.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_exists" id="_exists"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_exists</span> (line <span class="line-number">389</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Check for existance of an object in a backend-specific manner.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True if the object exists, false otherwise.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_exists
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$object_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$object_name</span><span class="var-description">: Object name to check for.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getAlias" id="_getAlias"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getAlias</span> (line <span class="line-number">1750</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get an alias to horde_datatree_attributes, incrementing it if  necessary.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_getAlias
+		</span>
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$increment</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$increment</span><span class="var-description">: Increment the alias count? Defaults to no.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getId" id="_getId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getId</span> (line <span class="line-number">419</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Look up a datatree id by name.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> DataTree id</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			_getId
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getName" id="_getName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_getName</span> (line <span class="line-number">447</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Look up a datatree name by id.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> DataTree name</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_getName
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_init" id="_init"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_init</span> (line <span class="line-number">1864</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Attempts to open a connection to the SQL server.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_init
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Horde_DataTree/DataTree.html">DataTree</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodDataTree">DataTree::DataTree()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodadd">DataTree::add()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodcount">DataTree::count()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodcountByAttributes">DataTree::countByAttributes()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodencodeName">DataTree::encodeName()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodexists">DataTree::exists()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodfactory">DataTree::factory()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodget">DataTree::get()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetAttributes">DataTree::getAttributes()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetByAttributes">DataTree::getByAttributes()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetById">DataTree::getById()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetData">DataTree::getData()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetGroups">DataTree::getGroups()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetId">DataTree::getId()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetName">DataTree::getName()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetNumberOfChildren">DataTree::getNumberOfChildren()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetObject">DataTree::getObject()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetObjectById">DataTree::getObjectById()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetObjects">DataTree::getObjects()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetOrder">DataTree::getOrder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetParam">DataTree::getParam()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetParent">DataTree::getParent()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetParentById">DataTree::getParentById()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetParentIdString">DataTree::getParentIdString()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetParentList">DataTree::getParentList()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetParents">DataTree::getParents()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetShortName">DataTree::getShortName()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodgetSortedTree">DataTree::getSortedTree()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodmove">DataTree::move()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodremove">DataTree::remove()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodremoveUserData">DataTree::removeUserData()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodrename">DataTree::rename()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodreorder">DataTree::reorder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodset">DataTree::set()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodsetOrder">DataTree::setOrder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodsingleton">DataTree::singleton()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodsortByAttributes">DataTree::sortByAttributes()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodsortHash">DataTree::sortHash()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#methodupdateData">DataTree::updateData()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#method_add">DataTree::_add()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#method_cmp">DataTree::_cmp()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#method_cmpSorted">DataTree::_cmpSorted()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#method_defineObjectClass">DataTree::_defineObjectClass()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#method_extractOneLevel">DataTree::_extractOneLevel()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Horde_DataTree/DataTree.html#method_reorder">DataTree::_reorder()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 30 Jan 2011 05:21:54 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

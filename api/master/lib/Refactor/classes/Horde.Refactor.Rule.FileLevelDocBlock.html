@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Horde.html">\Horde</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1251081084"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1251081084" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-140452914"></a>
+                                <a href="../namespaces/Horde.html" style="margin-left: 30px; padding-left: 0">Horde</a>
+            </div>
+            <div id="namespace-140452914" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-314634977"></a>
+                                <a href="../namespaces/Horde.Refactor.html" style="margin-left: 30px; padding-left: 0">Refactor</a>
+            </div>
+            <div id="namespace-314634977" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-310632983"></a>
+                                <a href="../namespaces/Horde.Refactor.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-310632983" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde.Refactor.Config.Base.html">Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Config.FileLevelDocBlock.html">FileLevelDocBlock</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-237168936"></a>
+                                <a href="../namespaces/Horde.Refactor.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-237168936" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde.Refactor.Exception.NotFound.html">NotFound</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Exception.StopProcessing.html">StopProcessing</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Exception.UnexpectedToken.html">UnexpectedToken</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-709459211"></a>
+                                <a href="../namespaces/Horde.Refactor.Rule.html" style="margin-left: 30px; padding-left: 0">Rule</a>
+            </div>
+            <div id="namespace-709459211" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html">FileLevelDocBlock</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Rule.Php4Constructor.html">Php4Constructor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde.Refactor.Cli.html">Cli</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Config.html">Config</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Regexp.html">Regexp</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Rule.html">Rule</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.TagFactory.html">TagFactory</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Tokens.html">Tokens</a></li>
+                                                    <li class="class"><a href="../classes/Horde.Refactor.Translation.html">Translation</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Horde.Refactor.Rule.html">\Horde\Refactor\Rule</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Horde\Refactor\Rule</small>FileLevelDocBlock</h1>
+                    <p><em>Refactors a file to contain a (correct) file-level DocBlock.</em></p>
+                    <p>If there is no file-level DocBlock, the first DocBlock is used as a template
+to create one.</p>
+<p>If a file-level DocBlock exists, this one and the following the following
+first element-level DocBlock are checked for correct content.</p>
+<p>If no DocBlock exists at all, a default is created. If you want your own
+defaults, extend this class and overwrite __construct().</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method_run" class="">run()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#method_dump" class="">dump()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#method_addWarning" class="">addWarning()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#method_pauseWarnings" class="">pauseWarnings()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#method_resumeWarnings" class="">resumeWarnings()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method_autoload" class="">autoload()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#property_warnings" class="">$warnings</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__addEmptyBlocks" class="">_addEmptyBlocks()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__checkDocBlocks" class="">_checkDocBlocks()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__checkDocBlock" class="">_checkDocBlock()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__createFileLevelBlock" class="">_createFileLevelBlock()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__stripIncorrectText" class="">_stripIncorrectText()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__getFileLevelDocBlock" class="">_getFileLevelDocBlock()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__getDocBlock" class="">_getDocBlock()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__processDocBlockText" class="">_processDocBlockText()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__processDocBlock" class="">_processDocBlock()</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#method__fillTemplate" class="">_fillTemplate()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#property__config" class="">$_config</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#property__tokens" class="">$_tokens</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.html#property__warnings" class="">$_warnings</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#property__first" class="">$_first</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#property__second" class="">$_second</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#property__firstBlock" class="">$_firstBlock</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#property__secondBlock" class="">$_secondBlock</a><br />
+                                                                    <a href="../classes/Horde.Refactor.Rule.FileLevelDocBlock.html#property__extracted" class="">$_extracted</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Rule.FileLevelDocBlock.html"><div class="path-wrapper">Rule/FileLevelDocBlock.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Refactor</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde.Refactor.Rule.html">\Horde\Refactor\Rule</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde\Refactor\Rule\FileLevelDocBlock</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/bsd">http://www.horde.org/licenses/bsd</a> BSD</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_warnings" name="property_warnings" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$warnings</h3>
+                <pre class="signature">$warnings : array&lt;mixed,string&gt;</pre>
+                <p><em></em></p>
+                <p>Warning messages.</p>
+
+                                <h4>Type</h4>
+                array&lt;mixed,string&gt;
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__config" name="property__config" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_config</h3>
+                <pre class="signature">$_config : \Horde\Refactor\Horde\Refactor\Config\Base</pre>
+                <p><em>Rule configuration.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde\Refactor\Horde\Refactor\Config\Base
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__tokens" name="property__tokens" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_tokens</h3>
+                <pre class="signature">$_tokens : \Horde\Refactor\Horde\Refactor\Tokens</pre>
+                <p><em>Current list of tokens.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde\Refactor\Horde\Refactor\Tokens
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__warnings" name="property__warnings" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_warnings</h3>
+                <pre class="signature">$_warnings : array&lt;mixed,string&gt;</pre>
+                <p><em>A list of warning messages.</em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,string&gt;
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__first" name="property__first" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_first</h3>
+                <pre class="signature">$_first : integer</pre>
+                <p><em>Position of the first DocBlock.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__second" name="property__second" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_second</h3>
+                <pre class="signature">$_second : integer</pre>
+                <p><em>Position of the second DocBlock.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__firstBlock" name="property__firstBlock" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_firstBlock</h3>
+                <pre class="signature">$_firstBlock : \phpDocumentor\Reflection\DocBlock</pre>
+                <p><em>The first DocBlock.</em></p>
+                
+
+                                <h4>Type</h4>
+                \phpDocumentor\Reflection\DocBlock
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__secondBlock" name="property__secondBlock" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_secondBlock</h3>
+                <pre class="signature">$_secondBlock : \phpDocumentor\Reflection\DocBlock</pre>
+                <p><em>The second DocBlock.</em></p>
+                
+
+                                <h4>Type</h4>
+                \phpDocumentor\Reflection\DocBlock
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__extracted" name="property__extracted" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_extracted</h3>
+                <pre class="signature">$_extracted : array</pre>
+                <p><em>Extracted information from existing DocBlocks.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$file</span>, \Horde\Refactor\Rule\Horde\Refactor\Config\Base  <span class="argument">$config</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$file </td>
+                                <td><p>Name of the file to parse and
+refactor.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\Horde\Refactor\Rule\Horde\Refactor\Config\Base</td>
+                                <td>$config </td>
+                                <td><p>The rule configuration.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_run" name="method_run" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">run()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">run() </pre>
+                <p><em>Applies the actual refactoring to the tokenized code.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dump" name="method_dump" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dump()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dump() : string</pre>
+                <p><em>Returns the file code in its current state.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The file code.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(  <span class="argument">$name</span>) </pre>
+                <p><em>Getter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addWarning" name="method_addWarning" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addWarning()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addWarning(string  <span class="argument">$warning</span>) </pre>
+                <p><em>Adds a warning.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$warning </td>
+                                <td><p>A warning.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pauseWarnings" name="method_pauseWarnings" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pauseWarnings()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pauseWarnings() </pre>
+                <p><em>Pauses the logging of warnings and errors.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resumeWarnings" name="method_resumeWarnings" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">resumeWarnings()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resumeWarnings() </pre>
+                <p><em>Resumes the logging of warnings and errors.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde.Refactor.Rule.html"><div class="path-wrapper">\Horde\Refactor\Rule</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_autoload" name="method_autoload" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">autoload()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">autoload() </pre>
+                <p><em>Autoload necessary libraries.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__addEmptyBlocks" name="method__addEmptyBlocks" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_addEmptyBlocks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_addEmptyBlocks() </pre>
+                <p><em>Adds two default DocBlocks at the top of the file.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde\Refactor\Rule\$_defaultContent</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkDocBlocks" name="method__checkDocBlocks" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkDocBlocks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkDocBlocks() </pre>
+                <p><em>Verifies the existing DocBlocks.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__checkDocBlock" name="method__checkDocBlock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_checkDocBlock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_checkDocBlock(string  <span class="argument">$which</span>) </pre>
+                <p><em>Verifies one of the existing DocBlocks.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$which </td>
+                                <td><p>Which DocBlock to verify, either 'file' or 'class'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__createFileLevelBlock" name="method__createFileLevelBlock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_createFileLevelBlock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_createFileLevelBlock() </pre>
+                <p><em>Creates a file-level DocBlock based on the first existing DocBlock.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__stripIncorrectText" name="method__stripIncorrectText" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_stripIncorrectText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_stripIncorrectText(string  <span class="argument">$text</span>, string  <span class="argument">$which</span>) : string</pre>
+                <p><em>Strips text from summary and description that belongs to the &quot;other&quot;
+block.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$text </td>
+                                <td><p>The original text.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$which </td>
+                                <td><p>Which DocBlock to verify, either 'file' or 'class'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The cleaned text.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getFileLevelDocBlock" name="method__getFileLevelDocBlock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getFileLevelDocBlock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getFileLevelDocBlock(array&lt;mixed,\phpDocumentor\Reflection\DocBlock\Tag&gt;  <span class="argument">$tags</span>) : \phpDocumentor\Reflection\DocBlock</pre>
+                <p><em>Builds a default file-level DocBlock.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,\phpDocumentor\Reflection\DocBlock\Tag&gt;</td>
+                                <td>$tags </td>
+                                <td><p>Tags to add.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \phpDocumentor\Reflection\DocBlock
+                                            &mdash; <p>A file-level DocBlock.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getDocBlock" name="method__getDocBlock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getDocBlock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getDocBlock(\phpDocumentor\Reflection\DocBlock|string  <span class="argument">$descriptions</span>, array&lt;mixed,\phpDocumentor\Reflection\DocBlock\Tag&gt;  <span class="argument">$tags</span>) : \phpDocumentor\Reflection\DocBlock</pre>
+                <p><em>Builds a DocBlock.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\phpDocumentor\Reflection\DocBlock|string</td>
+                                <td>$descriptions </td>
+                                <td><p>The DocBlock summary and description or the DocBlock to pull those
+from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array&lt;mixed,\phpDocumentor\Reflection\DocBlock\Tag&gt;</td>
+                                <td>$tags </td>
+                                <td><p>Tags to add.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \phpDocumentor\Reflection\DocBlock
+                                            &mdash; <p>A DocBlock.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__processDocBlockText" name="method__processDocBlockText" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_processDocBlockText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_processDocBlockText(\phpDocumentor\Reflection\DocBlock  <span class="argument">$block</span>, string  <span class="argument">$which</span>) </pre>
+                <p><em>Processes the summary and description of an existing DocBlock.</em></p>
+                <p>Parses any information out of the &quot;other&quot; block that might be required
+later.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\phpDocumentor\Reflection\DocBlock</td>
+                                <td>$block </td>
+                                <td><p>A DocBlock.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$which </td>
+                                <td><p>Which DocBlock to verify, either 'file' or 'class'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__processDocBlock" name="method__processDocBlock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_processDocBlock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_processDocBlock(\phpDocumentor\Reflection\DocBlock  <span class="argument">$block</span>) </pre>
+                <p><em>Processes an existing DocBlock.</em></p>
+                <p>Parses any information out of the block that might be required later,
+and checks for different tag contents if processing the second block.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\phpDocumentor\Reflection\DocBlock</td>
+                                <td>$block </td>
+                                <td><p>A DocBlock.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__fillTemplate" name="method__fillTemplate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_fillTemplate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_fillTemplate(string|array  <span class="argument">$template</span>) : string</pre>
+                <p><em>Fills out the placeholders in DocBlock templates.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|array</td>
+                                <td>$template </td>
+                                <td><p>The template(s) to fill out.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The filled template.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">FileLevelDocBlock.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Rule/FileLevelDocBlock.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Horde.html">\Horde</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:33.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

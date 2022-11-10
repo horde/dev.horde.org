@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">99</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1165454923"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1165454923" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Mail_Exception.html">Horde_Mail_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Mbox_Parse.html">Horde_Mail_Mbox_Parse</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822.html">Horde_Mail_Rfc822</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822_Address.html">Horde_Mail_Rfc822_Address</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822_Group.html">Horde_Mail_Rfc822_Group</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822_GroupList.html">Horde_Mail_Rfc822_GroupList</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822_Identification.html">Horde_Mail_Rfc822_Identification</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822_List.html">Horde_Mail_Rfc822_List</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Rfc822_Object.html">Horde_Mail_Rfc822_Object</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Translation.html">Horde_Mail_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport.html">Horde_Mail_Transport</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Lmtphorde.html">Horde_Mail_Transport_Lmtphorde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Mail.html">Horde_Mail_Transport_Mail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Mock.html">Horde_Mail_Transport_Mock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Null.html">Horde_Mail_Transport_Null</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Sendmail.html">Horde_Mail_Transport_Sendmail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Smtp.html">Horde_Mail_Transport_Smtp</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Smtphorde.html">Horde_Mail_Transport_Smtphorde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Mail_Transport_Smtpmx.html">Horde_Mail_Transport_Smtpmx</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Mail_Rfc822_Identification</h1>
+                    <p><em>Class to parse identification headers (RFC 5322 [3.6.4]): Message-ID,
+References, and In-Reply-To.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method_parseAddressList" class="">parseAddressList()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method_encode" class="">encode()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method_trimAddress" class="">trimAddress()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method_approximateCount" class="">approximateCount()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method_isValidInetAddress" class="">isValidInetAddress()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822_Identification.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822_Identification.html#method_parse" class="">parse()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mail_Rfc822_Identification.html#property_ids" class="">$ids</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#constant_ATEXT" class="deprecated">ATEXT</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#constant_ENCODE_FILTER" class="">ENCODE_FILTER</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseAddressList" class="">_parseAddressList()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseAddress" class="">_parseAddress()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseGroup" class="">_parseGroup()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseMailbox" class="">_parseMailbox()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseNameAddr" class="">_parseNameAddr()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseAddrSpec" class="">_parseAddrSpec()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseLocalPart" class="">_parseLocalPart()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseAngleAddr" class="">_parseAngleAddr()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__parseDomainList" class="">_parseDomainList()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822ParsePhrase" class="">_rfc822ParsePhrase()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822ParseQuotedString" class="">_rfc822ParseQuotedString()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822ParseDotAtom" class="">_rfc822ParseDotAtom()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822ParseAtomOrDot" class="">_rfc822ParseAtomOrDot()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822ParseDomain" class="">_rfc822ParseDomain()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822ParseDomainLiteral" class="">_rfc822ParseDomainLiteral()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822SkipLwsp" class="">_rfc822SkipLwsp()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822SkipComment" class="">_rfc822SkipComment()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__rfc822IsAtext" class="">_rfc822IsAtext()</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#method__curr" class="">_curr()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#property__data" class="">$_data</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#property__datalen" class="">$_datalen</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#property__comments" class="">$_comments</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#property__listob" class="">$_listob</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#property__params" class="">$_params</a><br />
+                                                                    <a href="../classes/Horde_Mail_Rfc822.html#property__ptr" class="">$_ptr</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Mail_Rfc822_Identification.html#method__parseMessageId" class="">_parseMessageId()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Rfc822.Identification.html"><div class="path-wrapper">Rfc822/Identification.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Mail</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_Mail_Rfc822.html">\Horde_Mail_Rfc822</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Mail_Rfc822_Identification</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael Slusarz <a href="mailto:slusarz@horde.org">slusarz@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2012-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/bsd">http://www.horde.org/licenses/bsd</a> New BSD License</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ATEXT" name="constant_ATEXT" class="anchor"></a>
+            <article id="constant_ATEXT" class="constant">
+                <h3 class="deprecated">ATEXT</h3>
+                <pre class="signature">ATEXT</pre>
+                <p><em>Valid atext characters.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    
+                </aside>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ENCODE_FILTER" name="constant_ENCODE_FILTER" class="anchor"></a>
+            <article id="constant_ENCODE_FILTER" class="constant">
+                <h3 class="">ENCODE_FILTER</h3>
+                <pre class="signature">ENCODE_FILTER</pre>
+                <p><em>Excluded (in ASCII decimal): 0-8, 10-31, 34, 40-41, 44, 58-60, 62, 64,
+91-93, 127</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ids" name="property_ids" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$ids</h3>
+                <pre class="signature">$ids : array</pre>
+                <p><em>List of message IDs parsed.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__data" name="property__data" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_data</h3>
+                <pre class="signature">$_data : string</pre>
+                <p><em>The address string to parse.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__datalen" name="property__datalen" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_datalen</h3>
+                <pre class="signature">$_datalen : integer</pre>
+                <p><em>Length of the address string.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__comments" name="property__comments" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_comments</h3>
+                <pre class="signature">$_comments : string</pre>
+                <p><em>Comment cache.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__listob" name="property__listob" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_listob</h3>
+                <pre class="signature">$_listob : \Horde_Mail_Rfc822_List</pre>
+                <p><em>List object to return in parseAddressList().</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Mail_Rfc822_List.html">\Horde_Mail_Rfc822_List</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__params" name="property__params" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_params</h3>
+                <pre class="signature">$_params : array</pre>
+                <p><em>Configuration parameters.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__ptr" name="property__ptr" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_ptr</h3>
+                <pre class="signature">$_ptr : integer</pre>
+                <p><em>Data pointer.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_parseAddressList" name="method_parseAddressList" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">parseAddressList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">parseAddressList(mixed  <span class="argument">$address</span>, array  <span class="argument">$params = array()</span>) : \Horde_Mail_Rfc822_List</pre>
+                <p><em>Starts the whole process.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$address </td>
+                                <td><p>The address(es) to validate. Either a string,
+a Horde_Mail_Rfc822_Object, or an array of
+strings and/or Horde_Mail_Rfc822_Objects.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Optional parameters:</p>
+<ul>
+<li>default_domain: (string) Default domain/host.
+DEFAULT: None</li>
+<li>group: (boolean) Return a GroupList object instead of a List object?
+DEFAULT: false</li>
+<li>limit: (integer) Stop processing after this many addresses.
+DEFAULT: No limit (0)</li>
+<li>validate: (mixed) Strict validation of personal part data? If
+false, attempts to allow non-ASCII characters and
+non-quoted strings in the personal data, and will
+silently abort if an unparseable address is found.
+If true, does strict RFC 5322 (ASCII-only) parsing. If
+'eai' (@since 2.5.0), allows RFC 6532 (EAI/UTF-8)
+addresses.
+DEFAULT: false</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Mail_Rfc822_List.html">\Horde_Mail_Rfc822_List</a>
+                                            &mdash; <p>A list object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_encode" name="method_encode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">encode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">encode(string  <span class="argument">$str</span>, string  <span class="argument">$type = &#039;address&#039;</span>) : string</pre>
+                <p><em>Quotes and escapes the given string if necessary using rules contained
+in RFC 2822 [3.2.5].</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$str </td>
+                                <td><p>The string to be quoted and escaped.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>Either 'address', 'comment' (@since 2.6.0), or
+'personal'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The correctly quoted and escaped string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_trimAddress" name="method_trimAddress" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">trimAddress()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">trimAddress(string  <span class="argument">$address</span>) : string</pre>
+                <p><em>If an email address has no personal information, get rid of any angle
+brackets (&lt;&gt;) around it.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$address </td>
+                                <td><p>The address to trim.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The trimmed address.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_approximateCount" name="method_approximateCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">approximateCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">approximateCount(string  <span class="argument">$data</span>) : integer</pre>
+                <p><em>Returns an approximate count of how many addresses are in the string.</em></p>
+                <p>This is APPROXIMATE as it only splits based on a comma which has no
+preceding backslash.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$data </td>
+                                <td><p>Addresses to count.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>Approximate count.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isValidInetAddress" name="method_isValidInetAddress" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isValidInetAddress()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isValidInetAddress(string  <span class="argument">$data</span>, boolean  <span class="argument">$strict = false</span>) : mixed</pre>
+                <p><em>Validates whether an email is of the common internet form:
+&lt;user&gt;@&lt;domain&gt;. This can be sufficient for most people.</em></p>
+                <p>Optional stricter mode can be utilized which restricts mailbox
+characters allowed to: alphanumeric, full stop, hyphen, and underscore.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$data </td>
+                                <td><p>Address to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$strict </td>
+                                <td><p>Strict check?</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>False if it fails, an indexed array username/domain if
+it matches.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$value = null</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td><p>Identification field value to parse.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_parse" name="method_parse" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">parse()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">parse(string  <span class="argument">$value</span>) </pre>
+                <p><em>Parse an identification header.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td><p>Identification field value to parse.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseAddressList" name="method__parseAddressList" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseAddressList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseAddressList() </pre>
+                <p><em>address-list = (address *(&quot;,&quot; address)) / obs-addr-list</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseAddress" name="method__parseAddress" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseAddress()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseAddress() </pre>
+                <p><em>address = mailbox / group</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseGroup" name="method__parseGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseGroup() : boolean</pre>
+                <p><em>group           = display-name &quot;:&quot; [mailbox-list / CFWS] &quot;;&quot; [CFWS]
+display-name    = phrase</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if a group was parsed.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseMailbox" name="method__parseMailbox" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseMailbox()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseMailbox() : mixed</pre>
+                <p><em>mailbox = name-addr / addr-spec</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Mailbox object if mailbox was parsed, or false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseNameAddr" name="method__parseNameAddr" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseNameAddr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseNameAddr() : mixed</pre>
+                <p><em>name-addr    = [display-name] angle-addr
+display-name = phrase</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Mailbox object, or false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseAddrSpec" name="method__parseAddrSpec" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseAddrSpec()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseAddrSpec() : mixed</pre>
+                <p><em>addr-spec = local-part &quot;@&quot; domain</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Mailbox object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseLocalPart" name="method__parseLocalPart" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseLocalPart()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseLocalPart() : string</pre>
+                <p><em>local-part      = dot-atom / quoted-string / obs-local-part
+obs-local-part  = word *(&quot;.&quot; word)</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The local part.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseAngleAddr" name="method__parseAngleAddr" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseAngleAddr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseAngleAddr() : mixed</pre>
+                <p><em>&quot;&lt;&quot; [ &quot;@&quot; route &quot;:&quot; ] local-part &quot;@&quot; domain &quot;&gt;&quot;</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Mailbox object, or false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseDomainList" name="method__parseDomainList" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_parseDomainList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseDomainList() : array</pre>
+                <p><em>obs-domain-list = &quot;@&quot; domain *(*(CFWS / &quot;,&quot; ) [CFWS] &quot;@&quot; domain)</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Routes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822ParsePhrase" name="method__rfc822ParsePhrase" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822ParsePhrase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822ParsePhrase(  <span class="argument">$phrase</span>) </pre>
+                <p><em>phrase     = 1*word / obs-phrase
+word       = atom / quoted-string
+obs-phrase = word *(word / &quot;.&quot; / CFWS)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$phrase </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822ParseQuotedString" name="method__rfc822ParseQuotedString" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822ParseQuotedString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822ParseQuotedString(  <span class="argument">$str</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$str </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822ParseDotAtom" name="method__rfc822ParseDotAtom" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822ParseDotAtom()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822ParseDotAtom(  <span class="argument">$str</span>, string  <span class="argument">$validate = null</span>) </pre>
+                <p><em>dot-atom        = [CFWS] dot-atom-text [CFWS]
+dot-atom-text   = 1*atext *(&quot;.&quot; 1*atext)</em></p>
+                <p>atext           = ; Any character except controls, SP, and specials.</p>
+<p>For RFC-822 compatibility allow LWSP around '.'.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$str </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$validate </td>
+                                <td><p>Use these characters as delimiter.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822ParseAtomOrDot" name="method__rfc822ParseAtomOrDot" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822ParseAtomOrDot()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822ParseAtomOrDot(  <span class="argument">$str</span>) </pre>
+                <p><em>atom  = [CFWS] 1*atext [CFWS]
+atext = ; Any character except controls, SP, and specials.</em></p>
+                <p>This method doesn't just silently skip over WS.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$str </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822ParseDomain" name="method__rfc822ParseDomain" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822ParseDomain()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822ParseDomain(  <span class="argument">$str</span>) </pre>
+                <p><em>domain          = dot-atom / domain-literal / obs-domain
+domain-literal  = [CFWS] &quot;[&quot; *([FWS] dcontent) [FWS] &quot;]&quot; [CFWS]
+obs-domain      = atom *(&quot;.&quot; atom)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$str </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822ParseDomainLiteral" name="method__rfc822ParseDomainLiteral" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822ParseDomainLiteral()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822ParseDomainLiteral(  <span class="argument">$str</span>) </pre>
+                <p><em>domain-literal  = [CFWS] &quot;[&quot; *([FWS] dcontent) [FWS] &quot;]&quot; [CFWS]
+dcontent        = dtext / quoted-pair
+dtext           = NO-WS-CTL /     ; Non white space controls
+          %d33-90 /       ; The rest of the US-ASCII
+          %d94-126        ;  characters not including &quot;[&quot;,
+                  ;  &quot;]&quot;, or &quot;\&quot;</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$str </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822SkipLwsp" name="method__rfc822SkipLwsp" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822SkipLwsp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822SkipLwsp(boolean  <span class="argument">$advance = false</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$advance </td>
+                                <td><p>Advance cursor?</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822SkipComment" name="method__rfc822SkipComment" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822SkipComment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822SkipComment() </pre>
+                <p><em></em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rfc822IsAtext" name="method__rfc822IsAtext" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rfc822IsAtext()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rfc822IsAtext(string  <span class="argument">$chr</span>, string  <span class="argument">$validate = null</span>) : boolean</pre>
+                <p><em>Check if data is an atom.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$chr </td>
+                                <td><p>The character to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$validate </td>
+                                <td><p>If in non-validate mode, use these characters
+as the non-atom delimiters.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if a valid atom.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__curr" name="method__curr" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_curr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_curr(boolean  <span class="argument">$advance = false</span>) : string</pre>
+                <p><em>Return current character.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$advance </td>
+                                <td><p>If true, advance the cursor.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The current character (false if EOF reached).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Mail_Rfc822.html"><div class="path-wrapper">\Horde_Mail_Rfc822</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__parseMessageId" name="method__parseMessageId" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_parseMessageId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_parseMessageId() : string</pre>
+                <p><em>Message IDs are defined in RFC 5322 [3.6.4]. In short, they can only
+contain one &#039;@&#039; character. However, Outlook can produce invalid
+Message-IDs containing multiple &#039;@&#039; characters, which will fail the
+strict RFC checks.</em></p>
+                <p>Since we don't care about the structure/details of the Message-ID,
+just do a basic parse that considers all characters inside of angled
+brackets to be valid.</p>
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Mail_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A full Message-ID (enclosed in angled brackets).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Identification.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Rfc822/Identification.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:35.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

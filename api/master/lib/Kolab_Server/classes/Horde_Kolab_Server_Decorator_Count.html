@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">117</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-283864154"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-283864154" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Connection_Interface.html">Horde_Kolab_Server_Connection_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Interface.html">Horde_Kolab_Server_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_List_Interface.html">Horde_Kolab_Server_List_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Interface.html">Horde_Kolab_Server_Object_Attribute_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Object_Interface.html">Horde_Kolab_Server_Object_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Object_Searches.html">Horde_Kolab_Server_Object_Searches</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Objects_Interface.html">Horde_Kolab_Server_Objects_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Query_Element_Interface.html">Horde_Kolab_Server_Query_Element_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Query_Interface.html">Horde_Kolab_Server_Query_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Result_Interface.html">Horde_Kolab_Server_Result_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Schema_Interface.html">Horde_Kolab_Server_Schema_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Search_Interface.html">Horde_Kolab_Server_Search_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Search_Operation_Interface.html">Horde_Kolab_Server_Search_Operation_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Structure_Attribute_Interface.html">Horde_Kolab_Server_Structure_Attribute_Interface</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Server_Structure_Interface.html">Horde_Kolab_Server_Structure_Interface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Composite.html">Horde_Kolab_Server_Composite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Connection_File.html">Horde_Kolab_Server_Connection_File</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Connection_Mock.html">Horde_Kolab_Server_Connection_Mock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Connection_Mock_Ldap.html">Horde_Kolab_Server_Connection_Mock_Ldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Connection_Mock_Search.html">Horde_Kolab_Server_Connection_Mock_Search</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Connection_Simpleldap.html">Horde_Kolab_Server_Connection_Simpleldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Connection_Splittedldap.html">Horde_Kolab_Server_Connection_Splittedldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Decorator_Clean.html">Horde_Kolab_Server_Decorator_Clean</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Decorator_Count.html">Horde_Kolab_Server_Decorator_Count</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Decorator_Log.html">Horde_Kolab_Server_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Decorator_Map.html">Horde_Kolab_Server_Decorator_Map</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Exception.html">Horde_Kolab_Server_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Exception_Bindfailed.html">Horde_Kolab_Server_Exception_Bindfailed</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Exception_Novalue.html">Horde_Kolab_Server_Exception_Novalue</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Factory.html">Horde_Kolab_Server_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Ldap.html">Horde_Kolab_Server_Ldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Ldap_Changes.html">Horde_Kolab_Server_Ldap_Changes</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Ldap_Filtered.html">Horde_Kolab_Server_Ldap_Filtered</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Ldap_Standard.html">Horde_Kolab_Server_Ldap_Standard</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_List_Base.html">Horde_Kolab_Server_List_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Base.html">Horde_Kolab_Server_Object_Attribute_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Createtimestamp.html">Horde_Kolab_Server_Object_Attribute_Createtimestamp</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Createtimestampdate.html">Horde_Kolab_Server_Object_Attribute_Createtimestampdate</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Decorator.html">Horde_Kolab_Server_Object_Attribute_Decorator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Default.html">Horde_Kolab_Server_Object_Attribute_Default</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Empty.html">Horde_Kolab_Server_Object_Attribute_Empty</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_External.html">Horde_Kolab_Server_Object_Attribute_External</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Field.html">Horde_Kolab_Server_Object_Attribute_Field</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Firstnamelastname.html">Horde_Kolab_Server_Object_Attribute_Firstnamelastname</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Guid.html">Horde_Kolab_Server_Object_Attribute_Guid</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Id.html">Horde_Kolab_Server_Object_Attribute_Id</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Internal.html">Horde_Kolab_Server_Object_Attribute_Internal</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Locked.html">Horde_Kolab_Server_Object_Attribute_Locked</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Modifytimestamp.html">Horde_Kolab_Server_Object_Attribute_Modifytimestamp</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Modifytimestampdate.html">Horde_Kolab_Server_Object_Attribute_Modifytimestampdate</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Objectclass.html">Horde_Kolab_Server_Object_Attribute_Objectclass</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Openldapaci.html">Horde_Kolab_Server_Object_Attribute_Openldapaci</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Required.html">Horde_Kolab_Server_Object_Attribute_Required</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Single.html">Horde_Kolab_Server_Object_Attribute_Single</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Value.html">Horde_Kolab_Server_Object_Attribute_Value</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Attribute_Writelock.html">Horde_Kolab_Server_Object_Attribute_Writelock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Base.html">Horde_Kolab_Server_Object_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Factory.html">Horde_Kolab_Server_Object_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Groupofnames.html">Horde_Kolab_Server_Object_Groupofnames</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Hash.html">Horde_Kolab_Server_Object_Hash</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Inetorgperson.html">Horde_Kolab_Server_Object_Inetorgperson</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab.html">Horde_Kolab_Server_Object_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_Address.html">Horde_Kolab_Server_Object_Kolab_Address</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_Administrator.html">Horde_Kolab_Server_Object_Kolab_Administrator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_Adminrole.html">Horde_Kolab_Server_Object_Kolab_Adminrole</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_Distlist.html">Horde_Kolab_Server_Object_Kolab_Distlist</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_Domainmaintainer.html">Horde_Kolab_Server_Object_Kolab_Domainmaintainer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_Maintainer.html">Horde_Kolab_Server_Object_Kolab_Maintainer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolab_User.html">Horde_Kolab_Server_Object_Kolab_User</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolabgermanbankarrangement.html">Horde_Kolab_Server_Object_Kolabgermanbankarrangement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolabgroupofnames.html">Horde_Kolab_Server_Object_Kolabgroupofnames</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolabinetorgperson.html">Horde_Kolab_Server_Object_Kolabinetorgperson</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolabpop3account.html">Horde_Kolab_Server_Object_Kolabpop3account</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Kolabsharedfolder.html">Horde_Kolab_Server_Object_Kolabsharedfolder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Mcached.html">Horde_Kolab_Server_Object_Mcached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Organizationalperson.html">Horde_Kolab_Server_Object_Organizationalperson</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Person.html">Horde_Kolab_Server_Object_Person</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Object_Top.html">Horde_Kolab_Server_Object_Top</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Objects_Base.html">Horde_Kolab_Server_Objects_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_And.html">Horde_Kolab_Server_Query_Element_And</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Approx.html">Horde_Kolab_Server_Query_Element_Approx</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Begins.html">Horde_Kolab_Server_Query_Element_Begins</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Contains.html">Horde_Kolab_Server_Query_Element_Contains</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Ends.html">Horde_Kolab_Server_Query_Element_Ends</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Equals.html">Horde_Kolab_Server_Query_Element_Equals</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Greater.html">Horde_Kolab_Server_Query_Element_Greater</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Group.html">Horde_Kolab_Server_Query_Element_Group</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Less.html">Horde_Kolab_Server_Query_Element_Less</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Mapped.html">Horde_Kolab_Server_Query_Element_Mapped</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Not.html">Horde_Kolab_Server_Query_Element_Not</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Or.html">Horde_Kolab_Server_Query_Element_Or</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Element_Single.html">Horde_Kolab_Server_Query_Element_Single</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Query_Ldap.html">Horde_Kolab_Server_Query_Ldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Result_Ldap.html">Horde_Kolab_Server_Result_Ldap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Schema_Base.html">Horde_Kolab_Server_Schema_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Schema_Decorator_Cache.html">Horde_Kolab_Server_Schema_Decorator_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Base.html">Horde_Kolab_Server_Search_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Addressesforuidormail.html">Horde_Kolab_Server_Search_Operation_Addressesforuidormail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Attributes.html">Horde_Kolab_Server_Search_Operation_Attributes</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Base.html">Horde_Kolab_Server_Search_Operation_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Children.html">Horde_Kolab_Server_Search_Operation_Children</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Constraint_Single.html">Horde_Kolab_Server_Search_Operation_Constraint_Single</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Constraint_Strict.html">Horde_Kolab_Server_Search_Operation_Constraint_Strict</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Groupsformember.html">Horde_Kolab_Server_Search_Operation_Groupsformember</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guid.html">Horde_Kolab_Server_Search_Operation_Guid</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidforalias.html">Horde_Kolab_Server_Search_Operation_Guidforalias</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidforcn.html">Horde_Kolab_Server_Search_Operation_Guidforcn</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidforkolabusers.html">Horde_Kolab_Server_Search_Operation_Guidforkolabusers</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidformail.html">Horde_Kolab_Server_Search_Operation_Guidformail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidformailoralias.html">Horde_Kolab_Server_Search_Operation_Guidformailoralias</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidforuid.html">Horde_Kolab_Server_Search_Operation_Guidforuid</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidforuidormail.html">Horde_Kolab_Server_Search_Operation_Guidforuidormail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Guidforuidormailoralias.html">Horde_Kolab_Server_Search_Operation_Guidforuidormailoralias</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Mailforuidormail.html">Horde_Kolab_Server_Search_Operation_Mailforuidormail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Restrictgroups.html">Horde_Kolab_Server_Search_Operation_Restrictgroups</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Search_Operation_Restrictkolab.html">Horde_Kolab_Server_Search_Operation_Restrictkolab</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Structure_Attribute_Double.html">Horde_Kolab_Server_Structure_Attribute_Double</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Structure_Attribute_Value.html">Horde_Kolab_Server_Structure_Attribute_Value</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Structure_Base.html">Horde_Kolab_Server_Structure_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Structure_Kolab.html">Horde_Kolab_Server_Structure_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Server_Structure_Ldap.html">Horde_Kolab_Server_Structure_Ldap</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Kolab_Server_Decorator_Count</h1>
+                    <p><em>A server decorator that counts the number of database calls and
+reports them via a logger.</em></p>
+                    <p>Copyright 2008-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method___destruct" class="">__destruct()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_connectGuid" class="">connectGuid()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_getGuid" class="">getGuid()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_getBaseGuid" class="">getBaseGuid()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_read" class="">read()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_readAttributes" class="">readAttributes()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_find" class="">find()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_findBelow" class="">findBelow()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_save" class="">save()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_add" class="">add()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_rename" class="">rename()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_getSchema" class="">getSchema()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#method_getParentGuid" class="">getParentGuid()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#property__server" class="">$_server</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#property__logger" class="">$_logger</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Server_Decorator_Count.html#property__count" class="">$_count</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Decorator.Count.html"><div class="path-wrapper">Decorator/Count.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Kolab_Server</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Kolab_Server_Decorator_Count</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="../classes/Horde_Kolab_Server_Interface.html"><div class="namespace-wrapper">\Horde_Kolab_Server_Interface</div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Kolab</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Gunnar Wrobel <a href="mailto:wrobel@pardus.de">wrobel@pardus.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL 2.1</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__server" name="property__server" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_server</h3>
+                <pre class="signature">$_server : \Horde_Kolab_Server</pre>
+                <p><em>The server we delegate to.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Kolab_Server
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__logger" name="property__logger" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_logger</h3>
+                <pre class="signature">$_logger : \Horde_Log_Logger</pre>
+                <p><em>The log handler.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Log_Logger
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__count" name="property__count" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_count</h3>
+                <pre class="signature">$_count : array</pre>
+                <p><em>The statistic.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_Kolab_Server  <span class="argument">$server</span>, mixed  <span class="argument">$logger</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Kolab_Server</td>
+                                <td>$server </td>
+                                <td><p>The base server connection.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$logger </td>
+                                <td><p>The log handler. The class must at
+least provide the debug() method.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___destruct" name="method___destruct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__destruct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__destruct() </pre>
+                <p><em>Destructor.</em></p>
+                <p>Logs the counted events.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_connectGuid" name="method_connectGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">connectGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">connectGuid(string  <span class="argument">$guid = null</span>, string  <span class="argument">$pass = null</span>) : \NULL.</pre>
+                <p><em>Connect to the server.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$guid </td>
+                                <td><p>The global unique id of the user.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pass </td>
+                                <td><p>The password.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd><p>If the connection failed.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \NULL.
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGuid" name="method_getGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGuid() : string</pre>
+                <p><em>Get the current GUID</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The GUID of the connected user.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBaseGuid" name="method_getBaseGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBaseGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBaseGuid() : string</pre>
+                <p><em>Get the base GUID of this server</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The base GUID of this server.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_read" name="method_read" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">read()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">read(string  <span class="argument">$guid</span>, array  <span class="argument">$attrs = array()</span>) : array</pre>
+                <p><em>Low level access to reading object data.</em></p>
+                <p>This function provides direct access to the Server data.</p>
+<p>Usually you should use</p>
+<p><code>
+$object = $server-&gt;fetch('a server uid');
+$variable = $object['attribute']
+</code></p>
+<p>to access object attributes. This is slower but takes special object
+handling into account (e.g. custom attribute parsing).</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$guid </td>
+                                <td><p>The object to retrieve.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$attrs </td>
+                                <td><p>Restrict to these attributes.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd><p>If the search operation hit an error
+or returned no result.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of attributes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_readAttributes" name="method_readAttributes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">readAttributes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">readAttributes(string  <span class="argument">$guid</span>, string  <span class="argument">$attrs</span>) : array</pre>
+                <p><em>Low level access to reading some object attributes.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$guid </td>
+                                <td><p>The object to retrieve.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$attrs </td>
+                                <td><p>Restrict to these attributes.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of attributes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_Kolab_Server::read</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_find" name="method_find" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">find()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">find(string  <span class="argument">$query</span>, array  <span class="argument">$params = array()</span>) : \Horde_Kolab_Server_Result</pre>
+                <p><em>Finds object data matching a given set of criteria.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>The LDAP search query</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Additional search parameters.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \Horde_Kolab_Server_Result
+                                            &mdash; <p>The result object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_findBelow" name="method_findBelow" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">findBelow()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">findBelow(string  <span class="argument">$query</span>, string  <span class="argument">$parent</span>, array  <span class="argument">$params = array()</span>) : \Horde_Kolab_Server_Result</pre>
+                <p><em>Finds all object data below a parent matching a given set of criteria.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>The LDAP search query</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$parent </td>
+                                <td><p>The parent to search below.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Additional search parameters.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \Horde_Kolab_Server_Result
+                                            &mdash; <p>The result object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_save" name="method_save" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">save()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">save(\Horde_Kolab_Server_Object  <span class="argument">$object</span>, array  <span class="argument">$data</span>) : NULL</pre>
+                <p><em>Modify existing object data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Kolab_Server_Object</td>
+                                <td>$object </td>
+                                <td><p>The object to be modified.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>The attributes of the object
+to be stored.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add" name="method_add" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add(\Horde_Kolab_Server_Object  <span class="argument">$object</span>, array  <span class="argument">$data</span>) : NULL</pre>
+                <p><em>Add new object data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Kolab_Server_Object</td>
+                                <td>$object </td>
+                                <td><p>The object to be added.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>The attributes of the object
+to be added.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$guid</span>) : NULL</pre>
+                <p><em>Delete an object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$guid </td>
+                                <td><p>The GUID of the object to be deleted.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rename" name="method_rename" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rename(string  <span class="argument">$guid</span>, string  <span class="argument">$new</span>) : NULL</pre>
+                <p><em>Rename an object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$guid </td>
+                                <td><p>The GUID of the object to be renamed.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$new </td>
+                                <td><p>The new GUID of the object.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    NULL
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSchema" name="method_getSchema" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSchema()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSchema() : \Horde_Ldap_Schema</pre>
+                <p><em>Return the ldap schema.</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Kolab_Server_Exception</dt>
+                            <dd><p>If retrieval of the schema failed.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \Horde_Ldap_Schema
+                                            &mdash; <p>The LDAP schema.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParentGuid" name="method_getParentGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParentGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParentGuid(string  <span class="argument">$guid</span>) : string</pre>
+                <p><em>Get the parent GUID of this object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$guid </td>
+                                <td><p>The GUID of the child.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>the parent GUID of this object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Count.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Decorator/Count.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:32.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

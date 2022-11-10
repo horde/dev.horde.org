@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">33</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-612294333"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-612294333" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Test_AllTests.html">Horde_Test_AllTests</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_AllTests_TestRunner.html">Horde_Test_AllTests_TestRunner</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Autoload.html">Horde_Test_Autoload</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Bootstrap.html">Horde_Test_Bootstrap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Case.html">Horde_Test_Case</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Exception.html">Horde_Test_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Alarm.html">Horde_Test_Factory_Alarm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Cache.html">Horde_Test_Factory_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Db.html">Horde_Test_Factory_Db</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Group.html">Horde_Test_Factory_Group</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Hashtable.html">Horde_Test_Factory_Hashtable</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_History.html">Horde_Test_Factory_History</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_KolabStorage.html">Horde_Test_Factory_KolabStorage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Mongo.html">Horde_Test_Factory_Mongo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Perms.html">Horde_Test_Factory_Perms</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Prefs.html">Horde_Test_Factory_Prefs</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Registry.html">Horde_Test_Factory_Registry</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Session.html">Horde_Test_Factory_Session</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Factory_Share.html">Horde_Test_Factory_Share</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Functional.html">Horde_Test_Functional</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Log.html">Horde_Test_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Setup.html">Horde_Test_Setup</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Stub_Cli.html">Horde_Test_Stub_Cli</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Stub_Factory.html">Horde_Test_Stub_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Stub_Parser.html">Horde_Test_Stub_Parser</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Stub_Registry.html">Horde_Test_Stub_Registry</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Test_Stub_Registry_Loadconfig.html">Horde_Test_Stub_Registry_Loadconfig</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Test_Stub_Registry</h1>
+                    <p><em>A test replacement for Horde_Registry.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_convertUsername" class="">convertUsername()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_getAuth" class="">getAuth()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_isAdmin" class="">isAdmin()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_remoteHost" class="">remoteHost()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_setConfigFile" class="">setConfigFile()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_loadConfigFile" class="">loadConfigFile()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_get" class="">get()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_getApp" class="">getApp()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_hasInterface" class="">hasInterface()</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#method_listAPIs" class="">listAPIs()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#property_hordeInit" class="">$hordeInit</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#property__user" class="">$_user</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#property__app" class="">$_app</a><br />
+                                                                    <a href="../classes/Horde_Test_Stub_Registry.html#property__configObjects" class="">$_configObjects</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Stub.Registry.html"><div class="path-wrapper">Stub/Registry.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Test</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Test_Stub_Registry</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                            <dt>See also</dt>
+                                                                                        <dd><a href="http://www.horde.org/components/Horde_Test"><span class="namespace-wrapper">http://www.horde.org/components/Horde_Test</span></a></dd>
+                                                    
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Gunnar Wrobel <a href="mailto:wrobel@pardus.de">wrobel@pardus.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_hordeInit" name="property_hordeInit" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$hordeInit</h3>
+                <pre class="signature">$hordeInit : boolean</pre>
+                <p><em>A flag that is set once the basic horde application has been
+minimally configured.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__user" name="property__user" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_user</h3>
+                <pre class="signature">$_user : string</pre>
+                <p><em>The currrent user.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__app" name="property__app" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_app</h3>
+                <pre class="signature">$_app : string</pre>
+                <p><em>The current application.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__configObjects" name="property__configObjects" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_configObjects</h3>
+                <pre class="signature">$_configObjects : array</pre>
+                <p><em>List of pre-configured configuration objects.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$user</span>, string  <span class="argument">$app</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The current user.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>The current application.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_convertUsername" name="method_convertUsername" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">convertUsername()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">convertUsername(string  <span class="argument">$userId</span>, boolean  <span class="argument">$toHorde</span>) : string</pre>
+                <p><em>Converts an authentication username to a unique Horde username.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userId </td>
+                                <td><p>The username to convert.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$toHorde </td>
+                                <td><p>If true, convert to a Horde username. If
+false, convert to the auth username.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The converted username.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAuth" name="method_getAuth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAuth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAuth(string  <span class="argument">$format = null</span>) : mixed</pre>
+                <p><em>Returns the currently logged in user, if there is one.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$format </td>
+                                <td><p>The return format, defaults to the unique Horde
+ID. Alternative formats:</p>
+<pre>
+bare - Horde ID without any domain information.
+       EXAMPLE: foo@example.com would be returned as 'foo'.
+domain: Domain of the Horde ID.
+        EXAMPLE: foo@example.com would be returned as 'example.com'.
+original: The username used to originally login to Horde.
+</pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The user ID or false if no user is logged in.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isAdmin" name="method_isAdmin" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isAdmin()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isAdmin(array  <span class="argument">$options = array()</span>) : boolean</pre>
+                <p><em>Is a user an administrator?</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Options:</p>
+<pre>
+'permission' - (string) Allow users with this permission admin access
+               in the current context.
+'permlevel' - (integer) The level of permissions to check for.
+              Defaults to Horde_Perms::EDIT.
+'user' - (string) The user to check.
+         Defaults to self::getAuth().
+</pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Whether or not this is an admin user.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_remoteHost" name="method_remoteHost" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">remoteHost()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">remoteHost() : object</pre>
+                <p><em>Returns information about the remote host.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>An object with the following properties:</p>
+<pre>
+  - addr: (string) Remote IP address.
+  - host: (string) Remote hostname (if resolvable; otherwise, this value
+          is identical to 'addr').
+  - proxy: (boolean) True if this user is connecting through a proxy.
+</pre>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setConfigFile" name="method_setConfigFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setConfigFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setConfigFile(object  <span class="argument">$loadconfig</span>, string  <span class="argument">$conf_file</span>, mixed  <span class="argument">$vars = null</span>, string  <span class="argument">$app = null</span>) </pre>
+                <p><em>Assigns a (pre-configured) Loadconfig object.</em></p>
+                <p>This object will be returned by loadConfig(), if the same parameters are
+used.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$loadconfig </td>
+                                <td><p>Configuration object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$conf_file </td>
+                                <td><p>Configuration file name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$vars </td>
+                                <td><p>List of config variables to load.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>Application.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                                                            <p>Horde_Test 2.6.0</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadConfigFile" name="method_loadConfigFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadConfigFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadConfigFile(string  <span class="argument">$conf_file</span>, mixed  <span class="argument">$vars = null</span>, string  <span class="argument">$app = null</span>) : \Horde_Test_Stub_Registry_Loadconfig</pre>
+                <p><em>Load a configuration file from a Horde application&#039;s config directory.</em></p>
+                <p>This call is cached (a config file is only loaded once, regardless of
+the $vars value).</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$conf_file </td>
+                                <td><p>Configuration file name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$vars </td>
+                                <td><p>List of config variables to load.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>Application.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Test_Stub_Registry_Loadconfig.html">\Horde_Test_Stub_Registry_Loadconfig</a>
+                                            &mdash; <p>The config object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get" name="method_get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$parameter</span>, string  <span class="argument">$app = null</span>) : string</pre>
+                <p><em>Return the requested configuration parameter for the specified
+application. If no application is specified, the value of
+the current application is used. However, if the parameter is not
+present for that application, the Horde-wide value is used instead.</em></p>
+                <p>If that is not present, we return null.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$parameter </td>
+                                <td><p>The configuration value to retrieve.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$app </td>
+                                <td><p>The application to get the value for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The requested parameter, or null if it is not set.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getApp" name="method_getApp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getApp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getApp() : string</pre>
+                <p><em>Return the current application - the app at the top of the application
+stack.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The current application.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasInterface" name="method_hasInterface" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasInterface()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasInterface(string  <span class="argument">$interface</span>) : mixed</pre>
+                <p><em>Determine if an interface is implemented by an active application.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$interface </td>
+                                <td><p>The interface to check for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The application implementing $interface if we have it,
+false if the interface is not implemented.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listAPIs" name="method_listAPIs" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listAPIs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listAPIs() : array</pre>
+                <p><em>Returns all available registry APIs.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The API list.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Registry.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Stub/Registry.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:36.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

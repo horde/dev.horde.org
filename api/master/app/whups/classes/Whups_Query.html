@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">518</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">11</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-949155018"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-949155018" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Core_Ui_VarRenderer_whups.html">Horde_Core_Ui_VarRenderer_whups</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Form_Action_whups_reload.html">Horde_Form_Action_whups_reload</a></li>
+                                                    <li class="class"><a href="../classes/Whups.html">Whups</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Ajax_Application.html">Whups_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Ajax_Imple_ContactAutoCompleter.html">Whups_Ajax_Imple_ContactAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Api.html">Whups_Api</a></li>
+                                                    <li class="class"><a href="../classes/Whups_ApiTest.html">Whups_ApiTest</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Application.html">Whups_Application</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Myqueries.html">Whups_Block_Myqueries</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Myrequests.html">Whups_Block_Myrequests</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Mytickets.html">Whups_Block_Mytickets</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Query.html">Whups_Block_Query</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Queuecontents.html">Whups_Block_Queuecontents</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Queuesummary.html">Whups_Block_Queuesummary</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Tickets.html">Whups_Block_Tickets</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Unassigned.html">Whups_Block_Unassigned</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Driver.html">Whups_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Driver_sql.html">Whups_Driver_sql</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Driver_Sql.html">Whups_Driver_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Exception.html">Whups_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Factory_Driver.html">Whups_Factory_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_AddComment.html">Whups_Form_AddComment</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_AddListener.html">Whups_Form_AddListener</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddAttribute.html">Whups_Form_Admin_AddAttribute</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddPriority.html">Whups_Form_Admin_AddPriority</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddQueue.html">Whups_Form_Admin_AddQueue</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddReply.html">Whups_Form_Admin_AddReply</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddState.html">Whups_Form_Admin_AddState</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddType.html">Whups_Form_Admin_AddType</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddUser.html">Whups_Form_Admin_AddUser</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddVersion.html">Whups_Form_Admin_AddVersion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_CloneType.html">Whups_Form_Admin_CloneType</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DefaultPriority.html">Whups_Form_Admin_DefaultPriority</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DefaultState.html">Whups_Form_Admin_DefaultState</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteAttribute.html">Whups_Form_Admin_DeleteAttribute</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeletePriority.html">Whups_Form_Admin_DeletePriority</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteQueue.html">Whups_Form_Admin_DeleteQueue</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteReply.html">Whups_Form_Admin_DeleteReply</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteState.html">Whups_Form_Admin_DeleteState</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteType.html">Whups_Form_Admin_DeleteType</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteVersion.html">Whups_Form_Admin_DeleteVersion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditAttributeStepOne.html">Whups_Form_Admin_EditAttributeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditAttributeStepTwo.html">Whups_Form_Admin_EditAttributeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditPriorityStepOne.html">Whups_Form_Admin_EditPriorityStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditPriorityStepTwo.html">Whups_Form_Admin_EditPriorityStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditQueueStepOne.html">Whups_Form_Admin_EditQueueStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditQueueStepTwo.html">Whups_Form_Admin_EditQueueStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditReplyStepOne.html">Whups_Form_Admin_EditReplyStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditReplyStepTwo.html">Whups_Form_Admin_EditReplyStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditStateStepOne.html">Whups_Form_Admin_EditStateStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditStateStepTwo.html">Whups_Form_Admin_EditStateStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditTypeStepOne.html">Whups_Form_Admin_EditTypeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditTypeStepTwo.html">Whups_Form_Admin_EditTypeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditUser.html">Whups_Form_Admin_EditUser</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditVersionStepOne.html">Whups_Form_Admin_EditVersionStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditVersionStepTwo.html">Whups_Form_Admin_EditVersionStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_DeleteListener.html">Whups_Form_DeleteListener</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_InsertBranch.html">Whups_Form_InsertBranch</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_AttributeCriterion.html">Whups_Form_Query_AttributeCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_ChooseNameForLoad.html">Whups_Form_Query_ChooseNameForLoad</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_ChooseNameForSave.html">Whups_Form_Query_ChooseNameForSave</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_DateCriterion.html">Whups_Form_Query_DateCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_Delete.html">Whups_Form_Query_Delete</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_GroupCriterion.html">Whups_Form_Query_GroupCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_Parameter.html">Whups_Form_Query_Parameter</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_PropertyCriterion.html">Whups_Form_Query_PropertyCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_TextCriterion.html">Whups_Form_Query_TextCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_UserCriterion.html">Whups_Form_Query_UserCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Queue_StepOne.html">Whups_Form_Queue_StepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Queue_StepThree.html">Whups_Form_Queue_StepThree</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Queue_StepTwo.html">Whups_Form_Queue_StepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Renderer_Comment.html">Whups_Form_Renderer_Comment</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Renderer_Query.html">Whups_Form_Renderer_Query</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Search.html">Whups_Form_Search</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_SendReminder.html">Whups_Form_SendReminder</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_SetTypeStepOne.html">Whups_Form_SetTypeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_SetTypeStepTwo.html">Whups_Form_SetTypeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepFour.html">Whups_Form_Ticket_CreateStepFour</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepOne.html">Whups_Form_Ticket_CreateStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepThree.html">Whups_Form_Ticket_CreateStepThree</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepTwo.html">Whups_Form_Ticket_CreateStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_Delete.html">Whups_Form_Ticket_Delete</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_DeleteMultiple.html">Whups_Form_Ticket_DeleteMultiple</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_Edit.html">Whups_Form_Ticket_Edit</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_TicketDetails.html">Whups_Form_TicketDetails</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Type_whupsemail.html">Whups_Form_Type_whupsemail</a></li>
+                                                    <li class="class"><a href="../classes/Whups_LoginTasks_SystemTask_Upgrade.html">Whups_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Whups_LoginTasks_SystemTask_UpgradeAdmin.html">Whups_LoginTasks_SystemTask_UpgradeAdmin</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Mail.html">Whups_Mail</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Mime_Viewer_zip.html">Whups_Mime_Viewer_zip</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Prefs_Special_Sourceselect.html">Whups_Prefs_Special_Sourceselect</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Query.html">Whups_Query</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Query_Manager.html">Whups_Query_Manager</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Reports.html">Whups_Reports</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Scheduler.html">Whups_Scheduler</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Test_Perms.html">Whups_Test_Perms</a></li>
+                                                    <li class="class"><a href="../classes/Whups_TestBase.html">Whups_TestBase</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Ticket.html">Whups_Ticket</a></li>
+                                                    <li class="class"><a href="../classes/Whups_View_Base.html">Whups_View_Base</a></li>
+                                                    <li class="class"><a href="../classes/Whups_View_Results.html">Whups_View_Results</a></li>
+                                                    <li class="class"><a href="../classes/Whups_View_SavedQueries.html">Whups_View_SavedQueries</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Whups_Query</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Whups_Query.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_pathToString" class="">pathToString()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_stringToPath" class="">stringToPath()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_textOperators" class="">textOperators()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_hasPermission" class="">hasPermission()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_save" class="">save()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_feedLink" class="">feedLink()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_getTabs" class="">getTabs()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_pathToForm" class="">pathToForm()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_deleteNode" class="">deleteNode()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_hoist" class="">hoist()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_insertBranch" class="">insertBranch()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_insertCriterion" class="">insertCriterion()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_walk" class="">walk()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method_reduce" class="">reduce()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Whups_Query.html#property_id" class="">$id</a><br />
+                                                                    <a href="../classes/Whups_Query.html#property_name" class="">$name</a><br />
+                                                                    <a href="../classes/Whups_Query.html#property_slug" class="">$slug</a><br />
+                                                                    <a href="../classes/Whups_Query.html#property_query" class="">$query</a><br />
+                                                                    <a href="../classes/Whups_Query.html#property_parameters" class="">$parameters</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Whups_Query.html#constant_TYPE_AND" class="">TYPE_AND</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_TYPE_OR" class="">TYPE_OR</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_TYPE_NOT" class="">TYPE_NOT</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_TYPE_CRITERION" class="">TYPE_CRITERION</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_ID" class="">CRITERION_ID</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_QUEUE" class="">CRITERION_QUEUE</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_TYPE" class="">CRITERION_TYPE</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_STATE" class="">CRITERION_STATE</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_PRIORITY" class="">CRITERION_PRIORITY</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_OWNERS" class="">CRITERION_OWNERS</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_REQUESTER" class="">CRITERION_REQUESTER</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_GROUPS" class="">CRITERION_GROUPS</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_ADDED_COMMENT" class="">CRITERION_ADDED_COMMENT</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_COMMENT" class="">CRITERION_COMMENT</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_SUMMARY" class="">CRITERION_SUMMARY</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_ATTRIBUTE" class="">CRITERION_ATTRIBUTE</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_VERSION" class="">CRITERION_VERSION</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_TIMESTAMP" class="">CRITERION_TIMESTAMP</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_UPDATED" class="">CRITERION_UPDATED</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_RESOLVED" class="">CRITERION_RESOLVED</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_ASSIGNED" class="">CRITERION_ASSIGNED</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_CRITERION_DUE" class="">CRITERION_DUE</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_GREATER" class="">OPERATOR_GREATER</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_LESS" class="">OPERATOR_LESS</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_EQUAL" class="">OPERATOR_EQUAL</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_CI_SUBSTRING" class="">OPERATOR_CI_SUBSTRING</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_CS_SUBSTRING" class="">OPERATOR_CS_SUBSTRING</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_WORD" class="">OPERATOR_WORD</a><br />
+                                                                    <a href="../classes/Whups_Query.html#constant_OPERATOR_PATTERN" class="">OPERATOR_PATTERN</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Whups_Query.html#method__walk" class="">_walk()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method__reduce" class="">_reduce()</a><br />
+                                                                    <a href="../classes/Whups_Query.html#method__getParameterName" class="">_getParameterName()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Whups_Query.html#property__qManager" class="">$_qManager</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Query.html"><div class="path-wrapper">Query.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Whups</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Whups_Query</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_TYPE_AND" name="constant_TYPE_AND" class="anchor"></a>
+            <article id="constant_TYPE_AND" class="constant">
+                <h3 class="">TYPE_AND</h3>
+                <pre class="signature">TYPE_AND</pre>
+                <p><em>Mode types.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_TYPE_OR" name="constant_TYPE_OR" class="anchor"></a>
+            <article id="constant_TYPE_OR" class="constant">
+                <h3 class="">TYPE_OR</h3>
+                <pre class="signature">TYPE_OR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_TYPE_NOT" name="constant_TYPE_NOT" class="anchor"></a>
+            <article id="constant_TYPE_NOT" class="constant">
+                <h3 class="">TYPE_NOT</h3>
+                <pre class="signature">TYPE_NOT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_TYPE_CRITERION" name="constant_TYPE_CRITERION" class="anchor"></a>
+            <article id="constant_TYPE_CRITERION" class="constant">
+                <h3 class="">TYPE_CRITERION</h3>
+                <pre class="signature">TYPE_CRITERION</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_ID" name="constant_CRITERION_ID" class="anchor"></a>
+            <article id="constant_CRITERION_ID" class="constant">
+                <h3 class="">CRITERION_ID</h3>
+                <pre class="signature">CRITERION_ID</pre>
+                <p><em>Criterion types.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_QUEUE" name="constant_CRITERION_QUEUE" class="anchor"></a>
+            <article id="constant_CRITERION_QUEUE" class="constant">
+                <h3 class="">CRITERION_QUEUE</h3>
+                <pre class="signature">CRITERION_QUEUE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_TYPE" name="constant_CRITERION_TYPE" class="anchor"></a>
+            <article id="constant_CRITERION_TYPE" class="constant">
+                <h3 class="">CRITERION_TYPE</h3>
+                <pre class="signature">CRITERION_TYPE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_STATE" name="constant_CRITERION_STATE" class="anchor"></a>
+            <article id="constant_CRITERION_STATE" class="constant">
+                <h3 class="">CRITERION_STATE</h3>
+                <pre class="signature">CRITERION_STATE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_PRIORITY" name="constant_CRITERION_PRIORITY" class="anchor"></a>
+            <article id="constant_CRITERION_PRIORITY" class="constant">
+                <h3 class="">CRITERION_PRIORITY</h3>
+                <pre class="signature">CRITERION_PRIORITY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_OWNERS" name="constant_CRITERION_OWNERS" class="anchor"></a>
+            <article id="constant_CRITERION_OWNERS" class="constant">
+                <h3 class="">CRITERION_OWNERS</h3>
+                <pre class="signature">CRITERION_OWNERS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_REQUESTER" name="constant_CRITERION_REQUESTER" class="anchor"></a>
+            <article id="constant_CRITERION_REQUESTER" class="constant">
+                <h3 class="">CRITERION_REQUESTER</h3>
+                <pre class="signature">CRITERION_REQUESTER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_GROUPS" name="constant_CRITERION_GROUPS" class="anchor"></a>
+            <article id="constant_CRITERION_GROUPS" class="constant">
+                <h3 class="">CRITERION_GROUPS</h3>
+                <pre class="signature">CRITERION_GROUPS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_ADDED_COMMENT" name="constant_CRITERION_ADDED_COMMENT" class="anchor"></a>
+            <article id="constant_CRITERION_ADDED_COMMENT" class="constant">
+                <h3 class="">CRITERION_ADDED_COMMENT</h3>
+                <pre class="signature">CRITERION_ADDED_COMMENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_COMMENT" name="constant_CRITERION_COMMENT" class="anchor"></a>
+            <article id="constant_CRITERION_COMMENT" class="constant">
+                <h3 class="">CRITERION_COMMENT</h3>
+                <pre class="signature">CRITERION_COMMENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_SUMMARY" name="constant_CRITERION_SUMMARY" class="anchor"></a>
+            <article id="constant_CRITERION_SUMMARY" class="constant">
+                <h3 class="">CRITERION_SUMMARY</h3>
+                <pre class="signature">CRITERION_SUMMARY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_ATTRIBUTE" name="constant_CRITERION_ATTRIBUTE" class="anchor"></a>
+            <article id="constant_CRITERION_ATTRIBUTE" class="constant">
+                <h3 class="">CRITERION_ATTRIBUTE</h3>
+                <pre class="signature">CRITERION_ATTRIBUTE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_VERSION" name="constant_CRITERION_VERSION" class="anchor"></a>
+            <article id="constant_CRITERION_VERSION" class="constant">
+                <h3 class="">CRITERION_VERSION</h3>
+                <pre class="signature">CRITERION_VERSION</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_TIMESTAMP" name="constant_CRITERION_TIMESTAMP" class="anchor"></a>
+            <article id="constant_CRITERION_TIMESTAMP" class="constant">
+                <h3 class="">CRITERION_TIMESTAMP</h3>
+                <pre class="signature">CRITERION_TIMESTAMP</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_UPDATED" name="constant_CRITERION_UPDATED" class="anchor"></a>
+            <article id="constant_CRITERION_UPDATED" class="constant">
+                <h3 class="">CRITERION_UPDATED</h3>
+                <pre class="signature">CRITERION_UPDATED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_RESOLVED" name="constant_CRITERION_RESOLVED" class="anchor"></a>
+            <article id="constant_CRITERION_RESOLVED" class="constant">
+                <h3 class="">CRITERION_RESOLVED</h3>
+                <pre class="signature">CRITERION_RESOLVED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_ASSIGNED" name="constant_CRITERION_ASSIGNED" class="anchor"></a>
+            <article id="constant_CRITERION_ASSIGNED" class="constant">
+                <h3 class="">CRITERION_ASSIGNED</h3>
+                <pre class="signature">CRITERION_ASSIGNED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CRITERION_DUE" name="constant_CRITERION_DUE" class="anchor"></a>
+            <article id="constant_CRITERION_DUE" class="constant">
+                <h3 class="">CRITERION_DUE</h3>
+                <pre class="signature">CRITERION_DUE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_GREATER" name="constant_OPERATOR_GREATER" class="anchor"></a>
+            <article id="constant_OPERATOR_GREATER" class="constant">
+                <h3 class="">OPERATOR_GREATER</h3>
+                <pre class="signature">OPERATOR_GREATER</pre>
+                <p><em>Operators for integer fields.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_LESS" name="constant_OPERATOR_LESS" class="anchor"></a>
+            <article id="constant_OPERATOR_LESS" class="constant">
+                <h3 class="">OPERATOR_LESS</h3>
+                <pre class="signature">OPERATOR_LESS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_EQUAL" name="constant_OPERATOR_EQUAL" class="anchor"></a>
+            <article id="constant_OPERATOR_EQUAL" class="constant">
+                <h3 class="">OPERATOR_EQUAL</h3>
+                <pre class="signature">OPERATOR_EQUAL</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_CI_SUBSTRING" name="constant_OPERATOR_CI_SUBSTRING" class="anchor"></a>
+            <article id="constant_OPERATOR_CI_SUBSTRING" class="constant">
+                <h3 class="">OPERATOR_CI_SUBSTRING</h3>
+                <pre class="signature">OPERATOR_CI_SUBSTRING</pre>
+                <p><em>Operators for text fields.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_CS_SUBSTRING" name="constant_OPERATOR_CS_SUBSTRING" class="anchor"></a>
+            <article id="constant_OPERATOR_CS_SUBSTRING" class="constant">
+                <h3 class="">OPERATOR_CS_SUBSTRING</h3>
+                <pre class="signature">OPERATOR_CS_SUBSTRING</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_WORD" name="constant_OPERATOR_WORD" class="anchor"></a>
+            <article id="constant_OPERATOR_WORD" class="constant">
+                <h3 class="">OPERATOR_WORD</h3>
+                <pre class="signature">OPERATOR_WORD</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_OPERATOR_PATTERN" name="constant_OPERATOR_PATTERN" class="anchor"></a>
+            <article id="constant_OPERATOR_PATTERN" class="constant">
+                <h3 class="">OPERATOR_PATTERN</h3>
+                <pre class="signature">OPERATOR_PATTERN</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_id" name="property_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$id</h3>
+                <pre class="signature">$id : integer</pre>
+                <p><em>Query id.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_name" name="property_name" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$name</h3>
+                <pre class="signature">$name : string</pre>
+                <p><em>The full name of the query.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_slug" name="property_slug" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$slug</h3>
+                <pre class="signature">$slug : string</pre>
+                <p><em>The query slug (short name).</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_query" name="property_query" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$query</h3>
+                <pre class="signature">$query : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_parameters" name="property_parameters" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$parameters</h3>
+                <pre class="signature">$parameters : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__qManager" name="property__qManager" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_qManager</h3>
+                <pre class="signature">$_qManager : \Whups_Query_Manager</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Whups_Query_Manager.html">\Whups_Query_Manager</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Whups_Query_Manager  <span class="argument">$qManager</span>, array  <span class="argument">$qDetails = array()</span>) </pre>
+                <p><em>Constructor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Whups_Query_Manager.html">\Whups_Query_Manager</a></td>
+                                <td>$qManager </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$qDetails </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pathToString" name="method_pathToString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pathToString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pathToString(  <span class="argument">$path</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$path </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            static
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stringToPath" name="method_stringToPath" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stringToPath()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stringToPath(  <span class="argument">$pathstring</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$pathstring </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            static
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_textOperators" name="method_textOperators" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">textOperators()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">textOperators() : array</pre>
+                <p><em>Returns human readable descriptions of all operator types.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Hash with operator types and descriptions.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            static
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasPermission" name="method_hasPermission" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasPermission()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasPermission(string  <span class="argument">$userid</span>, integer  <span class="argument">$permission</span>, string  <span class="argument">$creator = null</span>) : boolean</pre>
+                <p><em>Checks to see if a user has a given permission.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$userid </td>
+                                <td><p>The userid of the user.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$permission </td>
+                                <td><p>A Horde_Perms::* constant to test for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$creator </td>
+                                <td><p>The creator of the event.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Whether or not $userid has $permission.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_save" name="method_save" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">save()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">save() </pre>
+                <p><em>Saves any changes to this object to the backend
+permanently. New objects are added instead.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete() </pre>
+                <p><em>Delete this object from the backend permanently.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_feedLink" name="method_feedLink" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">feedLink()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">feedLink() : array</pre>
+                <p><em>Returns &lt;link&gt; data for this query&#039;s feed.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Link data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTabs" name="method_getTabs" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTabs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTabs(\Horde_Variables  <span class="argument">$vars</span>) </pre>
+                <p><em>Tab operations for this query.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Variables</td>
+                                <td>$vars </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            params
+                        </th>
+                        <td>
+                                                                                            <p>Horde_Variables</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pathToForm" name="method_pathToForm" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pathToForm()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pathToForm(\Horde_Variables  <span class="argument">$vars</span>) : string</pre>
+                <p><em>Path to form</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Variables</td>
+                                <td>$vars </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Whups_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteNode" name="method_deleteNode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteNode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteNode(  <span class="argument">$pathstring</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$pathstring </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hoist" name="method_hoist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hoist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hoist(  <span class="argument">$pathstring</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$pathstring </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_insertBranch" name="method_insertBranch" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">insertBranch()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">insertBranch(  <span class="argument">$pathstring</span>,   <span class="argument">$type</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$pathstring </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$type </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_insertCriterion" name="method_insertCriterion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">insertCriterion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">insertCriterion(  <span class="argument">$pathstring</span>,   <span class="argument">$criterion</span>,   <span class="argument">$cvalue</span>,   <span class="argument">$operator</span>,   <span class="argument">$value</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$pathstring </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$criterion </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$cvalue </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$operator </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_walk" name="method_walk" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">walk()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">walk(  <span class="argument">$obj</span>,   <span class="argument">$method</span>) </pre>
+                <p><em>Top down traversal.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$obj </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$method </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_reduce" name="method_reduce" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">reduce()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">reduce(  <span class="argument">$method</span>,   <span class="argument">$vars</span>) </pre>
+                <p><em>Bottom up traversal.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$method </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vars </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__walk" name="method__walk" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_walk()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_walk(  <span class="argument">$node</span>,   <span class="argument">$more</span>,   <span class="argument">$path</span>,   <span class="argument">$obj</span>,   <span class="argument">$method</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$node </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$more </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$path </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$obj </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$method </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__reduce" name="method__reduce" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_reduce()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_reduce(  <span class="argument">$node</span>,   <span class="argument">$method</span>,   <span class="argument">$vars</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$node </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$method </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$vars </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getParameterName" name="method__getParameterName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getParameterName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getParameterName(  <span class="argument">$value</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Query.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Query.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:28.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

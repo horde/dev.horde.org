@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class VFS_musql</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> VFS_musql</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Multi User VFS implementation for PHP's PEAR database  abstraction layer.</p>
+<p class="description"><p>Required values for $params:<pre>      'phptype'       The database type (ie. 'pgsql', 'mysql', etc.).</pre></p><p>Optional values:<pre>      'table'         The name of the vfs table in 'database'. Defaults to
+                      'horde_muvfs'.</pre></p><p>Required by some database implementations:<pre>      'hostspec'      The hostname of the database server.
+      'protocol'      The communication protocol ('tcp', 'unix', etc.).
+      'database'      The name of the database.
+      'username'      The username with which to connect to the database.
+      'password'      The password associated with 'username'.
+      'options'       Additional options to pass to the database.
+      'tty'           The TTY on which to connect to the database.
+      'port'          The port on which to connect to the database.</pre></p><p>Known Issues:  Delete is not recusive, so files and folders that used to be in a folder  that gets deleted live forever in the database, or re-appear when the folder  is recreated.  Rename has the same issue, so files are lost if a folder is renamed.</p><p>The table structure for the VFS can be found in  data/muvfs.sql.</p><p>Database specific notes:</p><p>MSSQL: <ul><li>The vfs_data field must be of type IMAGE.</li><li>You need the following php.ini settings:
+ <div class="src-code"><ol><li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">;&nbsp;</span><span class="src-id">Valid&nbsp;</span><a href="http://www.php.net/range">range</a>&nbsp;<span class="src-num">0&nbsp;</span>-&nbsp;<span class="src-num">2147483647.&nbsp;</span><span class="src-key">Default&nbsp;</span>=&nbsp;<span class="src-num">4096.</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">mssql</span>.<span class="src-id">textlimit&nbsp;</span>=&nbsp;<span class="src-num">0&nbsp;</span><span class="src-sym">;&nbsp;</span><span class="src-id">zero&nbsp;to&nbsp;pass&nbsp;through</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">;&nbsp;</span><span class="src-id">Valid&nbsp;</span><a href="http://www.php.net/range">range</a>&nbsp;<span class="src-num">0&nbsp;</span>-&nbsp;<span class="src-num">2147483647.&nbsp;</span><span class="src-key">Default&nbsp;</span>=&nbsp;<span class="src-num">4096.</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">mssql</span>.<span class="src-id">textsize&nbsp;</span>=&nbsp;<span class="src-num">0&nbsp;</span><span class="src-sym">;&nbsp;</span><span class="src-id">zero&nbsp;to&nbsp;pass&nbsp;through</span></div></li>
+</ol></div></li></ul>  $Horde: framework/VFS/lib/VFS/musql.php,v 1.4 2009/01/06 17:49:58 jan Exp $</p><p>Copyright 2002-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If you  did not receive this file, see http://www.fsf.org/copyleft/lgpl.html.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Chuck Hagenbuch &lt;<a href="mailto:chuck@horde.org">chuck@horde.org</a>&gt;</li>
+				<li><span class="field">author:</span> Mike Cochrane &lt;<a href="mailto:mike@graftonhall.co.nz">mike@graftonhall.co.nz</a>&gt;</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_VFS---lib---VFS---musql.php.html">/VFS/lib/VFS/musql.php</a> (line <span class="field">69</span>)
+		</p>
+		
+				
+		<pre><a href="../VFS/VFS.html">VFS</a>
+   |
+   --<a href="../VFS/VFS_sql.html">VFS_sql</a>
+      |
+      --VFS_musql</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$_permissions" title="details" class="var-name">$_permissions</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																							
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#changePermissions" title="details" class="method-name">changePermissions</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$permission</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#createFolder" title="details" class="method-name">createFolder</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#deleteFile" title="details" class="method-name">deleteFile</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#deleteFolder" title="details" class="method-name">deleteFolder</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$recursive</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#rename" title="details" class="method-name">rename</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$oldpath</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$oldname</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$newpath</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$newname</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#writeData" title="details" class="method-name">writeData</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$autocreate</span> = <span class="var-default">false</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">mixed</span>
+										<a href="#_listFolder" title="details" class="method-name">_listFolder</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$filter</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$dotfiles</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$dironly</span> = <span class="var-default">false</span>])
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_permissions" id="$_permissions"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_permissions</span>
+			 = <span class="var-default">array(<br />        'owner' =&gt; array('read' =&gt; false, 'write' =&gt; false, 'execute' =&gt; false),'group'=&gt;array('read'=&gt;false,'write'=&gt;false,'execute'=&gt;false),'all'=&gt;array('read'=&gt;true,'write'=&gt;true,'execute'=&gt;false))</span>			(line <span class="line-number">76</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">List of permissions and if they can be changed in this VFS</p>
+	
+	
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS.html#var$_permissions">VFS::$_permissions</a></dt>
+						<dd>List of permissions and if they can be changed in this VFS backend.</dd>
+					</dl>
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../VFS/VFS_sql.html">VFS_sql</a></span></p>
+					<blockquote>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS_sql.html#var$_connected">VFS_sql::$_connected</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS_sql.html#var$_db">VFS_sql::$_db</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS_sql.html#var$_write_db">VFS_sql::$_write_db</a></span><br>
+							</span>
+											</blockquote> 
+									<p>Inherited from <span class="classname"><a href="../VFS/VFS.html">VFS</a></span></p>
+					<blockquote>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS.html#var$_credentials">VFS::$_credentials</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS.html#var$_logger">VFS::$_logger</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS.html#var$_logLevel">VFS::$_logLevel</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS.html#var$_params">VFS::$_params</a></span><br>
+							</span>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../VFS/VFS.html#var$_vfsSize">VFS::$_vfsSize</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodchangePermissions" id="changePermissions"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">changePermissions</span> (line <span class="line-number">508</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Changes permissions for an Item on the VFS.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success or a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			changePermissions
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$permission</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Holds the path of directory of the Item.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: Holds the name of the Item.</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$permission</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS.html#methodchangePermissions">VFS::changePermissions()</a></dt>
+						<dd>Changes permissions for an item on the VFS.</dd>
+					</dl>
+			
+	</div>
+<a name="methodcreateFolder" id="createFolder"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">createFolder</span> (line <span class="line-number">283</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates a folder on the VFS.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success or a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			createFolder
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Holds the path of directory to create folder.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: Holds the name of the new folder.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS_sql.html#methodcreateFolder">VFS_sql::createFolder()</a></dt>
+						<dd>Creates a folder on the VFS.</dd>
+					</dl>
+			
+	</div>
+<a name="methoddeleteFile" id="deleteFile"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">deleteFile</span> (line <span class="line-number">160</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes a file from the VFS.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success or a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			deleteFile
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path to store the file in.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: The filename to use.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS_sql.html#methoddeleteFile">VFS_sql::deleteFile()</a></dt>
+						<dd>Delete a file from the VFS.</dd>
+					</dl>
+			
+	</div>
+<a name="methoddeleteFolder" id="deleteFolder"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">deleteFolder</span> (line <span class="line-number">352</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes a folder from the VFS.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success or a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			deleteFolder
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$recursive</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path to delete the folder from.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: The foldername to use.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$recursive</span><span class="var-description">: Force a recursive delete?</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS_sql.html#methoddeleteFolder">VFS_sql::deleteFolder()</a></dt>
+						<dd>Delete a folder from the VFS.</dd>
+					</dl>
+			
+	</div>
+<a name="methodrename" id="rename"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">rename</span> (line <span class="line-number">217</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Renames a file or folder in the VFS.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success or a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			rename
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$oldpath</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$oldname</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$newpath</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$newname</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$oldpath</span><span class="var-description">: The old path to the file.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$oldname</span><span class="var-description">: The old filename.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$newpath</span><span class="var-description">: The new path of the file.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$newname</span><span class="var-description">: The new filename.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS_sql.html#methodrename">VFS_sql::rename()</a></dt>
+						<dd>Rename a file or folder in the VFS.</dd>
+					</dl>
+			
+	</div>
+<a name="methodwriteData" id="writeData"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">writeData</span> (line <span class="line-number">92</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Stores a file in the VFS from raw data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success or a PEAR_Error object on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			writeData
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$autocreate</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path to store the file in.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: The filename to use.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$data</span><span class="var-description">: The file data.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$autocreate</span><span class="var-description">: Automatically create directories?</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS_sql.html#methodwriteData">VFS_sql::writeData()</a></dt>
+						<dd>Store a file in the VFS from raw data.</dd>
+					</dl>
+			
+	</div>
+<a name="method_listFolder" id="_listFolder"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_listFolder</span> (line <span class="line-number">427</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a list of the contents of a folder.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> File list on success or false on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_listFolder
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$filter</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$dotfiles</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$dironly</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path of the directory.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$filter</span><span class="var-description">: String/hash to filter file/dirname on.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$dotfiles</span><span class="var-description">: Show dotfiles?</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$dironly</span><span class="var-description">: Show only directories?</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../VFS/VFS_sql.html#method_listFolder">VFS_sql::_listFolder()</a></dt>
+						<dd>Return a list of the contents of a folder.</dd>
+					</dl>
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../VFS/VFS_sql.html">VFS_sql</a></span></p>
+					<blockquote>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodcreateFolder">VFS_sql::createFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methoddeleteFile">VFS_sql::deleteFile()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methoddeleteFolder">VFS_sql::deleteFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodgc">VFS_sql::gc()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodgetFolderSize">VFS_sql::getFolderSize()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodisFolder">VFS_sql::isFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodlistFolders">VFS_sql::listFolders()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodread">VFS_sql::read()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodreadByteRange">VFS_sql::readByteRange()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodrename">VFS_sql::rename()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodsize">VFS_sql::size()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodwrite">VFS_sql::write()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#methodwriteData">VFS_sql::writeData()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#method_getFileSizeOp">VFS_sql::_getFileSizeOp()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS_sql.html#method_listFolder">VFS_sql::_listFolder()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../VFS/VFS.html">VFS</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodVFS">VFS::VFS()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodautocreatePath">VFS::autocreatePath()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodchangePermissions">VFS::changePermissions()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodcheckCredentials">VFS::checkCredentials()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodcopy">VFS::copy()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodcreateFolder">VFS::createFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methoddelete">VFS::delete()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methoddeleteFile">VFS::deleteFile()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methoddeleteFolder">VFS::deleteFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodemptyFolder">VFS::emptyFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodexists">VFS::exists()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodfactory">VFS::factory()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetCurrentDirectory">VFS::getCurrentDirectory()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetFolderSize">VFS::getFolderSize()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetModifiablePermissions">VFS::getModifiablePermissions()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetParam">VFS::getParam()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetQuota">VFS::getQuota()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetRequiredCredentials">VFS::getRequiredCredentials()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodgetVFSSize">VFS::getVFSSize()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodisFolder">VFS::isFolder()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodlistFolder">VFS::listFolder()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodlistFolders">VFS::listFolders()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodlog">VFS::log()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodmove">VFS::move()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodread">VFS::read()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodreadByteRange">VFS::readByteRange()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodreadFile">VFS::readFile()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodrename">VFS::rename()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodsetLogger">VFS::setLogger()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodsetParams">VFS::setParams()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodsetQuota">VFS::setQuota()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodsetQuotaRoot">VFS::setQuotaRoot()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodsingleton">VFS::singleton()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodsize">VFS::size()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodstrlen">VFS::strlen()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodstrtolower">VFS::strtolower()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodwrite">VFS::write()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#methodwriteData">VFS::writeData()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#method_copyRecursive">VFS::_copyRecursive()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#method_getPath">VFS::_getPath()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#method_getTempDir">VFS::_getTempDir()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#method_getTempFile">VFS::_getTempFile()</a></span><br>
+													<img src="../media/images/AbstractMethod.png" alt=" "/>
+							<span class="method-name"><a href="../VFS/VFS.html#method_listFolder">VFS::_listFolder()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 08 Nov 2009 14:32:51 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

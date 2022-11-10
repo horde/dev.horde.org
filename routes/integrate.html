@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Horde/Routes: Integration Guide</title>
+
+  <link href="/routes/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="contents_integrate">
+  <div id="wrapper">
+
+  <div id="header" class="clr">
+    <div id="logo" class="left">
+      <span>
+      <a href="/routes/"><img alt="Horde/Routes" src="/routes/images/common/logo.gif" /></a>
+      </span>
+    </div>
+      <ul id="nav" class="right">
+        <li><a href="/routes/">Home</a></li>
+        <li><a href="/routes/install.html">Install</a></li>
+        <li>Integrate</li>
+        <li><a href="/routes/manual/index.html">Manual</a></li>
+      </ul>
+  </div>
+
+  <div id="content" class="clr">
+      
+  <h1 id="support">Integration Guide</h1>
+
+  <div id="main">
+
+    <h2 id="overview">Overview</h2>
+    
+    <p>
+      Horde/Routes is built to function with any PHP 5 web framework that utilizes a
+      MVC style approach to design.  However, it can be used completely outside of a
+      MVC context as well.
+    </p>
+    
+    <p>
+      For full integration with a web framework, several steps should be done during
+      different phases of the request cycle. The web framework developer should also
+      have a way to add routes to the mapper, and accessing utility functions.
+    </p>
+
+    <p>
+      Terminology:
+    </p>
+    <dl>
+      <dt>Framework Integrator<dt>
+      <dd>Typically the person who is working to integrate routes into a web framework</dd>
+      <dt>Web/Framework Developer</dt>
+      <dd>The web application developer using the web framework</dd>
+    </dl>
+
+    <h2 id="routes-setup">Routes Setup</h2>
+    
+    <p>
+      Horde/Routes requires PHP 5.1 or above.  It does not <code>require()</code> its own files, so
+      an autoloader must be registered that will load the Horde/Routes files from its
+      PEAR directory.  Alternatively, the files can be loaded explicitly:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="keyword">require_once</span> <span class="punct">'</span><span class="string">Horde/Routes/Mapper.php</span><span class="punct">';</span>
+<span class="keyword">require_once</span> <span class="punct">'</span><span class="string">Horde/Routes/Exception.php</span><span class="punct">';</span>
+<span class="keyword">require_once</span> <span class="punct">'</span><span class="string">Horde/Routes/Route.php</span><span class="punct">';</span>
+<span class="keyword">require_once</span> <span class="punct">'</span><span class="string">Horde/Routes/Utils.php</span><span class="punct">';</span></pre></div>
+
+    <p>
+      The web framework developer will need a place to add routes that will be used
+      during the URL resolution phase. Commonly, the mapper object will be directly
+      exposed in a configuration file:
+    </p>
+    
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span> <span class="punct">=</span> <span class="keyword">new</span> <span class="constant">Horde_Routes_Mapper</span><span class="punct">();</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">');</span></pre></div>
+
+    <p>
+      The developer can then add additional routes as they see fit. The Framework
+      Integrator should make sure that their code takes care of using the Mapper
+      instance and preserving it somewhere for use by the framework.
+    </p>
+
+    <h2 id="preloading-controllers">Pre-Loading the Controllers</h2>
+
+    <p>
+      Due to the way Horde/Routes makes use of regular expressions for URL
+      recognition, <code>Horde_Routes_Mapper</code> requires a valid list of Controllers before
+      it can match URL's. Controller names can contain any character including <code>/</code>.
+      Once the controller list is created, the Mapper method <code>createRegs()</code> should be
+      called:
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">createRegs</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">content</span><span class="punct">',</span> <span class="punct">'</span><span class="string">admin/comments</span><span class="punct">',</span> <span class="punct">'</span><span class="string">blog</span><span class="punct">'));</span></pre></div>
+
+    <p>
+      After this step, the Mapper object is now ready to match URL's.
+    </p>
+
+    <p>
+      Instead of calling <code>Horde_Routes_Mapper->createRegs()</code> directly, a PHP callback
+      can also be passed to the <code>Horde_Routes_Mapper</code> constructor.  See the inline
+      source documentation.
+    </p>
+
+    <h2 id="url-resolution">URL Resolution</h2>
+
+    <p>
+      When the URL is looked up, it should be matched against the Mapper. When
+      matching an incoming URL, it is assumed that the URL path is the only string
+      being matched. All query args should be stripped before matching:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">articles/:year/:month</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;</span><span class="ident">null</span><span class="punct">));</span>
+
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">match</span><span class="punct">('</span><span class="string">/articles/2003/10</span><span class="punct">');</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Returns</span><span class="punct">:</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> 
+         <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;'</span><span class="string">2003</span><span class="punct">',</span> <span class="punct">'</span><span class="string">month</span><span class="punct">'=&gt;'</span><span class="string">10</span><span class="punct">')</span></pre></div>
+
+    <p>
+      Matching a URL will return an associative array of the match results.  If
+      you'd like to differentiate between where the argument came from you can use
+      routematch() which will return the Route object that has all these details:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">articles/:year/:month</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;</span><span class="ident">null</span><span class="punct">));</span>
+
+<span class="attribute">$result</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">routematch</span><span class="punct">('</span><span class="string">/articles/2003/10</span><span class="punct">');</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">result</span> <span class="ident">is</span> <span class="ident">array</span><span class="punct">(</span><span class="ident">matchdata</span><span class="punct">,</span> <span class="constant">Horde_Routes_Route</span><span class="punct">)</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">result</span><span class="punct">[</span><span class="number">0</span><span class="punct">]</span> <span class="punct">-</span> <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> 
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span>                   <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;'</span><span class="string">2003</span><span class="punct">',</span> <span class="punct">'</span><span class="string">month</span><span class="punct">'=&gt;'</span><span class="string">10</span><span class="punct">')</span>  
+<span class="punct">//</span><span class="regex">
+</span><span class="punct">//</span> <span class="ident">result</span><span class="punct">[</span><span class="number">1</span><span class="punct">]</span> <span class="punct">-</span> <span class="constant">Horde_Routes_Route</span> <span class="ident">instance</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">result</span><span class="punct">[</span><span class="number">1</span><span class="punct">]-&gt;</span><span class="ident">defaults</span>  <span class="punct">-</span> <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> 
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span>                              <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> 
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span>                              <span class="punct">'</span><span class="string">year</span><span class="punct">'=&gt;</span><span class="ident">null</span><span class="punct">);</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="ident">result</span><span class="punct">[</span><span class="number">1</span><span class="punct">]-&gt;</span><span class="ident">hardcoded</span> <span class="punct">-</span> <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">')</span></pre></div>
+
+    <p>
+      Your integration code is then expected to dispatch to a controller and action
+      in the associative array. How it does this is entirely up to the framework
+      integrator. Your integration should also typically provide the web developer a
+      mechanism to access the additional associative array values.
+    </p>
+
+    <h2 id="providing-utilities">Providing Utilities</h2>
+
+    <p>
+      In addition to allowing the web developer to define routes on the Mapper instance,
+      access to a Horde_Routes_Utils instance should be provided:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span></pre></div>
+  
+    <p>
+      The $utils instance provides the web developer with the utility functions urlFor() and
+      redirectTo(), which will be used to generate URLs from the route mapping.
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$url</span> <span class="punct">=</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">articles</span><span class="punct">',</span> 
+                           <span class="punct">'</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">view</span><span class="punct">',</span> 
+                           <span class="punct">'</span><span class="string">id</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="attribute">$article</span><span class="punct">-&gt;</span><span class="ident">id</span><span class="punct">));</span></pre></div>
+  	  </p>
+  </div>
+
+  <div id="sidebar">
+    <div class="side_item">
+      <h4>Integration</h4>
+      <p><a href="#overview">Overview</a></p>
+      <p><a href="#routes-setup">Routes Setup</a></p>
+      <p><a href="#preloading-controllers">Pre-Loading the Controllers</a></p>
+      <p><a href="#url-resolution">URL Resolution</a></p>
+      <p><a href="#providing-utilities">Providing Utilities</a></p>
+      <div class="side_bottom">&nbsp;</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer" class="clr">
+    <span class="right">
+      Horde/Routes is part of the <a href="http://www.horde.org">Horde Project</a>.<br/>
+      Development &amp; Website by <a href="http://maintainable.com">Maintainable Software</a>
+    </span>
+  </div>
+
+  
+
+  </div>
+</body>
+</html>

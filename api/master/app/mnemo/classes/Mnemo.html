@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Mnemo.html">\Mnemo</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">98</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1975597658"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1975597658" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1949070142"></a>
+                                <a href="../namespaces/Mnemo.html" style="margin-left: 30px; padding-left: 0">Mnemo</a>
+            </div>
+            <div id="namespace-1949070142" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1993875246"></a>
+                                <a href="../namespaces/Mnemo.Backup.html" style="margin-left: 30px; padding-left: 0">Backup</a>
+            </div>
+            <div id="namespace-1993875246" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Mnemo.Backup.Notes.html">Notes</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Mnemo.html">Mnemo</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Ajax_Application.html">Mnemo_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Ajax_Imple_EditNote.html">Mnemo_Ajax_Imple_EditNote</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Ajax_Imple_TagAutoCompleter.html">Mnemo_Ajax_Imple_TagAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Api.html">Mnemo_Api</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Application.html">Mnemo_Application</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Block_Note.html">Mnemo_Block_Note</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Block_Summary.html">Mnemo_Block_Summary</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Driver.html">Mnemo_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Driver_Kolab.html">Mnemo_Driver_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Driver_Sql.html">Mnemo_Driver_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Exception.html">Mnemo_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Factory_Driver.html">Mnemo_Factory_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Factory_Notepads.html">Mnemo_Factory_Notepads</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Factory_TagBrowser.html">Mnemo_Factory_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Form_CreateNotepad.html">Mnemo_Form_CreateNotepad</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Form_DeleteNotepad.html">Mnemo_Form_DeleteNotepad</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Form_EditNotepad.html">Mnemo_Form_EditNotepad</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Form_Search.html">Mnemo_Form_Search</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Notepads_Base.html">Mnemo_Notepads_Base</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Notepads_Default.html">Mnemo_Notepads_Default</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Notepads_Kolab.html">Mnemo_Notepads_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_TagBrowser.html">Mnemo_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_Tagger.html">Mnemo_Tagger</a></li>
+                                                    <li class="class"><a href="../classes/Mnemo_View_List.html">Mnemo_View_List</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Mnemo</h1>
+                    <p><em>Mnemo Base Class.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Mnemo.html#method_listMemos" class="">listMemos()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_countMemos" class="">countMemos()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getMemo" class="">getMemo()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getNotePreview" class="">getNotePreview()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_listNotepads" class="">listNotepads()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getDefaultNotepad" class="">getDefaultNotepad()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getLabel" class="">getLabel()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getUserName" class="">getUserName()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_hasPermission" class="">hasPermission()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getPassphrase" class="">getPassphrase()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_storePassphrase" class="">storePassphrase()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_initialize" class="">initialize()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method_getSyncNotepads" class="">getSyncNotepads()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Mnemo.html#constant_SORT_DESC" class="">SORT_DESC</a><br />
+                                                                    <a href="../classes/Mnemo.html#constant_SORT_NOTEPAD" class="">SORT_NOTEPAD</a><br />
+                                                                    <a href="../classes/Mnemo.html#constant_SORT_MOD_DATE" class="">SORT_MOD_DATE</a><br />
+                                                                    <a href="../classes/Mnemo.html#constant_SORT_ASCEND" class="">SORT_ASCEND</a><br />
+                                                                    <a href="../classes/Mnemo.html#constant_SORT_DESCEND" class="">SORT_DESCEND</a><br />
+                                                                    <a href="../classes/Mnemo.html#constant_ERR_NO_PASSPHRASE" class="">ERR_NO_PASSPHRASE</a><br />
+                                                                    <a href="../classes/Mnemo.html#constant_ERR_DECRYPT" class="">ERR_DECRYPT</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Mnemo.html#method__sortByDesc" class="">_sortByDesc()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method__rsortByDesc" class="">_rsortByDesc()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method__sortByNotepad" class="">_sortByNotepad()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method__rsortByNotepad" class="">_rsortByNotepad()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method__sortByModDate" class="">_sortByModDate()</a><br />
+                                                                    <a href="../classes/Mnemo.html#method__rsortByModDate" class="">_rsortByModDate()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Mnemo.html"><div class="path-wrapper">Mnemo.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Mnemo</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Mnemo</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Jon Parise <a href="mailto:jon@horde.org">jon@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SORT_DESC" name="constant_SORT_DESC" class="anchor"></a>
+            <article id="constant_SORT_DESC" class="constant">
+                <h3 class="">SORT_DESC</h3>
+                <pre class="signature">SORT_DESC</pre>
+                <p><em>Sort by memo description.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SORT_NOTEPAD" name="constant_SORT_NOTEPAD" class="anchor"></a>
+            <article id="constant_SORT_NOTEPAD" class="constant">
+                <h3 class="">SORT_NOTEPAD</h3>
+                <pre class="signature">SORT_NOTEPAD</pre>
+                <p><em>Sort by notepad.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SORT_MOD_DATE" name="constant_SORT_MOD_DATE" class="anchor"></a>
+            <article id="constant_SORT_MOD_DATE" class="constant">
+                <h3 class="">SORT_MOD_DATE</h3>
+                <pre class="signature">SORT_MOD_DATE</pre>
+                <p><em>Sort by moddate</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SORT_ASCEND" name="constant_SORT_ASCEND" class="anchor"></a>
+            <article id="constant_SORT_ASCEND" class="constant">
+                <h3 class="">SORT_ASCEND</h3>
+                <pre class="signature">SORT_ASCEND</pre>
+                <p><em>Sort in ascending order.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SORT_DESCEND" name="constant_SORT_DESCEND" class="anchor"></a>
+            <article id="constant_SORT_DESCEND" class="constant">
+                <h3 class="">SORT_DESCEND</h3>
+                <pre class="signature">SORT_DESCEND</pre>
+                <p><em>Sort in descending order.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ERR_NO_PASSPHRASE" name="constant_ERR_NO_PASSPHRASE" class="anchor"></a>
+            <article id="constant_ERR_NO_PASSPHRASE" class="constant">
+                <h3 class="">ERR_NO_PASSPHRASE</h3>
+                <pre class="signature">ERR_NO_PASSPHRASE</pre>
+                <p><em>No passphrase provided.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ERR_DECRYPT" name="constant_ERR_DECRYPT" class="anchor"></a>
+            <article id="constant_ERR_DECRYPT" class="constant">
+                <h3 class="">ERR_DECRYPT</h3>
+                <pre class="signature">ERR_DECRYPT</pre>
+                <p><em>Decrypting failed</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listMemos" name="method_listMemos" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listMemos()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listMemos(\constant  <span class="argument">$sortby = self::SORT_DESC</span>, \constant  <span class="argument">$sortdir = self::SORT_ASCEND</span>) : array</pre>
+                <p><em>Retrieves the current user&#039;s note list from storage. This function will
+also sort the resulting list, if requested.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\constant</td>
+                                <td>$sortby </td>
+                                <td><p>The field by which to sort. (self::SORT_DESC,
+self::SORT_NOTEPAD, self::SORT_MOD_DATE)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\constant</td>
+                                <td>$sortdir </td>
+                                <td><p>The direction by which to sort.
+(self::SORT_ASC, self::SORT_DESC)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A list of the requested notes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/Mnemo_Driver.html#method_listMemos"><span class="namespace-wrapper">\Mnemo_Driver::listMemos()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_countMemos" name="method_countMemos" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">countMemos()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">countMemos() : integer</pre>
+                <p><em>Returns the number of notes in notepads that the current user owns.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number of notes that the user owns.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMemo" name="method_getMemo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMemo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMemo(string  <span class="argument">$notepad</span>, string  <span class="argument">$noteId</span>, string  <span class="argument">$passphrase = null</span>) : array</pre>
+                <p><em>Retrieves a specific note from storage.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$notepad </td>
+                                <td><p>The notepad to retrieve the note from.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$noteId </td>
+                                <td><p>The Id of the note to retrieve.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$passphrase </td>
+                                <td><p>A passphrase with which this note was
+supposed to be encrypted.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The note.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNotePreview" name="method_getNotePreview" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNotePreview()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNotePreview(array  <span class="argument">$note</span>) : string</pre>
+                <p><em>Get preview text for a note (the first 20 lines or so).</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$note </td>
+                                <td><p>The note array</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>A few lines of the note for previews or tooltips.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listNotepads" name="method_listNotepads" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listNotepads()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listNotepads(boolean  <span class="argument">$owneronly = false</span>, integer  <span class="argument">$permission = \Horde_Perms::SHOW</span>) : array</pre>
+                <p><em>Lists all notepads a user has access to.</em></p>
+                <p>This method takes the $conf['share']['hidden'] setting into account. If
+this setting is enabled, even if requesting permissions different than
+SHOW, it will only return calendars that the user owns or has SHOW
+permissions for. For checking individual calendar's permissions, use
+hasPermission() instead.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$owneronly </td>
+                                <td><p>Only return memo lists that this user owns?
+Defaults to false.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$permission </td>
+                                <td><p>The permission to filter notepads by.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The memo lists.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDefaultNotepad" name="method_getDefaultNotepad" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDefaultNotepad()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDefaultNotepad(integer  <span class="argument">$permission = \Horde_Perms::SHOW</span>) : string</pre>
+                <p><em>Returns the default notepad for the current user at the specified
+permissions level.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$permission </td>
+                                <td><p>Horde_Perms constant for permission level
+required.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The notepad identifier, or null if none.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLabel" name="method_getLabel" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLabel()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLabel(  <span class="argument">$notepad</span>) : string</pre>
+                <p><em>Returns the label to be used for a notepad.</em></p>
+                <p>Attaches the owner name of shared notepads if necessary.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$notepad </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The notepad's label.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUserName" name="method_getUserName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUserName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUserName(  <span class="argument">$uid</span>) : string</pre>
+                <p><em>Returns the real name, if available, of a user.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$uid </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The real name</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasPermission" name="method_hasPermission" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasPermission()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasPermission(string  <span class="argument">$permission</span>) : mixed</pre>
+                <p><em>Returns the specified permission for the current user.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$permission </td>
+                                <td><p>A permission, currently only 'max_notes'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The value of the specified permission.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPassphrase" name="method_getPassphrase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPassphrase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPassphrase(string  <span class="argument">$id</span>) : string</pre>
+                <p><em>Returns a note&#039;s passphrase for symmetric encryption from the session
+cache.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>A note id.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The passphrase, if set.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_storePassphrase" name="method_storePassphrase" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">storePassphrase()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">storePassphrase(string  <span class="argument">$id</span>, string  <span class="argument">$passphrase</span>) : boolean</pre>
+                <p><em>Stores a note&#039;s passphrase for symmetric encryption in the session
+cache.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>A note id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$passphrase </td>
+                                <td><p>The note's passphrase.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_initialize" name="method_initialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">initialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">initialize() </pre>
+                <p><em>Initial app setup code.</em></p>
+                <p>Defines the following $GLOBALS (@TODO these should use the injector)
+mnemo_shares
+display_notepads</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSyncNotepads" name="method_getSyncNotepads" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSyncNotepads()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSyncNotepads(boolean  <span class="argument">$prune = false</span>) : array</pre>
+                <p><em>Returns the notepads that should be used for syncing.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$prune </td>
+                                <td><p>Remove notepads ids from the sync list that no
+longer exist. The values are pruned <em>after</em> the
+results are passed back to the client to give
+sync clients a chance to remove their entries.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of notepad ids.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__sortByDesc" name="method__sortByDesc" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_sortByDesc()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_sortByDesc(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) : integer</pre>
+                <p><em>Comparison function for sorting notes by description.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td><p>Note one.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td><p>Note two.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>1 if memo one is greater, -1 if memo two is greater; 0
+if they are equal.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rsortByDesc" name="method__rsortByDesc" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rsortByDesc()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rsortByDesc(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) : integer</pre>
+                <p><em>Comparison function for reverse sorting notes by description.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td><p>Note one.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td><p>Note two.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>-1 if note one is greater, 1 if note two is greater; 0
+if they are equal.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__sortByNotepad" name="method__sortByNotepad" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_sortByNotepad()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_sortByNotepad(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) : integer</pre>
+                <p><em>Comparison function for sorting notes by notepad name.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td><p>Note one.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td><p>Note two.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>1 if note one is greater, -1 if note two is greater;
+0 if they are equal.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rsortByNotepad" name="method__rsortByNotepad" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rsortByNotepad()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rsortByNotepad(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) : integer</pre>
+                <p><em>Comparison function for reverse sorting notes by notepad name.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td><p>Note one.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td><p>Note two.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>-1 if note one is greater, 1 if note two is greater;
+0 if they are equal.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__sortByModDate" name="method__sortByModDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_sortByModDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_sortByModDate(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) : integer</pre>
+                <p><em>Comparison function for sorting notes by modification date.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td><p>Note one.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td><p>Note two.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>1 if note one is greater, -1 if note two is greater;
+0 if they are equal.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__rsortByModDate" name="method__rsortByModDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_rsortByModDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_rsortByModDate(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) : integer</pre>
+                <p><em>Comparison function for reverse sorting notes by modification date.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td><p>Note one.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td><p>Note two.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>-1 if note one is greater, 1 if note two is greater,
+0 if they are equal.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Mnemo.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Mnemo.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Mnemo.html">\Mnemo</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:27.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

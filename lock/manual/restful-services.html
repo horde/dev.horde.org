@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Horde/Routes: Manual: RESTful Services</title>
+
+  <link href="/routes/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="manual_restful-services">
+  <div id="wrapper">
+
+  <div id="header" class="clr">
+    <div id="logo" class="left">
+      <span>
+      <a href="/routes/"><img alt="Horde/Routes" src="/routes/images/common/logo.gif" /></a>
+      </span>
+    </div>
+      <ul id="nav" class="right">
+        <li><a href="/routes/">Home</a></li>
+        <li><a href="/routes/install.html">Install</a></li>
+        <li><a href="/routes/integrate.html">Integrate</a></li>
+        <li>Manual</li>
+      </ul>
+  </div>
+
+  <div id="content" class="clr">
+      
+  <h1>Manual</h1>
+
+  <div id="main">
+    <h2 class="top" id="download">RESTful Services</h2>
+
+    <p>
+      To make it easier to setup RESTful web services with Routes, there's a
+      shortcut Mapper method that will setup a batch of routes for you along with
+      conditions that will restrict them to specific HTTP methods. This is directly
+      styled on the Rails version of <code>$map->resource()</code>, which was based heavily on the
+      Atom Publishing Protocol.
+    </p>
+
+    <p>
+      The <code>Horde_Routes_Mapper->resource()</code> command creates a set of Routes for common
+      operations on a collection of resources, individually referred to as
+      'members'. Consider the common case where you have a system that deals with
+      users. In that case operations dealing with the entire group of users (or
+      perhaps a subset) would be considered collection methods. Operations (or
+      actions) that act on an individual member of that collection are considered
+      member methods. These terms are important to remember as the options to
+      <code>$map->resource()</code> rely on a clear understanding of collection actions vs.
+      member actions.
+    </p>
+
+    <p>
+      The default mapping that <code>$map->resource()</code> sets up looks like this:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">resource</span><span class="punct">('</span><span class="string">message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages</span><span class="punct">')</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Will</span> <span class="ident">setup</span> <span class="ident">all</span> <span class="ident">the</span> <span class="ident">routes</span> <span class="keyword">as</span> <span class="keyword">if</span> <span class="ident">you</span> <span class="ident">had</span> <span class="ident">typed</span> <span class="ident">the</span> <span class="ident">following</span> <span class="ident">map</span> <span class="ident">commands</span><span class="punct">:</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">messages</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">create</span><span class="punct">',</span> 
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">POST</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">index</span><span class="punct">',</span> 
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">formatted_messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages.:(format)</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="ident">action</span><span class="punct">=&gt;'</span><span class="string">index</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">new_message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages/new</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">new</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">formatted_new_message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages/new.:(format)</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">new</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">messages/:id</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">update</span><span class="punct">',</span>
+    <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">PUT</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">messages/:id</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">delete</span><span class="punct">',</span>
+    <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">DELETE</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">edit_message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages/:(id);edit</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">edit</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">formatted_edit_message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages/:(id).:(format);edit</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">edit</span><span class="punct">',</span> 
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages/:id</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">show</span><span class="punct">',</span>
+        <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span>
+<span class="attribute">$map</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">formatted_message</span><span class="punct">',</span> <span class="punct">'</span><span class="string">messages/:(id).:(format)</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">messages</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">show</span><span class="punct">',</span>
+    <span class="punct">'</span><span class="string">conditions</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">method</span><span class="punct">'=&gt;</span><span class="ident">array</span><span class="punct">('</span><span class="string">GET</span><span class="punct">'))));</span> </pre></div>
+
+    <p>
+      The most important aspects of this is the following mapping that is established:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="constant">GET</span>    <span class="punct">/</span><span class="ident">messages</span>         <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">index</span><span class="punct">()</span>          <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">messages</span><span class="punct">')</span>
+<span class="constant">POST</span>   <span class="punct">/</span><span class="ident">messages</span>         <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">create</span><span class="punct">()</span>         <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">messages</span><span class="punct">')</span>
+<span class="constant">GET</span>    <span class="punct">/</span><span class="ident">messages</span><span class="punct">/</span><span class="keyword">new</span>     <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">new</span><span class="punct">()</span>            <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">new_message</span><span class="punct">')</span>
+<span class="constant">PUT</span>    <span class="punct">/</span><span class="ident">messages</span><span class="punct">/</span><span class="number">1</span>       <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">update</span><span class="punct">(</span><span class="ident">id</span><span class="punct">)</span>       <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">message</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">id</span><span class="punct">'=&gt;</span><span class="number">1</span><span class="punct">))</span>
+<span class="constant">DELETE</span> <span class="punct">/</span><span class="ident">messages</span><span class="punct">/</span><span class="number">1</span>       <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">delete</span><span class="punct">(</span><span class="ident">id</span><span class="punct">)</span>       <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">message</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">id</span><span class="punct">'=&gt;</span><span class="number">1</span><span class="punct">))</span>
+<span class="constant">GET</span>    <span class="punct">/</span><span class="ident">messages</span><span class="punct">/</span><span class="number">1</span>       <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">show</span><span class="punct">(</span><span class="ident">id</span><span class="punct">)</span>         <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">message</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">id</span><span class="punct">'=&gt;</span><span class="number">1</span><span class="punct">))</span>
+<span class="constant">GET</span>    <span class="punct">/</span><span class="ident">messages</span><span class="punct">/</span><span class="number">1</span><span class="punct">;</span><span class="ident">edit</span>  <span class="punct">-&gt;</span> <span class="ident">messages</span><span class="punct">.</span><span class="ident">edit</span><span class="punct">(</span><span class="ident">id</span><span class="punct">)</span>         <span class="punct">-&gt;</span> <span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">('</span><span class="string">edit_message</span><span class="punct">',</span> <span class="ident">array</span><span class="punct">('</span><span class="string">id</span><span class="punct">'=&gt;</span><span class="number">1</span><span class="punct">))</span> </pre></div>
+
+    <p>
+      <em>Note</em> Several of these methods map to functions intended to display forms. The new
+      message method should be used to return a form allowing someone to create a
+      new message, while it should <code>POST</code> to <code>/messages</code>. The edit message function
+      should work similarly returning a form to edit a message, which then performs a
+      <code>PUT</code> to the <code>/messages/1</code> resource.
+    </p>
+
+    <p>
+      Additional methods that respond to either a new member, or different ways of
+      viewing collections can be added via keyword arguments to <code>$map->resource()</code> as
+      shown in the complete list with examples of the <code>$map->resource()</code> options.
+    </p>
+
+  </div>
+
+    <div id="sidebar">
+    <div class="side_item">
+      <h4>Manual</h4>
+      <p><a href="/routes/manual/index.html">Setting Up Routes</a></p>
+      <p><a href="/routes/manual/nitty-gritty-route-setup.html">Nitty Gritty of Route Setup</a></p>
+      <p><a href="/routes/manual/using-routes.html">Using Routes</a></p>
+      <p><a href="/routes/manual/subdomain-support.html">Sub-Domain Support</a></p>
+      <p>RESTful Services</p>
+      <div class="side_bottom">&nbsp;</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer" class="clr">
+    <span class="right">
+      Horde/Routes is part of the <a href="http://www.horde.org">Horde Project</a>.<br/>
+      Development &amp; Website by <a href="http://maintainable.com">Maintainable Software</a>
+    </span>
+  </div>
+
+  
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">219</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">21</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">32</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1936791693"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1936791693" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_ActiveSync_Interface_ImapFactory.html">Horde_ActiveSync_Interface_ImapFactory</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_ActiveSync_Interface_LoggerFactory.html">Horde_ActiveSync_Interface_LoggerFactory</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_ActiveSync.html">Horde_ActiveSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Collections.html">Horde_ActiveSync_Collections</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Exporter_Base.html">Horde_ActiveSync_Connector_Exporter_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Exporter_FolderSync.html">Horde_ActiveSync_Connector_Exporter_FolderSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Exporter_Sync.html">Horde_ActiveSync_Connector_Exporter_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Connector_Importer.html">Horde_ActiveSync_Connector_Importer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Credentials.html">Horde_ActiveSync_Credentials</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Device.html">Horde_ActiveSync_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Device_Ios.html">Horde_ActiveSync_Device_Ios</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Driver_Base.html">Horde_ActiveSync_Driver_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Driver_Mock.html">Horde_ActiveSync_Driver_Mock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Driver_MockConnector.html">Horde_ActiveSync_Driver_MockConnector</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_DeletionNotSupported.html">Horde_ActiveSync_Exception_DeletionNotSupported</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_EmailFatalFailure.html">Horde_ActiveSync_Exception_EmailFatalFailure</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_FolderExists.html">Horde_ActiveSync_Exception_FolderExists</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_FolderGone.html">Horde_ActiveSync_Exception_FolderGone</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_InvalidRequest.html">Horde_ActiveSync_Exception_InvalidRequest</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_StaleState.html">Horde_ActiveSync_Exception_StaleState</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_StateGone.html">Horde_ActiveSync_Exception_StateGone</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Exception_TemporaryFailure.html">Horde_ActiveSync_Exception_TemporaryFailure</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_Base.html">Horde_ActiveSync_Folder_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_Collection.html">Horde_ActiveSync_Folder_Collection</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_Imap.html">Horde_ActiveSync_Folder_Imap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Folder_RI.html">Horde_ActiveSync_Folder_RI</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Adapter.html">Horde_ActiveSync_Imap_Adapter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder.html">Horde_ActiveSync_Imap_EasMessageBuilder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_Html.html">Horde_ActiveSync_Imap_EasMessageBuilder_Html</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_Mime.html">Horde_ActiveSync_Imap_EasMessageBuilder_Mime</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_Plain.html">Horde_ActiveSync_Imap_EasMessageBuilder_Plain</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_EasMessageBuilder_TwoFive.html">Horde_ActiveSync_Imap_EasMessageBuilder_TwoFive</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Message.html">Horde_ActiveSync_Imap_Message</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_MessageBodyData.html">Horde_ActiveSync_Imap_MessageBodyData</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Base.html">Horde_ActiveSync_Imap_Strategy_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Initial.html">Horde_ActiveSync_Imap_Strategy_Initial</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Modseq.html">Horde_ActiveSync_Imap_Strategy_Modseq</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Imap_Strategy_Plain.html">Horde_ActiveSync_Imap_Strategy_Plain</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Factory.html">Horde_ActiveSync_Log_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Formatter.html">Horde_ActiveSync_Log_Formatter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Handler.html">Horde_ActiveSync_Log_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Logger.html">Horde_ActiveSync_Log_Logger</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Log_Logger_Deprecated.html">Horde_ActiveSync_Log_Logger_Deprecated</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseAdd.html">Horde_ActiveSync_Message_AirSyncBaseAdd</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseAttachment.html">Horde_ActiveSync_Message_AirSyncBaseAttachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseBody.html">Horde_ActiveSync_Message_AirSyncBaseBody</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseBodypart.html">Horde_ActiveSync_Message_AirSyncBaseBodypart</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseDelete.html">Horde_ActiveSync_Message_AirSyncBaseDelete</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseFileAttachment.html">Horde_ActiveSync_Message_AirSyncBaseFileAttachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_AirSyncBaseLocation.html">Horde_ActiveSync_Message_AirSyncBaseLocation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Appointment.html">Horde_ActiveSync_Message_Appointment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Attachment.html">Horde_ActiveSync_Message_Attachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Attendee.html">Horde_ActiveSync_Message_Attendee</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Base.html">Horde_ActiveSync_Message_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Contact.html">Horde_ActiveSync_Message_Contact</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_DeviceInformation.html">Horde_ActiveSync_Message_DeviceInformation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Document.html">Horde_ActiveSync_Message_Document</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_DocumentLibrary.html">Horde_ActiveSync_Message_DocumentLibrary</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Exception.html">Horde_ActiveSync_Message_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Flag.html">Horde_ActiveSync_Message_Flag</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Folder.html">Horde_ActiveSync_Message_Folder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Forwardee.html">Horde_ActiveSync_Message_Forwardee</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_GalPicture.html">Horde_ActiveSync_Message_GalPicture</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Mail.html">Horde_ActiveSync_Message_Mail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_MeetingRequest.html">Horde_ActiveSync_Message_MeetingRequest</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Note.html">Horde_ActiveSync_Message_Note</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Oof.html">Horde_ActiveSync_Message_Oof</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_OofMessage.html">Horde_ActiveSync_Message_OofMessage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_RecipientInformation.html">Horde_ActiveSync_Message_RecipientInformation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Recurrence.html">Horde_ActiveSync_Message_Recurrence</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_ResolveRecipientsPicture.html">Horde_ActiveSync_Message_ResolveRecipientsPicture</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_SendMail.html">Horde_ActiveSync_Message_SendMail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_SendMailSource.html">Horde_ActiveSync_Message_SendMailSource</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_Task.html">Horde_ActiveSync_Message_Task</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Message_TaskRecurrence.html">Horde_ActiveSync_Message_TaskRecurrence</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Mime.html">Horde_ActiveSync_Mime</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Mime_Headers_Addresses.html">Horde_ActiveSync_Mime_Headers_Addresses</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Mime_Iterator.html">Horde_ActiveSync_Mime_Iterator</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Policies.html">Horde_ActiveSync_Policies</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Autodiscover.html">Horde_ActiveSync_Request_Autodiscover</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Base.html">Horde_ActiveSync_Request_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_FolderCreate.html">Horde_ActiveSync_Request_FolderCreate</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_FolderSync.html">Horde_ActiveSync_Request_FolderSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_GetAttachment.html">Horde_ActiveSync_Request_GetAttachment</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_GetHierarchy.html">Horde_ActiveSync_Request_GetHierarchy</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_GetItemEstimate.html">Horde_ActiveSync_Request_GetItemEstimate</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_ItemOperations.html">Horde_ActiveSync_Request_ItemOperations</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_MeetingResponse.html">Horde_ActiveSync_Request_MeetingResponse</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_MoveItems.html">Horde_ActiveSync_Request_MoveItems</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Ping.html">Horde_ActiveSync_Request_Ping</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Provision.html">Horde_ActiveSync_Request_Provision</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_ResolveRecipients.html">Horde_ActiveSync_Request_ResolveRecipients</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Search.html">Horde_ActiveSync_Request_Search</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SendMail.html">Horde_ActiveSync_Request_SendMail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Settings.html">Horde_ActiveSync_Request_Settings</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SmartForward.html">Horde_ActiveSync_Request_SmartForward</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SmartReply.html">Horde_ActiveSync_Request_SmartReply</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_Sync.html">Horde_ActiveSync_Request_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_SyncBase.html">Horde_ActiveSync_Request_SyncBase</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Request_ValidateCert.html">Horde_ActiveSync_Request_ValidateCert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Rfc822.html">Horde_ActiveSync_Rfc822</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_State_Base.html">Horde_ActiveSync_State_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_State_Mongo.html">Horde_ActiveSync_State_Mongo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_State_Sql.html">Horde_ActiveSync_State_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Status.html">Horde_ActiveSync_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_SyncCache.html">Horde_ActiveSync_SyncCache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Timezone.html">Horde_ActiveSync_Timezone</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Translation.html">Horde_ActiveSync_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Utils.html">Horde_ActiveSync_Utils</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Wbxml.html">Horde_ActiveSync_Wbxml</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Wbxml_Decoder.html">Horde_ActiveSync_Wbxml_Decoder</a></li>
+                                                    <li class="class"><a href="../classes/Horde_ActiveSync_Wbxml_Encoder.html">Horde_ActiveSync_Wbxml_Encoder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_ActiveSync_Mime_Iterator</h1>
+                    <p><em>Recursive iterator for Horde_Mime_Part objects. This iterator is
+self-contained and independent of all other iterators. Adapted from
+Horde_Mime package. Changed to allow what EAS would consider attachments
+to be ignored during iteration and to always include the base part.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method_count" class="">count()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method_current" class="">current()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method_key" class="">key()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method_next" class="">next()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method_rewind" class="">rewind()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method_valid" class="">valid()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method__isAttachment" class="">_isAttachment()</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#method__allowRecursion" class="">_allowRecursion()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#property__ignoreAttachments" class="">$_ignoreAttachments</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#property__part" class="">$_part</a><br />
+                                                                    <a href="../classes/Horde_ActiveSync_Mime_Iterator.html#property__state" class="">$_state</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/ActiveSync.Mime.Iterator.html"><div class="path-wrapper">ActiveSync/Mime/Iterator.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">ActiveSync</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_ActiveSync_Mime_Iterator</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                                                                                <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Michael J Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                                    <p>Michael Slusarz <a href="mailto:slusarz@horde.org">slusarz@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2015-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL 2.1</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__ignoreAttachments" name="property__ignoreAttachments" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_ignoreAttachments</h3>
+                <pre class="signature">$_ignoreAttachments : boolean</pre>
+                <p><em>Flag to ignore parts that EAS considers attachments.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__part" name="property__part" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_part</h3>
+                <pre class="signature">$_part : \Horde_Mime_Part</pre>
+                <p><em>Base part.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Mime_Part
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__state" name="property__state" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_state</h3>
+                <pre class="signature">$_state : object</pre>
+                <p><em>State data.</em></p>
+                
+
+                                <h4>Type</h4>
+                object
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_Mime_Part  <span class="argument">$part</span>,   <span class="argument">$ignoreAttachments = false</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$part </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$ignoreAttachments </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_count" name="method_count" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">count()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">count() : integer</pre>
+                <p><em>Returns the number of message parts.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>Number of message parts.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_current" name="method_current" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">current()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">current() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_key" name="method_key" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">key()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">key() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_next" name="method_next" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">next()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">next() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rewind" name="method_rewind" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rewind()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rewind() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_valid" name="method_valid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">valid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">valid() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__isAttachment" name="method__isAttachment" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_isAttachment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_isAttachment(  <span class="argument">$part</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$part </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__allowRecursion" name="method__allowRecursion" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_allowRecursion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_allowRecursion(\Horde_Mime_Part  <span class="argument">$part</span>) : boolean</pre>
+                <p><em>Return whether or not to allow recursion into a mime part when iterating
+all of the parts. So far, only disallows this for message/rfc822 parts
+to prevent each mime part of the rfc822 part to display as an attachment.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Mime_Part</td>
+                                <td>$part </td>
+                                <td><p>The part to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True is we can descend into the part. False otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Iterator.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/ActiveSync/Mime/Iterator.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:35.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

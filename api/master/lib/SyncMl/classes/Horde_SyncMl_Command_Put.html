@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">164</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-747468191"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-747468191" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_SyncMl.html">Horde_SyncMl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend.html">Horde_SyncMl_Backend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Horde.html">Horde_SyncMl_Backend_Horde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Sql.html">Horde_SyncMl_Backend_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command.html">Horde_SyncMl_Command</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Alert.html">Horde_SyncMl_Command_Alert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Final.html">Horde_SyncMl_Command_Final</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Get.html">Horde_SyncMl_Command_Get</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Map.html">Horde_SyncMl_Command_Map</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Put.html">Horde_SyncMl_Command_Put</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Replace.html">Horde_SyncMl_Command_Replace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Results.html">Horde_SyncMl_Command_Results</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Status.html">Horde_SyncMl_Command_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Sync.html">Horde_SyncMl_Command_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_SyncHdr.html">Horde_SyncMl_Command_SyncHdr</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_ContentHandler.html">Horde_SyncMl_ContentHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DataStore.html">Horde_SyncMl_DataStore</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device.html">Horde_SyncMl_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Nokia.html">Horde_SyncMl_Device_Nokia</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_P800.html">Horde_SyncMl_Device_P800</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_sync4j.html">Horde_SyncMl_Device_sync4j</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Sync4JMozilla.html">Horde_SyncMl_Device_Sync4JMozilla</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Synthesis.html">Horde_SyncMl_Device_Synthesis</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DeviceInfo.html">Horde_SyncMl_DeviceInfo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Property.html">Horde_SyncMl_Property</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_PropertyParameter.html">Horde_SyncMl_PropertyParameter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_State.html">Horde_SyncMl_State</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Sync.html">Horde_SyncMl_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_SyncElement.html">Horde_SyncMl_SyncElement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Translation.html">Horde_SyncMl_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_XmlOutput.html">Horde_SyncMl_XmlOutput</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_SyncMl_Command_Put</h1>
+                    <p><em>The Horde_SyncMl_Command_Put class provides a SyncML implementation of the
+Put command as defined in SyncML Representation Protocol, version 1.1,
+section 5.5.10.</em></p>
+                    <p>The Put command is used to transfer data items to a recipient network device
+or database. The Horde_SyncMl_Command_Put class handles DevInf device
+information sent by the client.</p>
+<p>The data is stored in a Horde_SyncMl_DeviceInfo object which is defined in
+Device.php and then stored in Horde_SyncMl_Device as an attribute.</p>
+<p>Copyright 2005-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#method_startElement" class="">startElement()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#method_endElement" class="">endElement()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#method_characters" class="">characters()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#method_getCommandName" class="">getCommandName()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#method_handleCommand" class="">handleCommand()</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#method_factory" class="">factory()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__cmdName" class="">$_cmdName</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#property__cmdID" class="">$_cmdID</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#property__stack" class="">$_stack</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#property__chars" class="">$_chars</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command.html#property__outputHandler" class="">$_outputHandler</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__devinf" class="">$_devinf</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__currentDS" class="">$_currentDS</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__currentCTType" class="">$_currentCTType</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__VerCT" class="">$_VerCT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__currentPropName" class="">$_currentPropName</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__currentParamName" class="">$_currentParamName</a><br />
+                                                                    <a href="../classes/Horde_SyncMl_Command_Put.html#property__currentXNam" class="">$_currentXNam</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/SyncMl.Command.Put.html"><div class="path-wrapper">SyncMl/Command/Put.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">SyncMl</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_SyncMl_Command.html">\Horde_SyncMl_Command</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_SyncMl_Command_Put</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Karsten Fourmont <a href="mailto:karsten@horde.org">karsten@horde.org</a></p>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__cmdName" name="property__cmdName" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_cmdName</h3>
+                <pre class="signature">$_cmdName : string</pre>
+                <p><em>Name of the command.</em></p>
+                <p>Must be overwritten by a sub class.</p>
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__cmdID" name="property__cmdID" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_cmdID</h3>
+                <pre class="signature">$_cmdID : integer</pre>
+                <p><em>The command ID (&lt;CmdID&gt;).</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__stack" name="property__stack" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_stack</h3>
+                <pre class="signature">$_stack : array</pre>
+                <p><em>Stack for holding the XML elements during creation of the object from
+the XML event flow.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__chars" name="property__chars" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_chars</h3>
+                <pre class="signature">$_chars : string</pre>
+                <p><em>Buffer for the parsed character data.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__outputHandler" name="property__outputHandler" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_outputHandler</h3>
+                <pre class="signature">$_outputHandler : \Horde_SyncMl_XmlOutput</pre>
+                <p><em>A Horde_SyncMl_XmlOutput instance responsible for generating the output.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_SyncMl_XmlOutput.html">\Horde_SyncMl_XmlOutput</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__devinf" name="property__devinf" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_devinf</h3>
+                <pre class="signature">$_devinf : \Horde_SyncMl_DeviceInfo</pre>
+                <p><em>The Horde_SyncMl_DeviceInfo object where all parsed &lt;DevInf&gt; content is
+saved.</em></p>
+                <DevInf> specifies the type of the source synchronization device.
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_SyncMl_DeviceInfo.html">\Horde_SyncMl_DeviceInfo</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__currentDS" name="property__currentDS" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_currentDS</h3>
+                <pre class="signature">$_currentDS : \Horde_SyncMl_DataStore</pre>
+                <p><em>A Horde_SyncMl_DataStore object where the information from the currently
+parsed &lt;DataStore&gt; section is saved.</em></p>
+                <DataStore> specifies the properties of a given local datastore.
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_SyncMl_DataStore.html">\Horde_SyncMl_DataStore</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__currentCTType" name="property__currentCTType" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_currentCTType</h3>
+                <pre class="signature">$_currentCTType : string</pre>
+                <p><em>The MIME content type as specified by the last &lt;CTType&gt; element like
+text/calendar or text/x-vcard.</em></p>
+                <CTType> specifies the type of a supported content type.
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__VerCT" name="property__VerCT" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_VerCT</h3>
+                <pre class="signature">$_VerCT : string</pre>
+                <p><em>The version of the MIME content type in $_currentCTType as specified by
+the last &lt;VerCT&gt; element like 1.0 for text/x-vcalendar or 2.1 for
+text/x-vcard.</em></p>
+                <VerCT> specifies the version of a supported content type.
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__currentPropName" name="property__currentPropName" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_currentPropName</h3>
+                <pre class="signature">$_currentPropName : string</pre>
+                <p><em>A property name of the currently parsed content type (CTType), like
+&#039;DTSTART&#039; for text/calendar or &#039;BDAY&#039; for text/x-vcard.</em></p>
+                <PropName> specifies a supported property of a given content type.
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__currentParamName" name="property__currentParamName" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_currentParamName</h3>
+                <pre class="signature">$_currentParamName : string</pre>
+                <p><em>A property name of the currently parsed property name (PropName), like
+&#039;ROLE&#039; for &#039;ATTENDEE&#039; or &#039;HOME&#039; for &#039;ADR&#039;.</em></p>
+                <ParamName> specifies supported parameters of a given content type
+property.
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__currentXNam" name="property__currentXNam" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_currentXNam</h3>
+                <pre class="signature">$_currentXNam : string</pre>
+                <p><em>The name of the currently parsed DevInf extension (&lt;Ext&gt;) as specified
+by the XNam element.</em></p>
+                <XNam> specifies the name of one of the DevInf extension element types.
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Horde_SyncMl_XmlOutput  <span class="argument">$outputHandler</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Horde_SyncMl_XmlOutput.html">\Horde_SyncMl_XmlOutput</a></td>
+                                <td>$outputHandler </td>
+                                <td><p>A Horde_SyncMl_XmlOutput object.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_startElement" name="method_startElement" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">startElement()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">startElement(string  <span class="argument">$uri</span>, string  <span class="argument">$element</span>, array  <span class="argument">$attrs</span>) </pre>
+                <p><em>Start element handler for the XML parser, delegated from
+Horde_SyncMl_ContentHandler::startElement().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uri </td>
+                                <td><p>The namespace URI of the element.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$element </td>
+                                <td><p>The element tag name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$attrs </td>
+                                <td><p>A hash with the element's attributes.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_endElement" name="method_endElement" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">endElement()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">endElement(string  <span class="argument">$uri</span>, string  <span class="argument">$element</span>) </pre>
+                <p><em>End element handler for the XML parser, delegated from
+Horde_SyncMl_ContentHandler::endElement().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uri </td>
+                                <td><p>The namespace URI of the element.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$element </td>
+                                <td><p>The element tag name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_characters" name="method_characters" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">characters()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">characters(string  <span class="argument">$str</span>) </pre>
+                <p><em>Character data handler for the XML parser, delegated from
+Horde_SyncMl_ContentHandler::characters().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$str </td>
+                                <td><p>The data string.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCommandName" name="method_getCommandName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCommandName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCommandName() : string</pre>
+                <p><em>Returns the command name this instance is reponsible for.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The command name this object is handling.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handleCommand" name="method_handleCommand" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">handleCommand()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handleCommand(  <span class="argument">$debug = false</span>) </pre>
+                <p><em>Implements the actual business logic of the Alert command.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$debug </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_factory" name="method_factory" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">factory()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">factory(string  <span class="argument">$command</span>, \Horde_SyncMl_XmlOutput  <span class="argument">$outputHandler</span>) : \Horde_SyncMl_Command</pre>
+                <p><em>Attempts to return a concrete Horde_SyncMl_Command instance based on
+$command.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$command </td>
+                                <td><p>The type of the concrete
+Horde_SyncMl_Comment subclass to
+return.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/Horde_SyncMl_XmlOutput.html">\Horde_SyncMl_XmlOutput</a></td>
+                                <td>$outputHandler </td>
+                                <td><p>A Horde_SyncMl_XmlOutput object.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_SyncMl_Command.html">\Horde_SyncMl_Command</a>
+                                            &mdash; <p>The newly created concrete Horde_SyncMl_Command
+instance, or false on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_SyncMl_Command.html"><div class="path-wrapper">\Horde_SyncMl_Command</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Put.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/SyncMl/Command/Put.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:39.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

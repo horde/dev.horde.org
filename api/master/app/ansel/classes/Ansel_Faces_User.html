@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">374</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1637410042"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1637410042" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Ansel.html">Ansel</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ActionHandler.html">Ansel_ActionHandler</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Application.html">Ansel_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Application_Handler.html">Ansel_Ajax_Application_Handler</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_EditCaption.html">Ansel_Ajax_Imple_EditCaption</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_EditFaces.html">Ansel_Ajax_Imple_EditFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_LocationAutoCompleter.html">Ansel_Ajax_Imple_LocationAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_ToggleGalleryActions.html">Ansel_Ajax_Imple_ToggleGalleryActions</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Ajax_Imple_ToggleOtherGalleries.html">Ansel_Ajax_Imple_ToggleOtherGalleries</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Api.html">Ansel_Api</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Application.html">Ansel_Application</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_Cloud.html">Ansel_Block_Cloud</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_Gallery.html">Ansel_Block_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_MyGalleries.html">Ansel_Block_MyGalleries</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RandomPhoto.html">Ansel_Block_RandomPhoto</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RecentComments.html">Ansel_Block_RecentComments</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RecentFaces.html">Ansel_Block_RecentFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_Recentlyadded.html">Ansel_Block_Recentlyadded</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Block_RecentlyAddedGeodata.html">Ansel_Block_RecentlyAddedGeodata</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Config.html">Ansel_Config</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Exception.html">Ansel_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces.html">Ansel_Faces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces_Base.html">Ansel_Faces_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces_Facedetect.html">Ansel_Faces_Facedetect</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Faces_User.html">Ansel_Faces_User</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Factory_Faces.html">Ansel_Factory_Faces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Factory_Storage.html">Ansel_Factory_Storage</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Factory_Styles.html">Ansel_Factory_Styles</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Ecard.html">Ansel_Form_Ecard</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Image.html">Ansel_Form_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_ImageDate.html">Ansel_Form_ImageDate</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Upload.html">Ansel_Form_Upload</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Form_Watermark.html">Ansel_Form_Watermark</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Gallery.html">Ansel_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Gallery_Decorator_Date.html">Ansel_Gallery_Decorator_Date</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_GalleryMode_Base.html">Ansel_GalleryMode_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_GalleryMode_Date.html">Ansel_GalleryMode_Date</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_GalleryMode_Normal.html">Ansel_GalleryMode_Normal</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Image.html">Ansel_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator.html">Ansel_ImageGenerator</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_Mini.html">Ansel_ImageGenerator_Mini</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_PolaroidThumb.html">Ansel_ImageGenerator_PolaroidThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_PolaroidThumbStack.html">Ansel_ImageGenerator_PolaroidThumbStack</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_RoundedThumb.html">Ansel_ImageGenerator_RoundedThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_RoundedThumbStack.html">Ansel_ImageGenerator_RoundedThumbStack</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_Screen.html">Ansel_ImageGenerator_Screen</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_ShadowThumb.html">Ansel_ImageGenerator_ShadowThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_ShadowThumbStack.html">Ansel_ImageGenerator_ShadowThumbStack</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_SquareThumb.html">Ansel_ImageGenerator_SquareThumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_ImageGenerator_Thumb.html">Ansel_ImageGenerator_Thumb</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_LoginTasks_SystemTask_Upgrade.html">Ansel_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Prefs_Special_GallerySelect.html">Ansel_Prefs_Special_GallerySelect</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Prefs_Special_GalleryStyle.html">Ansel_Prefs_Special_GalleryStyle</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Queue_ProcessThumbs.html">Ansel_Queue_ProcessThumbs</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report.html">Ansel_Report</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report_letter.html">Ansel_Report_letter</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report_mail.html">Ansel_Report_mail</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Report_tickets.html">Ansel_Report_tickets</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Storage.html">Ansel_Storage</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Style.html">Ansel_Style</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_TagBrowser.html">Ansel_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tagger.html">Ansel_Tagger</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Test.html">Ansel_Test</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tile_DateGallery.html">Ansel_Tile_DateGallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tile_Gallery.html">Ansel_Tile_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Tile_Image.html">Ansel_Tile_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Ansel.html">Ansel_View_Ansel</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Base.html">Ansel_View_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_EmbeddedRenderer_GalleryLink.html">Ansel_View_EmbeddedRenderer_GalleryLink</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_EmbeddedRenderer_Mini.html">Ansel_View_EmbeddedRenderer_Mini</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_EmbeddedRenderer_Slideshow.html">Ansel_View_EmbeddedRenderer_Slideshow</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Gallery.html">Ansel_View_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryProperties.html">Ansel_View_GalleryProperties</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryRenderer_Base.html">Ansel_View_GalleryRenderer_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryRenderer_Gallery.html">Ansel_View_GalleryRenderer_Gallery</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_GalleryRenderer_GalleryLightbox.html">Ansel_View_GalleryRenderer_GalleryLightbox</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Image.html">Ansel_View_Image</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_List.html">Ansel_View_List</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Results.html">Ansel_View_Results</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Slideshow.html">Ansel_View_Slideshow</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_View_Upload.html">Ansel_View_Upload</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget.html">Ansel_Widget</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Actions.html">Ansel_Widget_Actions</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Base.html">Ansel_Widget_Base</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_GalleryFaces.html">Ansel_Widget_GalleryFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Geotag.html">Ansel_Widget_Geotag</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_ImageFaces.html">Ansel_Widget_ImageFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Links.html">Ansel_Widget_Links</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_OtherGalleries.html">Ansel_Widget_OtherGalleries</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_OwnerFaces.html">Ansel_Widget_OwnerFaces</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_SimilarPhotos.html">Ansel_Widget_SimilarPhotos</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_Widget_Tags.html">Ansel_Widget_Tags</a></li>
+                                                    <li class="class"><a href="../classes/Ansel_XPPublisher.html">Ansel_XPPublisher</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Ansel_Faces_User</h1>
+                    <p><em>Face recognition class</em></p>
+                    <p>Copyright 2007-2017 Horde LLC (<a href="http://www.horde.org/">http://www.horde.org/</a>)</p>
+<p>See the enclosed file LICENSE for license information (GPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/gpl">http://www.horde.org/licenses/gpl</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_canAutogenerate" class="">canAutogenerate()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getFaces" class="">getFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getImageFacesData" class="">getImageFacesData()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getGalleryFaces" class="">getGalleryFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_allFaces" class="">allFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_namedFaces" class="">namedFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_ownerFaces" class="">ownerFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_searchFaces" class="">searchFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_countOwnerFaces" class="">countOwnerFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_countAllFaces" class="">countAllFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_countNamedFaces" class="">countNamedFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_countSearchFaces" class="">countSearchFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_viewExists" class="">viewExists()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getFaceImageObject" class="">getFaceImageObject()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getFaceUrl" class="">getFaceUrl()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_saveCustomFace" class="">saveCustomFace()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getFromPicture" class="">getFromPicture()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_createView" class="">createView()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_saveSignature" class="">saveSignature()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getSignatureFromFile" class="">getSignatureFromFile()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getFromGallery" class="">getFromGallery()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_setName" class="">setName()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getFaceById" class="">getFaceById()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method_getSignatureMatches" class="">getSignatureMatches()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method__getFaces" class="">_getFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method__fetchFaces" class="">_fetchFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method__countFaces" class="">_countFaces()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method__getParamsArray" class="">_getParamsArray()</a><br />
+                                                                    <a href="../classes/Ansel_Faces_Base.html#method__getSignatureMatches" class="">_getSignatureMatches()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Faces.User.html"><div class="path-wrapper">Faces/User.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Ansel</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Ansel_Faces_Base.html">\Ansel_Faces_Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\Ansel_Faces_User</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Duck <a href="mailto:duck@obala.net">duck@obala.net</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_canAutogenerate" name="method_canAutogenerate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">canAutogenerate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">canAutogenerate() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFaces" name="method_getFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFaces(mixed  <span class="argument">$image</span>) : mixed</pre>
+                <p><em>Get all the coordinates for faces in an image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$image </td>
+                                <td><p>The Ansel_Image or a path to the image to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Array of face data</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getImageFacesData" name="method_getImageFacesData" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getImageFacesData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getImageFacesData(integer  <span class="argument">$image_id</span>, boolean  <span class="argument">$full = false</span>) : array</pre>
+                <p><em>Get existing faces data from storage for the given image.</em></p>
+                <p>Used if we need to build the face image at some point after it is
+detected.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$image_id </td>
+                                <td><p>The image_id of the Ansel_Image these faces are
+for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$full </td>
+                                <td><p>Get full face data or just face_id and
+face_name.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of faces data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGalleryFaces" name="method_getGalleryFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGalleryFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGalleryFaces(integer  <span class="argument">$gallery_id</span>) : array</pre>
+                <p><em>Get existing faces data for an entire gallery.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$gallery_id </td>
+                                <td><p>gallery_id to get data for.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of faces data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_allFaces" name="method_allFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">allFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">allFaces(integer  <span class="argument">$from</span>, integer  <span class="argument">$count</span>) : array</pre>
+                <p><em>Get all faces</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>Offset</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>Limit</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Array of face hashes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_namedFaces" name="method_namedFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">namedFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">namedFaces(integer  <span class="argument">$from</span>, integer  <span class="argument">$count</span>) : array</pre>
+                <p><em>Get named faces</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>Offset</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>Limit</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of face hashes</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_ownerFaces" name="method_ownerFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">ownerFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">ownerFaces(string  <span class="argument">$owner</span>, integer  <span class="argument">$from</span>, integer  <span class="argument">$count</span>) : array</pre>
+                <p><em>Get faces owned by user</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$owner </td>
+                                <td><p>User</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>Offset</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>Limit</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of face hashes.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_searchFaces" name="method_searchFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">searchFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">searchFaces(string  <span class="argument">$name</span>, integer  <span class="argument">$from</span>, integer  <span class="argument">$count</span>) </pre>
+                <p><em>Seach faces for a name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Search string</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>Offset</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>Limit</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_countOwnerFaces" name="method_countOwnerFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">countOwnerFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">countOwnerFaces(string  <span class="argument">$owner</span>) </pre>
+                <p><em>Get faces owned by owner</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$owner </td>
+                                <td><p>User</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_countAllFaces" name="method_countAllFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">countAllFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">countAllFaces() </pre>
+                <p><em>Count all faces</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_countNamedFaces" name="method_countNamedFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">countNamedFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">countNamedFaces() </pre>
+                <p><em>Get named faces</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_countSearchFaces" name="method_countSearchFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">countSearchFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">countSearchFaces(string  <span class="argument">$name</span>) </pre>
+                <p><em>Seach faces for a name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Search string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_viewExists" name="method_viewExists" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">viewExists()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">viewExists(integer  <span class="argument">$image_id</span>, integer  <span class="argument">$face_id</span>, boolean  <span class="argument">$create = true</span>) : boolean</pre>
+                <p><em>Checks to see that a given face image exists in the VFS.</em></p>
+                <p>If $create is true, the image is created if it does not
+exist. Otherwise false is returned if the image does not exist. True is
+returned both if the image already existed OR if it did not exist, but
+was successfully created.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$image_id </td>
+                                <td><p>The image_id the face belongs to.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>The face_id we are checking for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$create </td>
+                                <td><p>Automatically create the image if it is not
+found.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if image exists at end of function call, false
+otherwise.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFaceImageObject" name="method_getFaceImageObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFaceImageObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFaceImageObject(integer  <span class="argument">$face_id</span>) : \Horde_Image</pre>
+                <p><em>Get a Horde_Image object representing the requested face.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>The requested face_id</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \Horde_Image
+                                            &mdash; <p>The requested Horde_Image object</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFaceUrl" name="method_getFaceUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFaceUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFaceUrl(integer  <span class="argument">$image_id</span>, integer  <span class="argument">$face_id</span>, boolean  <span class="argument">$full = false</span>) : string</pre>
+                <p><em>Get a URL for a face image suitable for using as the src attribute in an
+image tag.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$image_id </td>
+                                <td><p>Image ID to get url for</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>Face ID to get url for</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$full </td>
+                                <td><p>Should we generate a full URL?</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The URL for the face image suitable for use as the src
+attribute in an <img> tag.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_saveCustomFace" name="method_saveCustomFace" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">saveCustomFace()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">saveCustomFace(integer  <span class="argument">$face_id</span>, integer  <span class="argument">$image_id</span>, integer  <span class="argument">$x1</span>, integer  <span class="argument">$y1</span>, integer  <span class="argument">$x2</span>, integer  <span class="argument">$y2</span>, string  <span class="argument">$name = &#039;&#039;</span>) : array</pre>
+                <p><em>Associates a given rectangle with the given image and creates the face
+image. Used for setting a face range explicitly.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>Face id to save</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$image_id </td>
+                                <td><p>Image face belongs to</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x1 </td>
+                                <td><p>The top left corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y1 </td>
+                                <td><p>The top right corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x2 </td>
+                                <td><p>The bottom left corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y2 </td>
+                                <td><p>The bottom right corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Face name</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception,</dt>
+                            <dd><p>Horde_Exception_PermissionDenied</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Faces found</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFromPicture" name="method_getFromPicture" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFromPicture()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFromPicture(mixed  <span class="argument">$image</span>, \boolen  <span class="argument">$create = false</span>) : array</pre>
+                <p><em>Look for and save faces in a picture, and optionally create the face
+image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$image </td>
+                                <td><p>Image Object/ID to check</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\boolen</td>
+                                <td>$create </td>
+                                <td><p>Create images or store data?</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception_PermissionDenied</dt>
+                            <dd></dd>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Faces found</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createView" name="method_createView" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createView()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createView(integer  <span class="argument">$face_id</span>, \Ansel_Image  <span class="argument">$image</span>, integer  <span class="argument">$x1</span>, integer  <span class="argument">$y1</span>, integer  <span class="argument">$x2</span>, integer  <span class="argument">$y2</span>) </pre>
+                <p><em>Create a face image from the given data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>Face id to generate</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/Ansel_Image.html">\Ansel_Image</a></td>
+                                <td>$image </td>
+                                <td><p>Image face belongs to</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x1 </td>
+                                <td><p>The top left corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y1 </td>
+                                <td><p>The top right corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x2 </td>
+                                <td><p>The bottom left corner of the cropped image.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y2 </td>
+                                <td><p>The bottom right corner of the cropped image.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_saveSignature" name="method_saveSignature" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">saveSignature()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">saveSignature(integer  <span class="argument">$image_id</span>, integer  <span class="argument">$face_id</span>) </pre>
+                <p><em>Get face signature from an existing face image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$image_id </td>
+                                <td><p>Image ID face belongs to</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>Face ID to check</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSignatureFromFile" name="method_getSignatureFromFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSignatureFromFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSignatureFromFile(integer  <span class="argument">$filename</span>) : \binary</pre>
+                <p><em>Get an image signature from an arbitrary file. Currently used when
+searching for faces that appear in a user-supplied image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$filename </td>
+                                <td><p>Image filename to check</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \binary
+                                            &mdash; <p>vector signature</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFromGallery" name="method_getFromGallery" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFromGallery()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFromGallery(integer  <span class="argument">$gallery_id</span>, \boolen  <span class="argument">$create = false</span>, \boolen  <span class="argument">$force = false</span>) : array</pre>
+                <p><em>Get faces for all images in a gallery</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$gallery_id </td>
+                                <td><p>The share_id/gallery_id of the gallery to
+check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\boolen</td>
+                                <td>$create </td>
+                                <td><p>Create faces and signatures or just store coordniates?</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\boolen</td>
+                                <td>$force </td>
+                                <td><p>Force recreation even if image has faces</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Faces found</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setName" name="method_setName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setName(integer  <span class="argument">$face</span>, string  <span class="argument">$name</span>) </pre>
+                <p><em>Set face name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face </td>
+                                <td><p>Face id</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Face name</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFaceById" name="method_getFaceById" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFaceById()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFaceById(integer  <span class="argument">$face_id</span>, boolean  <span class="argument">$full = false</span>) : array</pre>
+                <p><em>Get face data</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$face_id </td>
+                                <td><p>Face id</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$full </td>
+                                <td><p>Retreive full face data?</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A face information hash</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSignatureMatches" name="method_getSignatureMatches" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSignatureMatches()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSignatureMatches(\binary  <span class="argument">$signature</span>,   <span class="argument">$face_id</span>, integer  <span class="argument">$from</span>, integer  <span class="argument">$count</span>) : \binary</pre>
+                <p><em>Get possible matches from sql index</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\binary</td>
+                                <td>$signature </td>
+                                <td><p>Image signature</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$face_id </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>Offset</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>Limit</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \binary
+                                            &mdash; <p>vector signature</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getFaces" name="method__getFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getFaces(string  <span class="argument">$file</span>) </pre>
+                <p><em>Get faces</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$file </td>
+                                <td><p>Picture filename</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__fetchFaces" name="method__fetchFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_fetchFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_fetchFaces(array  <span class="argument">$info</span>, integer  <span class="argument">$from</span>, integer  <span class="argument">$count</span>) : mixed</pre>
+                <p><em>Fetchs all faces from all galleries the current user has READ access to</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$info </td>
+                                <td><p>Array of select criteria</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>Offset</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$count </td>
+                                <td><p>Limit</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>An array of face hashes containing face_id, gallery_id,
+image_id, face_name.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__countFaces" name="method__countFaces" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_countFaces()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_countFaces(array  <span class="argument">$info</span>) : integer</pre>
+                <p><em>Count faces</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$info </td>
+                                <td><p>Array of select criteria</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Ansel_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The count of faces</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getParamsArray" name="method__getParamsArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getParamsArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getParamsArray(  <span class="argument">$image</span>,   <span class="argument">$rect</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$image </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$rect </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getSignatureMatches" name="method__getSignatureMatches" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_getSignatureMatches()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getSignatureMatches(array  <span class="argument">$a</span>, array  <span class="argument">$b</span>) </pre>
+                <p><em>Compare faces by similarity.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$a </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$b </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Ansel_Faces_Base.html"><div class="path-wrapper">\Ansel_Faces_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">User.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Faces/User.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:18.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

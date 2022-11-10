@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_Ldap_Filter</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Ldap.html">Ldap</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_Ldap.html">Horde_Ldap</a></li>
+				<li><a href="class-Horde_Ldap_Entry.html">Horde_Ldap_Entry</a></li>
+				<li><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></li>
+				<li class="active"><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></li>
+				<li><a href="class-Horde_Ldap_Ldif.html">Horde_Ldap_Ldif</a></li>
+				<li><a href="class-Horde_Ldap_RootDse.html">Horde_Ldap_RootDse</a></li>
+				<li><a href="class-Horde_Ldap_Schema.html">Horde_Ldap_Schema</a></li>
+				<li><a href="class-Horde_Ldap_Search.html">Horde_Ldap_Search</a></li>
+				<li><a href="class-Horde_Ldap_Util.html">Horde_Ldap_Util</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Ldap.html" title="Summary of Ldap"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_Ldap_Filter</h1>
+
+
+	<div class="description">
+	<p>Object representation of a part of a LDAP filter.</p>
+
+<p>The purpose of this class is to easily build LDAP filters without having to
+worry about correct escaping etc.</p>
+
+<p>A filter is built using several independent filter objects which are
+combined afterwards. This object works in two modes, depending how the
+object is created.</p>
+
+<p>If the object is created using the <code><a href="class-Horde_Ldap_Filter.html#_create">Horde_Ldap_Filter::create()</a></code> method, then this is a
+leaf-object. If the object is created using the <code><a href="class-Horde_Ldap_Filter.html#_combine">Horde_Ldap_Filter::combine()</a></code> method,
+then this is a container object.</p>
+
+<p>LDAP filters are defined in RFC 2254.</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Ldap<br>
+
+				<b>Category:</b>
+				Horde
+<br>
+				<b>License:</b>
+				<a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL-3.0</a><br>
+				<b>Author:</b>
+				Benedikt Hallinger <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x62;&#x65;&#110;&#105;&#x40;&#x70;&#104;&#112;&#x2e;&#x6e;&#101;t">&#x62;&#x65;&#110;&#105;&#x40;&#x70;&#104;&#112;&#x2e;&#x6e;&#101;t</a>
+<br>
+				<b>Author:</b>
+				Jan Schneider <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;j&#97;&#110;&#64;&#x68;&#x6f;&#x72;&#x64;e&#46;&#111;&#114;&#x67;">j&#97;&#110;&#64;&#x68;&#x6f;&#x72;&#x64;e&#46;&#111;&#114;&#x67;</a>
+<br>
+				<b>See:</b>
+				http://www.ietf.org/rfc/rfc2254.txt
+
+<p>A short example:
+<code>
+$filter0     = Horde_Ldap_Filter::create('stars'</p>
+, 'equals'
+, <p>'***');
+$filter_not0 = Horde_Ldap_Filter::combine('not'</p>
+, $filter0);
+
+$filter1     = Horde_Ldap_Filter::create('gn'
+, 'begins'
+, <p>'bar');
+$filter2     = Horde_Ldap_Filter::create('gn'</p>
+, 'ends'
+, <p>'baz');
+$filter_comp = Horde_Ldap_Filter::combine('or'</p>
+, array($filter_not0
+, $filter1
+, $filter2));
+
+<p>echo (string)$filter_comp;
+// This will output: (|(!(stars=\0x5c0x2a\0x5c0x2a\0x5c0x2a))(gn=bar<em>)(gn=</em>baz))
+// The stars in $filter0 are treaten as real stars unless you disable escaping.
+</code></p>
+
+<p>Copyright 2009 Benedikt Hallinger
+Copyright 2010-2012 Horde LLC (http://www.horde.org/)</p>
+<br>
+		<b>Located at</b> <a href="source-class-Horde_Ldap_Filter.html#2-455" title="Go to source code">Horde/Ldap/Filter.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="create" id="_create">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_create">#</a>
+		<code><a href="source-class-Horde_Ldap_Filter.html#90-186" title="Go to source code">create</a>( <span>string <var>$attribute</var></span>, <span>string <var>$match</var></span>, <span>string <var>$value</var> = <span class="php-quote">''</span></span>, <span>boolean <var>$escape</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Creates a new part of an LDAP filter.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Creates a new part of an LDAP filter.</p>
+
+<p>The following matching rules exists:
+- equals:         One of the attributes values is exactly $value. Please note that case sensitiviness depends on the attributes syntax configured in the server.
+- begins:         One of the attributes values must begin with $value.
+- ends:           One of the attributes values must end with $value.
+- contains:       One of the attributes values must contain $value.
+- present | any:  The attribute can contain any value but must exist.
+- greater:        The attributes value is greater than $value.
+- less:           The attributes value is less than $value.
+- greaterOrEqual: The attributes value is greater or equal than $value.
+- lessOrEqual:    The attributes value is less or equal than $value.
+- approx:         One of the attributes values is similar to $value.</p>
+
+<p>If $escape is set to true then $value will be escaped. If set to false
+then $value will be treaten as a raw filter value string.  You should
+then escape it yourself using <code><a href="class-Horde_Ldap_Util.html#_escapeFilterValue">Horde_Ldap_Util::escapeFilterValue()</a></code>.</p>
+
+<p>Examples:</p>
+
+<pre><span class="php-comment">// This will find entries that contain an attribute &quot;sn&quot; that ends with</span>
+<span class="php-comment">// &quot;foobar&quot;:</span>
+<span class="php-var">$filter</span> = Horde_Ldap_Filter::create(<span class="php-quote">'sn'</span>, <span class="php-quote">'ends'</span>, <span class="php-quote">'foobar'</span>);
+
+<span class="php-comment">// This will find entries that contain an attribute &quot;sn&quot; that has any</span>
+<span class="php-comment">// value set:</span>
+<span class="php-var">$filter</span> = Horde_Ldap_Filter::create(<span class="php-quote">'sn'</span>, <span class="php-quote">'any'</span>);</pre>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$attribute</var></dt>
+					<dd>&lt;p&gt;Name of the attribute the filter should apply
+                          to.&lt;/p&gt;
+</dd>
+					<dt><var>$match</var></dt>
+					<dd>&lt;p&gt;Matching rule (equals, begins, ends, contains,
+                          greater, less, greaterOrEqual, lessOrEqual,
+                          approx, any).&lt;/p&gt;
+</dd>
+					<dt><var>$value</var></dt>
+					<dd>If given, then this is used as a filter value.
+</dd>
+					<dt><var>$escape</var></dt>
+					<dd>Should $value be escaped?
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="combine" id="_combine">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_combine">#</a>
+		<code><a href="source-class-Horde_Ldap_Filter.html#188-263" title="Go to source code">combine</a>( <span>string <var>$operator</var></span>, <span>array|<code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code>|string <var>$filters</var></span> )</code>
+
+		<div class="description short">
+			<p>Combines two or more filter objects using a logical operator.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Combines two or more filter objects using a logical operator.</p>
+
+<p>Example:</p>
+
+<pre><span class="php-var">$filter</span> = Horde_Ldap_Filter::combine(<span class="php-quote">'or'</span>, <span class="php-keyword1">array</span>(<span class="php-var">$filter1</span>, <span class="php-var">$filter2</span>));</pre>
+
+<p>If the array contains filter strings instead of filter objects, they
+will be parsed.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$operator</var></dt>
+					<dd>&lt;p&gt;The logical operator, either "and", "or", "not" or the logical
+    equivalents "&amp;amp;", "|", "!".&lt;/p&gt;
+</dd>
+					<dt><var>$filters</var></dt>
+					<dd>&lt;p&gt;Array with Horde_Ldap_Filter objects and/or strings or a single
+    filter when using the "not" operator.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="build" id="_build">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_build">#</a>
+		<code><a href="source-class-Horde_Ldap_Filter.html#265-297" title="Go to source code">build</a>( <span>array <var>$params</var></span>, <span>string <var>$operator</var> = <span class="php-quote">'and'</span></span> )</code>
+
+		<div class="description short">
+			<p>Builds a filter (commonly for objectClass attributes) from different
+configuration options.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Builds a filter (commonly for objectClass attributes) from different
+configuration options.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd>&lt;p&gt;Hash with configuration options that build the
+                        search filter. Possible hash keys:
+                        - 'filter': An LDAP filter string.
+                        - 'objectclass' (string): An objectClass name.
+                        - 'objectclass' (array): A list of objectClass
+                                                 names.&lt;/p&gt;
+</dd>
+					<dt><var>$operator</var></dt>
+					<dd>&lt;p&gt;How to combine mutliple 'objectclass' entries.
+                        'and' or 'or'.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code></code><br>A filter matching the specified criteria.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parse" id="_parse">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parse">#</a>
+		<code><a href="source-class-Horde_Ldap_Filter.html#299-321" title="Go to source code">parse</a>( <span>string <var>$filter</var></span> )</code>
+
+		<div class="description short">
+			<p>Parses a string into a Horde_Ldap_Filter object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Parses a string into a Horde_Ldap_Filter object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$filter</var></dt>
+					<dd>An LDAP filter string.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Horde_Ldap_Filter.html">Horde_Ldap_Filter</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Ldap_Exception.html">Horde_Ldap_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-Horde_Ldap_Filter.html#434-454" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the string representation of this filter.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the string representation of this filter.</p>
+
+<p>This method runs through all filter objects and creates the string
+representation of the filter.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?561741522"></script>
+</body>
+</html>

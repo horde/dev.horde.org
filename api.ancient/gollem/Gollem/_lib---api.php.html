@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs for page api.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/lib/api.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gollem external API interface.</p>
+<p class="description"><p>This file defines Gollem's external API interface. Other  applications can interact with Gollem through this API.</p><p>$Horde: gollem/lib/api.php,v 1.32 2009/06/10 03:46:18 chuck Exp $</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Amith Varghese (amith@xalan.com)</li>
+				<li><span class="field">author:</span> Michael Slusarz (slusarz@curecanti.org)</li>
+				<li><span class="field">author:</span> Ben Klang (bklang@alkaloid.net)</li>
+			</ul>
+		
+			</div>
+</div>
+		
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="function_gollem_browse" id="function_gollem_browse"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_browse</span> (line <span class="line-number">79</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Browses through the VFS tree.</p>
+<p class="description"><p>Each VFS backend is listed as a directory at the top level.  No modify  operations are allowed outside any VFS area.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The contents of $path.</li>
+				<li><span class="field">since:</span> Gollem 1.1</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_gollem_browse
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">&#039;&#039;</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$properties</span> = <span class="var-default">array()</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The level of the tree to browse.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$properties</span><span class="var-description">: The item properties to return. Defaults to 'name',                            'icon', and 'browseable'.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_getViewLink" id="function_gollem_getViewLink"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_getViewLink</span> (line <span class="line-number">505</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a link to the gollem file preview interface</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The URL string.</li>
+				<li><span class="field">since:</span> Gollem 1.1</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_gollem_getViewLink
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$dir</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$backend</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$dir</span><span class="var-description">: File absolute path</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$file</span><span class="var-description">: File basename</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$backend</span><span class="var-description">: Backend key. Defaults to Gollem::getPreferredBackend()</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_mkcol" id="function_gollem_mkcol"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_mkcol</span> (line <span class="line-number">268</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates a directory (&quot;collection&quot; in WebDAV-speak) within the VFS</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success; PEAR_Error on failure</li>
+				<li><span class="field">since:</span> Gollem 1.1</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_gollem_mkcol
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Path of directory to create</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_move" id="function_gollem_move"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_move</span> (line <span class="line-number">333</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Renames a file or directory</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success; PEAR_Error on failure</li>
+				<li><span class="field">since:</span> Gollem 1.1</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_gollem_move
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$dest</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Path to source object to be renamed</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$dest</span><span class="var-description">: Path to new name</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_path_delete" id="function_gollem_path_delete"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_path_delete</span> (line <span class="line-number">411</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes a file or folder from the VFS</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success; PEAR_Error on failure</li>
+				<li><span class="field">since:</span> Gollem 1.1</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_gollem_path_delete
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Path of file or folder to delete</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_perms" id="function_gollem_perms"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_perms</span> (line <span class="line-number">472</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_gollem_perms
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="function_gollem_put" id="function_gollem_put"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_put</span> (line <span class="line-number">205</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Accepts a file for storage into the VFS</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> True on success; PEAR_Error on failure</li>
+				<li><span class="field">since:</span> Gollem 1.1</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_gollem_put
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content_type</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Path to store file</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content</span><span class="var-description">: Contents of file</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content_type</span><span class="var-description">: MIME type of file</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_returnFromSelectlist" id="function_gollem_returnFromSelectlist"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_returnFromSelectlist</span> (line <span class="line-number">592</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the data for a given selection ID and index.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The file data.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_gollem_returnFromSelectlist
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$selectid</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$selectid</span><span class="var-description">: The selection ID.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: The index of the file data to return.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_selectlistLink" id="function_gollem_selectlistLink"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_selectlistLink</span> (line <span class="line-number">550</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates a link to the gollem file selection window.</p>
+<p class="description"><p>The file section window will return a cache ID value which should be used  (along with the selectListResults and returnFromSelectList functions below)  to obtain the data from a list of selected files.</p><p>There MUST be a form field named 'selectlist_selectid' in the calling  form. This field will be populated with the selection ID when the user  completes file selection.</p><p>There MUST be a form parameter named 'actionID' in the calling form.  This form will be populated with the value 'selectlist_process' when  the user completes file selection.  The calling form will be submitted  after the window closes (i.e. the calling form must process the  'selectlist_process' actionID).</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The URL string.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_gollem_selectlistLink
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$link_text</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$link_style</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$formid</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$icon</span> = <span class="var-default">false</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$selectid</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$link_text</span><span class="var-description">: The text to use in the link.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$link_style</span><span class="var-description">: The style to use for the link.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$formid</span><span class="var-description">: The formid of the calling script.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$icon</span><span class="var-description">: Create the link with an icon instead of text?</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$selectid</span><span class="var-description">: Selection ID.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_selectlistResults" id="function_gollem_selectlistResults"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_selectlistResults</span> (line <span class="line-number">570</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the list of files selected by the user for a given selection ID.</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_gollem_selectlistResults
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$selectid</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">1</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$selectid</span><span class="var-description">: The selection ID.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">1</span><span class="var-description">: An array with each file entry stored in its own array, with                the key as the directory name and the value as the filename.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_gollem_setSelectlist" id="function_gollem_setSelectlist"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_gollem_setSelectlist</span> (line <span class="line-number">615</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the files selected for a given selection ID.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The selection ID.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_gollem_setSelectlist
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$selectid</span> = <span class="var-default">&#039;&#039;</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$files</span> = <span class="var-default">array()</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$selectid</span><span class="var-description">: The selection ID to use.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$files</span><span class="var-description">: An array with each file entry stored in its own                           array, with the key as the directory name and the                           value as the filename.</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 08 Nov 2009 14:35:46 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

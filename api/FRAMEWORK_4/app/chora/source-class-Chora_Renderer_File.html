@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Renderer/File.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Chora.html">Chora</a>
+						</li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Chora.html">Chora</a></li>
+				<li><a href="class-Chora_Exception.html">Chora_Exception</a></li>
+				<li><a href="class-Chora_Readme_Collection.html">Chora_Readme_Collection</a></li>
+				<li class="active"><a href="class-Chora_Renderer_File.html">Chora_Renderer_File</a></li>
+				<li><a href="class-Chora_Renderer_File_Html.html">Chora_Renderer_File_Html</a></li>
+				<li><a href="class-Chora_Renderer_File_Plain.html">Chora_Renderer_File_Plain</a></li>
+				<li><a href="class-Chora_Test.html">Chora_Test</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Chora.html" title="Summary of Chora"><span>Package</span></a>
+			</li>
+			<li>
+				<a href="class-Chora_Renderer_File.html" title="Summary of Chora_Renderer_File"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Copyright 2000-2012 Horde LLC (http://www.horde.org/)
+</span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> *
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> * See the enclosed file COPYING for license information (GPL). If you
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * did not receive this file, see http://www.horde.org/licenses/gpl.
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @author  Chuck Hagenbuch &lt;chuck@horde.org&gt;
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * @package Chora
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> */</span>
+</span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-keyword1">class</span> <a id="Chora_Renderer_File" href="#Chora_Renderer_File">Chora_Renderer_File</a>
+</span><span id="12" class="l"><a class="l" href="#12">12: </a>{
+</span><span id="13" class="l"><a class="l" href="#13">13: </a>    <span class="php-comment">/**
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment">     * @var Horde_View
+</span></span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-comment">     */</span>
+</span><span id="16" class="l"><a class="l" href="#16">16: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$_view" href="#$_view">$_view</a></span>;
+</span><span id="17" class="l"><a class="l" href="#17">17: </a>
+</span><span id="18" class="l"><a class="l" href="#18">18: </a>    <span class="php-comment">/**
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     * @var Horde_Vcs_File
+</span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment">     */</span>
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$_file" href="#$_file">$_file</a></span>;
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>
+</span><span id="23" class="l"><a class="l" href="#23">23: </a>    <span class="php-comment">/**
+</span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment">     * @var string
+</span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment">     */</span>
+</span><span id="26" class="l"><a class="l" href="#26">26: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$_revision" href="#$_revision">$_revision</a></span>;
+</span><span id="27" class="l"><a class="l" href="#27">27: </a>
+</span><span id="28" class="l"><a class="l" href="#28">28: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(Horde_View <span class="php-var">$view</span>, Horde_Vcs_File <span class="php-var">$file</span>, <span class="php-var">$revision</span>)
+</span><span id="29" class="l"><a class="l" href="#29">29: </a>    {
+</span><span id="30" class="l"><a class="l" href="#30">30: </a>        <span class="php-var">$this</span>-&gt;_view = <span class="php-var">$view</span>;
+</span><span id="31" class="l"><a class="l" href="#31">31: </a>        <span class="php-var">$this</span>-&gt;_file = <span class="php-var">$file</span>;
+</span><span id="32" class="l"><a class="l" href="#32">32: </a>        <span class="php-var">$this</span>-&gt;_revision = <span class="php-var">$revision</span>;
+</span><span id="33" class="l"><a class="l" href="#33">33: </a>    }
+</span><span id="34" class="l"><a class="l" href="#34">34: </a>}
+</span><span id="35" class="l"><a class="l" href="#35">35: </a></span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2510148266"></script>
+</body>
+</html>

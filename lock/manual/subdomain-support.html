@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Horde/Routes: Manual: Sub-Domain Support</title>
+
+  <link href="/routes/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="manual_subdomain-support">
+  <div id="wrapper">
+
+  <div id="header" class="clr">
+    <div id="logo" class="left">
+      <span>
+      <a href="/routes/"><img alt="Horde/Routes" src="/routes/images/common/logo.gif" /></a>
+      </span>
+    </div>
+      <ul id="nav" class="right">
+        <li><a href="/routes/">Home</a></li>
+        <li><a href="/routes/install.html">Install</a></li>
+        <li><a href="/routes/integrate.html">Integrate</a></li>
+        <li>Manual</li>
+      </ul>
+  </div>
+
+  <div id="content" class="clr">
+      
+  <h1>Manual</h1>
+
+  <div id="main">
+    <h2 class="top" id="download">Sub-Domain Support</h2>
+
+    <p>
+      Routes comes with sub-domain support to make it easy to handle sub-domains in
+      an integrated fashion. When sub-domain support is turned on, Routes will
+      always have a <code>subDomain</code> argument present with the sub-domain if present, or
+      None.
+    </p>
+
+    <p>
+      To avoid matching common aliases to your main domain like www, the sub-domain
+      support can be set to ignore some sub-domains.
+    </p>
+
+    <p>Example:</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span> <span class="punct">=</span> <span class="keyword">new</span> <span class="constant">Horde_Routes_Mapper</span><span class="punct">();</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Turn</span> <span class="ident">on</span> <span class="ident">sub</span><span class="punct">-</span><span class="ident">domain</span> <span class="ident">support</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">subDomains</span> <span class="punct">=</span> <span class="constant">true</span><span class="punct">;</span>
+
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Ignore</span> <span class="ident">the</span> <span class="ident">www</span> <span class="ident">sub</span><span class="punct">-</span><span class="ident">domain</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">subDomainsIgnore</span> <span class="punct">=</span> <span class="ident">array</span><span class="punct">('</span><span class="string">www</span><span class="punct">');</span> </pre></div>
+
+
+    <h3>Generating URLs with sub-domains</h3>
+
+    <p>
+      When sub-domain support is on, the <code>urlFor()</code> function will accept a <code>subDomain</code>
+      keyword argument. Routes will then ensure that the generated URL has the
+      sub-domain indicated. This feature works with Route memory to ensure that the
+      sub-domain is only added when necessary.
+    </p>
+
+    <p>Some examples:</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Assuming</span> <span class="ident">that</span> <span class="ident">the</span> <span class="ident">current</span> <span class="constant">URL</span> <span class="ident">from</span> <span class="ident">the</span> <span class="ident">request</span> <span class="ident">is</span> <span class="ident">http</span><span class="punct">:/</span><span class="regex"></span><span class="punct">/</span><span class="ident">george</span><span class="punct">.</span><span class="ident">example</span><span class="punct">.</span><span class="ident">com</span><span class="punct">/</span><span class="ident">users</span><span class="punct">/</span><span class="ident">edit</span>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Also</span> <span class="ident">assuming</span> <span class="ident">that</span> <span class="ident">you</span><span class="punct">'</span><span class="string">re using the map options above with the default routing of
+// </span><span class="punct">'</span><span class="symbol">:controller</span><span class="punct">/</span><span class="symbol">:action</span><span class="punct">/</span><span class="symbol">:id</span><span class="punct">'</span><span class="string">
+
+$utils-&gt;urlFor(array(</span><span class="punct">'</span><span class="ident">action</span><span class="punct">'</span><span class="string">=&gt;</span><span class="punct">'</span><span class="ident">update</span><span class="punct">'</span><span class="string">, </span><span class="punct">'</span><span class="ident">subDomain</span><span class="punct">'</span><span class="string">=&gt;</span><span class="punct">'</span><span class="ident">fred</span><span class="punct">'</span><span class="string">)   
+# -&gt; http://fred.example.com/users/update
+
+$utils-&gt;urlFor(array(</span><span class="punct">'</span><span class="ident">controller</span><span class="punct">'</span><span class="string">=&gt;</span><span class="punct">'/</span><span class="ident">content</span><span class="punct">'</span><span class="string">, </span><span class="punct">'</span><span class="ident">action</span><span class="punct">'</span><span class="string">=&gt;</span><span class="punct">'</span><span class="ident">view</span><span class="punct">'</span><span class="string">, </span><span class="punct">'</span><span class="ident">subDomain</span><span class="punct">'</span><span class="string">=&gt;</span><span class="punct">'</span><span class="ident">www</span><span class="punct">'</span><span class="string">));
+# will become -&gt; http://example.com/content/view
+
+$utils-&gt;urlFor(array(</span><span class="punct">'</span><span class="ident">action</span><span class="punct">'</span><span class="string">=&gt;</span><span class="punct">'</span><span class="keyword">new</span><span class="punct">'</span><span class="string">, </span><span class="punct">'</span><span class="ident">subDomain</span><span class="punct">'</span><span class="string">=&gt;null)        
+# -&gt; http://example.com/users/new </span></pre></div>
+
+  </div>
+
+    <div id="sidebar">
+    <div class="side_item">
+      <h4>Manual</h4>
+      <p><a href="/routes/manual/index.html">Setting Up Routes</a></p>
+      <p><a href="/routes/manual/nitty-gritty-route-setup.html">Nitty Gritty of Route Setup</a></p>
+      <p><a href="/routes/manual/using-routes.html">Using Routes</a></p>
+      <p>Sub-Domain Support</p>
+      <p><a href="/routes/manual/restful-services.html">RESTful Services</a></p>
+      <div class="side_bottom">&nbsp;</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer" class="clr">
+    <span class="right">
+      Horde/Routes is part of the <a href="http://www.horde.org">Horde Project</a>.<br/>
+      Development &amp; Website by <a href="http://maintainable.com">Maintainable Software</a>
+    </span>
+  </div>
+
+  
+
+  </div>
+</body>
+</html>

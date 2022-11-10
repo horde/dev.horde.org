@@ -1,0 +1,2751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">167</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1091832795"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1091832795" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Image.html">Horde_Image</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Base.html">Horde_Image_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect.html">Horde_Image_Effect</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Border.html">Horde_Image_Effect_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_Blur.html">Horde_Image_Effect_Gd_Blur</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_Border.html">Horde_Image_Effect_Gd_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_DropShadow.html">Horde_Image_Effect_Gd_DropShadow</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_RoundCorners.html">Horde_Image_Effect_Gd_RoundCorners</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_TextWatermark.html">Horde_Image_Effect_Gd_TextWatermark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Gd_Unsharpmask.html">Horde_Image_Effect_Gd_Unsharpmask</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Blur.html">Horde_Image_Effect_Im_Blur</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Border.html">Horde_Image_Effect_Im_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_CenterCrop.html">Horde_Image_Effect_Im_CenterCrop</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Composite.html">Horde_Image_Effect_Im_Composite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_DropShadow.html">Horde_Image_Effect_Im_DropShadow</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_LiquidResize.html">Horde_Image_Effect_Im_LiquidResize</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_PhotoStack.html">Horde_Image_Effect_Im_PhotoStack</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_PolaroidImage.html">Horde_Image_Effect_Im_PolaroidImage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_RoundCorners.html">Horde_Image_Effect_Im_RoundCorners</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_TextWatermark.html">Horde_Image_Effect_Im_TextWatermark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Im_Unsharpmask.html">Horde_Image_Effect_Im_Unsharpmask</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Blur.html">Horde_Image_Effect_Imagick_Blur</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Border.html">Horde_Image_Effect_Imagick_Border</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_CenterCrop.html">Horde_Image_Effect_Imagick_CenterCrop</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Composite.html">Horde_Image_Effect_Imagick_Composite</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_DropShadow.html">Horde_Image_Effect_Imagick_DropShadow</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_LiquidResize.html">Horde_Image_Effect_Imagick_LiquidResize</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_PhotoStack.html">Horde_Image_Effect_Imagick_PhotoStack</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_PolaroidImage.html">Horde_Image_Effect_Imagick_PolaroidImage</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_RoundCorners.html">Horde_Image_Effect_Imagick_RoundCorners</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_SmartCrop.html">Horde_Image_Effect_Imagick_SmartCrop</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_TextWatermark.html">Horde_Image_Effect_Imagick_TextWatermark</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Effect_Imagick_Unsharpmask.html">Horde_Image_Effect_Imagick_Unsharpmask</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exception.html">Horde_Image_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif.html">Horde_Image_Exif</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Base.html">Horde_Image_Exif_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Bundled.html">Horde_Image_Exif_Bundled</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Exiftool.html">Horde_Image_Exif_Exiftool</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Base.html">Horde_Image_Exif_Parser_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Canon.html">Horde_Image_Exif_Parser_Canon</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Fujifilm.html">Horde_Image_Exif_Parser_Fujifilm</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Gps.html">Horde_Image_Exif_Parser_Gps</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Nikon.html">Horde_Image_Exif_Parser_Nikon</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Olympus.html">Horde_Image_Exif_Parser_Olympus</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Panasonic.html">Horde_Image_Exif_Parser_Panasonic</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Parser_Sanyo.html">Horde_Image_Exif_Parser_Sanyo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Exif_Php.html">Horde_Image_Exif_Php</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Gd.html">Horde_Image_Gd</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Im.html">Horde_Image_Im</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Imagick.html">Horde_Image_Imagick</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Null.html">Horde_Image_Null</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Png.html">Horde_Image_Png</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Rgb.html">Horde_Image_Rgb</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Svg.html">Horde_Image_Svg</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Swf.html">Horde_Image_Swf</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Image_Translation.html">Horde_Image_Translation</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Image_Gd</h1>
+                    <p><em>This class implements the Horde_Image API for the PHP GD extension.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Gd.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method___call" class="">__call()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getCapabilities" class="">getCapabilities()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_hasCapability" class="">hasCapability()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_headers" class="">headers()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getContentType" class="">getContentType()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getType" class="">getType()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_setType" class="">setType()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_brush" class="">brush()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_reset" class="">reset()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_getDimensions" class="">getDimensions()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_loadString" class="">loadString()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_loadFile" class="">loadFile()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_toFile" class="">toFile()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_display" class="">display()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_raw" class="">raw()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_addEffect" class="">addEffect()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getLoadedEffects" class="">getLoadedEffects()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_applyEffects" class="">applyEffects()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getTmpDir" class="">getTmpDir()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_clearGeometry" class="">clearGeometry()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getImageAtIndex" class="">getImageAtIndex()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method_getImagePageCount" class="">getImagePageCount()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_resize" class="">resize()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_crop" class="">crop()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_rotate" class="">rotate()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_flip" class="">flip()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_mirror" class="">mirror()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_grayscale" class="">grayscale()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_sepia" class="">sepia()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_yellowize" class="">yellowize()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_text" class="">text()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_circle" class="">circle()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_polygon" class="">polygon()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_rectangle" class="">rectangle()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_roundedRectangle" class="">roundedRectangle()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_line" class="">line()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_dashedLine" class="">dashedLine()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_polyline" class="">polyline()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_arc" class="">arc()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_create" class="">create()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_call" class="">call()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method_applyMask" class="">applyMask()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Gd.html#property__im" class="">$_im</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Base.html#method__logDebug" class="">_logDebug()</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#method__logErr" class="">_logErr()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Base.html#property__background" class="">$_background</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#property__capabilities" class="">$_capabilities</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__data" class="">$_data</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__logger" class="">$_logger</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__width" class="">$_width</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__height" class="">$_height</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__tmpdir" class="">$_tmpdir</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__loadedEffects" class="">$_loadedEffects</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__type" class="">$_type</a><br />
+                                                                    <a href="../classes/Horde_Image_Base.html#property__context" class="">$_context</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#property__colors" class="">$_colors</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#property__im" class="">$_im</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Image_Gd.html#method__allocateColor" class="">_allocateColor()</a><br />
+                                                                    <a href="../classes/Horde_Image_Gd.html#method__getFont" class="">_getFont()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Image.Gd.html"><div class="path-wrapper">Image/Gd.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Image</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                        <div class="namespace-wrapper">\EmptyIterator</div>
+                                                                    
+                                        <div class="namespace-wrapper"><a href="../classes/Horde_Image_Base.html">\Horde_Image_Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\Horde_Image_Gd</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Chuck Hagenbuch <a href="mailto:chuck@horde.org">chuck@horde.org</a></p>
+                                                                    <p>Michael J. Rubinsky <a href="mailto:mrubinsk@horde.org">mrubinsk@horde.org</a></p>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2002-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL-2.1</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__im" name="property__im" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$_im</h3>
+                <pre class="signature">$_im : resource</pre>
+                <p><em></em></p>
+                <p>The underlaying image resource.</p>
+
+                                <h4>Type</h4>
+                resource
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__background" name="property__background" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_background</h3>
+                <pre class="signature">$_background : string</pre>
+                <p><em>Background color.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__capabilities" name="property__capabilities" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_capabilities</h3>
+                <pre class="signature">$_capabilities : array&lt;mixed,string&gt;</pre>
+                <p><em>Capabilites of this driver.</em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,string&gt;
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__data" name="property__data" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_data</h3>
+                <pre class="signature">$_data : \Horde_Stream</pre>
+                <p><em>The current image data.</em></p>
+                
+
+                                <h4>Type</h4>
+                \Horde_Stream
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__logger" name="property__logger" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_logger</h3>
+                <pre class="signature">$_logger : </pre>
+                <p><em>Logger.</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__width" name="property__width" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_width</h3>
+                <pre class="signature">$_width : integer</pre>
+                <p><em>The current width of the image data.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__height" name="property__height" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_height</h3>
+                <pre class="signature">$_height : integer</pre>
+                <p><em>The current height of the image data.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__tmpdir" name="property__tmpdir" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_tmpdir</h3>
+                <pre class="signature">$_tmpdir : string</pre>
+                <p><em>A directory for temporary files.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__loadedEffects" name="property__loadedEffects" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_loadedEffects</h3>
+                <pre class="signature">$_loadedEffects : array</pre>
+                <p><em>Array containing available Effects</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__type" name="property__type" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_type</h3>
+                <pre class="signature">$_type : string</pre>
+                <p><em>What kind of images should ImageMagick generate? Defaults to &#039;png&#039;.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__context" name="property__context" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_context</h3>
+                <pre class="signature">$_context : </pre>
+                <p><em>Cache the context</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            param
+                        </th>
+                        <td>
+                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__colors" name="property__colors" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_colors</h3>
+                <pre class="signature">$_colors : array&lt;mixed,integer&gt;</pre>
+                <p><em>Allocated color resources.</em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,integer&gt;
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__im" name="property__im" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_im</h3>
+                <pre class="signature">$_im : resource</pre>
+                <p><em>GD image resource for the current image data.</em></p>
+                
+
+                                <h4>Type</h4>
+                resource
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params</span>, array  <span class="argument">$context = array()</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>The image object parameters. Values include:</p>
+<ul>
+<li>background: (string) The background color.
+DEFAULT: white.</li>
+<li>data: (string) The image binary data.</li>
+<li>height: (integer) The desired image height.</li>
+<li>type: (string) The output image type (png, jpeg
+etc.). DEFAULT: png.</li>
+<li>width: (integer) The desired image width.</li>
+</ul></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$context </td>
+                                <td><p>The object context - configuration, injected
+objects:</p>
+<ul>
+<li>logger: (Horde_Log_Logger) A logger.</li>
+<li>tmpdir: [REQUIRED] (string) Temporary directory.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper">\Horde_Image_Base::_construct</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___call" name="method___call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__call(  <span class="argument">$method</span>,   <span class="argument">$args</span>) </pre>
+                <p><em>Catch-all method so that we don&#039;t error out when calling an unsupported
+manipulation method.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$method </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$args </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCapabilities" name="method_getCapabilities" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCapabilities()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCapabilities() : array</pre>
+                <p><em>Returns the capabilities.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A list of backend capabilities.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasCapability" name="method_hasCapability" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasCapability()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasCapability(string  <span class="argument">$capability</span>) : boolean</pre>
+                <p><em>Checks the existence of a particular capability.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$capability </td>
+                                <td><p>The capability to check for.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the backend has this capability.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_headers" name="method_headers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">headers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">headers() </pre>
+                <p><em>Sends HTTP headers for the image.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getContentType" name="method_getContentType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getContentType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getContentType() : string</pre>
+                <p><em>Returns the MIME type for this image.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The MIME type for this image.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getType" name="method_getType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getType() : string</pre>
+                <p><em>Returns the image type.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The type of this image (png, jpg, etc.).</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setType" name="method_setType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setType(string  <span class="argument">$type</span>) : string</pre>
+                <p><em>Sets the output image type.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>An image type (png, jpg, etc.)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The previous image type.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_brush" name="method_brush" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">brush()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">brush(integer  <span class="argument">$x</span>, integer  <span class="argument">$y</span>, string  <span class="argument">$color = &#039;black&#039;</span>, string  <span class="argument">$shape = &#039;square&#039;</span>) </pre>
+                <p><em>Draws a shaped point at the specified (x,y) point.</em></p>
+                <p>Useful for scatter diagrams, debug points, etc. Draws squares, circles,
+diamonds, and triangles.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x </td>
+                                <td><p>The x coordinate of the point to brush.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y </td>
+                                <td><p>The y coordinate of the point to brush.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The color to brush the point with.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$shape </td>
+                                <td><p>What brush to use? Defaults to a square.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_reset" name="method_reset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">reset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">reset() </pre>
+                <p><em>Resets the image data to defaults.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDimensions" name="method_getDimensions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDimensions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDimensions() : array</pre>
+                <p><em>Returns the height and width of the current image data.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A hash with 'width' containing the width, 'height'
+containing the height of the image.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadString" name="method_loadString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadString(string  <span class="argument">$image_data</span>) </pre>
+                <p><em>Loads the image data from a string.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$image_data </td>
+                                <td><p>The data to use for the image.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadFile" name="method_loadFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadFile(string  <span class="argument">$filename</span>) </pre>
+                <p><em>Loads the image data from a file.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$filename </td>
+                                <td><p>The full path and filename to the file to load
+the image data from.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toFile" name="method_toFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toFile(  <span class="argument">$data = null</span>) : string</pre>
+                <p><em>Saves image data to file.</em></p>
+                <p>If $data is false-ish, saves current image data after performing pending
+operations on the data.  If $data contains raw image data, saves that
+data to file without regard for the current image data.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Image_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Path to temporary file.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_display" name="method_display" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">display()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">display() </pre>
+                <p><em>Displays the current image.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_raw" name="method_raw" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">raw()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">raw(boolean  <span class="argument">$convert = false</span>, array  <span class="argument">$options = array()</span>) : string</pre>
+                <p><em>Returns the raw data for this image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$convert </td>
+                                <td><p>Ignored for Gd driver.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Array of options:</p>
+<ul>
+<li>stream: If true, return as a stream resource.
+DEFAULT: false.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The raw image data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addEffect" name="method_addEffect" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addEffect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addEffect(string  <span class="argument">$type</span>, array  <span class="argument">$params</span>) </pre>
+                <p><em>Attempts to apply requested effect to this image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The type of effect to apply.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Any parameters for the effect.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLoadedEffects" name="method_getLoadedEffects" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLoadedEffects()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLoadedEffects() </pre>
+                <p><em>Returns a list of available effects for this driver.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_applyEffects" name="method_applyEffects" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">applyEffects()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">applyEffects() </pre>
+                <p><em>Applies any effects in the effect queue.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTmpDir" name="method_getTmpDir" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTmpDir()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTmpDir() : string</pre>
+                <p><em>Returns the current temporary directory.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The current temporary directory.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clearGeometry" name="method_clearGeometry" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">clearGeometry()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clearGeometry() </pre>
+                <p><em>Utility function to zero out cached geometry information.</em></p>
+                <p>Shouldn't really be called from client code, but is needed since effects
+may need to clear these.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getImageAtIndex" name="method_getImageAtIndex" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getImageAtIndex()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getImageAtIndex(integer  <span class="argument">$index</span>) : \Horde_Image_Base</pre>
+                <p><em>Returns a specific image from the pages of images.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$index </td>
+                                <td><p>The index to return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Image_Base.html">\Horde_Image_Base</a>
+                                            &mdash; <p>The requested image</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getImagePageCount" name="method_getImagePageCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getImagePageCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getImagePageCount() : integer</pre>
+                <p><em>Returns the number of image pages available in the image object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The number of images.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get(  <span class="argument">$property</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$property </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resize" name="method_resize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">resize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resize(integer  <span class="argument">$width</span>, integer  <span class="argument">$height</span>, boolean  <span class="argument">$ratio = true</span>, boolean  <span class="argument">$keepProfile = false</span>) </pre>
+                <p><em>Resizes the current image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$width </td>
+                                <td><p>The new width.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$height </td>
+                                <td><p>The new height.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$ratio </td>
+                                <td><p>Maintain original aspect ratio.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$keepProfile </td>
+                                <td><p>Keep the image meta data (unused).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_crop" name="method_crop" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">crop()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">crop(integer  <span class="argument">$x1</span>, integer  <span class="argument">$y1</span>, integer  <span class="argument">$x2</span>, integer  <span class="argument">$y2</span>) </pre>
+                <p><em>Crops the current image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x1 </td>
+                                <td><p>x for the top left corner.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y1 </td>
+                                <td><p>y for the top left corner.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x2 </td>
+                                <td><p>x for the bottom right corner.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y2 </td>
+                                <td><p>y for the bottom right corner.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rotate" name="method_rotate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rotate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rotate(integer  <span class="argument">$angle</span>, string  <span class="argument">$background = &#039;white&#039;</span>) </pre>
+                <p><em>Rotates the current image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$angle </td>
+                                <td><p>The angle to rotate the image by, in the
+clockwise direction.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$background </td>
+                                <td><p>The background color to fill any triangles.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_flip" name="method_flip" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">flip()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">flip() </pre>
+                <p><em>Flips the current image.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_mirror" name="method_mirror" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">mirror()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">mirror() </pre>
+                <p><em>Mirrors the current image.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_grayscale" name="method_grayscale" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">grayscale()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">grayscale() </pre>
+                <p><em>Converts the current image to grayscale.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sepia" name="method_sepia" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sepia()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sepia(integer  <span class="argument">$threshold = 85</span>) </pre>
+                <p><em>Applies a sepia filter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$threshold </td>
+                                <td><p>Extent of sepia effect.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_yellowize" name="method_yellowize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">yellowize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">yellowize(integer  <span class="argument">$intensityY = 50</span>, integer  <span class="argument">$intensityB = 3</span>) </pre>
+                <p><em>Applies a yellow filter.</em></p>
+                <p>Adds a layer of yellow that can be transparent or solid. If $intensityY
+is 255 the image will be 0% transparent (solid).</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$intensityY </td>
+                                <td><p>How strong should the yellow (red and green)
+be? (0-255)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$intensityB </td>
+                                <td><p>How weak should the blue be? (&gt;= 2, in the
+positive limit it will be make BLUE 0)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_text" name="method_text" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">text()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">text(  <span class="argument">$string</span>, integer  <span class="argument">$x</span>, integer  <span class="argument">$y</span>, string  <span class="argument">$font = &#039;&#039;</span>, string  <span class="argument">$color = &#039;black&#039;</span>, integer  <span class="argument">$direction</span>, string  <span class="argument">$fontsize = &#039;small&#039;</span>) </pre>
+                <p><em>Draws a text string on the image in a specified location, with the
+specified style information.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$string </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x </td>
+                                <td><p>The left x coordinate of the start of the
+text string.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y </td>
+                                <td><p>The top y coordinate of the start of the text
+string.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$font </td>
+                                <td><p>The font identifier you want to use for the
+text.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The color that you want the text displayed in.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$direction </td>
+                                <td><p>An integer that specifies the orientation of
+the text.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fontsize </td>
+                                <td><p>Size of the font (small, medium, large, giant)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_circle" name="method_circle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">circle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">circle(integer  <span class="argument">$x</span>, integer  <span class="argument">$y</span>, integer  <span class="argument">$r</span>, string  <span class="argument">$color</span>, string  <span class="argument">$fill = null</span>) </pre>
+                <p><em>Draws a circle.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x </td>
+                                <td><p>The x coordinate of the centre.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y </td>
+                                <td><p>The y coordinate of the centre.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$r </td>
+                                <td><p>The radius of the circle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The line color of the circle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fill </td>
+                                <td><p>The color to fill the circle.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_polygon" name="method_polygon" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">polygon()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">polygon(  <span class="argument">$verts</span>, string  <span class="argument">$color</span>, string  <span class="argument">$fill = &#039;none&#039;</span>) </pre>
+                <p><em>Draws a polygon based on a set of vertices.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$verts </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The color you want to draw the polygon with.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fill </td>
+                                <td><p>The color to fill the polygon.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rectangle" name="method_rectangle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rectangle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rectangle(integer  <span class="argument">$x</span>, integer  <span class="argument">$y</span>, integer  <span class="argument">$width</span>, integer  <span class="argument">$height</span>, string  <span class="argument">$color = &#039;black&#039;</span>, string  <span class="argument">$fill = &#039;none&#039;</span>) </pre>
+                <p><em>Draws a rectangle.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x </td>
+                                <td><p>The left x-coordinate of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y </td>
+                                <td><p>The top y-coordinate of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$width </td>
+                                <td><p>The width of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$height </td>
+                                <td><p>The height of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The line color of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fill </td>
+                                <td><p>The color to fill the rectangle.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_roundedRectangle" name="method_roundedRectangle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">roundedRectangle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">roundedRectangle(integer  <span class="argument">$x</span>, integer  <span class="argument">$y</span>, integer  <span class="argument">$width</span>, integer  <span class="argument">$height</span>, integer  <span class="argument">$round</span>, string  <span class="argument">$color = &#039;black&#039;</span>, string  <span class="argument">$fill = &#039;none&#039;</span>) </pre>
+                <p><em>Draws a rounded rectangle.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x </td>
+                                <td><p>The left x-coordinate of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y </td>
+                                <td><p>The top y-coordinate of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$width </td>
+                                <td><p>The width of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$height </td>
+                                <td><p>The height of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$round </td>
+                                <td><p>The width of the corner rounding.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The line color of the rectangle.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fill </td>
+                                <td><p>The color to fill the rounded rectangle with.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_line" name="method_line" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">line()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">line(integer  <span class="argument">$x1</span>, integer  <span class="argument">$y1</span>,   <span class="argument">$x2</span>,   <span class="argument">$y2</span>, string  <span class="argument">$color = &#039;black&#039;</span>, string  <span class="argument">$width = 1</span>) </pre>
+                <p><em>Draws a line.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x1 </td>
+                                <td><p>The x coordinate of the end.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y1 </td>
+                                <td><p>The y coordinate of the end.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$x2 </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$y2 </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The line color.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$width </td>
+                                <td><p>The width of the line.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dashedLine" name="method_dashedLine" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dashedLine()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dashedLine(integer  <span class="argument">$x0</span>, integer  <span class="argument">$y0</span>, integer  <span class="argument">$x1</span>, integer  <span class="argument">$y1</span>, string  <span class="argument">$color = &#039;black&#039;</span>, string  <span class="argument">$width = 1</span>, integer  <span class="argument">$dash_length = 2</span>, integer  <span class="argument">$dash_space = 2</span>) </pre>
+                <p><em>Draws a dashed line.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x0 </td>
+                                <td><p>The x co-ordinate of the start.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y0 </td>
+                                <td><p>The y co-ordinate of the start.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x1 </td>
+                                <td><p>The x co-ordinate of the end.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y1 </td>
+                                <td><p>The y co-ordinate of the end.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The line color.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$width </td>
+                                <td><p>The width of the line.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$dash_length </td>
+                                <td><p>The length of a dash on the dashed line.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$dash_space </td>
+                                <td><p>The length of a space in the dashed line.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_polyline" name="method_polyline" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">polyline()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">polyline(  <span class="argument">$verts</span>, string  <span class="argument">$color</span>, string  <span class="argument">$width = 1</span>) </pre>
+                <p><em>Draws a polyline (a non-closed, non-filled polygon) based on a set of
+vertices.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$verts </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The color you want to draw the line with.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$width </td>
+                                <td><p>The width of the line.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_arc" name="method_arc" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">arc()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">arc(integer  <span class="argument">$x</span>, integer  <span class="argument">$y</span>, integer  <span class="argument">$r</span>, integer  <span class="argument">$start</span>, integer  <span class="argument">$end</span>, string  <span class="argument">$color = &#039;black&#039;</span>, string  <span class="argument">$fill = null</span>) </pre>
+                <p><em>Draws an arc.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$x </td>
+                                <td><p>The x coordinate of the centre.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$y </td>
+                                <td><p>The y coordinate of the centre.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$r </td>
+                                <td><p>The radius of the arc.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$start </td>
+                                <td><p>The start angle of the arc.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$end </td>
+                                <td><p>The end angle of the arc.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>The line color of the arc.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fill </td>
+                                <td><p>The fill color of the arc (defaults to none).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_create" name="method_create" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">create()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">create(integer  <span class="argument">$width</span>, integer  <span class="argument">$height</span>) : resource</pre>
+                <p><em>Creates an image of the given size.</em></p>
+                <p>If possible the function returns a true color image.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$width </td>
+                                <td><p>The image width.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$height </td>
+                                <td><p>The image height.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Image_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    resource
+                                            &mdash; <p>The image handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_call" name="method_call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">call(string  <span class="argument">$function</span>, array  <span class="argument">$params = null</span>) : mixed</pre>
+                <p><em>Wraps a call to a function of the gd extension.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$function </td>
+                                <td><p>The name of the function to wrap.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>An array with all parameters for that function.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Image_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The result of the function call.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_applyMask" name="method_applyMask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">applyMask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">applyMask(resource  <span class="argument">$mask</span>) </pre>
+                <p><em>Applies the specified mask to the image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>resource</td>
+                                <td>$mask </td>
+                                <td><p>The gd image resource representing the mask</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__logDebug" name="method__logDebug" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_logDebug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_logDebug(string  <span class="argument">$message</span>) </pre>
+                <p><em>Logs a message at debug level.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$message </td>
+                                <td><p>The log message.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__logErr" name="method__logErr" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">_logErr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_logErr(string  <span class="argument">$message</span>) </pre>
+                <p><em>Logs a message at error level.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$message </td>
+                                <td><p>The log message.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Horde_Image_Base.html"><div class="path-wrapper">\Horde_Image_Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__allocateColor" name="method__allocateColor" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_allocateColor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_allocateColor(string  <span class="argument">$name</span>, integer  <span class="argument">$alpha</span>) : integer</pre>
+                <p><em>Creates a color that can be accessed in this object.</em></p>
+                <p>When a color is set, the integer resource of it is returned.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The name of the color.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$alpha </td>
+                                <td><p>Alpha transparency (0 - 127).</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The resource of the color that can be passed to GD.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getFont" name="method__getFont" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_getFont()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getFont(string  <span class="argument">$font</span>) : integer</pre>
+                <p><em>Returns the numeric font size a from textual description.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$font </td>
+                                <td><p>A textual size description.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The font size supported by GD.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Gd.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Image/Gd.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:34.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

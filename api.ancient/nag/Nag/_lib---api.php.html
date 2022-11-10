@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs for page api.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/lib/api.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Nag external API interface.</p>
+<p class="description"><p>$Horde: nag/lib/api.php,v 1.206 2009/07/20 14:33:32 jan Exp $</p><p>This file defines Nag's external API interface. Other applications can  interact with Nag through this API.</p></p>
+		
+			</div>
+</div>
+		
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="function_nag_addTasklist" id="function_nag_addTasklist"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_addTasklist</span> (line <span class="line-number">288</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add a new task list</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The new tasklist's id.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			_nag_addTasklist
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$description</span> = <span class="var-default">&#039;&#039;</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: Task list name</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$description</span><span class="var-description">: Task list description</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_browse" id="function_nag_browse"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_browse</span> (line <span class="line-number">341</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Browse through Nag's object tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The contents of $path</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_browse
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">&#039;&#039;</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$properties</span> = <span class="var-default">array()</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The level of the tree to browse.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$properties</span><span class="var-description">: The item properties to return. Defaults to 'name',                            'icon', and 'browseable'.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_delete" id="function_nag_delete"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_delete</span> (line <span class="line-number">1203</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes a task identified by UID.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Success or failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_nag_delete
+		</span>
+					(<span class="var-type">string|array</span>&nbsp;<span class="var-name">$uid</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|array</span>
+				<span class="var-name">$uid</span><span class="var-description">: Identify the task to delete, either a single UID                            or an array.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_export" id="function_nag_export"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_export</span> (line <span class="line-number">1108</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Exports a task, identified by UID, in the requested content type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The requested data.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_nag_export
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: Identify the task to export.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format should the data be in?                              A string with one of:  <pre> text/calendar    - (VCALENDAR 2.0. Recommended as this is specified in
+                    rfc2445)
+ text/x-vcalendar - (old VCALENDAR 1.0 format. Still in wide use)</pre></span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_exportTasklist" id="function_nag_exportTasklist"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_exportTasklist</span> (line <span class="line-number">1162</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Exports a tasklist in the requested content type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The iCalendar representation of the tasklist.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_nag_exportTasklist
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist to export.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format should the data be in?                              A string with one of:                              <pre>                             text/calendar (VCALENDAR 2.0. Recommended as
+                                            this is specified in rfc2445)
+                             text/x-vcalendar (old VCALENDAR 1.0 format.
+                                              Still in wide use)</pre></span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_getActionTimestamp" id="function_nag_getActionTimestamp"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_getActionTimestamp</span> (line <span class="line-number">908</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the timestamp of an operation for a given uid an action.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The timestamp for this action.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			_nag_getActionTimestamp
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$action</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: The uid to look for.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action</span><span class="var-description">: The action to check for - add, modify, or delete.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist to be used. If 'null', the                          user's default tasklist will be used.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_import" id="function_nag_import"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_import</span> (line <span class="line-number">942</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Imports one or more tasks represented in the specified content type.</p>
+<p class="description"><p>If a UID is present in the content and the task is already in the  database, a replace is performed rather than an add.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The new UID on one import, an array of UIDs on multiple imports,                  or PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			_nag_import
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content</span><span class="var-description">: The content of the task.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format is the data in? Currently supports:                              text/calendar                              text/x-vcalendar</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist into which the task will be                              imported.  If 'null', the user's default                              tasklist will be used.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_list" id="function_nag_list"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_list</span> (line <span class="line-number">833</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an array of UIDs for all tasks that the current user is authorized  to see.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of UIDs for all tasks                            the user can access.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_list
+		</span>
+					([<span class="var-type">variant</span>&nbsp;<span class="var-name">$tasklist</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">variant</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist or an array of taskslists to list.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_listAlarms" id="function_nag_listAlarms"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listAlarms</span> (line <span class="line-number">1418</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lists alarms for a given moment.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of UIDs</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_listAlarms
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$time</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$user</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$time</span><span class="var-description">: The time to retrieve alarms for.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$user</span><span class="var-description">: The user to retreive alarms for. All users if null.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_listBy" id="function_nag_listBy"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listBy</span> (line <span class="line-number">875</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an array of UIDs for tasks that have had $action happen since  $timestamp.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array of UIDs matching the action and time criteria.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_listBy
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$action</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$timestamp</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action</span><span class="var-description">: The action to check for - add, modify, or delete.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$timestamp</span><span class="var-description">: The time to start the search.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist to be used. If 'null', the                             user's default tasklist will be used.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_listCostObjects" id="function_nag_listCostObjects"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listCostObjects</span> (line <span class="line-number">1326</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lists active tasks as cost objects.</p>
+	<ul class="tags">
+				<li><span class="field">todo:</span> Implement $criteria parameter.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_nag_listCostObjects
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$criteria</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$criteria</span><span class="var-description">: Filter attributes</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_listTasklists" id="function_nag_listTasklists"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listTasklists</span> (line <span class="line-number">817</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> The task lists.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_listTasklists
+		</span>
+					(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$owneronly</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$permission</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$owneronly</span><span class="var-description">: Only return tasklists that this user owns?                              Defaults to false.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$permission</span><span class="var-description">: The permission to filter tasklists by.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_listTasks" id="function_nag_listTasks"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listTasks</span> (line <span class="line-number">249</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieves the current user's task list from storage.</p>
+<p class="description"><p>This function will also sort the resulting list, if requested.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A list of the requested tasks.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result"><a href="../Nag/Nag_Task.html">Nag_Task</a></span>
+		<span class="method-name">
+			_nag_listTasks
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$sortby</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$sortdir</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$altsortby</span> = <span class="var-default">null</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$tasklists</span> = <span class="var-default">null</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$completed</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$json</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sortby</span><span class="var-description">: The field by which to sort                               (NAG_SORT_PRIORITY, NAG_SORT_NAME                               NAG_SORT_DUE, NAG_SORT_COMPLETION).</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$sortdir</span><span class="var-description">: The direction by which to sort</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$altsortby</span><span class="var-description">: The secondary sort field.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$tasklists</span><span class="var-description">: An array of tasklist to display or                               null/empty to display taskslists                               $GLOBALS['display_tasklists'].</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$completed</span><span class="var-description">: Which tasks to retrieve (1 = all tasks, <ol><li>= incomplete tasks, 2 = complete tasks,</li></ol>                              3 = future tasks, 4 = future and incomplete                               tasks).</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$json</span><span class="var-description">: Retrieve the results of the tasks in                               'json format'</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_listTimeObjectCategories" id="function_nag_listTimeObjectCategories"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listTimeObjectCategories</span> (line <span class="line-number">1350</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_nag_listTimeObjectCategories
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="function_nag_listTimeObjects" id="function_nag_listTimeObjects"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_listTimeObjects</span> (line <span class="line-number">1369</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lists active tasks as time objects.</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_nag_listTimeObjects
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$categories</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$start</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$end</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$categories</span><span class="var-description">: The time categories (from listTimeObjectCategories) to list.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$start</span><span class="var-description">: The start date of the period.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$end</span><span class="var-description">: The end date of the period.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_path_delete" id="function_nag_path_delete"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_path_delete</span> (line <span class="line-number">749</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes a file from the Nag tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The event's UID, or a PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_nag_path_delete
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path to the file.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_perms" id="function_nag_perms"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_perms</span> (line <span class="line-number">131</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a list of available permissions.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> An array describing all available permissions.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_perms
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="function_nag_put" id="function_nag_put"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_put</span> (line <span class="line-number">577</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Saves a file into the Nag tree.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The event UIDs, or a PEAR_Error on failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_put
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content_type</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: The path where to PUT the file.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content</span><span class="var-description">: The file content.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content_type</span><span class="var-description">: The file's content type.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_quickAdd" id="function_nag_quickAdd"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_quickAdd</span> (line <span class="line-number">1049</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Imports one or more tasks parsed from a string.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The UIDs of all tasks that were added.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_nag_quickAdd
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$text</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$text</span><span class="var-description">: The text to parse into</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist into which the task will be                           imported.  If 'null', the user's default                           tasklist will be used.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_removeUserData" id="function_nag_removeUserData"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_removeUserData</span> (line <span class="line-number">148</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes user data.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> true on success | PEAR_Error on failure</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			_nag_removeUserData
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$user</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$user</span><span class="var-description">: Name of user to remove data for.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_replace" id="function_nag_replace"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_replace</span> (line <span class="line-number">1252</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Replaces the task identified by UID with the content represented in the  specified content type.</p>
+<p class="description"><p>If you want to replace multiple tasks with the UID specified in the  VCALENDAR data, you may use _nag_import instead. This automatically does a  replace if existings UIDs are found.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Success or failure.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			_nag_replace
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: Identify the task to replace.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$content</span><span class="var-description">: The content of the task.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: What format is the data in? Currently supports: <ul><li>text/x-vcalendar</li><li>text/calendar</li></ul></span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function_nag_toggleCompletion" id="function_nag_toggleCompletion"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">_nag_toggleCompletion</span> (line <span class="line-number">1069</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Toggles the task completion flag.</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_nag_toggleCompletion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$task_id</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist_id</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$task_id</span><span class="var-description">: The task ID.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist_id</span><span class="var-description">: The tasklist that contains the task.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="function__nag_modified" id="function__nag_modified"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">__nag_modified</span> (line <span class="line-number">323</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the last modification timestamp of a given uid.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The timestamp for the last modification of $uid.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			__nag_modified
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$uid</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$tasklist</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$uid</span><span class="var-description">: The uid to look for.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$tasklist</span><span class="var-description">: The tasklist to look in.</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 08 Nov 2009 02:46:11 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

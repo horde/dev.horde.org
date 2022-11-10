@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Maintenance_Task</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Maintenance_Task</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Abstract class to allow for modularization of specific maintenace tasks.</p>
+<p class="description"><p>For this explanation, the specific Horde application you want to create  maintenance actions for will be labeled HORDEAPP.</p><p>To add a new maintenance task, you need to do the following:  [1] Add preference to &quot;HORDEAPP/config/prefs.php&quot; file.      (The name of this preference will be referred to as PREFNAME)      This preference should be of type 'checkbox' (i.e. 1 = on; 0 = off).      [Optional:]  Add a preference in prefs.php of the name                   'PREFNAME_interval' to allow the user to set the interval.                   'default' value should be set to the values of the interval                   constants above.                   If this preference doesn't exist, the default interval                   used will be the one that appears in $maint_tasks.  [2] Create a directory named &quot;HORDEAPP/lib/Maintenance&quot;.  [3] Create a class entitled Maintenance_HORDEAPP that extends the      Maintenance class.      This class should contain only the application specific definitions of      $maint_tasks (see above for description).      Save this file as &quot;HORDEAPP/lib/Maintenance/HORDEAPP.php&quot;.  [4] Create a directory titled &quot;HORDEAPP/lib/Maintenance/Task&quot;.  [5] Create modules in HORDEAPP/lib/Maintenance/Task named 'PREFNAME.php'      that extend the Maintenance_Task class.      The class should be named Maintenance_Task_PREFNAME.      The class should declare the following two methods:        'doMaintenance' - This is the function that is run to do the                          specified maintenance operation.        'describeMaintenance' - This function sets the preference text                                and text to be used on the confirmation                                page.  Should return a description of what                                your 'doMaintenance' function is about to do.      Neither function requires any parameters passed in.</p><p>There are 3 different types of maintenance (set via $_display_type):  [1] MAINTENANCE_OUTPUT_CONFIRM      Each output from describeMaintenance() will have a checkbox associated      with it. For each checkbox selected, doMaintenance() for that task will      be run. More than 1 confirmation message can be displayed on the      maintenance page at once.</p><p>[2] MAINTENANCE_OUTPUT_AGREE      The output from describeMaintenance() should be text asking the user to      agree/disagree to specified terms. If 'yes' is selected, the POST      variable 'agree' will be set. If 'no' is selected, the POST variable      'not_agree' will be set. In either case, doMaintenance() will ALWAYS be      run.      * This style will be displayed on its own, separate maintenance page. *</p><p>[3] MAINTENANCE_OUTPUT_NOTICE      The output from describeMaintenance() should be any non-interactive text      desired. There will be a single 'Click to Continue' button below this      text. doMaintenance() will ALWAYS be run.      * This style will be displayed on its own, separate maintenance page. *</p><p>Copyright 2001-2009 The Horde Project (http://www.horde.org/)</p><p>See the enclosed file COPYING for license information (LGPL). If you  did not receive this file, see http://www.fsf.org/copyleft/lgpl.html.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Michael Slusarz &lt;<a href="mailto:slusarz@horde.org">slusarz@horde.org</a>&gt;</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Maintenance---Maintenance.php.html">/Maintenance/Maintenance.php</a> (line <span class="field">800</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">integer</span>
+					<a href="#$_display_type" title="details" class="var-name">$_display_type</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																															
+				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Maintenance_Task</span>
+										<a href="#Maintenance_Task" title="details" class="method-name">Maintenance_Task</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#describeMaintenance" title="details" class="method-name">describeMaintenance</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#doMaintenance" title="details" class="method-name">doMaintenance</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">integer</span>
+										<a href="#getDisplayType" title="details" class="method-name">getDisplayType</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_display_type" id="$_display_type"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$_display_type</span>
+			 = <span class="var-default"> MAINTENANCE_OUTPUT_CONFIRM</span>			(line <span class="line-number">810</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The style of the maintenance page output.</p>
+<p class="description"><p>Possible values: MAINTENANCE_OUTPUT_CONFIRM,                   MAINTENANCE_OUTPUT_AGREE,                   MAINTENANCE_OUTPUT_NOTICE</p></p>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodMaintenance_Task" id="Maintenance_Task"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor Maintenance_Task</span> (line <span class="line-number">815</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor</p>
+	
+	<div class="method-signature">
+		<span class="method-result">Maintenance_Task</span>
+		<span class="method-name">
+			Maintenance_Task
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddescribeMaintenance" id="describeMaintenance"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">describeMaintenance</span> (line <span class="line-number">836</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return description information for the maintenance page.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Description that will be displayed on the maintenance                  confirmation page.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			describeMaintenance
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddoMaintenance" id="doMaintenance"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">doMaintenance</span> (line <span class="line-number">825</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Do maintenance operation (if it has been confirmed).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Whether the maintenance operation was successful or                   not.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			doMaintenance
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetDisplayType" id="getDisplayType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getDisplayType</span> (line <span class="line-number">847</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the desired output type for the maintenance page.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Desired output type for the maintenance confirmation                   page.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getDisplayType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 30 Jan 2011 05:19:26 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

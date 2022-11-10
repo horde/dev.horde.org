@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Nag.html">\Nag</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">309</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1829282937"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1829282937" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1114241593"></a>
+                                <a href="../namespaces/Nag.html" style="margin-left: 30px; padding-left: 0">Nag</a>
+            </div>
+            <div id="namespace-1114241593" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1647950355"></a>
+                                <a href="../namespaces/Nag.Backup.html" style="margin-left: 30px; padding-left: 0">Backup</a>
+            </div>
+            <div id="namespace-1647950355" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Nag.Backup.Tasks.html">Tasks</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Core_Ui_VarRenderer_Nag.html">Horde_Core_Ui_VarRenderer_Nag</a></li>
+                                                    <li class="class"><a href="../classes/Nag.html">Nag</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Application.html">Nag_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Application_Handler_Smartmobile.html">Nag_Ajax_Application_Handler_Smartmobile</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Imple_ContactAutoCompleter.html">Nag_Ajax_Imple_ContactAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Ajax_Imple_TagAutoCompleter.html">Nag_Ajax_Imple_TagAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Api.html">Nag_Api</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Application.html">Nag_Application</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Block_Summary.html">Nag_Block_Summary</a></li>
+                                                    <li class="class"><a href="../classes/Nag_CompleteTask.html">Nag_CompleteTask</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver.html">Nag_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver_Kolab.html">Nag_Driver_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver_Smartlist.html">Nag_Driver_Smartlist</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Driver_Sql.html">Nag_Driver_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Exception.html">Nag_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Factory_Driver.html">Nag_Factory_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Factory_TagBrowser.html">Nag_Factory_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Factory_Tasklists.html">Nag_Factory_Tasklists</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_CreateTaskList.html">Nag_Form_CreateTaskList</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_DeleteTaskList.html">Nag_Form_DeleteTaskList</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_EditTaskList.html">Nag_Form_EditTaskList</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Search.html">Nag_Form_Search</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Task.html">Nag_Form_Task</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagAlarm.html">Nag_Form_Type_NagAlarm</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagContact.html">Nag_Form_Type_NagContact</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagDue.html">Nag_Form_Type_NagDue</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagMethod.html">Nag_Form_Type_NagMethod</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagRecurrence.html">Nag_Form_Type_NagRecurrence</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagSearchDue.html">Nag_Form_Type_NagSearchDue</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagStart.html">Nag_Form_Type_NagStart</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Form_Type_NagTags.html">Nag_Form_Type_NagTags</a></li>
+                                                    <li class="class"><a href="../classes/Nag_LoginTasks_Task_PurgeCompleted.html">Nag_LoginTasks_Task_PurgeCompleted</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Prefs_Special_TaskAlarms.html">Nag_Prefs_Special_TaskAlarms</a></li>
+                                                    <li class="class"><a href="../classes/Nag_QuickParser.html">Nag_QuickParser</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Search.html">Nag_Search</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Smartmobile.html">Nag_Smartmobile</a></li>
+                                                    <li class="class"><a href="../classes/Nag_TagBrowser.html">Nag_TagBrowser</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tagger.html">Nag_Tagger</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Task.html">Nag_Task</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklist.html">Nag_Tasklist</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklists_Base.html">Nag_Tasklists_Base</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklists_Default.html">Nag_Tasklists_Default</a></li>
+                                                    <li class="class"><a href="../classes/Nag_Tasklists_Kolab.html">Nag_Tasklists_Kolab</a></li>
+                                                    <li class="class"><a href="../classes/Nag_View_Helper_List.html">Nag_View_Helper_List</a></li>
+                                                    <li class="class"><a href="../classes/Nag_View_List.html">Nag_View_List</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Nag_Api</h1>
+                    <p><em>Nag external API interface.</em></p>
+                    <p>This file defines Nag's external API interface. Other applications can
+interact with Nag through this API.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Nag_Api.html#method_ajaxDefaults" class="">ajaxDefaults()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listTasks" class="">listTasks()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listTasklists" class="">listTasklists()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getTasklist" class="">getTasklist()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_addTasklist" class="">addTasklist()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_updateTasklist" class="">updateTasklist()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_updateAttendee" class="">updateAttendee()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_deleteTasklist" class="">deleteTasklist()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getDisplayedTasklists" class="">getDisplayedTasklists()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_setDisplayedTasklists" class="">setDisplayedTasklists()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_modified" class="">modified()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_browse" class="">browse()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_put" class="">put()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_path_delete" class="">path_delete()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listUids" class="">listUids()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listBy" class="">listBy()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getChanges" class="">getChanges()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getChangesByModSeq" class="">getChangesByModSeq()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getActionTimestamp" class="">getActionTimestamp()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getHighestModSeq" class="">getHighestModSeq()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_import" class="">import()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_addTask" class="">addTask()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_quickAdd" class="">quickAdd()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_toggleCompletion" class="">toggleCompletion()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_export" class="">export()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getTask" class="">getTask()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_exportTasklist" class="">exportTasklist()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_deleteTask" class="">deleteTask()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_replace" class="">replace()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_updateTask" class="">updateTask()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listCostObjects" class="">listCostObjects()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_updateCostObject" class="">updateCostObject()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listTimeObjectCategories" class="">listTimeObjectCategories()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listTimeObjects" class="">listTimeObjects()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_saveTimeObject" class="">saveTimeObject()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_sources" class="">sources()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_getDefaultShare" class="">getDefaultShare()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_listTagInfo" class="">listTagInfo()</a><br />
+                                                                    <a href="../classes/Nag_Api.html#method_searchTags" class="">searchTags()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Nag_Api.html#property__links" class="">$_links</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Api.html"><div class="path-wrapper">Api.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Nag</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\Horde_Registry_Api</div>
+                                                                                                    <div class="namespace-wrapper">\Nag_Api</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__links" name="property__links" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_links</h3>
+                <pre class="signature">$_links : array</pre>
+                <p><em>Links.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_ajaxDefaults" name="method_ajaxDefaults" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">ajaxDefaults()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">ajaxDefaults() : array</pre>
+                <p><em>Returns a number of defaults necessary for the ajax view.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>A hash with default values.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listTasks" name="method_listTasks" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listTasks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listTasks(\arary  <span class="argument">$options = array()</span>) : array</pre>
+                <p><em>Retrieves the current user&#039;s task list from storage.</em></p>
+                <p>This function will also sort the resulting list, if requested.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\arary</td>
+                                <td>$options </td>
+                                <td><p>Options array:</p>
+<ul>
+<li>altsortby: (string) The secondary sort field. Same values as sortdir.
+DEFAULT: altsortby pref is used.</li>
+<li>completed: (integer) Which task to retrieve.
+DEFAULT: show_completed pref is used.</li>
+<li>sortby: (string)  A Nag::SORT_* constant for the field to sort by.
+DEFAULT: sortby pref is used.</li>
+<li>sortdir: (string) Direction of sort. NAG::SORT_ASCEND or NAG::SORT_DESCEND.
+DEFAULT: sortdir pref is used.</li>
+<li>include_tags: (boolean) Autoload all tags.
+DEFAULT: false (Tags are lazy loaded as needed.)</li>
+<li>json: (boolean) Return data as JSON.
+DEFAULT: false (Data is returned as Nag_Task)</li>
+<li>tasklists: (array) An array of tasklists to include.
+DEFAULT: Use $GLOBALS['display_tasklists'];</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of the requested tasks.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listTasklists" name="method_listTasklists" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listTasklists()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listTasklists(boolean  <span class="argument">$owneronly = false</span>, integer  <span class="argument">$permission = \Horde_Perms::SHOW</span>, boolean  <span class="argument">$smart = true</span>) : array</pre>
+                <p><em>Returns a list of task lists.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$owneronly </td>
+                                <td><p>Only return tasklists that this user owns?
+Defaults to false.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$permission </td>
+                                <td><p>The permission to filter tasklists by.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$smart </td>
+                                <td><p>Include smart tasklists in results.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The task lists.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTasklist" name="method_getTasklist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTasklist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTasklist(string  <span class="argument">$name</span>) : \Horde_Share_Object</pre>
+                <p><em>Returns a task list.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A task list name.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_Share_Object
+                                            &mdash; <p>The task list.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addTasklist" name="method_addTasklist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addTasklist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addTasklist(string  <span class="argument">$name</span>, string  <span class="argument">$description = &#039;&#039;</span>, string  <span class="argument">$color = &#039;&#039;</span>, array  <span class="argument">$params = array()</span>) : string</pre>
+                <p><em>Adds a new task list.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Task list name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$description </td>
+                                <td><p>Task list description.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td><p>Task list color.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Any addtional parameters needed. @since 4.2.1</p>
+<ul>
+<li>synchronize:   (boolean) If true, add task list to the list of
+task lists to syncronize.
+DEFAULT: false (do not add to the list).</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The new tasklist's id.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateTasklist" name="method_updateTasklist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateTasklist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateTasklist(string  <span class="argument">$name</span>, array  <span class="argument">$info</span>) </pre>
+                <p><em>Updates an existing task list.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A task list name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$info </td>
+                                <td><p>Hash with task list information.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateAttendee" name="method_updateAttendee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateAttendee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateAttendee(\Horde_Icalendar_Vtodo  <span class="argument">$response</span>, string  <span class="argument">$sender = null</span>) </pre>
+                <p><em>Updates an attendee&#039;s response status for a specified task assignment.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Horde_Icalendar_Vtodo</td>
+                                <td>$response </td>
+                                <td><p>A Horde_Icalendar_Vtodo
+object, with a valid UID
+attribute that points to an
+existing task.  This is
+typically the vTodo portion
+of an iTip task-request
+response, with the attendee's
+response in an ATTENDEE
+parameter.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sender </td>
+                                <td><p>The email address of the
+person initiating the
+update. Attendees are only
+updated if this address
+matches.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Nag_Exception,</dt>
+                            <dd><p>Horde_Exception_PermissionDenied</p></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteTasklist" name="method_deleteTasklist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteTasklist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteTasklist(string  <span class="argument">$id</span>) </pre>
+                <p><em>Deletes a task list.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>A task list id.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDisplayedTasklists" name="method_getDisplayedTasklists" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDisplayedTasklists()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDisplayedTasklists() : array</pre>
+                <p><em>Returns the displayed task lists.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Displayed tasklists.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDisplayedTasklists" name="method_setDisplayedTasklists" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDisplayedTasklists()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDisplayedTasklists(array  <span class="argument">$list</span>) </pre>
+                <p><em>Sets the displayed task lists.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$list </td>
+                                <td><p>Displayed tasklists.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_modified" name="method_modified" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">modified()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">modified(string  <span class="argument">$uid</span>, string  <span class="argument">$tasklist = null</span>) : integer</pre>
+                <p><em>Returns the last modification timestamp of a given uid.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uid </td>
+                                <td><p>The uid to look for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The tasklist to look in.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The timestamp for the last modification of $uid.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_browse" name="method_browse" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">browse()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">browse(string  <span class="argument">$path = &#039;&#039;</span>, array  <span class="argument">$properties = array()</span>) : array</pre>
+                <p><em>Browse through Nag&#039;s object tree.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>The level of the tree to browse.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$properties </td>
+                                <td><p>The item properties to return. Defaults to 'name',
+'icon', and 'browseable'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The contents of $path</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_put" name="method_put" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">put()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">put(string  <span class="argument">$path</span>, string  <span class="argument">$content</span>, string  <span class="argument">$content_type</span>) : array</pre>
+                <p><em>Saves a file into the Nag tree.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>The path where to PUT the file.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The file content.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content_type </td>
+                                <td><p>The file's content type.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The event UIDs</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_path_delete" name="method_path_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">path_delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">path_delete(string  <span class="argument">$path</span>) : string</pre>
+                <p><em>Deletes a file from the Nag tree.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>The path to the file.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Nag_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The event's UID</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listUids" name="method_listUids" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listUids()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listUids(mixed  <span class="argument">$tasklists = null</span>) : array</pre>
+                <p><em>Returns an array of UIDs for all tasks that the current user is authorized
+to see.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$tasklists </td>
+                                <td><p>The tasklist or an array of taskslists to list.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception_PermissionDenied</dt>
+                            <dd></dd>
+                                                    <dt>\Nag_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of UIDs for all tasks
+the user can access.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listBy" name="method_listBy" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listBy()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listBy(string  <span class="argument">$action</span>, integer  <span class="argument">$timestamp</span>, string  <span class="argument">$tasklist = null</span>, integer  <span class="argument">$end = null</span>, boolean  <span class="argument">$isModSeq = false</span>) : array</pre>
+                <p><em>Returns an array of UIDs for tasks that have had $action happen since
+$timestamp.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$action </td>
+                                <td><p>The action to check for - add, modify, or delete.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$timestamp </td>
+                                <td><p>The time to start the search.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The tasklist to be used. If 'null', the
+user's default tasklist will be used.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$end </td>
+                                <td><p>The optional ending timestamp.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$isModSeq </td>
+                                <td><p>If true, $timestamp and $end are modification
+sequences and not timestamps. @since 4.1.1</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_History_Exception</dt>
+                            <dd></dd>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of UIDs matching the action and time criteria.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getChanges" name="method_getChanges" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getChanges()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getChanges(integer  <span class="argument">$start</span>, integer  <span class="argument">$end</span>, boolean  <span class="argument">$isModSeq = false</span>, string  <span class="argument">$tasklist = null</span>) : array</pre>
+                <p><em>Method for obtaining all server changes between two timestamps. Basically
+a wrapper around listBy(), but returns an array containing all adds,
+edits and deletions.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$start </td>
+                                <td><p>The starting timestamp</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$end </td>
+                                <td><p>The ending timestamp.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$isModSeq </td>
+                                <td><p>If true, $timestamp and $end are modification
+sequences and not timestamps. @since 4.1.1</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The sources to check. @since 4.2.0</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An hash with 'add', 'modify' and 'delete' arrays.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getChangesByModSeq" name="method_getChangesByModSeq" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getChangesByModSeq()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getChangesByModSeq(integer  <span class="argument">$start</span>, integer  <span class="argument">$end</span>, string  <span class="argument">$tasklist = null</span>) : array</pre>
+                <p><em>Return all changes occuring between the specified modification
+sequences.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$start </td>
+                                <td><p>The starting modseq.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$end </td>
+                                <td><p>The ending modseq.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The sources to check. @since 4.2.0</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The changes @see getChanges()</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            4.1.1                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getActionTimestamp" name="method_getActionTimestamp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getActionTimestamp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getActionTimestamp(string  <span class="argument">$uid</span>, string  <span class="argument">$action</span>, string  <span class="argument">$tasklist = null</span>, boolean  <span class="argument">$modSeq = false</span>) : integer</pre>
+                <p><em>Returns the timestamp of an operation for a given uid an action.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uid </td>
+                                <td><p>The uid to look for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$action </td>
+                                <td><p>The action to check for - add, modify, or delete.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The tasklist to be used. If 'null', the
+user's default tasklist will be used.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$modSeq </td>
+                                <td><p>Request a modification sequence instead of a
+timestamp. @since 4.1.1</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                    <dt>\Horde_Exception_PermissionDenied</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The timestamp for this action.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            thorws
+                        </th>
+                        <td>
+                                                                                            <p>Horde_History_Exception</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHighestModSeq" name="method_getHighestModSeq" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getHighestModSeq()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHighestModSeq(string  <span class="argument">$id = null</span>) : integer</pre>
+                <p><em>Return the largest modification sequence from the history backend.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>Limit the check to this tasklist. @since 4.2.0</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The modseq.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            4.1.1                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_import" name="method_import" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">import()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">import(string  <span class="argument">$content</span>, string  <span class="argument">$contentType</span>, string  <span class="argument">$tasklist = null</span>) : string</pre>
+                <p><em>Imports one or more tasks represented in the specified content type.</em></p>
+                <p>If a UID is present in the content and the task is already in the
+database, a replace is performed rather than an add.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The content of the task.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>What format is the data in? Currently supports:
+text/calendar
+text/x-vcalendar</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The tasklist into which the task will be
+imported.  If 'null', the user's default
+tasklist will be used.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The new UID on one import, an array of UIDs on multiple imports,</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addTask" name="method_addTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addTask(array  <span class="argument">$task</span>) </pre>
+                <p><em>Adds a task.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$task </td>
+                                <td><p>A hash with task information.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception_PermissionDenied</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_quickAdd" name="method_quickAdd" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">quickAdd()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">quickAdd(string  <span class="argument">$text</span>, string  <span class="argument">$tasklist = null</span>) : array</pre>
+                <p><em>Imports one or more tasks parsed from a string.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$text </td>
+                                <td><p>The text to parse into</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The tasklist into which the task will be
+imported.  If 'null', the user's default
+tasklist will be used.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Horde_Exception_PermissionDenied</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>The UIDs of all tasks that were added.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_toggleCompletion" name="method_toggleCompletion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">toggleCompletion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">toggleCompletion(string  <span class="argument">$task_id</span>, string  <span class="argument">$tasklist_id</span>) : boolean|string</pre>
+                <p><em>Toggles the task completion flag.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$task_id </td>
+                                <td><p>The task ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist_id </td>
+                                <td><p>The tasklist that contains the task.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean|string
+                                            &mdash; <p>True if the task has been toggled, a due date if
+there are still incomplete recurrences, otherwise
+false.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_export" name="method_export" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">export()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">export(string  <span class="argument">$uid</span>, string  <span class="argument">$contentType</span>, array  <span class="argument">$options = array()</span>) : string</pre>
+                <p><em>Exports a task, identified by UID, in the requested content type.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uid </td>
+                                <td><p>Identify the task to export.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>What format should the data be in?
+A string with one of:</p>
+<ul>
+<li>text/calendar:    iCalendar 2.0. Recommended as this is specified in
+RFC 2445.</li>
+<li>text/x-vcalendar: vCalendar 1.0 format. Still in wide use.</li>
+<li>activesync:       Horde_ActiveSync_Message_Task.</li>
+<li>raw:              Nag_Task.</li>
+</ul></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>Any additional options for the exporter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The requested data.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTask" name="method_getTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTask(string  <span class="argument">$tasklist</span>, string  <span class="argument">$id</span>) : \Nag_Task</pre>
+                <p><em>Returns a task object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>A tasklist id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>A task id.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Nag_Task.html">\Nag_Task</a>
+                                            &mdash; <p>The matching task object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_exportTasklist" name="method_exportTasklist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">exportTasklist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">exportTasklist(string  <span class="argument">$tasklist</span>, string  <span class="argument">$contentType</span>) : string</pre>
+                <p><em>Exports a tasklist in the requested content type.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>The tasklist to export.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>What format should the data be in?
+A string with one of:</p>
+<pre>
+                            text/calendar (VCALENDAR 2.0. Recommended as
+                                           this is specified in rfc2445)
+                            text/x-vcalendar (old VCALENDAR 1.0 format.
+                                             Still in wide use)
+                            </pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The iCalendar representation of the tasklist.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete(string|array  <span class="argument">$uid</span>) : boolean</pre>
+                <p><em>Deletes a task identified by UID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|array</td>
+                                <td>$uid </td>
+                                <td><p>Identify the task to delete, either a single UID
+or an array.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Success or failure.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteTask" name="method_deleteTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteTask(string  <span class="argument">$tasklist</span>, string  <span class="argument">$id</span>) </pre>
+                <p><em>Deletes a task identified by tasklist and ID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>A tasklist id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>A task id.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_replace" name="method_replace" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">replace()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">replace(string  <span class="argument">$uid</span>, string  <span class="argument">$content</span>, string  <span class="argument">$contentType</span>) : boolean</pre>
+                <p><em>Replaces the task identified by UID with the content represented in the
+specified content type.</em></p>
+                <p>If you want to replace multiple tasks with the UID specified in the
+VCALENDAR data, you may use $this-&gt;import instead. This automatically does a
+replace if existings UIDs are found.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uid </td>
+                                <td><p>Identify the task to replace.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$content </td>
+                                <td><p>The content of the task.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$contentType </td>
+                                <td><p>What format is the data in? Currently supports:</p>
+<ul>
+<li>text/x-vcalendar</li>
+<li>text/calendar</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Success or failure.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateTask" name="method_updateTask" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateTask()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateTask(string  <span class="argument">$tasklist</span>, string  <span class="argument">$id</span>, array  <span class="argument">$task</span>) </pre>
+                <p><em>Changes a task identified by tasklist and ID.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tasklist </td>
+                                <td><p>A tasklist id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>A task id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$task </td>
+                                <td><p>A hash with overwriting task information.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listCostObjects" name="method_listCostObjects" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listCostObjects()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listCostObjects(array  <span class="argument">$criteria</span>) </pre>
+                <p><em>CostObject API: Lists active tasks as cost objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$criteria </td>
+                                <td><p>Filter attributes</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>Implement $criteria parameter.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_updateCostObject" name="method_updateCostObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">updateCostObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">updateCostObject(string  <span class="argument">$id</span>, array  <span class="argument">$data</span>) </pre>
+                <p><em>CostObject API:  Update a single costobject.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td><p>The task id.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>The data to update. Currently support:
+-: hours  The amount of hours to add to the existing actual hours.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listTimeObjectCategories" name="method_listTimeObjectCategories" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listTimeObjectCategories()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listTimeObjectCategories() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listTimeObjects" name="method_listTimeObjects" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listTimeObjects()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listTimeObjects(array  <span class="argument">$categories</span>, mixed  <span class="argument">$start</span>, mixed  <span class="argument">$end</span>) </pre>
+                <p><em>Lists active tasks as time objects.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$categories </td>
+                                <td><p>The time categories (from
+listTimeObjectCategories) to list.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$start </td>
+                                <td><p>The start date of the period.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$end </td>
+                                <td><p>The end date of the period.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_saveTimeObject" name="method_saveTimeObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">saveTimeObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">saveTimeObject(array  <span class="argument">$timeobject</span>) </pre>
+                <p><em>Saves properties of a time object back to the task that it represents.</em></p>
+                <p>At the moment only the title, description and due date are saved.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$timeobject </td>
+                                <td><p>A time object hash.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Nag_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sources" name="method_sources" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sources()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sources(boolean  <span class="argument">$writeable = false</span>, boolean  <span class="argument">$sync_only = false</span>) : array</pre>
+                <p><em>Returns a list of available sources.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$writeable </td>
+                                <td><p>If true, limits to writeable sources.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$sync_only </td>
+                                <td><p>Only include synchable address books.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of the available sources. Keys are source IDs,
+values are source titles.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            4.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDefaultShare" name="method_getDefaultShare" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDefaultShare()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDefaultShare() : string</pre>
+                <p><em>Retrieve the UID for the current user&#039;s default tasklist.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>UID.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            4.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listTagInfo" name="method_listTagInfo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listTagInfo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listTagInfo(array  <span class="argument">$tags = null</span>,   <span class="argument">$user = null</span>) : array</pre>
+                <p><em>Retrieve the list of used tag_names, tag_ids and the total number
+of resources that are linked to that tag.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$tags </td>
+                                <td><p>An optional array of tag_ids. If omitted, all tags
+will be included.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$user </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array containing tag_name, and total</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_searchTags" name="method_searchTags" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">searchTags()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">searchTags(array  <span class="argument">$names</span>, integer  <span class="argument">$max = 10</span>, integer  <span class="argument">$from</span>, string  <span class="argument">$resource_type = &#039;&#039;</span>, string  <span class="argument">$user = null</span>, boolean  <span class="argument">$raw = false</span>) : array</pre>
+                <p><em>SearchTags API:
+Returns an application-agnostic array (useful for when doing a tag search
+across multiple applications)</em></p>
+                <p>The 'raw' results array can be returned instead by setting $raw = true.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$names </td>
+                                <td><p>An array of tag_names to search for.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$max </td>
+                                <td><p>The maximum number of resources to return.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$from </td>
+                                <td><p>The number of the resource to start with.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$resource_type </td>
+                                <td><p>The resource type [bookmark, '']</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>Restrict results to resources owned by $user.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$raw </td>
+                                <td><p>Return the raw data?</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of results:</p>
+<pre>
+ 'title'    - The title for this resource.
+ 'desc'     - A terse description of this resource.
+ 'view_url' - The URL to view this resource.
+ 'app'      - The Horde application this resource belongs to.
+ 'icon'     - URL to an image.
+</pre>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Api.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Api.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Nag.html">\Nag</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:28.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">164</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-969600987"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-969600987" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_SyncMl.html">Horde_SyncMl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend.html">Horde_SyncMl_Backend</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Horde.html">Horde_SyncMl_Backend_Horde</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Backend_Sql.html">Horde_SyncMl_Backend_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command.html">Horde_SyncMl_Command</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Alert.html">Horde_SyncMl_Command_Alert</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Final.html">Horde_SyncMl_Command_Final</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Get.html">Horde_SyncMl_Command_Get</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Map.html">Horde_SyncMl_Command_Map</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Put.html">Horde_SyncMl_Command_Put</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Replace.html">Horde_SyncMl_Command_Replace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Results.html">Horde_SyncMl_Command_Results</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Status.html">Horde_SyncMl_Command_Status</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_Sync.html">Horde_SyncMl_Command_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Command_SyncHdr.html">Horde_SyncMl_Command_SyncHdr</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_ContentHandler.html">Horde_SyncMl_ContentHandler</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DataStore.html">Horde_SyncMl_DataStore</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device.html">Horde_SyncMl_Device</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Nokia.html">Horde_SyncMl_Device_Nokia</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_P800.html">Horde_SyncMl_Device_P800</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_sync4j.html">Horde_SyncMl_Device_sync4j</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Sync4JMozilla.html">Horde_SyncMl_Device_Sync4JMozilla</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Device_Synthesis.html">Horde_SyncMl_Device_Synthesis</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_DeviceInfo.html">Horde_SyncMl_DeviceInfo</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Property.html">Horde_SyncMl_Property</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_PropertyParameter.html">Horde_SyncMl_PropertyParameter</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_State.html">Horde_SyncMl_State</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Sync.html">Horde_SyncMl_Sync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_SyncElement.html">Horde_SyncMl_SyncElement</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_Translation.html">Horde_SyncMl_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_SyncMl_XmlOutput.html">Horde_SyncMl_XmlOutput</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_SyncMl</h1>
+                    <p><em>Copyright 2005-2017 Horde LLC (http://www.horde.org/)</em></p>
+                    <p>See the enclosed file LICENSE for license information (LGPL). If you
+did not receive this file, see <a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a>.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <em>No public methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_DISPLAY" class="">ALERT_DISPLAY</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_TWO_WAY" class="">ALERT_TWO_WAY</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_SLOW_SYNC" class="">ALERT_SLOW_SYNC</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_ONE_WAY_FROM_CLIENT" class="">ALERT_ONE_WAY_FROM_CLIENT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_REFRESH_FROM_CLIENT" class="">ALERT_REFRESH_FROM_CLIENT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_ONE_WAY_FROM_SERVER" class="">ALERT_ONE_WAY_FROM_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_REFRESH_FROM_SERVER" class="">ALERT_REFRESH_FROM_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_TWO_WAY_BY_SERVER" class="">ALERT_TWO_WAY_BY_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER" class="">ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_REFRESH_FROM_CLIENT_BY_SERVER" class="">ALERT_REFRESH_FROM_CLIENT_BY_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_ONE_WAY_FROM_SERVER_BY_SERVER" class="">ALERT_ONE_WAY_FROM_SERVER_BY_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_REFRESH_FROM_SERVER_BY_SERVER" class="">ALERT_REFRESH_FROM_SERVER_BY_SERVER</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_RESULT_ALERT" class="">ALERT_RESULT_ALERT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_NEXT_MESSAGE" class="">ALERT_NEXT_MESSAGE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_NO_END_OF_DATA" class="">ALERT_NO_END_OF_DATA</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_SUSPEND" class="">ALERT_SUSPEND</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_ALERT_RESUME" class="">ALERT_RESUME</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_XML" class="">MIME_SYNCML_XML</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_WBXML" class="">MIME_SYNCML_WBXML</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_DEVICE_INFO_XML" class="">MIME_SYNCML_DEVICE_INFO_XML</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_DEVICE_INFO_WBXML" class="">MIME_SYNCML_DEVICE_INFO_WBXML</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_TEXT_PLAIN" class="">MIME_TEXT_PLAIN</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_VCARD_V21" class="">MIME_VCARD_V21</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_VCARD_V30" class="">MIME_VCARD_V30</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_VCALENDAR" class="">MIME_VCALENDAR</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_ICALENDAR" class="">MIME_ICALENDAR</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_XML_ICALENDAR" class="">MIME_XML_ICALENDAR</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_MESSAGE" class="">MIME_MESSAGE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_XML_EMAIL" class="">MIME_SYNCML_XML_EMAIL</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_XML_BOOKMARK" class="">MIME_SYNCML_XML_BOOKMARK</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MIME_SYNCML_RELATIONAL_OBJECT" class="">MIME_SYNCML_RELATIONAL_OBJECT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_IN_PROGRESS" class="">RESPONSE_IN_PROGRESS</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_OK" class="">RESPONSE_OK</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_ITEM_ADDED" class="">RESPONSE_ITEM_ADDED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_ACCEPTED_FOR_PROCESSING" class="">RESPONSE_ACCEPTED_FOR_PROCESSING</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_NONAUTHORIATATIVE_RESPONSE" class="">RESPONSE_NONAUTHORIATATIVE_RESPONSE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_NO_CONTENT" class="">RESPONSE_NO_CONTENT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_RESET_CONTENT" class="">RESPONSE_RESET_CONTENT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_PARTIAL_CONTENT" class="">RESPONSE_PARTIAL_CONTENT</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_CONFLICT_RESOLVED_WITH_MERGE" class="">RESPONSE_CONFLICT_RESOLVED_WITH_MERGE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING" class="">RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE" class="">RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_DELETE_WITHOUT_ARCHIVE" class="">RESPONSE_DELETE_WITHOUT_ARCHIVE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_ITEM_NO_DELETED" class="">RESPONSE_ITEM_NO_DELETED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_AUTHENTICATION_ACCEPTED" class="">RESPONSE_AUTHENTICATION_ACCEPTED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED" class="">RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_OPERATION_CANCELLED" class="">RESPONSE_OPERATION_CANCELLED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_NO_EXECUTED" class="">RESPONSE_NO_EXECUTED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_ATOMIC_ROLL_BACK_OK" class="">RESPONSE_ATOMIC_ROLL_BACK_OK</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_MULTIPLE_CHOICES" class="">RESPONSE_MULTIPLE_CHOICES</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_USE_PROXY" class="">RESPONSE_USE_PROXY</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_BAD_REQUEST" class="">RESPONSE_BAD_REQUEST</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_INVALID_CREDENTIALS" class="">RESPONSE_INVALID_CREDENTIALS</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_NOT_FOUND" class="">RESPONSE_NOT_FOUND</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_CREDENTIALS_MISSING" class="">RESPONSE_CREDENTIALS_MISSING</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_SIZE_REQUIRED" class="">RESPONSE_SIZE_REQUIRED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_REQUEST_SIZE_TOO_BIG" class="">RESPONSE_REQUEST_SIZE_TOO_BIG</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_SIZE_MISMATCH" class="">RESPONSE_SIZE_MISMATCH</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_COMMAND_FAILED" class="">RESPONSE_COMMAND_FAILED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_RESPONSE_REFRESH_REQUIRED" class="">RESPONSE_REFRESH_REQUIRED</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_SYNCML" class="">NAME_SPACE_URI_SYNCML</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_SYNCML_1_1" class="">NAME_SPACE_URI_SYNCML_1_1</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_SYNCML_1_2" class="">NAME_SPACE_URI_SYNCML_1_2</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_METINF" class="">NAME_SPACE_URI_METINF</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_METINF_1_1" class="">NAME_SPACE_URI_METINF_1_1</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_METINF_1_2" class="">NAME_SPACE_URI_METINF_1_2</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_DEVINF" class="">NAME_SPACE_URI_DEVINF</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_DEVINF_1_1" class="">NAME_SPACE_URI_DEVINF_1_1</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_NAME_SPACE_URI_DEVINF_1_2" class="">NAME_SPACE_URI_DEVINF_1_2</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_SERVER_MAXOBJSIZE" class="">SERVER_MAXOBJSIZE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_SERVER_MAXMSGSIZE" class="">SERVER_MAXMSGSIZE</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MSG_CHUNK_LEN" class="">MSG_CHUNK_LEN</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MSG_TRAILER_LEN" class="">MSG_TRAILER_LEN</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_MSG_DEFAULT_LEN" class="">MSG_DEFAULT_LEN</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC" class="">CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC</a><br />
+                                                                    <a href="../classes/Horde_SyncMl.html#constant_CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC" class="">CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/SyncMl.html"><div class="path-wrapper">SyncMl.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">SyncMl</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_SyncMl</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Karsten Fourmont <a href="mailto:karsten@horde.org">karsten@horde.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_DISPLAY" name="constant_ALERT_DISPLAY" class="anchor"></a>
+            <article id="constant_ALERT_DISPLAY" class="constant">
+                <h3 class="">ALERT_DISPLAY</h3>
+                <pre class="signature">ALERT_DISPLAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_TWO_WAY" name="constant_ALERT_TWO_WAY" class="anchor"></a>
+            <article id="constant_ALERT_TWO_WAY" class="constant">
+                <h3 class="">ALERT_TWO_WAY</h3>
+                <pre class="signature">ALERT_TWO_WAY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_SLOW_SYNC" name="constant_ALERT_SLOW_SYNC" class="anchor"></a>
+            <article id="constant_ALERT_SLOW_SYNC" class="constant">
+                <h3 class="">ALERT_SLOW_SYNC</h3>
+                <pre class="signature">ALERT_SLOW_SYNC</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_ONE_WAY_FROM_CLIENT" name="constant_ALERT_ONE_WAY_FROM_CLIENT" class="anchor"></a>
+            <article id="constant_ALERT_ONE_WAY_FROM_CLIENT" class="constant">
+                <h3 class="">ALERT_ONE_WAY_FROM_CLIENT</h3>
+                <pre class="signature">ALERT_ONE_WAY_FROM_CLIENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_REFRESH_FROM_CLIENT" name="constant_ALERT_REFRESH_FROM_CLIENT" class="anchor"></a>
+            <article id="constant_ALERT_REFRESH_FROM_CLIENT" class="constant">
+                <h3 class="">ALERT_REFRESH_FROM_CLIENT</h3>
+                <pre class="signature">ALERT_REFRESH_FROM_CLIENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_ONE_WAY_FROM_SERVER" name="constant_ALERT_ONE_WAY_FROM_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_ONE_WAY_FROM_SERVER" class="constant">
+                <h3 class="">ALERT_ONE_WAY_FROM_SERVER</h3>
+                <pre class="signature">ALERT_ONE_WAY_FROM_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_REFRESH_FROM_SERVER" name="constant_ALERT_REFRESH_FROM_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_REFRESH_FROM_SERVER" class="constant">
+                <h3 class="">ALERT_REFRESH_FROM_SERVER</h3>
+                <pre class="signature">ALERT_REFRESH_FROM_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_TWO_WAY_BY_SERVER" name="constant_ALERT_TWO_WAY_BY_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_TWO_WAY_BY_SERVER" class="constant">
+                <h3 class="">ALERT_TWO_WAY_BY_SERVER</h3>
+                <pre class="signature">ALERT_TWO_WAY_BY_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER" name="constant_ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER" class="constant">
+                <h3 class="">ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER</h3>
+                <pre class="signature">ALERT_ONE_WAY_FROM_CLIENT_BY_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_REFRESH_FROM_CLIENT_BY_SERVER" name="constant_ALERT_REFRESH_FROM_CLIENT_BY_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_REFRESH_FROM_CLIENT_BY_SERVER" class="constant">
+                <h3 class="">ALERT_REFRESH_FROM_CLIENT_BY_SERVER</h3>
+                <pre class="signature">ALERT_REFRESH_FROM_CLIENT_BY_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_ONE_WAY_FROM_SERVER_BY_SERVER" name="constant_ALERT_ONE_WAY_FROM_SERVER_BY_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_ONE_WAY_FROM_SERVER_BY_SERVER" class="constant">
+                <h3 class="">ALERT_ONE_WAY_FROM_SERVER_BY_SERVER</h3>
+                <pre class="signature">ALERT_ONE_WAY_FROM_SERVER_BY_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_REFRESH_FROM_SERVER_BY_SERVER" name="constant_ALERT_REFRESH_FROM_SERVER_BY_SERVER" class="anchor"></a>
+            <article id="constant_ALERT_REFRESH_FROM_SERVER_BY_SERVER" class="constant">
+                <h3 class="">ALERT_REFRESH_FROM_SERVER_BY_SERVER</h3>
+                <pre class="signature">ALERT_REFRESH_FROM_SERVER_BY_SERVER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_RESULT_ALERT" name="constant_ALERT_RESULT_ALERT" class="anchor"></a>
+            <article id="constant_ALERT_RESULT_ALERT" class="constant">
+                <h3 class="">ALERT_RESULT_ALERT</h3>
+                <pre class="signature">ALERT_RESULT_ALERT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_NEXT_MESSAGE" name="constant_ALERT_NEXT_MESSAGE" class="anchor"></a>
+            <article id="constant_ALERT_NEXT_MESSAGE" class="constant">
+                <h3 class="">ALERT_NEXT_MESSAGE</h3>
+                <pre class="signature">ALERT_NEXT_MESSAGE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_NO_END_OF_DATA" name="constant_ALERT_NO_END_OF_DATA" class="anchor"></a>
+            <article id="constant_ALERT_NO_END_OF_DATA" class="constant">
+                <h3 class="">ALERT_NO_END_OF_DATA</h3>
+                <pre class="signature">ALERT_NO_END_OF_DATA</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_SUSPEND" name="constant_ALERT_SUSPEND" class="anchor"></a>
+            <article id="constant_ALERT_SUSPEND" class="constant">
+                <h3 class="">ALERT_SUSPEND</h3>
+                <pre class="signature">ALERT_SUSPEND</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALERT_RESUME" name="constant_ALERT_RESUME" class="anchor"></a>
+            <article id="constant_ALERT_RESUME" class="constant">
+                <h3 class="">ALERT_RESUME</h3>
+                <pre class="signature">ALERT_RESUME</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_XML" name="constant_MIME_SYNCML_XML" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_XML" class="constant">
+                <h3 class="">MIME_SYNCML_XML</h3>
+                <pre class="signature">MIME_SYNCML_XML</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_WBXML" name="constant_MIME_SYNCML_WBXML" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_WBXML" class="constant">
+                <h3 class="">MIME_SYNCML_WBXML</h3>
+                <pre class="signature">MIME_SYNCML_WBXML</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_DEVICE_INFO_XML" name="constant_MIME_SYNCML_DEVICE_INFO_XML" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_DEVICE_INFO_XML" class="constant">
+                <h3 class="">MIME_SYNCML_DEVICE_INFO_XML</h3>
+                <pre class="signature">MIME_SYNCML_DEVICE_INFO_XML</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_DEVICE_INFO_WBXML" name="constant_MIME_SYNCML_DEVICE_INFO_WBXML" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_DEVICE_INFO_WBXML" class="constant">
+                <h3 class="">MIME_SYNCML_DEVICE_INFO_WBXML</h3>
+                <pre class="signature">MIME_SYNCML_DEVICE_INFO_WBXML</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_TEXT_PLAIN" name="constant_MIME_TEXT_PLAIN" class="anchor"></a>
+            <article id="constant_MIME_TEXT_PLAIN" class="constant">
+                <h3 class="">MIME_TEXT_PLAIN</h3>
+                <pre class="signature">MIME_TEXT_PLAIN</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_VCARD_V21" name="constant_MIME_VCARD_V21" class="anchor"></a>
+            <article id="constant_MIME_VCARD_V21" class="constant">
+                <h3 class="">MIME_VCARD_V21</h3>
+                <pre class="signature">MIME_VCARD_V21</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_VCARD_V30" name="constant_MIME_VCARD_V30" class="anchor"></a>
+            <article id="constant_MIME_VCARD_V30" class="constant">
+                <h3 class="">MIME_VCARD_V30</h3>
+                <pre class="signature">MIME_VCARD_V30</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_VCALENDAR" name="constant_MIME_VCALENDAR" class="anchor"></a>
+            <article id="constant_MIME_VCALENDAR" class="constant">
+                <h3 class="">MIME_VCALENDAR</h3>
+                <pre class="signature">MIME_VCALENDAR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_ICALENDAR" name="constant_MIME_ICALENDAR" class="anchor"></a>
+            <article id="constant_MIME_ICALENDAR" class="constant">
+                <h3 class="">MIME_ICALENDAR</h3>
+                <pre class="signature">MIME_ICALENDAR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_XML_ICALENDAR" name="constant_MIME_XML_ICALENDAR" class="anchor"></a>
+            <article id="constant_MIME_XML_ICALENDAR" class="constant">
+                <h3 class="">MIME_XML_ICALENDAR</h3>
+                <pre class="signature">MIME_XML_ICALENDAR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_MESSAGE" name="constant_MIME_MESSAGE" class="anchor"></a>
+            <article id="constant_MIME_MESSAGE" class="constant">
+                <h3 class="">MIME_MESSAGE</h3>
+                <pre class="signature">MIME_MESSAGE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_XML_EMAIL" name="constant_MIME_SYNCML_XML_EMAIL" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_XML_EMAIL" class="constant">
+                <h3 class="">MIME_SYNCML_XML_EMAIL</h3>
+                <pre class="signature">MIME_SYNCML_XML_EMAIL</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_XML_BOOKMARK" name="constant_MIME_SYNCML_XML_BOOKMARK" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_XML_BOOKMARK" class="constant">
+                <h3 class="">MIME_SYNCML_XML_BOOKMARK</h3>
+                <pre class="signature">MIME_SYNCML_XML_BOOKMARK</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MIME_SYNCML_RELATIONAL_OBJECT" name="constant_MIME_SYNCML_RELATIONAL_OBJECT" class="anchor"></a>
+            <article id="constant_MIME_SYNCML_RELATIONAL_OBJECT" class="constant">
+                <h3 class="">MIME_SYNCML_RELATIONAL_OBJECT</h3>
+                <pre class="signature">MIME_SYNCML_RELATIONAL_OBJECT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_IN_PROGRESS" name="constant_RESPONSE_IN_PROGRESS" class="anchor"></a>
+            <article id="constant_RESPONSE_IN_PROGRESS" class="constant">
+                <h3 class="">RESPONSE_IN_PROGRESS</h3>
+                <pre class="signature">RESPONSE_IN_PROGRESS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_OK" name="constant_RESPONSE_OK" class="anchor"></a>
+            <article id="constant_RESPONSE_OK" class="constant">
+                <h3 class="">RESPONSE_OK</h3>
+                <pre class="signature">RESPONSE_OK</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_ITEM_ADDED" name="constant_RESPONSE_ITEM_ADDED" class="anchor"></a>
+            <article id="constant_RESPONSE_ITEM_ADDED" class="constant">
+                <h3 class="">RESPONSE_ITEM_ADDED</h3>
+                <pre class="signature">RESPONSE_ITEM_ADDED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_ACCEPTED_FOR_PROCESSING" name="constant_RESPONSE_ACCEPTED_FOR_PROCESSING" class="anchor"></a>
+            <article id="constant_RESPONSE_ACCEPTED_FOR_PROCESSING" class="constant">
+                <h3 class="">RESPONSE_ACCEPTED_FOR_PROCESSING</h3>
+                <pre class="signature">RESPONSE_ACCEPTED_FOR_PROCESSING</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_NONAUTHORIATATIVE_RESPONSE" name="constant_RESPONSE_NONAUTHORIATATIVE_RESPONSE" class="anchor"></a>
+            <article id="constant_RESPONSE_NONAUTHORIATATIVE_RESPONSE" class="constant">
+                <h3 class="">RESPONSE_NONAUTHORIATATIVE_RESPONSE</h3>
+                <pre class="signature">RESPONSE_NONAUTHORIATATIVE_RESPONSE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_NO_CONTENT" name="constant_RESPONSE_NO_CONTENT" class="anchor"></a>
+            <article id="constant_RESPONSE_NO_CONTENT" class="constant">
+                <h3 class="">RESPONSE_NO_CONTENT</h3>
+                <pre class="signature">RESPONSE_NO_CONTENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_RESET_CONTENT" name="constant_RESPONSE_RESET_CONTENT" class="anchor"></a>
+            <article id="constant_RESPONSE_RESET_CONTENT" class="constant">
+                <h3 class="">RESPONSE_RESET_CONTENT</h3>
+                <pre class="signature">RESPONSE_RESET_CONTENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_PARTIAL_CONTENT" name="constant_RESPONSE_PARTIAL_CONTENT" class="anchor"></a>
+            <article id="constant_RESPONSE_PARTIAL_CONTENT" class="constant">
+                <h3 class="">RESPONSE_PARTIAL_CONTENT</h3>
+                <pre class="signature">RESPONSE_PARTIAL_CONTENT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_CONFLICT_RESOLVED_WITH_MERGE" name="constant_RESPONSE_CONFLICT_RESOLVED_WITH_MERGE" class="anchor"></a>
+            <article id="constant_RESPONSE_CONFLICT_RESOLVED_WITH_MERGE" class="constant">
+                <h3 class="">RESPONSE_CONFLICT_RESOLVED_WITH_MERGE</h3>
+                <pre class="signature">RESPONSE_CONFLICT_RESOLVED_WITH_MERGE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING" name="constant_RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING" class="anchor"></a>
+            <article id="constant_RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING" class="constant">
+                <h3 class="">RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING</h3>
+                <pre class="signature">RESPONSE_CONFLICT_RESOLVED_WITH_CLIENT_WINNING</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE" name="constant_RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE" class="anchor"></a>
+            <article id="constant_RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE" class="constant">
+                <h3 class="">RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE</h3>
+                <pre class="signature">RESPONSE_CONFILCT_RESOLVED_WITH_DUPLICATE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_DELETE_WITHOUT_ARCHIVE" name="constant_RESPONSE_DELETE_WITHOUT_ARCHIVE" class="anchor"></a>
+            <article id="constant_RESPONSE_DELETE_WITHOUT_ARCHIVE" class="constant">
+                <h3 class="">RESPONSE_DELETE_WITHOUT_ARCHIVE</h3>
+                <pre class="signature">RESPONSE_DELETE_WITHOUT_ARCHIVE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_ITEM_NO_DELETED" name="constant_RESPONSE_ITEM_NO_DELETED" class="anchor"></a>
+            <article id="constant_RESPONSE_ITEM_NO_DELETED" class="constant">
+                <h3 class="">RESPONSE_ITEM_NO_DELETED</h3>
+                <pre class="signature">RESPONSE_ITEM_NO_DELETED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_AUTHENTICATION_ACCEPTED" name="constant_RESPONSE_AUTHENTICATION_ACCEPTED" class="anchor"></a>
+            <article id="constant_RESPONSE_AUTHENTICATION_ACCEPTED" class="constant">
+                <h3 class="">RESPONSE_AUTHENTICATION_ACCEPTED</h3>
+                <pre class="signature">RESPONSE_AUTHENTICATION_ACCEPTED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED" name="constant_RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED" class="anchor"></a>
+            <article id="constant_RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED" class="constant">
+                <h3 class="">RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED</h3>
+                <pre class="signature">RESPONSE_CHUNKED_ITEM_ACCEPTED_AND_BUFFERED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_OPERATION_CANCELLED" name="constant_RESPONSE_OPERATION_CANCELLED" class="anchor"></a>
+            <article id="constant_RESPONSE_OPERATION_CANCELLED" class="constant">
+                <h3 class="">RESPONSE_OPERATION_CANCELLED</h3>
+                <pre class="signature">RESPONSE_OPERATION_CANCELLED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_NO_EXECUTED" name="constant_RESPONSE_NO_EXECUTED" class="anchor"></a>
+            <article id="constant_RESPONSE_NO_EXECUTED" class="constant">
+                <h3 class="">RESPONSE_NO_EXECUTED</h3>
+                <pre class="signature">RESPONSE_NO_EXECUTED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_ATOMIC_ROLL_BACK_OK" name="constant_RESPONSE_ATOMIC_ROLL_BACK_OK" class="anchor"></a>
+            <article id="constant_RESPONSE_ATOMIC_ROLL_BACK_OK" class="constant">
+                <h3 class="">RESPONSE_ATOMIC_ROLL_BACK_OK</h3>
+                <pre class="signature">RESPONSE_ATOMIC_ROLL_BACK_OK</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_MULTIPLE_CHOICES" name="constant_RESPONSE_MULTIPLE_CHOICES" class="anchor"></a>
+            <article id="constant_RESPONSE_MULTIPLE_CHOICES" class="constant">
+                <h3 class="">RESPONSE_MULTIPLE_CHOICES</h3>
+                <pre class="signature">RESPONSE_MULTIPLE_CHOICES</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_USE_PROXY" name="constant_RESPONSE_USE_PROXY" class="anchor"></a>
+            <article id="constant_RESPONSE_USE_PROXY" class="constant">
+                <h3 class="">RESPONSE_USE_PROXY</h3>
+                <pre class="signature">RESPONSE_USE_PROXY</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_BAD_REQUEST" name="constant_RESPONSE_BAD_REQUEST" class="anchor"></a>
+            <article id="constant_RESPONSE_BAD_REQUEST" class="constant">
+                <h3 class="">RESPONSE_BAD_REQUEST</h3>
+                <pre class="signature">RESPONSE_BAD_REQUEST</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_INVALID_CREDENTIALS" name="constant_RESPONSE_INVALID_CREDENTIALS" class="anchor"></a>
+            <article id="constant_RESPONSE_INVALID_CREDENTIALS" class="constant">
+                <h3 class="">RESPONSE_INVALID_CREDENTIALS</h3>
+                <pre class="signature">RESPONSE_INVALID_CREDENTIALS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_NOT_FOUND" name="constant_RESPONSE_NOT_FOUND" class="anchor"></a>
+            <article id="constant_RESPONSE_NOT_FOUND" class="constant">
+                <h3 class="">RESPONSE_NOT_FOUND</h3>
+                <pre class="signature">RESPONSE_NOT_FOUND</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_CREDENTIALS_MISSING" name="constant_RESPONSE_CREDENTIALS_MISSING" class="anchor"></a>
+            <article id="constant_RESPONSE_CREDENTIALS_MISSING" class="constant">
+                <h3 class="">RESPONSE_CREDENTIALS_MISSING</h3>
+                <pre class="signature">RESPONSE_CREDENTIALS_MISSING</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_SIZE_REQUIRED" name="constant_RESPONSE_SIZE_REQUIRED" class="anchor"></a>
+            <article id="constant_RESPONSE_SIZE_REQUIRED" class="constant">
+                <h3 class="">RESPONSE_SIZE_REQUIRED</h3>
+                <pre class="signature">RESPONSE_SIZE_REQUIRED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_REQUEST_SIZE_TOO_BIG" name="constant_RESPONSE_REQUEST_SIZE_TOO_BIG" class="anchor"></a>
+            <article id="constant_RESPONSE_REQUEST_SIZE_TOO_BIG" class="constant">
+                <h3 class="">RESPONSE_REQUEST_SIZE_TOO_BIG</h3>
+                <pre class="signature">RESPONSE_REQUEST_SIZE_TOO_BIG</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_SIZE_MISMATCH" name="constant_RESPONSE_SIZE_MISMATCH" class="anchor"></a>
+            <article id="constant_RESPONSE_SIZE_MISMATCH" class="constant">
+                <h3 class="">RESPONSE_SIZE_MISMATCH</h3>
+                <pre class="signature">RESPONSE_SIZE_MISMATCH</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_COMMAND_FAILED" name="constant_RESPONSE_COMMAND_FAILED" class="anchor"></a>
+            <article id="constant_RESPONSE_COMMAND_FAILED" class="constant">
+                <h3 class="">RESPONSE_COMMAND_FAILED</h3>
+                <pre class="signature">RESPONSE_COMMAND_FAILED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESPONSE_REFRESH_REQUIRED" name="constant_RESPONSE_REFRESH_REQUIRED" class="anchor"></a>
+            <article id="constant_RESPONSE_REFRESH_REQUIRED" class="constant">
+                <h3 class="">RESPONSE_REFRESH_REQUIRED</h3>
+                <pre class="signature">RESPONSE_REFRESH_REQUIRED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_SYNCML" name="constant_NAME_SPACE_URI_SYNCML" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_SYNCML" class="constant">
+                <h3 class="">NAME_SPACE_URI_SYNCML</h3>
+                <pre class="signature">NAME_SPACE_URI_SYNCML</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_SYNCML_1_1" name="constant_NAME_SPACE_URI_SYNCML_1_1" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_SYNCML_1_1" class="constant">
+                <h3 class="">NAME_SPACE_URI_SYNCML_1_1</h3>
+                <pre class="signature">NAME_SPACE_URI_SYNCML_1_1</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_SYNCML_1_2" name="constant_NAME_SPACE_URI_SYNCML_1_2" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_SYNCML_1_2" class="constant">
+                <h3 class="">NAME_SPACE_URI_SYNCML_1_2</h3>
+                <pre class="signature">NAME_SPACE_URI_SYNCML_1_2</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_METINF" name="constant_NAME_SPACE_URI_METINF" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_METINF" class="constant">
+                <h3 class="">NAME_SPACE_URI_METINF</h3>
+                <pre class="signature">NAME_SPACE_URI_METINF</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_METINF_1_1" name="constant_NAME_SPACE_URI_METINF_1_1" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_METINF_1_1" class="constant">
+                <h3 class="">NAME_SPACE_URI_METINF_1_1</h3>
+                <pre class="signature">NAME_SPACE_URI_METINF_1_1</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_METINF_1_2" name="constant_NAME_SPACE_URI_METINF_1_2" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_METINF_1_2" class="constant">
+                <h3 class="">NAME_SPACE_URI_METINF_1_2</h3>
+                <pre class="signature">NAME_SPACE_URI_METINF_1_2</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_DEVINF" name="constant_NAME_SPACE_URI_DEVINF" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_DEVINF" class="constant">
+                <h3 class="">NAME_SPACE_URI_DEVINF</h3>
+                <pre class="signature">NAME_SPACE_URI_DEVINF</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_DEVINF_1_1" name="constant_NAME_SPACE_URI_DEVINF_1_1" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_DEVINF_1_1" class="constant">
+                <h3 class="">NAME_SPACE_URI_DEVINF_1_1</h3>
+                <pre class="signature">NAME_SPACE_URI_DEVINF_1_1</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NAME_SPACE_URI_DEVINF_1_2" name="constant_NAME_SPACE_URI_DEVINF_1_2" class="anchor"></a>
+            <article id="constant_NAME_SPACE_URI_DEVINF_1_2" class="constant">
+                <h3 class="">NAME_SPACE_URI_DEVINF_1_2</h3>
+                <pre class="signature">NAME_SPACE_URI_DEVINF_1_2</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SERVER_MAXOBJSIZE" name="constant_SERVER_MAXOBJSIZE" class="anchor"></a>
+            <article id="constant_SERVER_MAXOBJSIZE" class="constant">
+                <h3 class="">SERVER_MAXOBJSIZE</h3>
+                <pre class="signature">SERVER_MAXOBJSIZE</pre>
+                <p><em>Maximum Size of a data object. Currently global for all databases.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_SERVER_MAXMSGSIZE" name="constant_SERVER_MAXMSGSIZE" class="anchor"></a>
+            <article id="constant_SERVER_MAXMSGSIZE" class="constant">
+                <h3 class="">SERVER_MAXMSGSIZE</h3>
+                <pre class="signature">SERVER_MAXMSGSIZE</pre>
+                <p><em>Maximum size for one sync message as defined by SyncML protocol spec.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MSG_CHUNK_LEN" name="constant_MSG_CHUNK_LEN" class="anchor"></a>
+            <article id="constant_MSG_CHUNK_LEN" class="constant">
+                <h3 class="">MSG_CHUNK_LEN</h3>
+                <pre class="signature">MSG_CHUNK_LEN</pre>
+                <p><em>Estimated size of an empty chunk when when splitting a message,
+including MoreData tag.</em></p>
+                <p>When splitting a message, we have to ensure that the size of the
+complete message does not exceed MaxMsgSize sent by the client.</p>
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MSG_TRAILER_LEN" name="constant_MSG_TRAILER_LEN" class="anchor"></a>
+            <article id="constant_MSG_TRAILER_LEN" class="constant">
+                <h3 class="">MSG_TRAILER_LEN</h3>
+                <pre class="signature">MSG_TRAILER_LEN</pre>
+                <p><em>The &quot;safety margin&quot; for the closing tags when finishing a message.</em></p>
+                <p>When exporting a data entry, we have to ensure that the size of the
+complete message does not exceed MaxMsgSize sent by the client.</p>
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MSG_DEFAULT_LEN" name="constant_MSG_DEFAULT_LEN" class="anchor"></a>
+            <article id="constant_MSG_DEFAULT_LEN" class="constant">
+                <h3 class="">MSG_DEFAULT_LEN</h3>
+                <pre class="signature">MSG_DEFAULT_LEN</pre>
+                <p><em>Standard size for a complete but empty SyncML message. Used in estimating
+the size for a message.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC" name="constant_CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC" class="anchor"></a>
+            <article id="constant_CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC" class="constant">
+                <h3 class="">CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC</h3>
+                <pre class="signature">CONFIG_DELETE_MAP_ON_REQUESTED_SLOWSYNC</pre>
+                <p><em>If true the client uid&lt;-&gt;server uid map will be deleted when a SlowSync
+is requested.</em></p>
+                <p>This produces duplicates if there are entries in the client and the
+server.  This need to be true for the test conformance suite.</p>
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC" name="constant_CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC" class="anchor"></a>
+            <article id="constant_CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC" class="constant">
+                <h3 class="">CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC</h3>
+                <pre class="signature">CONFIG_DELETE_MAP_ON_ANCHOR_MISMATCH_SLOWSYNC</pre>
+                <p><em>If true the client uid&lt;-&gt;server uid map will be deleted when a SlowSync
+is done due to an anchor mismatch. An anchor mismatch may happen if a
+session terminates unexpectedly.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">SyncMl.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/SyncMl.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:39.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Horde/Routes: Manual: Nitty Gritty of Route Setup</title>
+
+  <link href="/routes/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="manual_nitty-gritty-route-setup">
+  <div id="wrapper">
+
+  <div id="header" class="clr">
+    <div id="logo" class="left">
+      <span>
+      <a href="/routes/"><img alt="Horde/Routes" src="/routes/images/common/logo.gif" /></a>
+      </span>
+    </div>
+      <ul id="nav" class="right">
+        <li><a href="/routes/">Home</a></li>
+        <li><a href="/routes/install.html">Install</a></li>
+        <li><a href="/routes/integrate.html">Integrate</a></li>
+        <li>Manual</li>
+      </ul>
+  </div>
+
+  <div id="content" class="clr">
+      
+  <h1>Manual</h1>
+
+  <div id="main">
+    <h2 class="top" id="download">Nitty Gritty of Route Setup</h2>
+
+    <h3>Minimum URLs</h3>
+
+    <p>
+      Routes will use your defaults to try and minimize the required
+      length of your URL whenever possible. For example:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">id</span><span class="punct">'=&gt;</span><span class="number">4</span><span class="punct">));</span>
+
+<span class="comment"># Will match all of the following</span>
+<span class="comment"># /content/view/4</span>
+<span class="comment"># /content/view</span>
+<span class="comment"># /content </span></pre></div>
+
+    <p>
+      Trailing dynamic parts of a route path that have defaults setup
+      are not required to exist in the URL being matched. This means
+      that each of the URL examples shown above will result in the
+      same set of keyword arguments being sent to the same controller
+      and action.
+    </p>
+
+    <p>
+      If a dynamic part with a default is followed by either static parts or dynamic
+      parts without defaults, that dynamic part will be required despite having a
+      default:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="punct">/</span><span class="regex"></span><span class="punct">/</span> <span class="constant">Remember</span> <span class="ident">that</span> <span class="symbol">:action</span> <span class="ident">has</span> <span class="ident">an</span> <span class="ident">implicit</span> <span class="keyword">default</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:action/:article</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">'));</span>
+
+<span class="comment"># Matches:</span>
+<span class="comment"># /archives/view/introduction</span>
+<span class="comment"># /archives/edit/recipes</span>
+
+<span class="comment"># Does Not Match:</span>
+<span class="comment"># /archives/introduction</span>
+<span class="comment"># /archives/recipes </span></pre></div>
+
+    <p>
+      This way, the URL coming in maps up to the route path you created, part for part.
+    </p>
+
+    <p>
+      When using Groupings, parts will still be left off, but only if the remainder
+      of the URL has no static after it. This can lead to some odd looking URLs
+      being generated if you aren't careful about your requirements and defaults.
+      For example:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="comment"># Groupings without requirements</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:(action)-:(id)</span><span class="punct">')</span>
+
+<span class="comment"># Matches:</span>
+<span class="comment"># /archives/view-3</span>
+<span class="comment"># /archives/view-</span>
+
+<span class="comment"># Generation:</span>
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">');</span>
+<span class="comment"># /archives/view- </span></pre></div>
+
+    <p>
+      It's unlikely you want such a URL, and would prefer to ensure that there's
+      always an id supplied. To enforce this behavior we will use Requirements:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="comment"># Groupings without requirements</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:(action)-:(id)</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">requirements</span><span class="punct">'=&gt;</span> <span class="ident">array</span><span class="punct">('</span><span class="string">id</span><span class="punct">'=&gt;'</span><span class="string">d+</span><span class="punct">')));</span>
+
+<span class="comment"># Matches:</span>
+<span class="comment"># /archives/view-3</span>
+<span class="comment"># /archives/view-2</span>
+
+<span class="comment"># Does Not Match:</span>
+<span class="comment"># /archives/view-</span>
+
+<span class="comment"># Generation:</span>
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">archives</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">id</span><span class="punct">'=&gt;</span><span class="number">2</span><span class="punct">));</span>
+<span class="comment"># /archives/view-2 </span></pre></div>
+
+    <p>
+      If you end up with URLs missing parts you'd like left on when using Groupings,
+      add a requirement to that part.
+    </p>
+
+
+    <h3>Implicit Defaults</h3>
+
+    <p>
+      The above rule regarding minimum URLs has two built-in implicit defaults. If
+      you use either action or id in your route path and don't specify defaults for
+      them, Routes will automatically assign the following defaults to them for you:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="ident">array</span><span class="punct">('</span><span class="string">action</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">index</span><span class="punct">',</span> <span class="punct">'</span><span class="string">id</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="ident">null</span><span class="punct">)</span> </pre></div>
+
+    <p>This is why using the following setup doesn't require an action or id in the URL:</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">');</span>
+
+<span class="comment"># '/blog'  -&gt; controller='blog', action='index', id=None </span></pre></div>
+
+
+    <h3>Search Order</h3>
+
+    <p>
+      When setting up your routes, remember that when using routes the order in
+      which you set them up can affect the URL that's generated. Routes will try and
+      use all the keyword args during route generation and if multiple routes can be
+      generated given the set of keyword args, the first and shortest route that was
+      connected to the mapper will be used. Hardcoded variables are also used first
+      if available as they typically result in shorter URLs.
+    </p>
+
+    <p>For example:</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="comment"># Route Setup</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">archives/:year</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">year</span><span class="punct">'=</span><span class="ident">null</span><span class="punct">));</span>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">:controller/:action/:id</span><span class="punct">');</span>
+
+<span class="comment"># Route Usage</span>
+<span class="attribute">$utils</span> <span class="punct">=</span> <span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">utils</span><span class="punct">;</span>
+<span class="attribute">$utils</span><span class="punct">-&gt;</span><span class="ident">urlFor</span><span class="punct">(</span><span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">')</span>  <span class="punct">-&gt;</span>  <span class="punct">'</span><span class="string">/archives</span><span class="punct">'</span> </pre></div>
+
+    <p>
+      You will typically want your specific and detailed routes at the top of your
+      Route setup and the more generic routes at the bottom.
+    </p>
+
+
+    <h3>Wildcard Limitations and Gotchas</h3>
+
+    <p>
+      Due to the nature of wildcard parts, using wildcards in your route path can
+      result in URL matches that you didn't expect. Wildcard parts are extremely
+      powerful and when combined with dynamic parts that have defaults can confuse
+      the new Routes user.
+    </p>
+
+    <p>
+      When you have dynamic parts with defaults, you should never place them
+      directly next to a wildcard part. This can result in the wildcard part eating
+      the part in the URL that was intended as the dynamic part.
+    </p>
+
+    <p>For example:</p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">*url/:username</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">username</span><span class="punct">'=&gt;'</span><span class="string">george</span><span class="punct">'));</span>
+
+<span class="comment"># When matching                        url variable              username variable</span>
+<span class="comment"># /some/long/url/george                /some/long/url/george     george</span>
+<span class="comment"># /some/other/stuff/fred               /some/other/stuff/fred    george </span></pre></div>
+
+    <p>
+      This occurs because Routes sees the default as being optional, and the
+      wildcard part attempts to gobble as much of the URL as possible before a
+      required section of the route path is found. By having a trailing dynamic part
+      with a default, that section gets dropped.
+    </p>
+
+    <p>
+      Notice how removing the dynamic part default results in the variables we expect:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">*url/:username</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">'));</span>
+
+<span class="comment"># When matching                        url variable              username variable</span>
+<span class="comment"># /some/long/url/george                /some/long/url            george</span>
+<span class="comment"># /some/other/stuff/fred               /some/other/stuff         fred </span></pre></div>
+
+    <p>
+      Let's try one more time, but put in a static part between the dynamic part
+      with a default and the wildcard:
+    </p>
+
+    <div class="syntax syntax_php">
+    <pre>
+<span class="attribute">$m</span><span class="punct">-&gt;</span><span class="ident">connect</span><span class="punct">('</span><span class="string">*url/user/:username</span><span class="punct">',</span> 
+  <span class="ident">array</span><span class="punct">('</span><span class="string">controller</span><span class="punct">'=&gt;'</span><span class="string">blog</span><span class="punct">',</span> <span class="punct">'</span><span class="string">action</span><span class="punct">'=&gt;'</span><span class="string">view</span><span class="punct">',</span> <span class="punct">'</span><span class="string">username</span><span class="punct">'=&gt;'</span><span class="string">george</span><span class="punct">'));</span>
+
+<span class="comment"># When matching                        url variable              username variable</span>
+<span class="comment"># /some/long/url/user/george           /some/long/url            george</span>
+<span class="comment"># /some/other/stuff/user/fred          /some/other/stuff         fred </span></pre></div>
+
+
+    <h3>Unicode</h3>
+
+    <p>
+      Not currently supported in the PHP version.
+    </p>
+  </div>
+
+    <div id="sidebar">
+    <div class="side_item">
+      <h4>Manual</h4>
+      <p><a href="/routes/manual/index.html">Setting Up Routes</a></p>
+      <p>Nitty Gritty of Route Setup</p>
+      <p><a href="/routes/manual/using-routes.html">Using Routes</a></p>
+      <p><a href="/routes/manual/subdomain-support.html">Sub-Domain Support</a></p>
+      <p><a href="/routes/manual/restful-services.html">RESTful Services</a></p>
+      <div class="side_bottom">&nbsp;</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="footer" class="clr">
+    <span class="right">
+      Horde/Routes is part of the <a href="http://www.horde.org">Horde Project</a>.<br/>
+      Development &amp; Website by <a href="http://maintainable.com">Maintainable Software</a>
+    </span>
+  </div>
+
+  
+
+  </div>
+</body>
+</html>

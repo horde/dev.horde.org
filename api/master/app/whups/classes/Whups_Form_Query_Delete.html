@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">518</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">11</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1406835902"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1406835902" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Horde_Core_Ui_VarRenderer_whups.html">Horde_Core_Ui_VarRenderer_whups</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Form_Action_whups_reload.html">Horde_Form_Action_whups_reload</a></li>
+                                                    <li class="class"><a href="../classes/Whups.html">Whups</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Ajax_Application.html">Whups_Ajax_Application</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Ajax_Imple_ContactAutoCompleter.html">Whups_Ajax_Imple_ContactAutoCompleter</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Api.html">Whups_Api</a></li>
+                                                    <li class="class"><a href="../classes/Whups_ApiTest.html">Whups_ApiTest</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Application.html">Whups_Application</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Myqueries.html">Whups_Block_Myqueries</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Myrequests.html">Whups_Block_Myrequests</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Mytickets.html">Whups_Block_Mytickets</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Query.html">Whups_Block_Query</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Queuecontents.html">Whups_Block_Queuecontents</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Queuesummary.html">Whups_Block_Queuesummary</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Tickets.html">Whups_Block_Tickets</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Block_Unassigned.html">Whups_Block_Unassigned</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Driver.html">Whups_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Driver_sql.html">Whups_Driver_sql</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Driver_Sql.html">Whups_Driver_Sql</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Exception.html">Whups_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Factory_Driver.html">Whups_Factory_Driver</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_AddComment.html">Whups_Form_AddComment</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_AddListener.html">Whups_Form_AddListener</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddAttribute.html">Whups_Form_Admin_AddAttribute</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddPriority.html">Whups_Form_Admin_AddPriority</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddQueue.html">Whups_Form_Admin_AddQueue</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddReply.html">Whups_Form_Admin_AddReply</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddState.html">Whups_Form_Admin_AddState</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddType.html">Whups_Form_Admin_AddType</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddUser.html">Whups_Form_Admin_AddUser</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_AddVersion.html">Whups_Form_Admin_AddVersion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_CloneType.html">Whups_Form_Admin_CloneType</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DefaultPriority.html">Whups_Form_Admin_DefaultPriority</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DefaultState.html">Whups_Form_Admin_DefaultState</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteAttribute.html">Whups_Form_Admin_DeleteAttribute</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeletePriority.html">Whups_Form_Admin_DeletePriority</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteQueue.html">Whups_Form_Admin_DeleteQueue</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteReply.html">Whups_Form_Admin_DeleteReply</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteState.html">Whups_Form_Admin_DeleteState</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteType.html">Whups_Form_Admin_DeleteType</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_DeleteVersion.html">Whups_Form_Admin_DeleteVersion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditAttributeStepOne.html">Whups_Form_Admin_EditAttributeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditAttributeStepTwo.html">Whups_Form_Admin_EditAttributeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditPriorityStepOne.html">Whups_Form_Admin_EditPriorityStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditPriorityStepTwo.html">Whups_Form_Admin_EditPriorityStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditQueueStepOne.html">Whups_Form_Admin_EditQueueStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditQueueStepTwo.html">Whups_Form_Admin_EditQueueStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditReplyStepOne.html">Whups_Form_Admin_EditReplyStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditReplyStepTwo.html">Whups_Form_Admin_EditReplyStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditStateStepOne.html">Whups_Form_Admin_EditStateStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditStateStepTwo.html">Whups_Form_Admin_EditStateStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditTypeStepOne.html">Whups_Form_Admin_EditTypeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditTypeStepTwo.html">Whups_Form_Admin_EditTypeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditUser.html">Whups_Form_Admin_EditUser</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditVersionStepOne.html">Whups_Form_Admin_EditVersionStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Admin_EditVersionStepTwo.html">Whups_Form_Admin_EditVersionStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_DeleteListener.html">Whups_Form_DeleteListener</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_InsertBranch.html">Whups_Form_InsertBranch</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_AttributeCriterion.html">Whups_Form_Query_AttributeCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_ChooseNameForLoad.html">Whups_Form_Query_ChooseNameForLoad</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_ChooseNameForSave.html">Whups_Form_Query_ChooseNameForSave</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_DateCriterion.html">Whups_Form_Query_DateCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_Delete.html">Whups_Form_Query_Delete</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_GroupCriterion.html">Whups_Form_Query_GroupCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_Parameter.html">Whups_Form_Query_Parameter</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_PropertyCriterion.html">Whups_Form_Query_PropertyCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_TextCriterion.html">Whups_Form_Query_TextCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Query_UserCriterion.html">Whups_Form_Query_UserCriterion</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Queue_StepOne.html">Whups_Form_Queue_StepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Queue_StepThree.html">Whups_Form_Queue_StepThree</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Queue_StepTwo.html">Whups_Form_Queue_StepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Renderer_Comment.html">Whups_Form_Renderer_Comment</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Renderer_Query.html">Whups_Form_Renderer_Query</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Search.html">Whups_Form_Search</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_SendReminder.html">Whups_Form_SendReminder</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_SetTypeStepOne.html">Whups_Form_SetTypeStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_SetTypeStepTwo.html">Whups_Form_SetTypeStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepFour.html">Whups_Form_Ticket_CreateStepFour</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepOne.html">Whups_Form_Ticket_CreateStepOne</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepThree.html">Whups_Form_Ticket_CreateStepThree</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_CreateStepTwo.html">Whups_Form_Ticket_CreateStepTwo</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_Delete.html">Whups_Form_Ticket_Delete</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_DeleteMultiple.html">Whups_Form_Ticket_DeleteMultiple</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Ticket_Edit.html">Whups_Form_Ticket_Edit</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_TicketDetails.html">Whups_Form_TicketDetails</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Form_Type_whupsemail.html">Whups_Form_Type_whupsemail</a></li>
+                                                    <li class="class"><a href="../classes/Whups_LoginTasks_SystemTask_Upgrade.html">Whups_LoginTasks_SystemTask_Upgrade</a></li>
+                                                    <li class="class"><a href="../classes/Whups_LoginTasks_SystemTask_UpgradeAdmin.html">Whups_LoginTasks_SystemTask_UpgradeAdmin</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Mail.html">Whups_Mail</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Mime_Viewer_zip.html">Whups_Mime_Viewer_zip</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Prefs_Special_Sourceselect.html">Whups_Prefs_Special_Sourceselect</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Query.html">Whups_Query</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Query_Manager.html">Whups_Query_Manager</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Reports.html">Whups_Reports</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Scheduler.html">Whups_Scheduler</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Test_Perms.html">Whups_Test_Perms</a></li>
+                                                    <li class="class"><a href="../classes/Whups_TestBase.html">Whups_TestBase</a></li>
+                                                    <li class="class"><a href="../classes/Whups_Ticket.html">Whups_Ticket</a></li>
+                                                    <li class="class"><a href="../classes/Whups_View_Base.html">Whups_View_Base</a></li>
+                                                    <li class="class"><a href="../classes/Whups_View_Results.html">Whups_View_Results</a></li>
+                                                    <li class="class"><a href="../classes/Whups_View_SavedQueries.html">Whups_View_SavedQueries</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Whups_Form_Query_Delete</h1>
+                    <p><em>Form to confirm query deletion.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Whups_Form_Query_Delete.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Whups_Form_Query_Delete.html#method_execute" class="">execute()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Form.Query.Delete.html"><div class="path-wrapper">Form/Query/Delete.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Whups</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\Horde_Form</div>
+                                                                                                    <div class="namespace-wrapper">\Whups_Form_Query_Delete</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Jan Schneider <a href="mailto:jan@horde.org">jan@horde.org</a></p>
+                                                                    <p>Robert E. Coyle <a href="mailto:robertecoyle@hotmail.com">robertecoyle@hotmail.com</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Horde</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2001-2002 Robert E. Coyle</p>
+                                                                    <p>2001-2017 Horde LLC</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/bsd">http://www.horde.org/licenses/bsd</a> BSD</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(  <span class="argument">$vars</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$vars </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_execute" name="method_execute" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">execute()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">execute(  <span class="argument">$vars</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$vars </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Delete.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Form/Query/Delete.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 19:28.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">147</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">7</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-214701162"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-214701162" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage.html">Horde_Kolab_Storage</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data.html">Horde_Kolab_Storage_Data</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data_Query.html">Horde_Kolab_Storage_Data_Query</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data_Query_History.html">Horde_Kolab_Storage_Data_Query_History</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Data_Query_Preferences.html">Horde_Kolab_Storage_Data_Query_Preferences</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Driver.html">Horde_Kolab_Storage_Driver</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Folder.html">Horde_Kolab_Storage_Folder</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Folder_Stamp.html">Horde_Kolab_Storage_Folder_Stamp</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_HistoryPrefix.html">Horde_Kolab_Storage_HistoryPrefix</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_List_Manipulation_Listener.html">Horde_Kolab_Storage_List_Manipulation_Listener</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_List_Synchronization_Listener.html">Horde_Kolab_Storage_List_Synchronization_Listener</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Queriable.html">Horde_Kolab_Storage_Queriable</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_Query.html">Horde_Kolab_Storage_Query</a></li>
+                                                    <li class="interface"><a href="../classes/Horde_Kolab_Storage_QuerySet.html">Horde_Kolab_Storage_QuerySet</a></li>
+                                                                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Base.html">Horde_Kolab_Storage_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Cache.html">Horde_Kolab_Storage_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Cache_Data.html">Horde_Kolab_Storage_Cache_Data</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Cached.html">Horde_Kolab_Storage_Cached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Base.html">Horde_Kolab_Storage_Data_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Cached.html">Horde_Kolab_Storage_Data_Cached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Decorator_Log.html">Horde_Kolab_Storage_Data_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Exception.html">Horde_Kolab_Storage_Data_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Old.html">Horde_Kolab_Storage_Data_Old</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_History_Base.html">Horde_Kolab_Storage_Data_Query_History_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_History_Cache.html">Horde_Kolab_Storage_Data_Query_History_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_Preferences_Base.html">Horde_Kolab_Storage_Data_Query_Preferences_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Data_Query_Preferences_Cache.html">Horde_Kolab_Storage_Data_Query_Preferences_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Decorator_Log.html">Horde_Kolab_Storage_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Decorator_Synchronization.html">Horde_Kolab_Storage_Decorator_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Base.html">Horde_Kolab_Storage_Driver_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Cclient.html">Horde_Kolab_Storage_Driver_Cclient</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Decorator_Base.html">Horde_Kolab_Storage_Driver_Decorator_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Decorator_Log.html">Horde_Kolab_Storage_Driver_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Decorator_Timer.html">Horde_Kolab_Storage_Driver_Decorator_Timer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Imap.html">Horde_Kolab_Storage_Driver_Imap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Mock.html">Horde_Kolab_Storage_Driver_Mock</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Mock_Data.html">Horde_Kolab_Storage_Driver_Mock_Data</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Pear.html">Horde_Kolab_Storage_Driver_Pear</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Driver_Rcube.html">Horde_Kolab_Storage_Driver_Rcube</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Exception.html">Horde_Kolab_Storage_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Exception_Pear.html">Horde_Kolab_Storage_Exception_Pear</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Factory.html">Horde_Kolab_Storage_Factory</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Base.html">Horde_Kolab_Storage_Folder_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Data.html">Horde_Kolab_Storage_Folder_Data</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace.html">Horde_Kolab_Storage_Folder_Namespace</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Config.html">Horde_Kolab_Storage_Folder_Namespace_Config</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element.html">Horde_Kolab_Storage_Folder_Namespace_Element</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_Other.html">Horde_Kolab_Storage_Folder_Namespace_Element_Other</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_Personal.html">Horde_Kolab_Storage_Folder_Namespace_Element_Personal</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_Shared.html">Horde_Kolab_Storage_Folder_Namespace_Element_Shared</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Element_SharedWithPrefix.html">Horde_Kolab_Storage_Folder_Namespace_Element_SharedWithPrefix</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Fixed.html">Horde_Kolab_Storage_Folder_Namespace_Fixed</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Namespace_Imap.html">Horde_Kolab_Storage_Folder_Namespace_Imap</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Stamp_Uids.html">Horde_Kolab_Storage_Folder_Stamp_Uids</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Type.html">Horde_Kolab_Storage_Folder_Type</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Folder_Types.html">Horde_Kolab_Storage_Folder_Types</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Cache.html">Horde_Kolab_Storage_List_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Exception.html">Horde_Kolab_Storage_List_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Manipulation.html">Horde_Kolab_Storage_List_Manipulation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Manipulation_Base.html">Horde_Kolab_Storage_List_Manipulation_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Manipulation_Decorator_Log.html">Horde_Kolab_Storage_List_Manipulation_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Acl.html">Horde_Kolab_Storage_List_Query_Acl</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Acl_Base.html">Horde_Kolab_Storage_List_Query_Acl_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Acl_Cache.html">Horde_Kolab_Storage_List_Query_Acl_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_ActiveSync.html">Horde_Kolab_Storage_List_Query_ActiveSync</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_ActiveSync_Base.html">Horde_Kolab_Storage_List_Query_ActiveSync_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_ActiveSync_Cache.html">Horde_Kolab_Storage_List_Query_ActiveSync_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List.html">Horde_Kolab_Storage_List_Query_List</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Base.html">Horde_Kolab_Storage_List_Query_List_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Cache.html">Horde_Kolab_Storage_List_Query_List_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Cache_Synchronization.html">Horde_Kolab_Storage_List_Query_List_Cache_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Defaults.html">Horde_Kolab_Storage_List_Query_List_Defaults</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Defaults_Bail.html">Horde_Kolab_Storage_List_Query_List_Defaults_Bail</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_List_Defaults_Log.html">Horde_Kolab_Storage_List_Query_List_Defaults_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Share.html">Horde_Kolab_Storage_List_Query_Share</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Share_Base.html">Horde_Kolab_Storage_List_Query_Share_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Query_Share_Cache.html">Horde_Kolab_Storage_List_Query_Share_Cache</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Synchronization.html">Horde_Kolab_Storage_List_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Synchronization_Base.html">Horde_Kolab_Storage_List_Synchronization_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Synchronization_Decorator_Log.html">Horde_Kolab_Storage_List_Synchronization_Decorator_Log</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_List_Tools.html">Horde_Kolab_Storage_List_Tools</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object.html">Horde_Kolab_Storage_Object</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Exception.html">Horde_Kolab_Storage_Object_Exception</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_MimeType.html">Horde_Kolab_Storage_Object_MimeType</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Writer.html">Horde_Kolab_Storage_Object_Writer</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Writer_Format.html">Horde_Kolab_Storage_Object_Writer_Format</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Object_Writer_Raw.html">Horde_Kolab_Storage_Object_Writer_Raw</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_QuerySet_Base.html">Horde_Kolab_Storage_QuerySet_Base</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_QuerySet_Cached.html">Horde_Kolab_Storage_QuerySet_Cached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_QuerySet_Uncached.html">Horde_Kolab_Storage_QuerySet_Uncached</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization.html">Horde_Kolab_Storage_Synchronization</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization_OncePerSession.html">Horde_Kolab_Storage_Synchronization_OncePerSession</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization_TimeBased.html">Horde_Kolab_Storage_Synchronization_TimeBased</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Synchronization_Token.html">Horde_Kolab_Storage_Synchronization_Token</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Translation.html">Horde_Kolab_Storage_Translation</a></li>
+                                                    <li class="class"><a href="../classes/Horde_Kolab_Storage_Uncached.html">Horde_Kolab_Storage_Uncached</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Horde_Kolab_Storage_Factory</h1>
+                    <p><em>A generic factory for the various Kolab_Storage classes.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_create" class="">create()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_createDriver" class="">createDriver()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_createNamespace" class="">createNamespace()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_createCache" class="">createCache()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_createHistory" class="">createHistory()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_getHistoryPrefixGenerator" class="">getHistoryPrefixGenerator()</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#method_getDriver" class="">getDriver()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#property__params" class="">$_params</a><br />
+                                                                    <a href="../classes/Horde_Kolab_Storage_Factory.html#property__driver" class="">$_driver</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Storage.Factory.html"><div class="path-wrapper">Storage/Factory.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Kolab_Storage</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Horde_Kolab_Storage_Factory</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Kolab</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Gunnar Wrobel <a href="mailto:wrobel@pardus.de">wrobel@pardus.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.horde.org/licenses/lgpl21">http://www.horde.org/licenses/lgpl21</a> LGPL 2.1</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__params" name="property__params" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_params</h3>
+                <pre class="signature">$_params : array</pre>
+                <p><em>A set of parameters for this factory.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__driver" name="property__driver" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_driver</h3>
+                <pre class="signature">$_driver : \Horde_Kolab_Storage_Driver</pre>
+                <p><em>Stores the driver once created.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Horde_Kolab_Storage_Driver.html">\Horde_Kolab_Storage_Driver</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                            <p>Cleanup. Extract a driver factory to be placed in the driver
+namespace and allow to inject the driver within the storage factory.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$params = array()</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>A set of parameters.</p>
+<pre>
+ - storage:
+ - cache:
+ - queries:
+ - queryset:
+ - driver: (string) The type of backend driver. One of "mock", "php",
+      "pear", "horde", "horde-socket", and "roundcube".
+ - params: (array) Backend specific connection parameters.
+ - logger: (Horde_Log_Logger) An optional log handler.
+ - log: (array) An array of log decorators. Possible values include:
+      'debug', 'driver_time', 'driver'.
+ - format : (array)
+    - factory: Name of the format parser factory class.
+ - history: (Horde_History) A Horde_History driver.
+ - history_prefix_generator: (Horde_Kolab_Storage_HistoryPrefix) An
+       object that can provide prefix/collection mapping of the
+       History system.
+- sync_strategy: (Horde_Kolab_Storage_Synchronization) The strategy
+        object to use for determining when we should synchronize
+        with the Kolab backend. If omitted,
+        Horde_Kolab_Storage_Synchronization_OncePerSession strategy is
+        used.
+ </pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_create" name="method_create" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">create()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">create() : \Horde_Kolab_Storage</pre>
+                <p><em>Create the storage handler.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Kolab_Storage.html">\Horde_Kolab_Storage</a>
+                                            &mdash; <p>The storage handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createDriver" name="method_createDriver" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createDriver()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createDriver(array  <span class="argument">$params = array()</span>) : \Horde_Kolab_Storage_Driver</pre>
+                <p><em>Create the storage backend driver.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Any parameters that should overwrite the default
+parameters provided in the factory constructor.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Kolab_Storage_Driver.html">\Horde_Kolab_Storage_Driver</a>
+                                            &mdash; <p>The storage handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createNamespace" name="method_createNamespace" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createNamespace()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createNamespace(string  <span class="argument">$type</span>, string  <span class="argument">$user</span>, array  <span class="argument">$params = array()</span>) : \Horde_Kolab_Storage_Folder_Namespace</pre>
+                <p><em>Create a namespace handler.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The namespace type.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The current user.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>The parameters for the namespace.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Kolab_Storage_Folder_Namespace.html">\Horde_Kolab_Storage_Folder_Namespace</a>
+                                            &mdash; <p>The namespace handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createCache" name="method_createCache" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createCache()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createCache() : \Horde_Kolab_Storage_Cache</pre>
+                <p><em>Create the cache handler.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Kolab_Storage_Cache.html">\Horde_Kolab_Storage_Cache</a>
+                                            &mdash; <p>The cache handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createHistory" name="method_createHistory" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">createHistory()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createHistory(string  <span class="argument">$user</span>) : \Horde_History</pre>
+                <p><em>Create the history handler.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user </td>
+                                <td><p>The current user.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \Horde_History
+                                            &mdash; <p>The history handler.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHistoryPrefixGenerator" name="method_getHistoryPrefixGenerator" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getHistoryPrefixGenerator()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHistoryPrefixGenerator() : \Horde_Kolab_Storage_HistoryPrefix|\Horde_Support_Stub</pre>
+                <p><em>Create a prefix factory.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Horde_Kolab_Storage_HistoryPrefix.html">\Horde_Kolab_Storage_HistoryPrefix</a>|\Horde_Support_Stub
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>This should probably be implemented by decorating/wrapping the
+Horde_History object but that can't be done in a clean BC way
+until Horde 6. So, until then implement a
+Horde_Kolab_Storage_History_Prefix interface.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDriver" name="method_getDriver" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDriver()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDriver() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Factory.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Storage/Factory.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 9th, 2018 at 20:33.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

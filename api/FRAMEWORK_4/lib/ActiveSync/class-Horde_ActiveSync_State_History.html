@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_ActiveSync_State_History</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-ActiveSync.html">ActiveSync</a>
+						</li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_ActiveSync_Message_Appointment.html">Horde_ActiveSync_Message_Appointment</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Attendee.html">Horde_ActiveSync_Message_Attendee</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Contact.html">Horde_ActiveSync_Message_Contact</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Exception.html">Horde_ActiveSync_Message_Exception</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Folder.html">Horde_ActiveSync_Message_Folder</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Recurrence.html">Horde_ActiveSync_Message_Recurrence</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Task.html">Horde_ActiveSync_Message_Task</a></li>
+				<li><a href="class-Horde_ActiveSync_State_Base.html">Horde_ActiveSync_State_Base</a></li>
+				<li class="active"><a href="class-Horde_ActiveSync_State_History.html">Horde_ActiveSync_State_History</a></li>
+				<li><a href="class-Horde_ActiveSync_Timezone.html">Horde_ActiveSync_Timezone</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-ActiveSync.html" title="Summary of ActiveSync"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_ActiveSync_State_History</h1>
+
+
+	<div class="description">
+	<p>Horde_History based state management. Needs a number of SQL tables present:</p>
+
+<pre>syncStateTable (horde_activesync_state):
+       sync_time:  timestamp of last sync
+       sync_key:   the syncKey <span class="php-keyword1">for</span> the last sync
+       sync_data:  <span class="php-keyword1">If</span> the last sync resulted in a MOREAVAILABLE, this contains
+                   a <span class="php-keyword1">list</span> of UIDs that still need to be sent to the PIM.  <span class="php-keyword1">If</span>
+                   this sync_key represents a FOLDERSYNC state, then this
+                   contains the <span class="php-keyword2">current</span> folder state on the PIM.
+       sync_devid: The device id.
+       sync_folderid: The folder id <span class="php-keyword1">for</span> this sync.
+       sync_user:     The user <span class="php-keyword1">for</span> this synckey
+
+syncMapTable (horde_activesync_map):
+       message_uid    - The server uid <span class="php-keyword1">for</span> the object
+       sync_modtime   - The <span class="php-keyword2">time</span> the change was received from the PIM <span class="php-keyword1">and</span>
+                        applied to the server data store.
+       sync_key       - The syncKey that was <span class="php-keyword2">current</span> at the <span class="php-keyword2">time</span> the change
+                        was received.
+       sync_devid     - The device id this change was done on.
+       sync_user      - The user that initiated the change.
+
+   syncDeviceTable (horde_activesync_device):
+       device_id      - The unique id <span class="php-keyword1">for</span> this device
+       device_type    - The device type the PIM identifies itself with
+       device_agent   - The user agent string sent by the device
+       device_policykey  - The <span class="php-keyword2">current</span> policykey <span class="php-keyword1">for</span> this device
+       device_rwstatus   - The <span class="php-keyword2">current</span> remote wipe status <span class="php-keyword1">for</span> this device
+
+   syncUsersTable (horde_activesync_device_users):
+       device_user    - A username attached to the device
+       device_id      - The device id
+       device_ping    - The account<span class="php-quote">'s ping state
+       device_folders - Account'</span>s folder data</pre>
+
+<p>Copyright 2010-2012 Horde LLC (http://www.horde.org/)</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Horde_ActiveSync_State_Base.html"><span>Horde_ActiveSync_State_Base</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Horde_ActiveSync_State_History</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> ActiveSync<br>
+
+				<b>Author:</b>
+				Michael J. Rubinsky <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#x6d;&#114;&#x75;&#x62;&#105;&#x6e;&#115;&#x6b;&#x40;&#104;&#x6f;&#114;&#x64;&#x65;&#46;&#x6f;&#114;&#x67;">&#x6d;&#114;&#x75;&#x62;&#105;&#x6e;&#115;&#x6b;&#x40;&#104;&#x6f;&#114;&#x64;&#x65;&#46;&#x6f;&#114;&#x67;</a>
+<br>
+				<b>Todo::</b>
+				<p>H5 This driver should be renamed to Horde_ActiveSync_State_Sql since the
+       History related changes have been refactored out to a Core library.</p>
+<br>
+		<b>Located at</b> <a href="source-class-Horde_ActiveSync_State_History.html#2-1141" title="Go to source code">Horde/ActiveSync/State/History.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			Horde_ActiveSync_StateMachine_File
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#83-109" title="Go to source code">__construct</a>( <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Const'r</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Const'r</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd>&lt;p&gt;Must contain:
+     'db'  - Horde_Db
+     'syncStateTable'    - Name of table for storing syncstate
+     'syncDeviceTable'   - Name of table for storing device and ping data
+     'syncMapTable'      - Name of table for remembering what changes
+                           are due to PIM import so we don't mirror the
+                           changes back to the PIM on next Sync
+     'syncUsersTable'    - Name of table for mapping users to devices.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Horde_ActiveSync_StateMachine_File</code>
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_ActiveSync_State_Base.html#___construct">Horde_ActiveSync_State_Base::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadState" id="_loadState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#111-184" title="Go to source code">loadState</a>( <span>string <var>$syncKey</var></span>, <span>string <var>$type</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Load the sync state</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Load the sync state</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$syncKey</var></dt>
+					<dd>&lt;p&gt;The synckey of the state to load. If empty will
+                         force a reset of the state for the class
+                         specified in $id&lt;/p&gt;
+</dd>
+					<dt><var>$type</var></dt>
+					<dd>&lt;p&gt;$id        The folder id this state represents. If empty
+                         assumed to be a foldersync state.&lt;/p&gt;
+</dd>
+					<dt><var>$id</var></dt>
+					<dd>The collection id this represents
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+				<h4>Prarm</h4>
+				<div class="list">
+						string $type      The type of state (sync, foldersync).
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isConflict" id="_isConflict">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isConflict">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#186-208" title="Go to source code">isConflict</a>( <span>array <var>$stat</var></span>, <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			<p>Determines if the server version of the message represented by $stat
+conflicts with the PIM version of the message.  For this driver, this is
+true whenever $lastSyncTime is older then $stat['mod']. Method is only
+called from the Importer during an import of a non-new change from the
+PIM.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Determines if the server version of the message represented by $stat
+conflicts with the PIM version of the message.  For this driver, this is
+true whenever $lastSyncTime is older then $stat['mod']. Method is only
+called from the Importer during an import of a non-new change from the
+PIM.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$stat</var></dt>
+					<dd>A message stat array
+</dd>
+					<dt><var>$type</var></dt>
+					<dd>The type of change (change, delete, add)
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Horde_ActiveSync_State_Base.html#_isConflict">Horde_ActiveSync_State_Base::isConflict()</a></code></code><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="save" id="_save">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_save">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#210-252" title="Go to source code">save</a>( )</code>
+
+		<div class="description short">
+			<p>Save the current state to storage</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save the current state to storage</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="updateState" id="_updateState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_updateState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#254-330" title="Go to source code">updateState</a>( <span>string <var>$type</var></span>, <span>array <var>$change</var></span>, <span>integer <var>$origin</var> = <code><a href="class-Horde_ActiveSync.html#CHANGE_ORIGIN_NA">Horde_ActiveSync::<b>CHANGE_ORIGIN_NA</b></a></code></span>, <span>string <var>$user</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$clientid</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			<p>Update the state to reflect changes</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Update the state to reflect changes</p>
+
+<p>Notes: If we are importing PIM changes, need to update the syncMapTable
+so we don't mirror back the changes on next sync. If we are exporting
+server changes, we need to track which changes have been sent (by
+removing them from $this->_changes) so we know which items to send on the
+next sync if a MOREAVAILBLE response was needed.  If this is being called
+from a FOLDERSYNC command, update state accordingly. Yet another reason
+to break out state handling into different classes based on the command
+being run (Horde_ActiveSync_State_Sync, *_FolderSync, *_Ping etc...);</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd>&lt;p&gt;The type of change (change, delete, flags or
+                         foldersync)&lt;/p&gt;
+</dd>
+					<dt><var>$change</var></dt>
+					<dd>A stat/change hash describing the change
+</dd>
+					<dt><var>$origin</var></dt>
+					<dd>Flag to indicate the origin of the change.
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>&lt;p&gt;The current sync user, only needed if change
+                         origin is CHANGE_ORIGIN_PIM&lt;/p&gt;
+</dd>
+					<dt><var>$clientid</var></dt>
+					<dd>PIM clientid sent when adding a new message
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setFolderData" id="_setFolderData">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setFolderData">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#332-378" title="Go to source code">setFolderData</a>( <span>object <var>$device</var></span>, <span>array <var>$folders</var></span> )</code>
+
+		<div class="description short">
+			<p>Save folder data for a specific device. This is needed for BC with older
+activesync versions that use GETHIERARCHY requests to get the folder info
+instead of maintaining the folder state with FOLDERSYNC requests.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save folder data for a specific device. This is needed for BC with older
+activesync versions that use GETHIERARCHY requests to get the folder info
+instead of maintaining the folder state with FOLDERSYNC requests.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$device</var></dt>
+					<dd>The device object
+</dd>
+					<dt><var>$folders</var></dt>
+					<dd>The folder data
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFolderData" id="_getFolderData">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFolderData">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#380-407" title="Go to source code">getFolderData</a>( <span>object <var>$device</var></span>, <span>string <var>$class</var></span> )</code>
+
+		<div class="description short">
+			<p>Get the folder data for a specific device</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the folder data for a specific device</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$device</var></dt>
+					<dd>The device object
+</dd>
+					<dt><var>$class</var></dt>
+					<dd>The folder class to fetch (Calendar, Contacts etc.)
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Either an array of folder data || false
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getKnownFolders" id="_getKnownFolders">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getKnownFolders">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#409-427" title="Go to source code">getKnownFolders</a>( )</code>
+
+		<div class="description short">
+			<p>Return an array of known folders. This is essentially the state for a
+FOLDERSYNC request. AS uses a seperate synckey for FOLDERSYNC requests
+also, so need to treat it as any other collection.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Return an array of known folders. This is essentially the state for a
+FOLDERSYNC request. AS uses a seperate synckey for FOLDERSYNC requests
+also, so need to treat it as any other collection.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="initPingState" id="_initPingState">
+
+		<td class="attributes"><code>
+			 public 
+
+			The
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_initPingState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#429-445" title="Go to source code">initPingState</a>( <span>string <var>$device</var></span> )</code>
+
+		<div class="description short">
+			<p>Perform any initialization needed to deal with pingStates for this driver</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Perform any initialization needed to deal with pingStates for this driver</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$device</var></dt>
+					<dd>$devId  The device id to load pingState for
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>The</code><br>$collection array
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadDeviceInfo" id="_loadDeviceInfo">
+
+		<td class="attributes"><code>
+			 public 
+
+			StdClass
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadDeviceInfo">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#447-517" title="Go to source code">loadDeviceInfo</a>( <span>string <var>$devId</var></span>, <span>string <var>$user</var></span> )</code>
+
+		<div class="description short">
+			<p>Obtain the device object. For this driver, we also store the PING data
+in the device table.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Obtain the device object. For this driver, we also store the PING data
+in the device table.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id to obtain
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>The user to retrieve user-specific device info for
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>StdClass</code><br>The device obejct
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDeviceInfo" id="_setDeviceInfo">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDeviceInfo">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#519-574" title="Go to source code">setDeviceInfo</a>( <span>object <var>$data</var></span> )</code>
+
+		<div class="description short">
+			<p>Set new device info</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set new device info</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd>The device information
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="deviceExists" id="_deviceExists">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_deviceExists">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#576-602" title="Go to source code">deviceExists</a>( <span>string <var>$devId</var></span>, <span>string <var>$user</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Check that a given device id is known to the server. This is regardless
+of Provisioning status. If $user is provided, checks that the device
+is attached to the provided username.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check that a given device id is known to the server. This is regardless
+of Provisioning status. If $user is provided, checks that the device
+is attached to the provided username.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id to check.
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>The device should be owned by this user.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="listDevices" id="_listDevices">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_listDevices">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#604-627" title="Go to source code">listDevices</a>( <span>mixed <var>$user</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>List all devices that we know about.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>List all devices that we know about.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>An array of device hashes
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLastSyncTimestamp" id="_getLastSyncTimestamp">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLastSyncTimestamp">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#629-647" title="Go to source code">getLastSyncTimestamp</a>( )</code>
+
+		<div class="description short">
+			<p>Get the last time the loaded device issued a SYNC request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the last time the loaded device issued a SYNC request.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The timestamp of the last sync, regardless of collection
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addPingCollections" id="_addPingCollections">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addPingCollections">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#649-664" title="Go to source code">addPingCollections</a>( <span>array <var>$collections</var></span> )</code>
+
+		<div class="description short">
+			<p>Add a collection to the PING state. Ping state must already be loaded.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Add a collection to the PING state. Ping state must already be loaded.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$collections</var></dt>
+					<dd>&lt;p&gt;An array of collection information to replace
+                           any existing cached ping collection state.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadPingCollectionState" id="_loadPingCollectionState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadPingCollectionState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#666-711" title="Go to source code">loadPingCollectionState</a>( <span>array <var>$pingCollection</var></span> )</code>
+
+		<div class="description short">
+			<p>Load a specific collection's ping state. Ping state must already have
+been loaded.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Load a specific collection's ping state. Ping state must already have
+been loaded.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pingCollection</var></dt>
+					<dd>The collection array from the PIM request
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Horde_ActiveSync_Exception,<br><p>Horde_ActiveSync_Exception_StateGone,
+        Horde_ActiveSync_Exception_InvalidRequest</p>
+
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="savePingState" id="_savePingState">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_savePingState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#713-740" title="Go to source code">savePingState</a>( )</code>
+
+		<div class="description short">
+			<p>Save the current ping state to storage</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save the current ping state to storage</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getHeartbeatInterval" id="_getHeartbeatInterval">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHeartbeatInterval">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#742-755" title="Go to source code">getHeartbeatInterval</a>( )</code>
+
+		<div class="description short">
+			<p>Return the heartbeat interval, or zero if we have no existing state</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Return the heartbeat interval, or zero if we have no existing state</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The hearbeat interval, or zero if not found.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setHeartbeatInterval" id="_setHeartbeatInterval">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setHeartbeatInterval">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#757-765" title="Go to source code">setHeartbeatInterval</a>( <span>integer <var>$lifetime</var></span> )</code>
+
+		<div class="description short">
+			<p>Set the device's heartbeat interval</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set the device's heartbeat interval</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$lifetime</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getChanges" id="_getChanges">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getChanges">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#767-834" title="Go to source code">getChanges</a>( <span>integer <var>$flags</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			<p>Get all items that have changed since the last sync time</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get all items that have changed since the last sync time</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$flags</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPolicyKey" id="_setPolicyKey">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPolicyKey">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#836-855" title="Go to source code">setPolicyKey</a>( <span>string <var>$devId</var></span>, <span>integer <var>$key</var></span> )</code>
+
+		<div class="description short">
+			<p>Save a new device policy key to storage.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save a new device policy key to storage.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id
+</dd>
+					<dt><var>$key</var></dt>
+					<dd>The new policy key
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="resetAllPolicyKeys" id="_resetAllPolicyKeys">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_resetAllPolicyKeys">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#857-873" title="Go to source code">resetAllPolicyKeys</a>( )</code>
+
+		<div class="description short">
+			<p>Reset ALL device policy keys. Used when server policies have changed
+and you want to force ALL devices to pick up the changes. This will
+cause all devices that support provisioning to be reprovisioned.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Reset ALL device policy keys. Used when server policies have changed
+and you want to force ALL devices to pick up the changes. This will
+cause all devices that support provisioning to be reprovisioned.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDeviceRWStatus" id="_setDeviceRWStatus">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDeviceRWStatus">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#875-906" title="Go to source code">setDeviceRWStatus</a>( <span>string <var>$devId</var></span>, <span>string <var>$status</var></span> )</code>
+
+		<div class="description short">
+			<p>Set a new remotewipe status for the device</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set a new remotewipe status for the device</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>
+</dd>
+					<dt><var>$status</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeState" id="_removeState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#908-962" title="Go to source code">removeState</a>( <span>string <var>$synckey</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$devId</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$user</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Explicitly remove a state from storage.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Explicitly remove a state from storage.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$synckey</var></dt>
+					<dd>The specific state to remove
+</dd>
+					<dt><var>$devId</var></dt>
+					<dd>Remove all information for this device.
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>&lt;p&gt;When removing device info, restrict to removing
+                        data for this user only.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Horde_ActiveSyncException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isDuplicatePIMAddition" id="_isDuplicatePIMAddition">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDuplicatePIMAddition">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_History.html#964-984" title="Go to source code">isDuplicatePIMAddition</a>( <span>string <var>$id</var></span> )</code>
+
+		<div class="description short">
+			<p>Check and see that we didn't already see the incoming change from the PIM.
+This would happen e.g., if the PIM failed to receive the server response
+after successfully importing new messages.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check and see that we didn't already see the incoming change from the PIM.
+This would happen e.g., if the PIM failed to receive the server response
+after successfully importing new messages.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>The client id sent during message addition.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The UID for the given clientid, null if none found.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Horde_ActiveSync_State_Base.html#methods">Horde_ActiveSync_State_Base</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Horde_ActiveSync_State_Base.html#_RowCmp">RowCmp()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#___destruct">__destruct()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_generatePolicyKey">generatePolicyKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getChangeCount">getChangeCount()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getCurrentSyncKey">getCurrentSyncKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getDeviceRWStatus">getDeviceRWStatus()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getNewSyncKey">getNewSyncKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getPolicyKey">getPolicyKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getSyncKeyCounter">getSyncKeyCounter()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_init">init()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_resetPingState">resetPingState()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_setBackend">setBackend()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_setLogger">setLogger()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_setNewSyncKey">setNewSyncKey()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-Horde_ActiveSync_State_Base.html#constants">Horde_ActiveSync_State_Base</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_1DAY"><b>FILTERTYPE_1DAY</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_1MONTH"><b>FILTERTYPE_1MONTH</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_1WEEK"><b>FILTERTYPE_1WEEK</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_2WEEKS"><b>FILTERTYPE_2WEEKS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_3DAYS"><b>FILTERTYPE_3DAYS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_3MONTHS"><b>FILTERTYPE_3MONTHS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_6MONTHS"><b>FILTERTYPE_6MONTHS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_ALL"><b>FILTERTYPE_ALL</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?3161104126"></script>
+</body>
+</html>

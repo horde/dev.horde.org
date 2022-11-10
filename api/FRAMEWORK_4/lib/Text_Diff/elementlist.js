@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Horde_Text_Diff"],["c","Horde_Text_Diff_Engine_Native"],["c","Horde_Text_Diff_Engine_Shell"],["c","Horde_Text_Diff_Engine_String"],["c","Horde_Text_Diff_Engine_Xdiff"],["c","Horde_Text_Diff_Exception"],["c","Horde_Text_Diff_Mapped"],["c","Horde_Text_Diff_Op_Add"],["c","Horde_Text_Diff_Op_Base"],["c","Horde_Text_Diff_Op_Change"],["c","Horde_Text_Diff_Op_Copy"],["c","Horde_Text_Diff_Op_Delete"],["c","Horde_Text_Diff_Renderer"],["c","Horde_Text_Diff_Renderer_Context"],["c","Horde_Text_Diff_Renderer_Inline"],["c","Horde_Text_Diff_Renderer_Unified"],["c","Horde_Text_Diff_ThreeWay"],["c","Horde_Text_Diff_ThreeWay_BlockBuilder"],["c","Horde_Text_Diff_ThreeWay_Op_Base"],["c","Horde_Text_Diff_ThreeWay_Op_Copy"]];

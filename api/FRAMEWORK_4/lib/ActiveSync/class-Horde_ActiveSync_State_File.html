@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_ActiveSync_State_File</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="namespace-ActiveSync.html">ActiveSync</a>
+						</li>
+				<li class="active"><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_ActiveSync.html">Horde_ActiveSync</a></li>
+				<li><a href="class-Horde_ActiveSync_Connector_Exporter.html">Horde_ActiveSync_Connector_Exporter</a></li>
+				<li><a href="class-Horde_ActiveSync_Connector_Importer.html">Horde_ActiveSync_Connector_Importer</a></li>
+				<li><a href="class-Horde_ActiveSync_Driver_Base.html">Horde_ActiveSync_Driver_Base</a></li>
+				<li><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></li>
+				<li><a href="class-Horde_ActiveSync_Exception_InvalidRequest.html">Horde_ActiveSync_Exception_InvalidRequest</a></li>
+				<li><a href="class-Horde_ActiveSync_Exception_StateGone.html">Horde_ActiveSync_Exception_StateGone</a></li>
+				<li><a href="class-Horde_ActiveSync_Message_Base.html">Horde_ActiveSync_Message_Base</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_Base.html">Horde_ActiveSync_Request_Base</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_FolderCreate.html">Horde_ActiveSync_Request_FolderCreate</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_FolderSync.html">Horde_ActiveSync_Request_FolderSync</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_GetHierarchy.html">Horde_ActiveSync_Request_GetHierarchy</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_GetItemEstimate.html">Horde_ActiveSync_Request_GetItemEstimate</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_MeetingResponse.html">Horde_ActiveSync_Request_MeetingResponse</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_MoveItems.html">Horde_ActiveSync_Request_MoveItems</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_Notify.html">Horde_ActiveSync_Request_Notify</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_Ping.html">Horde_ActiveSync_Request_Ping</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_Provision.html">Horde_ActiveSync_Request_Provision</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_Search.html">Horde_ActiveSync_Request_Search</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_SendMail.html">Horde_ActiveSync_Request_SendMail</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_SmartForward.html">Horde_ActiveSync_Request_SmartForward</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_SmartReply.html">Horde_ActiveSync_Request_SmartReply</a></li>
+				<li><a href="class-Horde_ActiveSync_Request_Sync.html">Horde_ActiveSync_Request_Sync</a></li>
+				<li class="active"><a href="class-Horde_ActiveSync_State_File.html">Horde_ActiveSync_State_File</a></li>
+				<li><a href="class-Horde_ActiveSync_Sync.html">Horde_ActiveSync_Sync</a></li>
+				<li><a href="class-Horde_ActiveSync_Wbxml.html">Horde_ActiveSync_Wbxml</a></li>
+				<li><a href="class-Horde_ActiveSync_Wbxml_Decoder.html">Horde_ActiveSync_Wbxml_Decoder</a></li>
+				<li><a href="class-Horde_ActiveSync_Wbxml_Encoder.html">Horde_ActiveSync_Wbxml_Encoder</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_ActiveSync_State_File</h1>
+
+
+	<div class="description">
+	<p>File      :   statemachine.php
+Project   :   Z-Push
+Descr     :   This class handles state requests; Each differential mechanism can store its own state information, which is stored through the state machine. SyncKey's are of the  form {UUID}N, in which UUID is allocated during the first sync, and N is incremented for each request to 'getNewSyncKey'. A sync state is simple an opaque string value that can differ for each backend used - normally a list of items as the backend has sent them to the PIM. The backend can then use this backend information to compute the increments with current data.</p>
+
+<p>Old sync states are not deleted until a sync state is requested. At that moment, the PIM is apparently requesting an update since sync key X, so any sync states before X are already on the PIM, and can therefore be removed. This algorithm is automatically enforced by the StateMachine class.</p>
+
+<p>Created   :   01.10.2007</p>
+
+<p>� Zarafa Deutschland GmbH, www.zarafaserver.de
+This file is distributed under GPL-2.0.
+Consult COPYING file for details</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Horde_ActiveSync_State_Base.html"><span>Horde_ActiveSync_State_Base</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Horde_ActiveSync_State_File</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		
+
+		<b>Located at</b> <a href="source-class-Horde_ActiveSync_State_File.html#11-681" title="Go to source code">Horde/ActiveSync/State/File.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			Horde_ActiveSync_StateMachine_File
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#66-82" title="Go to source code">__construct</a>( <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Const'r</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Const'r</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd>Must contain 'directory' entry
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Horde_ActiveSync_StateMachine_File</code>
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_ActiveSync_State_Base.html#___construct">Horde_ActiveSync_State_Base::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadState" id="_loadState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#84-119" title="Go to source code">loadState</a>( <span>string <var>$syncKey</var></span>, <span>string <var>$type</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$id</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			<p>Load the sync state</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Load the sync state</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$syncKey</var></dt>
+					<dd>The synckey
+</dd>
+					<dt><var>$type</var></dt>
+					<dd>Treat the loaded state data as this type of state.
+</dd>
+					<dt><var>$id</var></dt>
+					<dd>The collection id this represents
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+				<h4>Prarm</h4>
+				<div class="list">
+						string $type      Treat loaded state as this type of state.
+<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isConflict" id="_isConflict">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isConflict">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#121-154" title="Go to source code">isConflict</a>( <span>array <var>$stat</var></span>, <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			<p>Determines if the server version of the message represented by $stat
+conflicts with the PIM version of the message according to the current
+state.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Determines if the server version of the message represented by $stat
+conflicts with the PIM version of the message according to the current
+state.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$stat</var></dt>
+					<dd>A message stat array
+</dd>
+					<dt><var>$type</var></dt>
+					<dd>The type of change (change, delete, add)
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Horde_ActiveSync_State_Base.html#_isConflict">Horde_ActiveSync_State_Base::isConflict()</a></code></code><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="save" id="_save">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_save">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#156-168" title="Go to source code">save</a>( )</code>
+
+		<div class="description short">
+			<p>Save the current state to storage</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save the current state to storage</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="updateState" id="_updateState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_updateState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#170-226" title="Go to source code">updateState</a>( <span>string <var>$type</var></span>, <span>array <var>$change</var></span>, <span>integer <var>$origin</var> = <code><a href="class-Horde_ActiveSync.html#CHANGE_ORIGIN_NA">Horde_ActiveSync::<b>CHANGE_ORIGIN_NA</b></a></code></span>, <span>string <var>$user</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Update the state to reflect changes</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Update the state to reflect changes</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd>The type of change (change, delete, flags)
+</dd>
+					<dt><var>$change</var></dt>
+					<dd>Array describing change
+</dd>
+					<dt><var>$origin</var></dt>
+					<dd>Flag to indicate the origin of the change.
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>The current synch user
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setFolderData" id="_setFolderData">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setFolderData">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#228-270" title="Go to source code">setFolderData</a>( <span>string <var>$devId</var></span>, <span>array <var>$folders</var></span> )</code>
+
+		<div class="description short">
+			<p>Save folder data for a specific device. Used only for compatibility with
+older (version 1) ActiveSync requests.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save folder data for a specific device. Used only for compatibility with
+older (version 1) ActiveSync requests.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device Id
+</dd>
+					<dt><var>$folders</var></dt>
+					<dd>The folder data
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFolderData" id="_getFolderData">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFolderData">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#272-295" title="Go to source code">getFolderData</a>( <span>string <var>$devId</var></span>, <span>string <var>$class</var></span> )</code>
+
+		<div class="description short">
+			<p>Get the folder data for a specific collection for a specific device. Used
+only with older (version 1) ActiveSync requests.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the folder data for a specific collection for a specific device. Used
+only with older (version 1) ActiveSync requests.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id
+</dd>
+					<dt><var>$class</var></dt>
+					<dd>The folder class to fetch (Calendar, Contacts etc.)
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Either an array of folder data || false
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getKnownFolders" id="_getKnownFolders">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getKnownFolders">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#297-314" title="Go to source code">getKnownFolders</a>( )</code>
+
+		<div class="description short">
+			<p>Return an array of known folders. This is essentially the state for a
+FOLDERSYNC request. AS uses a seperate synckey for FOLDERSYNC requests
+also, so need to treat it as any other collection.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Return an array of known folders. This is essentially the state for a
+FOLDERSYNC request. AS uses a seperate synckey for FOLDERSYNC requests
+also, so need to treat it as any other collection.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="initPingState" id="_initPingState">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_initPingState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#316-335" title="Go to source code">initPingState</a>( <span>string <var>$devId</var></span> )</code>
+
+		<div class="description short">
+			<p>Perform any initialization needed to deal with pingStates
+For this driver, it loads the device's state file.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Perform any initialization needed to deal with pingStates
+For this driver, it loads the device's state file.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id of the PIM to load PING state for
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>The $collection array
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadDeviceInfo" id="_loadDeviceInfo">
+
+		<td class="attributes"><code>
+			 public 
+
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadDeviceInfo">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#337-355" title="Go to source code">loadDeviceInfo</a>( <span>string <var>$devId</var></span>, <span>string <var>$user</var></span> )</code>
+
+		<div class="description short">
+			<p>Obtain the device object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Obtain the device object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id to obtain
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>The user account to use
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>The device info object
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDeviceInfo" id="_setDeviceInfo">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDeviceInfo">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#357-371" title="Go to source code">setDeviceInfo</a>( <span>string <var>$data</var></span> )</code>
+
+		<div class="description short">
+			<p>Set new device info</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set new device info</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd>$devId   The device id.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="deviceExists" id="_deviceExists">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_deviceExists">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#373-388" title="Go to source code">deviceExists</a>( <span>string <var>$devId</var></span>, <span>string <var>$user</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Check that a given device id is known to the server. This is regardless
+of Provisioning status.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check that a given device id is known to the server. This is regardless
+of Provisioning status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>
+</dd>
+					<dt><var>$user</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadPingCollectionState" id="_loadPingCollectionState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadPingCollectionState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#390-454" title="Go to source code">loadPingCollectionState</a>( <span>array <var>$pingCollection</var></span> )</code>
+
+		<div class="description short">
+			<p>Load a specific collection's ping state. Ping state must already have
+been loaded.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Load a specific collection's ping state. Ping state must already have
+been loaded.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pingCollection</var></dt>
+					<dd>The collection array from the PIM request
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="savePingState" id="_savePingState">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_savePingState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#456-473" title="Go to source code">savePingState</a>( )</code>
+
+		<div class="description short">
+			<p>Save the current ping state to storage</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save the current ping state to storage</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getHeartbeatInterval" id="_getHeartbeatInterval">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHeartbeatInterval">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#475-488" title="Go to source code">getHeartbeatInterval</a>( )</code>
+
+		<div class="description short">
+			<p>Return the heartbeat interval, or zero if we have no existing state</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Return the heartbeat interval, or zero if we have no existing state</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The hearbeat interval, or zero if not found.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setHeartbeatInterval" id="_setHeartbeatInterval">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setHeartbeatInterval">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#490-498" title="Go to source code">setHeartbeatInterval</a>( <span>integer <var>$lifetime</var></span> )</code>
+
+		<div class="description short">
+			<p>Set the device's heartbeat interval</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set the device's heartbeat interval</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$lifetime</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPolicyKey" id="_setPolicyKey">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPolicyKey">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#500-512" title="Go to source code">setPolicyKey</a>( <span>string <var>$devId</var></span>, <span>integer <var>$key</var></span> )</code>
+
+		<div class="description short">
+			<p>Save a new device policy key to storage.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save a new device policy key to storage.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>The device id
+</dd>
+					<dt><var>$key</var></dt>
+					<dd>The new policy key
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="resetAllPolicyKeys" id="_resetAllPolicyKeys">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_resetAllPolicyKeys">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#514-525" title="Go to source code">resetAllPolicyKeys</a>( )</code>
+
+		<div class="description short">
+			<p>Reset ALL device policy keys. Used when server policies have changed
+and you want to force ALL devices to pick up the changes. This will
+cause all devices that support provisioning to be reprovisioned.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Reset ALL device policy keys. Used when server policies have changed
+and you want to force ALL devices to pick up the changes. This will
+cause all devices that support provisioning to be reprovisioned.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDeviceRWStatus" id="_setDeviceRWStatus">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDeviceRWStatus">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#527-541" title="Go to source code">setDeviceRWStatus</a>( <span>string <var>$devId</var></span>, <span>integer <var>$status</var></span> )</code>
+
+		<div class="description short">
+			<p>Set a new remotewipe status for the device</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set a new remotewipe status for the device</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$devId</var></dt>
+					<dd>
+</dd>
+					<dt><var>$status</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getChanges" id="_getChanges">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getChanges">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#543-593" title="Go to source code">getChanges</a>( <span>integer <var>$flags</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			<p>Get list of server changes</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get list of server changes</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$flags</var></dt>
+					<dd>
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeState" id="_removeState">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeState">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#595-607" title="Go to source code">removeState</a>( <span>string <var>$syncKey</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$devId</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Explicitly remove a specific state. Normally used if a request results in
+a synckey mismatch. This isn't strictly needed, but helps keep the state
+storage clean.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Explicitly remove a specific state. Normally used if a request results in
+a synckey mismatch. This isn't strictly needed, but helps keep the state
+storage clean.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$syncKey</var></dt>
+					<dd>The specific state to remove
+</dd>
+					<dt><var>$devId</var></dt>
+					<dd>Remove all state for this device (ignores synckey)
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Horde_ActiveSyncException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="listDevices" id="_listDevices">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_listDevices">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#609-612" title="Go to source code">listDevices</a>( )</code>
+
+		<div class="description short">
+			<p>List all devices that we know about.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>List all devices that we know about.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>An array of device hashes
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLastSyncTimestamp" id="_getLastSyncTimestamp">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLastSyncTimestamp">#</a>
+		<code><a href="source-class-Horde_ActiveSync_State_File.html#614-625" title="Go to source code">getLastSyncTimestamp</a>( )</code>
+
+		<div class="description short">
+			<p>Get the last time a particular device issued a SYNC request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the last time a particular device issued a SYNC request.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The timestamp of the last sync, regardless of collection
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_ActiveSync_Exception.html">Horde_ActiveSync_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Horde_ActiveSync_State_Base.html#methods">Horde_ActiveSync_State_Base</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Horde_ActiveSync_State_Base.html#_RowCmp">RowCmp()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#___destruct">__destruct()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_generatePolicyKey">generatePolicyKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getChangeCount">getChangeCount()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getCurrentSyncKey">getCurrentSyncKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getDeviceRWStatus">getDeviceRWStatus()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getNewSyncKey">getNewSyncKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getPolicyKey">getPolicyKey()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_getSyncKeyCounter">getSyncKeyCounter()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_init">init()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_resetPingState">resetPingState()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_setBackend">setBackend()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_setLogger">setLogger()</a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#_setNewSyncKey">setNewSyncKey()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-Horde_ActiveSync_State_Base.html#constants">Horde_ActiveSync_State_Base</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_1DAY"><b>FILTERTYPE_1DAY</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_1MONTH"><b>FILTERTYPE_1MONTH</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_1WEEK"><b>FILTERTYPE_1WEEK</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_2WEEKS"><b>FILTERTYPE_2WEEKS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_3DAYS"><b>FILTERTYPE_3DAYS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_3MONTHS"><b>FILTERTYPE_3MONTHS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_6MONTHS"><b>FILTERTYPE_6MONTHS</b></a>, 
+			<a href="class-Horde_ActiveSync_State_Base.html#FILTERTYPE_ALL"><b>FILTERTYPE_ALL</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?3161104126"></script>
+</body>
+</html>

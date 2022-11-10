@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Horde_Vfs_Ftp</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="namespace-Vfs.html">Vfs</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Horde_Vfs.html">Horde_Vfs</a></li>
+				<li><a href="class-Horde_Vfs_Base.html">Horde_Vfs_Base</a></li>
+				<li><a href="class-Horde_Vfs_Browser.html">Horde_Vfs_Browser</a></li>
+				<li><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></li>
+				<li><a href="class-Horde_Vfs_File.html">Horde_Vfs_File</a></li>
+				<li class="active"><a href="class-Horde_Vfs_Ftp.html">Horde_Vfs_Ftp</a></li>
+				<li><a href="class-Horde_Vfs_Gc.html">Horde_Vfs_Gc</a></li>
+				<li><a href="class-Horde_Vfs_Horde.html">Horde_Vfs_Horde</a></li>
+				<li><a href="class-Horde_Vfs_Kolab.html">Horde_Vfs_Kolab</a></li>
+				<li><a href="class-Horde_Vfs_ListItem.html">Horde_Vfs_ListItem</a></li>
+				<li><a href="class-Horde_Vfs_Musql.html">Horde_Vfs_Musql</a></li>
+				<li><a href="class-Horde_Vfs_Object.html">Horde_Vfs_Object</a></li>
+				<li><a href="class-Horde_Vfs_Smb.html">Horde_Vfs_Smb</a></li>
+				<li><a href="class-Horde_Vfs_Sql.html">Horde_Vfs_Sql</a></li>
+				<li><a href="class-Horde_Vfs_SqlFile.html">Horde_Vfs_SqlFile</a></li>
+				<li><a href="class-Horde_Vfs_Ssh2.html">Horde_Vfs_Ssh2</a></li>
+				<li><a href="class-Horde_Vfs_Translation.html">Horde_Vfs_Translation</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Vfs.html" title="Summary of Vfs"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Horde_Vfs_Ftp</h1>
+
+
+	<div class="description">
+	<p>VFS implementation for an FTP server.</p>
+
+<p>Required values for $params:</p>
+
+<pre>username - (string) The username with which to connect to the ftp server.
+password - (string) The password with which to connect to the ftp server.
+hostspec - (string) The ftp server to connect to.</pre>
+
+<p>Optional values for $params:</p>
+
+<pre>lsformat - (string) The <span class="php-keyword1">return</span> formatting from the <span class="php-quote">'ls'</span> command).
+                      Values: <span class="php-quote">'aix'</span>, <span class="php-quote">'standard'</span> (<span class="php-keyword1">default</span>)
+maplocalids - (boolean) <span class="php-keyword1">If</span> <span class="php-keyword1">true</span> <span class="php-keyword1">and</span> the POSIX extension is available, the
+              driver will map the user <span class="php-keyword1">and</span> group IDs returned from the FTP
+              server with the local IDs from the local password <span class="php-keyword2">file</span>.  This
+              is useful only <span class="php-keyword1">if</span> the FTP server is running on localhost <span class="php-keyword1">or</span>
+              <span class="php-keyword1">if</span> the local user/group IDs are identical to the remote FTP
+              server.
+pasv - (boolean) <span class="php-keyword1">If</span> <span class="php-keyword1">true</span>, connection will be set to passive mode.
+port - (integer) The port used to connect to the ftp server <span class="php-keyword1">if</span> other than
+       <span class="php-num">21</span> (FTP <span class="php-keyword1">default</span>).
+ssl - (boolean) <span class="php-keyword1">If</span> <span class="php-keyword1">true</span>, <span class="php-keyword1">and</span> PHP had been compiled with OpenSSL support,
+       TLS transport-level encryption will be negotiated with the server.
+timeout -(integer) The timeout <span class="php-keyword1">for</span> the server.
+type - (string) The type of the remote FTP server.
+       Possible values: <span class="php-quote">'unix'</span>, <span class="php-quote">'win'</span>, <span class="php-quote">'netware'</span>
+       By <span class="php-keyword1">default</span>, we attempt to auto-detect type.</pre>
+
+<p>Copyright 2002-2012 Horde LLC (http://www.horde.org/)
+Copyright 2002-2007 Michael Varghese <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;:&#109;&#x69;&#107;&#x65;&#46;&#x76;&#97;&#x72;g&#104;&#x65;&#115;&#x65;&#64;&#x61;&#115;&#x63;&#x65;&#108;&#x6c;&#97;&#x74;&#101;&#x63;h&#46;&#x63;&#111;&#x6d;">&#109;&#x69;&#107;&#x65;&#46;&#x76;&#97;&#x72;g&#104;&#x65;&#115;&#x65;&#64;&#x61;&#115;&#x63;&#x65;&#108;&#x6c;&#97;&#x74;&#101;&#x63;h&#46;&#x63;&#111;&#x6d;</a></p>
+
+<p>See the enclosed file COPYING for license information (LGPL). If you
+did not receive this file, see http://www.horde.org/licenses/lgpl21.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Horde_Vfs_Base.html"><span>Horde_Vfs_Base</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Horde_Vfs_Ftp</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Vfs<br>
+
+				<b>Author:</b>
+				Chuck Hagenbuch <a href="&#109;a&#x69;l&#x74;&#111;&#x3a;&#99;&#x68;&#117;&#x63;&#107;&#x40;&#104;&#x6f;&#114;&#x64;&#101;&#x2e;&#111;&#x72;&#103;">&#99;&#x68;&#117;&#x63;&#107;&#x40;&#104;&#x6f;&#114;&#x64;&#101;&#x2e;&#111;&#x72;&#103;</a>
+<br>
+				<b>Author:</b>
+				Michael Varghese <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;:&#109;&#x69;&#107;&#x65;&#46;&#x76;&#97;&#x72;g&#104;&#x65;&#115;&#x65;&#64;&#x61;&#115;&#x63;&#x65;&#108;&#x6c;&#97;&#x74;&#101;&#x63;h&#46;&#x63;&#111;&#x6d;">&#109;&#x69;&#107;&#x65;&#46;&#x76;&#97;&#x72;g&#104;&#x65;&#115;&#x65;&#64;&#x61;&#115;&#x63;&#x65;&#108;&#x6c;&#97;&#x74;&#101;&#x63;h&#46;&#x63;&#111;&#x6d;</a>
+<br>
+		<b>Located at</b> <a href="source-class-Horde_Vfs_Ftp.html#2-875" title="Go to source code">Horde/Vfs/Ftp.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="size" id="_size">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_size">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#106-124" title="Go to source code">size</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns the size of a file.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the size of a file.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The path of the file.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The size of the file in bytes.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_size">Horde_Vfs_Base::size()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="read" id="_read">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_read">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#126-143" title="Go to source code">read</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Retrieves a file from the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Retrieves a file from the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The pathname to the file.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename to retrieve.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The file data.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_read">Horde_Vfs_Base::read()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readFile" id="_readFile">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readFile">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#145-181" title="Go to source code">readFile</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Retrieves a file from the VFS as an on-disk local file.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Retrieves a file from the VFS as an on-disk local file.</p>
+
+<p>This function provides a file on local disk with the data of a VFS file
+in it. This file <em>cannot</em> be modified! The behavior if you do
+modify it is undefined. It will be removed at the end of the request.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The pathname to the file.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename to retrieve.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>A local filename.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_readFile">Horde_Vfs_Base::readFile()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readStream" id="_readStream">
+
+		<td class="attributes"><code>
+			 public 
+
+			resource
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readStream">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#183-195" title="Go to source code">readStream</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Open a stream to a file in the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Open a stream to a file in the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The pathname to the file.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename to retrieve.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>resource</code><br>The stream.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="write" id="_write">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_write">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#197-223" title="Go to source code">write</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span>, <span>string <var>$tmpFile</var></span>, <span>boolean <var>$autocreate</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Stores a file in the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Stores a file in the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The path to store the file in.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename to use.
+</dd>
+					<dt><var>$tmpFile</var></dt>
+					<dd>&lt;p&gt;The temporary file containing the data to
+                            be stored.&lt;/p&gt;
+</dd>
+					<dt><var>$autocreate</var></dt>
+					<dd>Automatically create directories?
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_write">Horde_Vfs_Base::write()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="writeData" id="_writeData">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_writeData">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#225-247" title="Go to source code">writeData</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span>, <span>string <var>$data</var></span>, <span>boolean <var>$autocreate</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Stores a file in the VFS from raw data.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Stores a file in the VFS from raw data.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The path to store the file in.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename to use.
+</dd>
+					<dt><var>$data</var></dt>
+					<dd>The file data.
+</dd>
+					<dt><var>$autocreate</var></dt>
+					<dd>Automatically create directories?
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_writeData">Horde_Vfs_Base::writeData()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="deleteFile" id="_deleteFile">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_deleteFile">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#249-265" title="Go to source code">deleteFile</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Deletes a file from the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes a file from the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The path to delete the file from.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The filename to delete.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_deleteFile">Horde_Vfs_Base::deleteFile()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isFolder" id="_isFolder">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isFolder">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#267-292" title="Go to source code">isFolder</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks if a given item is a folder.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks if a given item is a folder.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The parent folder.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The item name.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>True if it is a folder, false otherwise.
+
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_isFolder">Horde_Vfs_Base::isFolder()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="deleteFolder" id="_deleteFolder">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_deleteFolder">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#294-336" title="Go to source code">deleteFolder</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span>, <span>boolean <var>$recursive</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Deletes a folder from the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes a folder from the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The parent folder.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The name of the folder to delete.
+</dd>
+					<dt><var>$recursive</var></dt>
+					<dd>Force a recursive delete?
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_deleteFolder">Horde_Vfs_Base::deleteFolder()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rename" id="_rename">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rename">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#338-356" title="Go to source code">rename</a>( <span>string <var>$oldpath</var></span>, <span>string <var>$oldname</var></span>, <span>string <var>$newpath</var></span>, <span>string <var>$newname</var></span> )</code>
+
+		<div class="description short">
+			<p>Renames a file in the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Renames a file in the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$oldpath</var></dt>
+					<dd>The old path to the file.
+</dd>
+					<dt><var>$oldname</var></dt>
+					<dd>The old filename.
+</dd>
+					<dt><var>$newpath</var></dt>
+					<dd>The new path of the file.
+</dd>
+					<dt><var>$newname</var></dt>
+					<dd>The new filename.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_rename">Horde_Vfs_Base::rename()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createFolder" id="_createFolder">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createFolder">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#358-373" title="Go to source code">createFolder</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Creates a folder on the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Creates a folder on the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The parent folder.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The name of the new folder.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_createFolder">Horde_Vfs_Base::createFolder()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="changePermissions" id="_changePermissions">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_changePermissions">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#375-391" title="Go to source code">changePermissions</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span>, <span>string <var>$permission</var></span> )</code>
+
+		<div class="description short">
+			<p>Changes permissions for an item on the VFS.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Changes permissions for an item on the VFS.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The parent folder of the item.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The name of the item.
+</dd>
+					<dt><var>$permission</var></dt>
+					<dd>The permission to set in octal notation.
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_changePermissions">Horde_Vfs_Base::changePermissions()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="listFolders" id="_listFolders">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_listFolders">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#622-656" title="Go to source code">listFolders</a>( <span>string <var>$path</var> = <span class="php-quote">''</span></span>, <span>mixed <var>$filter</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$dotfolders</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Returns a sorted list of folders in the specified directory.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a sorted list of folders in the specified directory.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>&lt;p&gt;The path of the directory to get the
+                            directory list for.&lt;/p&gt;
+</dd>
+					<dt><var>$filter</var></dt>
+					<dd>Hash of items to filter based on folderlist.
+</dd>
+					<dt><var>$dotfolders</var></dt>
+					<dd>Include dotfolders?
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Folder list.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_listFolders">Horde_Vfs_Base::listFolders()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="copy" id="_copy">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_copy">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#658-707" title="Go to source code">copy</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span>, <span>string <var>$dest</var></span>, <span>boolean <var>$autocreate</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Copies a file through the backend.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Copies a file through the backend.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The path of the original file.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The name of the original file.
+</dd>
+					<dt><var>$dest</var></dt>
+					<dd>The name of the destination directory.
+</dd>
+					<dt><var>$autocreate</var></dt>
+					<dd>Automatically create directories?
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_copy">Horde_Vfs_Base::copy()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="move" id="_move">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_move">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#709-741" title="Go to source code">move</a>( <span>string <var>$path</var></span>, <span>string <var>$name</var></span>, <span>string <var>$dest</var></span>, <span>boolean <var>$autocreate</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Moves a file through the backend.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Moves a file through the backend.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>The path of the original file.
+</dd>
+					<dt><var>$name</var></dt>
+					<dd>The name of the original file.
+</dd>
+					<dt><var>$dest</var></dt>
+					<dd>The destination file name.
+</dd>
+					<dt><var>$autocreate</var></dt>
+					<dd>Automatically create directories?
+</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_move">Horde_Vfs_Base::move()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurrentDirectory" id="_getCurrentDirectory">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurrentDirectory">#</a>
+		<code><a href="source-class-Horde_Vfs_Ftp.html#743-753" title="Go to source code">getCurrentDirectory</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the current working directory on the FTP server.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the current working directory on the FTP server.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The current working directory.
+
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-Horde_Vfs_Exception.html">Horde_Vfs_Exception</a></code>
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Horde_Vfs_Base.html#_getCurrentDirectory">Horde_Vfs_Base::getCurrentDirectory()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Horde_Vfs_Base.html#methods">Horde_Vfs_Base</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Horde_Vfs_Base.html#___construct">__construct()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_autocreatePath">autocreatePath()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_checkCredentials">checkCredentials()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_delete">delete()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_emptyFolder">emptyFolder()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_exists">exists()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_getFolderSize">getFolderSize()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_getModifiablePermissions">getModifiablePermissions()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_getParam">getParam()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_getQuota">getQuota()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_getRequiredCredentials">getRequiredCredentials()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_getVFSSize">getVFSSize()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_listFolder">listFolder()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_readByteRange">readByteRange()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_setParams">setParams()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_setQuota">setQuota()</a>, 
+			<a href="class-Horde_Vfs_Base.html#_setQuotaRoot">setQuotaRoot()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?1718961151"></script>
+</body>
+</html>
